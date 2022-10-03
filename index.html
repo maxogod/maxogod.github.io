@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valorant Survey for better experience</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1 id="title">Valorant Survey for better experience</h1>
+    <p id="description">Thank you for helping us enhance the community!</p>
+    <div class="formclass">
+      <form id="survey-form" action="">
+        <fieldset name="user-info">
+          <label id="name-label" for="name">Username</label>
+          <input type="text" id="name" placeholder="Enter username" required />
+          <label id="email-label" for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter email" required />
+          <label id="number-label" for="number">Age</label>
+          <input
+            type="number"
+            id="number"
+            placeholder="(optional) Enter age"
+            min="16"
+            max="120"
+          />
+        </fieldset>
+        <fieldset name="relevant-info">
+          <label for="frequency">How often do you play valorant?</label>
+          <select id="dropdown" name="frequency">
+            <option value="">(select one)</option>
+            <option value="1">Almost every day</option>
+            <option value="2">More than twice a week</option>
+            <option value="3">Sometimes</option>
+            <option value="4">Rarely</option>
+          </select>
+          <label>Do you play..</label>
+          <label for="unrated"
+            ><input
+              id="unrated"
+              type="radio"
+              name="type-of-player"
+              value="unrated"
+              class="inline"
+            />
+            Unrated</label
+          >
+          <label for="competitive"
+            ><input
+              id="competitive"
+              type="radio"
+              name="type-of-player"
+              value="competitive"
+              class="inline"
+            />Competitive</label
+          >
+          <label class="selections" for="experiences"
+            >Your gaming expiriences have been mostly..</label
+          >
+          <label for="checkboxes" id="experiences"
+            ><input type="checkbox" id="experiences" class="inline" value="1" />
+            Good comunication and respect among the teammates</label
+          >
+          <label for="checkboxes" id="experiences"
+            ><input type="checkbox" id="experiences" class="inline" value="2" />
+            Not very interactive with other people</label
+          >
+          <label for="checkboxes" id="experiences"
+            ><input type="checkbox" id="experiences" class="inline" value="3" />
+            Playing with a full premade team</label
+          >
+          <label for="checkboxes" id="experiences"
+            ><input type="checkbox" id="experiences" class="inline" value="4" />
+            Poor/Toxic interactions with other players</label
+          >
+        </fieldset>
+        <fieldset name="suggestions">
+          <label for="suggestion"
+            >Give us some suggestions that you think would improve the
+            community!</label
+          >
+          <textarea
+            class="suggestions"
+            id="suggestion"
+            rows="3"
+            cols="30"
+            placeholder="You can change the commmunity.. <suggestions here>"
+          ></textarea>
+        </fieldset>
+        <input id="submit" type="submit" value="Submit" />
+      </form>
+    </div>
+    <footer>This doesn't work its just for practice!!!</footer>
+  </body>
+</html>

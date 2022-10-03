@@ -1,0 +1,96 @@
+body {
+  font-family: "Poppins", sans-serif;
+  color: rgb(181, 116, 211);
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-image: url(https://images8.alphacoders.com/114/thumb-1920-1149389.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+h1 {
+  color: rgb(212, 121, 255);
+  text-shadow: 2px 1px 2px rgb(255, 255, 255), 2px 1px 1px rgb(255, 255, 255);
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  margin-top: 5%;
+}
+
+p {
+  color: rgb(212, 127, 252);
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  font-size: 0.5cm;
+  margin-bottom: 2%;
+}
+
+.formclass {
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  padding-top: 30px;
+  max-width: 700px;
+  background-color: rgba(42, 8, 58, 0.589);
+  border-radius: 1rem;
+}
+
+fieldset {
+  padding-top: 0;
+  border: 0;
+}
+
+label {
+  display: flex;
+  font-size: 1.125rem;
+  margin-bottom: 10px;
+}
+
+input,
+select {
+  border: 0;
+  background: rgba(255, 180, 245, 0.548);
+  color: rgb(0, 0, 0);
+  margin-bottom: 30px;
+  width: 90%;
+  height: 25px;
+  border-radius: 0.5rem;
+}
+
+::placeholder {
+  color: rgba(255, 255, 255, 0.856);
+}
+
+.selections {
+  margin-top: 30px;
+}
+
+.suggestions {
+  background: rgba(255, 180, 245, 0.548);
+  margin-bottom: 30px;
+  width: 90%;
+  height: 100px;
+  border-radius: 0.5rem;
+}
+
+.inline {
+  width: 16px;
+  margin: 0 10px 0 0;
+  vertical-align: middle;
+}
+
+footer {
+  background: rgba(0, 0, 0, 0.438);
+  text-align: center;
+  color: white;
+}
