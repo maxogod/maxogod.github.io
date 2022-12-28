@@ -1,0 +1,189 @@
+html {
+  background: rgb(236, 236, 235);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+#nav-bar {
+  background: rgb(221, 221, 221);
+  margin: -1vh;
+  padding: 1vh 1vh 1vh 1vh;
+  height: 9vh;
+  width: 100%;
+  position: fixed;
+}
+
+#title {
+  font-size: 1.8rem;
+}
+
+#title i {
+  color: palevioletred;
+}
+
+#nav-bar ul {
+  position: absolute;
+  top: 2vh;
+  right: 9vh;
+  list-style: none;
+  display: flex;
+  gap: 10vh;
+}
+
+#header-img {
+  margin-left: 5vh;
+  aspect-ratio: 16/9;
+  width: 15vh;
+  filter: blur(0.8px);
+}
+
+main {
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#select,
+#submit {
+  background: palevioletred;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+#features {
+  width: 60%;
+}
+
+#features small {
+  color: rgb(88, 88, 88);
+}
+
+#get-started,
+#features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#form {
+  display: flex;
+  width: 50vh;
+  gap: 1.2vh;
+  flex-direction: column;
+  margin-bottom: 1vh;
+}
+
+#features ul {
+  margin-top: -1vh;
+  list-style: circle;
+}
+
+#features ul li {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 2vh;
+}
+
+#video {
+  aspect-ratio: 16/9;
+  width: 90vh;
+}
+
+#price-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15vh;
+  margin: 5vh;
+}
+
+#price1,
+#price2,
+#price3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}
+
+.colors {
+  width: 10vh;
+  height: 10vh;
+  border-radius: 50%;
+}
+
+.bronze {
+  background-color: #cd7f32;
+}
+
+.silver {
+  background-color: silver;
+}
+
+.gold {
+  background-color: goldenrod;
+}
+
+#footer {
+  background: rgb(221, 221, 221);
+  margin-bottom: -2vh;
+  height: 6.5vh;
+  width: 100%;
+}
+
+#footer #company ul {
+  list-style: none;
+  position: absolute;
+  right: 9vh;
+  list-style: none;
+  display: flex;
+  gap: 10vh;
+}
+
+#extra-info {
+  font-size: 1rem;
+  color: rgb(145, 145, 145);
+}
+
+a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+a:hover {
+  filter: invert();
+}
+
+@media (max-width: 600px) {
+  main {
+    margin: 0;
+    padding: 0;
+    padding-left: 5vh;
+  }
+
+  #price-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15vh;
+    margin: 5vh;
+  }
+
+  #nav-bar {
+    width: 0px;
+    height: 0px;
+  }
+
+  img {
+    width: 0px;
+    height: 0px;
+  }
+
+  #video {
+    aspect-ratio: 16/9;
+    width: 250px;
+  }
+}
