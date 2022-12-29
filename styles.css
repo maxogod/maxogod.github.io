@@ -99,7 +99,7 @@ p {
   transform: scaleX(-1);
 }
 
-@media (max-height: 1080px) {
+@media (min-height: 692px) and (min-width: 1000px) {
   #togekiss {
     margin-top: -30vh;
     aspect-ratio: 300/280;
@@ -107,6 +107,13 @@ p {
     max-width: 250px;
     z-index: 1;
     transform: scaleX(-1);
+  }
+}
+
+@media (max-height: 600px) {
+  #togekiss {
+    width: 0;
+    height: 0;
   }
 }
 
