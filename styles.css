@@ -12,6 +12,7 @@ body {
 p {
   font-family: "Poppins", sans-serif;
   font-style: italic;
+  text-align: center;
 }
 
 /* NAV-BAR */
@@ -58,6 +59,17 @@ p {
   overflow: hidden;
   font-size: 4rem;
   color: white;
+  text-align: left;
+}
+
+@media (max-width: 500px) {
+  #greeting {
+    margin-left: 5%;
+  }
+  #about {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }
 
 #about {
@@ -87,14 +99,29 @@ p {
   transform: scaleX(-1);
 }
 
-@media (max-height: 600px) {
+@media (max-height: 700px) {
   #togekiss {
-    width: 0;
-    height: 0;
+    position: absolute;
+    left: 20vw;
+    top: 90vh;
+    aspect-ratio: 300/280;
+    width: 40%;
+    transform: scaleX(-1);
   }
 }
 
-@media (max-width: 400px) {
+@media (max-height: 800px) and (max-width: 500px) {
+  #togekiss {
+    position: absolute;
+    left: 20vw;
+    top: 90vh;
+    aspect-ratio: 300/280;
+    width: 40%;
+    transform: scaleX(-1);
+  }
+}
+
+@media (max-width: 500px) {
   #togekiss {
     position: absolute;
     left: 20vw;
@@ -120,6 +147,7 @@ p {
   overflow: hidden;
   font-size: 2.5rem;
   color: white;
+  text-align: center;
 }
 
 .projects-container {
@@ -179,6 +207,7 @@ p {
   overflow: hidden;
   font-size: 4rem;
   color: white;
+  text-align: center;
 }
 
 .media-container {
