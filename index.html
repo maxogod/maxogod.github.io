@@ -12,14 +12,15 @@
       href="https://static.vecteezy.com/system/resources/previews/001/194/635/original/snowflake-png.png"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="responsive.css" />
   </head>
   <body>
-    <nav id="navbar">
+    <nav id="navbar" class="init">
       <ul>
-        <li><a href="#welcome-section">About</a></li>
-        <li><a href="#projects">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
+        <li class="button nav1"><a href="#welcome-section">About</a></li>
+        <li class="button nav2"><a href="#projects">Work</a></li>
+        <li class="button nav3"><a href="#contact">Contact</a></li>
+        <li class="button">
           <a href="https://github.com/maxogod" id="profile-link" target="_blank"
             >Github</a
           >
@@ -33,7 +34,11 @@
           Software developer & Information Engineering student at University of
           Buenos Aires.
         </p>
-        <a href="projects-img/Maximo Utrera CV.pdf" id="resume" target="_blank"
+        <a
+          href="projects-img/Maximo Utrera CV.pdf"
+          id="resume"
+          class="button"
+          target="_blank"
           >Resume</a
         >
         <a
@@ -52,6 +57,14 @@
         <div class="projects-container">
           <div class="project-tile">
             <img src="projects-img/tour1.png" alt="Tour-Package-Creator" />
+            <p class="project-info">
+              This program generates a tour package that an airline company
+              could sell based on the information given by the user (most
+              importantly a kml file representing a map)<br />
+              The implementation uses an undirected graph to make it easy to
+              work with and efficient, as well as several algorithms to generate
+              the most optimal solution in each case
+            </p>
             <h3 class="project-title">
               <a
                 href="https://github.com/maxogod/Tour-Package-Creator"
@@ -65,6 +78,14 @@
               src="projects-img/automatazation-of-elections.png"
               alt="Automatized-Elections"
             />
+            <p class="project-info">
+              This program reads from two files (or databases if needed)
+              containing the political parties that can be voted and the IDs of
+              all the people who are allowed to vote<br />
+              Allows users to create votes and submit them, then these votes are
+              added to the corresponding parties. (Has into account the
+              possibility of illegal voters and several other problems)
+            </p>
             <h3 class="project-title">
               <a
                 href="https://github.com/maxogod/Automatized-Elections"
@@ -75,6 +96,14 @@
           </div>
           <div class="project-tile">
             <img src="projects-img/naiki.png" alt="Product-Landing-Page" />
+            <p class="project-info">
+              Landing page for a (Fake) new shoe.<br />
+              Gives important information about the product and how to buy it
+              and lets the user choose which color they prefer showing them the
+              prices for each one<br />
+              Includes a video example of how the shoe works and what it looks
+              like
+            </p>
             <h3 class="project-title">
               <a href="ProductLandingPage/naiki.html" target="_blank"
                 >Product Landing Page</a
@@ -86,6 +115,15 @@
               src="projects-img/algogram.png"
               alt="Functionality-of-a-social-media-platform"
             />
+            <p class="project-info">
+              AlgoGram is basically a very basic infrastructure of a social
+              media platform, it's real purpose was to practice usage of several
+              data-structures listed below<br />
+              - Priority queue<br />
+              - Hashmaps<br />
+              - Binary search tree<br />
+              And other new data-types created for the project
+            </p>
             <h3 class="project-title">
               <a
                 href="https://github.com/maxogod/Functionality-of-a-social-media-platform"
@@ -96,6 +134,15 @@
           </div>
           <div class="project-tile">
             <img src="projects-img/wordle.png" alt="Wordle-Logic-in-Python" />
+            <p class="project-info">
+              This project is a two player Worlde game made using Functional
+              Programing in the python language<br />
+              The words are processed from a handful of copyright free books,
+              and selected depending on the game configuration the user has
+              set<br />
+              The game gives users the oportunity to sign in and save their
+              history
+            </p>
             <h3 class="project-title">
               <a
                 href="https://github.com/maxogod/WordleGameInPython"
@@ -106,6 +153,13 @@
           </div>
           <div class="project-tile">
             <img src="projects-img/more.png" alt="More-In-My-Github" />
+            <p class="project-info">
+              There is more!<br />
+              Here are some extras...<br /><br />
+              Pysnake (Snake game Replica)<br />
+              Survey Form to get information about the valorant playerbase<br />
+              Several Scientific Computing Projects (python)<br />
+            </p>
             <h3 class="project-title">
               <a href="https://github.com/maxogod" target="_blank">See More</a>
             </h3>
@@ -115,12 +169,17 @@
       <section id="contact">
         <h1 id="contact-me">Get In Touch</h1>
         <div class="media-container">
-          <a href="https://github.com/maxogod" target="_blank">GitHub</a>
-          <a href="https://www.linkedin.com/in/maximo-utrera/" target="_blank"
+          <a href="https://github.com/maxogod" class="button" target="_blank"
+            >GitHub</a
+          >
+          <a
+            href="https://www.linkedin.com/in/maximo-utrera/"
+            class="button"
+            target="_blank"
             >LinkedIn</a
           >
-          <small id="email">maxi18wars@gmail.com</small>
-          <small id="phone">+54 3487 322370</small>
+          <small id="email" class="button">maxi18wars@gmail.com</small>
+          <small id="phone" class="button">+54 3487 322370</small>
         </div>
       </section>
     </main>

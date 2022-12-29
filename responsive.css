@@ -1,0 +1,60 @@
+@media (max-width: 500px) {
+  #greeting {
+    margin-left: 5%;
+  }
+  #about {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
+@media (min-height: 692px) and (min-width: 1000px) {
+  #togekiss {
+    margin-top: -30vh;
+    aspect-ratio: 300/280;
+    width: 20%;
+    max-width: 250px;
+    z-index: 1;
+    transform: scaleX(-1);
+  }
+}
+
+@media (max-height: 600px) {
+  #togekiss {
+    width: 0;
+    height: 0;
+  }
+}
+
+@media (max-height: 700px) {
+  #togekiss {
+    position: absolute;
+    left: 20vw;
+    top: 90vh;
+    aspect-ratio: 300/280;
+    width: 40%;
+    transform: scaleX(-1);
+  }
+}
+
+@media (max-height: 800px) and (max-width: 500px) {
+  #togekiss {
+    position: absolute;
+    left: 20vw;
+    top: 90vh;
+    aspect-ratio: 300/280;
+    width: 40%;
+    transform: scaleX(-1);
+  }
+}
+
+@media (max-width: 500px) {
+  #togekiss {
+    position: absolute;
+    left: 20vw;
+    bottom: 10vh;
+    aspect-ratio: 300/280;
+    width: 40%;
+    transform: scaleX(-1);
+  }
+}
