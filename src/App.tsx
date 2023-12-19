@@ -20,4 +20,9 @@ function App() {
   )
 }
 
+// TODO
+// lock scroll when popup
+// onKeyDown
+// onClickOut
+
 export default App

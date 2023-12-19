@@ -29,9 +29,22 @@ const spanishHomePage = {
     about: 'Sobre mi',
 }
 
+/* ABOUT ME */
+
+const englishAboutMe = {
+    title: "Full-stack developer & Computer Science Engineering student at Univesity of Buenos Aires",
+
+}
+
+const spanishAboutMe = {
+    title: "Desarrollador full-stack y estudiante de Ingenieria Informatica en la Univesidad de Buenos Aires",
+}
+
 export {
     englishNavbarLinks,
     spanishNavbarLinks,
     englishHomePage,
     spanishHomePage,
+    englishAboutMe,
+    spanishAboutMe,
 }

@@ -12,7 +12,8 @@ const Navbar = () => {
     const [showPopup, setShowPopup] = useState(false)
 
     return (
-        <div className="h-12 w-screen fixed top-0 left-0 flex justify-end items-center px-5 py-1">
+        <div
+            className="h-12 w-screen fixed z-20 top-0 left-0 flex justify-end items-center px-5 py-1">
             <button onClick={() => setShowPopup(!showPopup)} className="h-full">
                 <GiHamburgerMenu className='text-2xl text-blue-800' />
             </button>

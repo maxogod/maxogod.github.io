@@ -10,6 +10,7 @@
 /* Vertical Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
+    border-radius: 5px;
     background: #bbddff;
 }
 
