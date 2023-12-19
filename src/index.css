@@ -4,4 +4,20 @@
 
 :root {
     font-family: "Roboto Mono", monospace;
+    scroll-behavior: smooth;
+}
+
+/* Vertical Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    background: #bbddff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #7fb7f0;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5e98ce;
 }
