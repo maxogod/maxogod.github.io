@@ -5,18 +5,18 @@
 :root {
     font-family: "Roboto Mono", monospace;
     scroll-behavior: smooth;
-    background: #073d7a;
+    background: #7a9abe;
 }
 
 /* Vertical Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
     border-radius: 5px;
-    background: #bbddff;
+    /* background: #88a4c0; */
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #7fb7f0;
+    background: #4a78a5;
     border-radius: 5px;
 }
 

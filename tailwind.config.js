@@ -14,17 +14,19 @@ export default {
         'light-background-p3': '#073d7a',
         'light-background-p4': '#012042',
 
-        'dark-background-p1': '#f8f8f8',
-        'dark-background-p2': '#f8f8f8',
-        'dark-background-p3': '#f8f8f8',
-        'dark-background-p4': '#f8f8f8',
+        'dark-background-p1': '#1a425c',
+        'dark-background-p2': '#0f2d40',
+        'dark-background-p3': '#0b2333',
+        'dark-background-p4': '#051621',
 
         'light-primary': '#f8f8f8',
         'light-secondary': '#f8f8f8',
+
         'dark-primary': '#f8f8f8',
         'dark-secondary': '#f8f8f8',
 
         'light-text': '#f8f8f8',
+
         'dark-text': '#f8f8f8',
       },
     },

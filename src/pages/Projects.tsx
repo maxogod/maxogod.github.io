@@ -1,9 +1,14 @@
+import { useContext } from "react"
+import { themeContext } from "../context/themeContext"
 
 const Projects = () => {
+
+    const { backgroundP2 } = useContext(themeContext)
+
     return (
         <div
             id='projects'
-            className="w-screen h-screen bg-gradient-to-b from-primary to-secondary">
+            className={`${backgroundP2} w-screen h-screen`}>
 
         </div>
     )

@@ -4,9 +4,10 @@ import pfp from '../assets/pfp.jpg'
 import { languageContext } from '../context/languageContext'
 import AboutMePopUp from '../components/AboutMePopUp'
 import { MdOutlineKeyboardDoubleArrowDown } from 'react-icons/md'
-import waves from '../assets/waves.svg'
+import wavesSvg from '../assets/waves.svg'
 import { navbarContext } from '../context/navbarContext'
 import { themeContext } from '../context/themeContext'
+import { colorTransition } from '../utils/themeUtils'
 
 const Home = () => {
 
@@ -14,8 +15,7 @@ const Home = () => {
 
     const [isPopUpOpen, setIsPopUpOpen] = useState(false)
 
-    const { backgroundP1, star } = useContext(themeContext)
-
+    const { backgroundP1, star, waves, accentColor, textColor, buttonColor } = useContext(themeContext)
     const { homePageText } = useContext(languageContext)
     const { setShowLogo } = useContext(navbarContext) // to show logo on navbar when scrolling
 
@@ -72,7 +72,7 @@ const Home = () => {
             <div
                 onKeyDown={onEscapePress}
                 id="about"
-                className={`${backgroundP1} w-screen h-screen relative flex sm:flex-row flex-col gap-5 px-5 py-10`}>
+                className={`${backgroundP1} ${colorTransition} w-screen h-screen relative flex sm:flex-row flex-col gap-5 px-5 py-10`}>
                 <div
                     className='relative aspect-square w-52 h-52 flex justify-center items-center'>
                     <img
@@ -83,9 +83,9 @@ const Home = () => {
                         src={image}
                         alt="my picture"
                         className='object-cover w-52 h-52 rounded-full z-10' />
-                    <div className='absolute w-32 h-32 bg-white rounded-full animate-ping'></div>
+                    <div className={`${accentColor} ${colorTransition} absolute w-32 h-32 rounded-full animate-ping`}></div>
                 </div>
-                <div className='w-full sm:mt-16 sm:w-auto z-10'>
+                <div className={`w-full sm:mt-16 sm:w-auto z-10 ${textColor} ${colorTransition}`}>
                     <h1>
                         &gt; {homePageText.title}
                         <br />
@@ -93,18 +93,16 @@ const Home = () => {
                     </h1>
                     <button
                         onClick={handleTogglePopUp}
-                        className='bg-black text-white 
-                        hover:bg-white hover:text-black transition-all duration-500 
-                         p-2 rounded-lg mt-2'>
+                        className={`${buttonColor} p-2 rounded-3xl mt-2`}>
                         {homePageText.about}
                     </button>
                 </div>
-                <div className='absolute bottom-10 left-[45%] z-10 text-white animate-pulse'>
+                <div className='absolute bottom-10 left-[45%] text-white z-10 animate-pulse'>
                     <MdOutlineKeyboardDoubleArrowDown className='text-5xl' />
                 </div>
 
-                <div className={`${star} shadow-2xl w-36 h-36 rounded-bl-full absolute top-0 right-0`}></div>
-                <img src={waves} className='overflow-hidden absolute bottom-0 left-0 h-96 w-full object-cover z-0 saturate-200 brightness-[.65]'></img>
+                <div className={`${star} ${colorTransition} shadow-2xl w-36 h-36 rounded-bl-full absolute top-0 right-0`}></div>
+                <img src={wavesSvg} className={`${waves} ${colorTransition} overflow-hidden absolute bottom-0 left-0 h-96 w-full object-cover z-0`}></img>
             </div>
         </>
     )

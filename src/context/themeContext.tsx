@@ -1,6 +1,6 @@
 import React, { ReactNode, createContext, useEffect, useState } from "react";
 import { isDarkModeOn } from "../utils/localStorage";
-import { darkBG1, darkBG2, darkBG3, darkBG4, darkStar, lightBG1, lightBG2, lightBG3, lightBG4, lightStar } from "../utils/themeUtils";
+import { darkAccent, darkBG1, darkBG2, darkBG3, darkBG4, darkBorders, darkButton, darkNavbarTray, darkPopUp, darkStar, darkText, darkWaves, lightAccent, lightBG1, lightBG2, lightBG3, lightBG4, lightBorders, lightButton, lightNavbarTray, lightPopUp, lightStar, lightText, lightWaves } from "../utils/themeUtils";
 
 interface themeContextType {
     darkMode: boolean,
@@ -10,6 +10,13 @@ interface themeContextType {
     backgroundP3: string,
     backgroundP4: string,
     star: string,
+    waves: string,
+    accentColor: string,
+    popUpColor: string,
+    textColor: string,
+    buttonColor: string,
+    navbarTrayColor: string,
+    borderColor: string,
 }
 
 const themeContext = createContext<themeContextType>({
@@ -20,6 +27,13 @@ const themeContext = createContext<themeContextType>({
     backgroundP3: '',
     backgroundP4: '',
     star: '',
+    waves: '',
+    accentColor: '',
+    popUpColor: '',
+    textColor: '',
+    buttonColor: '',
+    navbarTrayColor: '',
+    borderColor: '',
 })
 
 const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
@@ -31,6 +45,13 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
     const [backgroundP3, setBackgroundP3] = useState(darkMode ? darkBG3 : lightBG3)
     const [backgroundP4, setBackgroundP4] = useState(darkMode ? darkBG4 : lightBG4)
     const [star, setStar] = useState(darkMode ? darkStar : lightStar)
+    const [waves, setWaves] = useState(darkMode ? darkWaves : lightWaves)
+    const [accentColor, setAccentColor] = useState(darkMode ? darkAccent : lightAccent)
+    const [popUpColor, setPopUpColor] = useState(darkMode ? darkPopUp : lightPopUp)
+    const [textColor, setTextColor] = useState(darkMode ? darkText : lightText)
+    const [buttonColor, setButtonColor] = useState(darkMode ? darkButton : lightButton)
+    const [navbarTrayColor, setNavbarTrayColor] = useState(darkMode ? darkNavbarTray : lightNavbarTray)
+    const [borderColor, setBorderColor] = useState(darkMode ? darkBorders : lightBorders)
 
     useEffect(() => {
         setBackgroundP1(darkMode ? darkBG1 : lightBG1)
@@ -38,6 +59,13 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
         setBackgroundP3(darkMode ? darkBG3 : lightBG3)
         setBackgroundP4(darkMode ? darkBG4 : lightBG4)
         setStar(darkMode ? darkStar : lightStar)
+        setWaves(darkMode ? darkWaves : lightWaves)
+        setAccentColor(darkMode ? darkAccent : lightAccent)
+        setPopUpColor(darkMode ? darkPopUp : lightPopUp)
+        setTextColor(darkMode ? darkText : lightText)
+        setButtonColor(darkMode ? darkButton : lightButton)
+        setNavbarTrayColor(darkMode ? darkNavbarTray : lightNavbarTray)
+        setBorderColor(darkMode ? darkBorders : lightBorders)
     }, [darkMode])
 
     return (
@@ -51,6 +79,13 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
                     backgroundP3,
                     backgroundP4,
                     star,
+                    waves,
+                    accentColor,
+                    popUpColor,
+                    textColor,
+                    buttonColor,
+                    navbarTrayColor,
+                    borderColor,
                 }
             }>
             {children}

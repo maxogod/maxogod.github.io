@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import fiubaton_thanking from '../assets/fiubaton_thanking.jpg'
 import fiubaton_presenting from '../assets/fiubaton_presenting.jpg'
 import fiubaton_winners from '../assets/fiubaton_winners.jpg'
 import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs'
+import { themeContext } from '../context/themeContext'
 
 const AboutImageCarrousel = () => {
 
@@ -13,6 +14,8 @@ const AboutImageCarrousel = () => {
     ]
 
     const [currentImage, setCurrentImage] = useState(0)
+
+    const { borderColor } = useContext(themeContext)
 
     const next = () => {
         if (currentImage === imgs.length - 1) { // if it's the last image
@@ -31,7 +34,7 @@ const AboutImageCarrousel = () => {
     }
 
     return (
-        <div className='relative sm:w-80 w-60 aspect-square border-2 border-black rounded-xl'>
+        <div className={`${borderColor} relative sm:w-80 w-60 aspect-square border-[3px] rounded-xl`}>
             <img
                 src={imgs[currentImage]}
                 alt="thanking fiubaton organizers"

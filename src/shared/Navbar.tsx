@@ -12,6 +12,7 @@ import logo from '../assets/poke.png'
 import { languageContext } from '../context/languageContext'
 import { navbarContext } from '../context/navbarContext'
 import { themeContext } from '../context/themeContext'
+import { colorTransition } from '../utils/themeUtils'
 
 const icons = {
     '#about': <FaQuestion />,
@@ -62,8 +63,7 @@ const Navbar = () => {
 
 function NavbarPopup() {
 
-    const { darkMode, setDarkMode } = useContext(themeContext)
-
+    const { darkMode, setDarkMode, navbarTrayColor } = useContext(themeContext)
     const { englishMode, setEnglishMode, navbarLinks } = useContext(languageContext)
 
     const handleThemeChange = () => {
@@ -87,25 +87,25 @@ function NavbarPopup() {
     }
 
     return (
-        <div className="bg-white rounded-md absolute top-10 right-10 w-36 flex gap-3 flex-wrap justify-end items-center px-5 py-2">
+        <div className={`${navbarTrayColor} ${colorTransition} bg-opacity-70 rounded-md absolute top-10 right-10 w-36 flex gap-3 flex-wrap justify-end items-center px-5 py-2`}>
             <div className='w-full flex justify-center gap-3'>
                 <button
                     onClick={handleThemeChange}
                     disabled={!darkMode}>
-                    <BsFillSunFill className={`text-2xl ${darkMode ? 'text-blue-800' : 'text-gray-500'}`} />
+                    <BsFillSunFill className={`text-2xl ${darkMode ? '' : 'text-gray-500'}`} />
                 </button>
                 <button
                     onClick={handleThemeChange}
                     disabled={darkMode}>
-                    <BsFillMoonFill className={`text-2xl ${darkMode ? 'text-gray-500' : 'text-blue-800'}`} />
+                    <BsFillMoonFill className={`text-2xl ${darkMode ? 'text-gray-500' : ''}`} />
                 </button>
             </div>
 
-            <hr className='text-black w-full' />
+            <hr className='bg-black h-[2px] opacity-20 w-full' />
 
             <button
                 onClick={handleLanguageChange}
-                className="w-full text-xs flex justify-center text-blue-800">
+                className="w-full text-xs flex justify-center">
                 {englishMode ? 'Español' : 'English'} <IoLanguageSharp />
             </button>
 
@@ -114,11 +114,11 @@ function NavbarPopup() {
                     <div
                         key={index}
                         className='flex w-full gap-3 flex-wrap justify-end items-center'>
-                        <hr className='text-black w-full' />
+                        <hr className='bg-black h-[2px] opacity-20 w-full' />
                         <a
                             onClick={handleOnClick}
                             href={(navbarLinks as any)[key]}
-                            className="w-full text-xs flex justify-center text-blue-800">
+                            className="w-full text-xs flex justify-center">
                             {key} {(icons as any)[(navbarLinks as any)[key]]}
                         </a>
                     </div>
