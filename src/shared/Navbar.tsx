@@ -1,30 +1,68 @@
 import { useContext, useState } from 'react'
 
-import { isDarkModeOn, setCurrentLanguage, setCurrentTheme } from '../utils/localStorage'
+import { setCurrentLanguage, setCurrentTheme } from '../utils/localStorage'
 
-import { BsFillSunFill } from 'react-icons/bs'
-import { BsFillMoonFill } from 'react-icons/bs'
+import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { FaQuestion, FaLaptop, FaStar } from 'react-icons/fa'
+import { IoMdMail } from 'react-icons/io'
+import { IoLanguageSharp } from 'react-icons/io5'
+import logo from '../assets/poke.png'
+
 import { languageContext } from '../context/languageContext'
+import { navbarContext } from '../context/navbarContext'
+import { themeContext } from '../context/themeContext'
+
+const icons = {
+    '#about': <FaQuestion />,
+    '#projects': <FaLaptop />,
+    '#enjoy': <FaStar />,
+    '#contact': <IoMdMail />,
+}
 
 const Navbar = () => {
 
     const [showPopup, setShowPopup] = useState(false)
 
+    const { showLogo } = useContext(navbarContext)
+
+    const onEscapePress = (event: any) => {
+        if (event.keyCode === 27) {
+            setShowPopup(false)
+        }
+    }
+
+    const handleLogoClick = () => {
+        window.scrollTo({
+            top: 0,
+        });
+        setShowPopup(false)
+    }
+
     return (
-        <div
-            className="h-12 w-screen fixed z-20 top-0 left-0 flex justify-end items-center px-5 py-1">
+        <nav
+            onKeyDown={onEscapePress}
+            className={`h-12 ${showLogo && 'bg-quaternary bg-opacity-5'}
+             w-screen fixed z-20 flex ${showLogo ? 'justify-between' : 'justify-end'}
+              items-center px-5 py-1`}>
+
+            {showLogo && <img
+                onClick={handleLogoClick}
+                src={logo}
+                alt="logo"
+                className='h-full cursor-pointer drop-shadow-2xl' />}
+
             <button onClick={() => setShowPopup(!showPopup)} className="h-full">
                 <GiHamburgerMenu className='text-2xl text-blue-800' />
             </button>
             {showPopup && <NavbarPopup />}
-        </div>
+        </nav>
     )
 }
 
 function NavbarPopup() {
 
-    const [darkMode, setDarkMode] = useState(isDarkModeOn())
+    const { darkMode, setDarkMode } = useContext(themeContext)
 
     const { englishMode, setEnglishMode, navbarLinks } = useContext(languageContext)
 
@@ -38,8 +76,18 @@ function NavbarPopup() {
         setCurrentLanguage(!englishMode)
     }
 
+    const handleOnClick = (e: any) => {
+        e.preventDefault()
+
+        const targetId = e.currentTarget.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     return (
-        <div className="bg-white rounded-md absolute top-10 w-36 flex gap-3 flex-wrap justify-end items-center px-5 py-2">
+        <div className="bg-white rounded-md absolute top-10 right-10 w-36 flex gap-3 flex-wrap justify-end items-center px-5 py-2">
             <div className='w-full flex justify-center gap-3'>
                 <button
                     onClick={handleThemeChange}
@@ -58,7 +106,7 @@ function NavbarPopup() {
             <button
                 onClick={handleLanguageChange}
                 className="w-full text-xs flex justify-center text-blue-800">
-                {englishMode ? 'cambiar a ES' : 'switch to EN'}
+                {englishMode ? 'Español' : 'English'} <IoLanguageSharp />
             </button>
 
             {
@@ -68,9 +116,10 @@ function NavbarPopup() {
                         className='flex w-full gap-3 flex-wrap justify-end items-center'>
                         <hr className='text-black w-full' />
                         <a
+                            onClick={handleOnClick}
                             href={(navbarLinks as any)[key]}
                             className="w-full text-xs flex justify-center text-blue-800">
-                            {key}
+                            {key} {(icons as any)[(navbarLinks as any)[key]]}
                         </a>
                     </div>
                 )

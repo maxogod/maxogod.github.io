@@ -2,17 +2,17 @@
 /* NABVAR LINKS */
 
 const englishNavbarLinks = {
-    'about': '#about',
-    'projects': '#projects',
-    'i enjoy': '#enjoy',
-    'contact me': '#contact',
+    'About': '#about',
+    'Projects': '#projects',
+    'I enjoy': '#enjoy',
+    'Contact me': '#contact',
 }
 
 const spanishNavbarLinks = {
-    'sobre mi': '#about',
-    'proyectos': '#projects',
-    'me gusta': '#enjoy',
-    'contacto': '#contact',
+    'Sobre mi': '#about',
+    'Proyectos': '#projects',
+    'Me gusta': '#enjoy',
+    'Contacto': '#contact',
 }
 
 /* HOME PAGE */

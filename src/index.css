@@ -5,6 +5,7 @@
 :root {
     font-family: "Roboto Mono", monospace;
     scroll-behavior: smooth;
+    background: #073d7a;
 }
 
 /* Vertical Scrollbar */

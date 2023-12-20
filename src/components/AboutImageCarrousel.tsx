@@ -2,6 +2,7 @@ import { useState } from 'react'
 import fiubaton_thanking from '../assets/fiubaton_thanking.jpg'
 import fiubaton_presenting from '../assets/fiubaton_presenting.jpg'
 import fiubaton_winners from '../assets/fiubaton_winners.jpg'
+import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs'
 
 const AboutImageCarrousel = () => {
 
@@ -37,13 +38,13 @@ const AboutImageCarrousel = () => {
                 className='h-full w-full object-cover rounded-md' />
             <button
                 onClick={next}
-                className='absolute text-white mr-1 bg-blue-600 rounded-full top-1/2 right-0'>
-                {'>'}
+                className='absolute text-white mr-1 p-1 bg-blue-600 rounded-full top-1/2 right-0'>
+                <BsArrowBarRight />
             </button>
             <button
                 onClick={prev}
-                className='absolute text-white ml-1 bg-blue-600 rounded-full top-1/2 left-0'>
-                {'<'}
+                className='absolute text-white ml-1 p-1 bg-blue-600 rounded-full top-1/2 left-0'>
+                <BsArrowBarLeft />
             </button>
         </div>
     )

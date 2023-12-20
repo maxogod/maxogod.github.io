@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { languageContext } from '../context/languageContext'
 import AboutImageCarrousel from './AboutImageCarrousel'
+import { LuSwords } from 'react-icons/lu'
 
 const AboutMePopUp = ({ handleTogglePopUp }: { handleTogglePopUp: () => void }) => {
 
@@ -11,9 +12,9 @@ const AboutMePopUp = ({ handleTogglePopUp }: { handleTogglePopUp: () => void }) 
             <div className='bg-white text-black relative rounded-md bg-opacity-80
             flex sm:flex-nowrap flex-wrap justify-center sm:justify-between 
             overflow-y-scroll items-start px-3 py-12 sm:p-10 w-full h-full'>
-                <p
+                <LuSwords
                     className='absolute top-0 left-0 bg-red-400 w-10 text-center rounded-r-full h-6 cursor-pointer'
-                    onClick={handleTogglePopUp}>X</p>
+                    onClick={handleTogglePopUp} />
 
                 <AboutImageCarrousel />
 

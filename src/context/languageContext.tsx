@@ -49,5 +49,5 @@ const LanguageContextProvider = ({ children }: { children: ReactNode }) => {
 
 export {
     languageContext,
-    LanguageContextProvider
+    LanguageContextProvider,
 }
