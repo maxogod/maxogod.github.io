@@ -34,19 +34,19 @@ const AboutImageCarrousel = () => {
     }
 
     return (
-        <div className={`${borderColor} relative sm:w-80 w-60 aspect-square border-[3px] rounded-xl`}>
+        <div className={`relative sm:w-80 w-60 aspect-square`}>
             <img
                 src={imgs[currentImage]}
                 alt="thanking fiubaton organizers"
                 className='h-full w-full object-cover rounded-md' />
             <button
                 onClick={next}
-                className='absolute text-white mr-1 p-1 bg-blue-600 rounded-full top-1/2 right-0'>
+                className={`absolute text-white mr-1 text-sm p-1 ${borderColor} py-3 rounded-full top-1/2 right-0`}>
                 <BsArrowBarRight />
             </button>
             <button
                 onClick={prev}
-                className='absolute text-white ml-1 p-1 bg-blue-600 rounded-full top-1/2 left-0'>
+                className={`absolute text-white ml-1 text-sm p-1 ${borderColor} py-3 rounded-full top-1/2 left-0`}>
                 <BsArrowBarLeft />
             </button>
         </div>

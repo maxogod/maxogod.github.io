@@ -14,7 +14,7 @@ function App() {
       <LanguageContextProvider>
         <NavbarContextProvider>
           <Navbar />
-          <div className="flex flex-wrap bg-dark-background-p3">
+          <div className="flex flex-wrap bg-dark-background-p3 overflow-x-hidden">
             <Home />
             <Projects />
             <Enjoy />

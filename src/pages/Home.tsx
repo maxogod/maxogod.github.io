@@ -5,6 +5,7 @@ import { languageContext } from '../context/languageContext'
 import AboutMePopUp from '../components/AboutMePopUp'
 import { MdOutlineKeyboardDoubleArrowDown } from 'react-icons/md'
 import wavesSvg from '../assets/waves.svg'
+import starsSvg from '../assets/stars.svg'
 import { navbarContext } from '../context/navbarContext'
 import { themeContext } from '../context/themeContext'
 import { colorTransition } from '../utils/themeUtils'
@@ -74,7 +75,7 @@ const Home = () => {
                 id="about"
                 className={`${backgroundP1} ${colorTransition} w-screen h-screen relative flex sm:flex-row flex-col gap-5 px-5 py-10`}>
                 <div
-                    className='relative aspect-square w-52 h-52 flex justify-center items-center'>
+                    className='relative aspect-square w-40 h-40 sm:w-52 sm:h-52 flex justify-center items-center'>
                     <img
                         ref={targetRef}
                         onMouseEnter={handleChangeImage}
@@ -82,8 +83,8 @@ const Home = () => {
                         onClick={handleChangeImage}
                         src={image}
                         alt="my picture"
-                        className='object-cover w-52 h-52 rounded-full z-10' />
-                    <div className={`${accentColor} ${colorTransition} absolute w-32 h-32 rounded-full animate-ping`}></div>
+                        className='object-cover w-40 h-40 sm:w-52 sm:h-52 rounded-full z-10' />
+                    <div className={`${accentColor} ${colorTransition} absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full animate-ping`}></div>
                 </div>
                 <div className={`w-full sm:mt-16 sm:w-auto z-10 ${textColor} ${colorTransition}`}>
                     <h1>
@@ -101,7 +102,13 @@ const Home = () => {
                     <MdOutlineKeyboardDoubleArrowDown className='text-5xl' />
                 </div>
 
-                <div className={`${star} ${colorTransition} shadow-2xl w-36 h-36 rounded-bl-full absolute top-0 right-0`}></div>
+                <div className={`${star} ${colorTransition} shadow-2xl w-36 h-36 rounded-bl-full absolute top-0 right-0 z-10`}></div>
+
+                <img src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute top-2 left-1/4 z-0 p-5`}></img>
+                <img src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute top-32 left-1/3 z-0 p-20`}></img>
+                <img src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute -top-10 left-1/2 z-0 p-16`}></img>
+                <img src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute top-11 left-2/3 z-0 p-11`}></img>
+
                 <img src={wavesSvg} className={`${waves} ${colorTransition} overflow-hidden absolute bottom-0 left-0 h-96 w-full object-cover z-0`}></img>
             </div>
         </>
