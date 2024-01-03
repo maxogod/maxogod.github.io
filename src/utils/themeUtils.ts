@@ -11,6 +11,7 @@ const lightText = 'text-white';
 const lightButton = 'border-2 border-white text-white shadow-white shadow-inner hover:border-yellow-200 hover:text-yellow-200 hover:shadow-yellow-200';
 const lightNavbarTray = 'bg-white text-pink-500'
 const lightBorders = 'border-pink-500 border-opacity-50 bg-pink-500'
+const lightBubble = 'shadow-lg bg-primary bg-opacity-40 shadow-blue-400'
 
 const darkBG1 = 'bg-gradient-to-b to-purple-900 from-blue-950';
 const darkBG2 = 'bg-gradient-to-b to-dark-background-p2 from-dark-background-p1';
@@ -24,6 +25,7 @@ const darkText = 'text-slate-300';
 const darkButton = 'border-2 border-slate-300 text-slate-300 shadow-slate-300 shadow-inner hover:border-purple-500 hover:text-purple-500 hover:shadow-purple-500 transition-all duration-500';
 const darkNavbarTray = 'bg-slate-900 text-purple-500'
 const darkBorders = 'border-purple-500 border-opacity-50 bg-purple-500'
+const darkBubble = 'shadow-lg bg-primary bg-opacity-5 shadow-primary'
 
 const colorTransition = 'transition-all'
 
@@ -40,6 +42,7 @@ export {
     lightButton,
     lightNavbarTray,
     lightBorders,
+    lightBubble,
 
     darkBG1,
     darkBG2,
@@ -53,6 +56,7 @@ export {
     darkButton,
     darkNavbarTray,
     darkBorders,
+    darkBubble,
 
     colorTransition,
 }

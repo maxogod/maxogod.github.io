@@ -23,3 +23,69 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #5e98ce;
 }
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        transform: none;
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+.custom-animate-bounce:nth-of-type(1) {
+    animation: bounce 4s infinite;
+}
+.custom-animate-bounce:nth-of-type(2) {
+    animation: bounce 4.2s infinite;
+}
+.custom-animate-bounce:nth-of-type(3) {
+    animation: bounce 4.4s infinite;
+}
+
+.bubble {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: white;
+    bottom: -30px; /* Initial position below the screen */
+    opacity: 0.2;
+    animation: bubble 10s ease-in-out infinite,
+        sideWays 10s ease-in-out infinite alternate,
+        wateryEffect 3s ease-in-out infinite alternate;
+}
+
+@keyframes bubble {
+    0%,
+    100% {
+        transform: translateY(
+            60vh
+        ); /* Start and end position below the screen */
+        opacity: 0.06;
+    }
+    50% {
+        transform: translateY(0%); /* Midway position, bubbles rise */
+    }
+}
+
+@keyframes sideWays {
+    0% {
+        margin-left: 0px;
+    }
+    100% {
+        margin-left: 5rem;
+    }
+}
+
+@keyframes wateryEffect {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}

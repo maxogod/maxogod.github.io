@@ -15,7 +15,7 @@ const AboutMePopUp = ({ handleTogglePopUp }: { handleTogglePopUp: () => void }) 
             flex sm:flex-nowrap flex-wrap justify-center sm:justify-between 
             overflow-y-scroll items-start px-3 py-12 sm:p-10 w-full h-full`}>
                 <LuSwords
-                    className='absolute top-0 left-0 bg-red-400 w-10 text-center rounded-r-full h-6 cursor-pointer'
+                    className='absolute top-0 left-0 bg-red-400 hover:text-black ease-in-out duration-300 w-10 text-center rounded-r-full h-6 cursor-pointer'
                     onClick={handleTogglePopUp} />
 
                 <AboutImageCarrousel />

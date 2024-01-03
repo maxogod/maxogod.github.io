@@ -1,6 +1,6 @@
 import React, { ReactNode, createContext, useEffect, useState } from "react";
 import { isDarkModeOn } from "../utils/localStorage";
-import { darkAccent, darkBG1, darkBG2, darkBG3, darkBG4, darkBorders, darkButton, darkNavbarTray, darkPopUp, darkStar, darkText, darkWaves, lightAccent, lightBG1, lightBG2, lightBG3, lightBG4, lightBorders, lightButton, lightNavbarTray, lightPopUp, lightStar, lightText, lightWaves } from "../utils/themeUtils";
+import { darkAccent, darkBG1, darkBG2, darkBG3, darkBG4, darkBorders, darkBubble, darkButton, darkNavbarTray, darkPopUp, darkStar, darkText, darkWaves, lightAccent, lightBG1, lightBG2, lightBG3, lightBG4, lightBorders, lightBubble, lightButton, lightNavbarTray, lightPopUp, lightStar, lightText, lightWaves } from "../utils/themeUtils";
 
 interface themeContextType {
     darkMode: boolean,
@@ -17,6 +17,7 @@ interface themeContextType {
     buttonColor: string,
     navbarTrayColor: string,
     borderColor: string,
+    bubbleColor: string,
 }
 
 const themeContext = createContext<themeContextType>({
@@ -34,6 +35,7 @@ const themeContext = createContext<themeContextType>({
     buttonColor: '',
     navbarTrayColor: '',
     borderColor: '',
+    bubbleColor: '',
 })
 
 const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
@@ -52,6 +54,7 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
     const [buttonColor, setButtonColor] = useState(darkMode ? darkButton : lightButton)
     const [navbarTrayColor, setNavbarTrayColor] = useState(darkMode ? darkNavbarTray : lightNavbarTray)
     const [borderColor, setBorderColor] = useState(darkMode ? darkBorders : lightBorders)
+    const [bubbleColor, setBubbleColor] = useState(darkMode ? darkBubble : lightBubble)
 
     useEffect(() => {
         setBackgroundP1(darkMode ? darkBG1 : lightBG1)
@@ -66,6 +69,7 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
         setButtonColor(darkMode ? darkButton : lightButton)
         setNavbarTrayColor(darkMode ? darkNavbarTray : lightNavbarTray)
         setBorderColor(darkMode ? darkBorders : lightBorders)
+        setBubbleColor(darkMode ? darkBubble : lightBubble)
     }, [darkMode])
 
     return (
@@ -86,6 +90,7 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
                     buttonColor,
                     navbarTrayColor,
                     borderColor,
+                    bubbleColor,
                 }
             }>
             {children}

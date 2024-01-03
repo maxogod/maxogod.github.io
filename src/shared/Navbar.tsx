@@ -51,7 +51,7 @@ const Navbar = () => {
                 onClick={handleLogoClick}
                 src={logo}
                 alt="logo"
-                className='h-full cursor-pointer drop-shadow-2xl' />}
+                className='h-full cursor-pointer drop-shadow-lg' />}
 
             <button onClick={() => setShowPopup(!showPopup)} className="h-full">
                 <GiHamburgerMenu className='text-2xl text-blue-800' />

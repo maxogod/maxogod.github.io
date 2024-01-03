@@ -1,11 +1,7 @@
-import Contact from "./pages/Contact"
-import Enjoy from "./pages/Enjoy"
-import Home from "./pages/Home"
-import Projects from "./pages/Projects"
 import { LanguageContextProvider } from "./context/languageContext"
-import Navbar from "./shared/Navbar"
 import { NavbarContextProvider } from "./context/navbarContext"
 import { ThemeContextProvider } from "./context/themeContext"
+import Router from "./Router"
 
 function App() {
 
@@ -13,13 +9,7 @@ function App() {
     <ThemeContextProvider>
       <LanguageContextProvider>
         <NavbarContextProvider>
-          <Navbar />
-          <div className="flex flex-wrap bg-dark-background-p3 overflow-x-hidden">
-            <Home />
-            <Projects />
-            <Enjoy />
-            <Contact />
-          </div>
+          <Router />
         </NavbarContextProvider>
       </LanguageContextProvider>
     </ThemeContextProvider>

@@ -41,14 +41,21 @@ const AboutImageCarrousel = () => {
                 className='h-full w-full object-cover rounded-md' />
             <button
                 onClick={next}
-                className={`absolute text-white mr-1 text-sm p-1 ${borderColor} py-3 rounded-full top-1/2 right-0`}>
+                className={`absolute text-black bg-white shadow-lg shadow-black mr-1 text-sm p-1 rounded-full top-1/2 right-0`}>
                 <BsArrowBarRight />
             </button>
             <button
                 onClick={prev}
-                className={`absolute text-white ml-1 text-sm p-1 ${borderColor} py-3 rounded-full top-1/2 left-0`}>
+                className={`absolute text-black bg-white shadow-lg shadow-black ml-1 text-sm p-1 rounded-full top-1/2 left-0`}>
                 <BsArrowBarLeft />
             </button>
+
+            <div className='absolute bottom-2 w-full flex gap-1 justify-center'>
+                {Array.from({ length: imgs.length }).map((_, index) => (
+                    <div key={index} className={`${index === currentImage ? 'bg-white' : 'bg-slate-600 opacity-60'} shadow-sm shadow-black rounded-full w-2 h-2`}></div>
+                ))
+                }
+            </div>
         </div>
     )
 }
