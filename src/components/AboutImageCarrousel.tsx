@@ -2,14 +2,14 @@ import { useContext, useState } from 'react'
 import fiubaton_thanking from '../assets/fiubaton_thanking.jpg'
 import fiubaton_presenting from '../assets/fiubaton_presenting.jpg'
 import fiubaton_winners from '../assets/fiubaton_winners.jpg'
-import { BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs'
+import { IoCaretBackOutline } from 'react-icons/io5'
 import { themeContext } from '../context/themeContext'
 
 const AboutImageCarrousel = () => {
 
     const imgs = [
-        fiubaton_thanking,
         fiubaton_presenting,
+        fiubaton_thanking,
         fiubaton_winners,
     ]
 
@@ -42,12 +42,12 @@ const AboutImageCarrousel = () => {
             <button
                 onClick={next}
                 className={`absolute text-black bg-white shadow-lg shadow-black mr-1 text-sm p-1 rounded-full top-1/2 right-0`}>
-                <BsArrowBarRight />
+                <IoCaretBackOutline className='rotate-180' />
             </button>
             <button
                 onClick={prev}
                 className={`absolute text-black bg-white shadow-lg shadow-black ml-1 text-sm p-1 rounded-full top-1/2 left-0`}>
-                <BsArrowBarLeft />
+                <IoCaretBackOutline />
             </button>
 
             <div className='absolute bottom-2 w-full flex gap-1 justify-center'>

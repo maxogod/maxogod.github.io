@@ -1,18 +1,21 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import { setCurrentLanguage, setCurrentTheme } from '../utils/localStorage'
 
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs'
+import { TiArrowBackOutline as TbArrowBack } from 'react-icons/ti'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { FaQuestion, FaLaptop, FaStar } from 'react-icons/fa'
 import { IoMdMail } from 'react-icons/io'
 import { IoLanguageSharp } from 'react-icons/io5'
-import logo from '../assets/poke.png'
+import logo from '../assets/pokeball.png'
+import { useNavigate } from 'react-router-dom'
 
 import { languageContext } from '../context/languageContext'
 import { navbarContext } from '../context/navbarContext'
 import { themeContext } from '../context/themeContext'
 import { colorTransition } from '../utils/themeUtils'
+import { Tooltip } from '@mui/material'
 
 const icons = {
     '#about': <FaQuestion />,
@@ -25,7 +28,10 @@ const Navbar = () => {
 
     const [showPopup, setShowPopup] = useState(false)
 
-    const { showLogo } = useContext(navbarContext)
+    const navigate = useNavigate()
+
+    const { showLogo, setShowLogo, showBackButton, setShowBackButton } = useContext(navbarContext)
+    const { navbarGoBack } = useContext(languageContext)
 
     const onEscapePress = (event: any) => {
         if (event.keyCode === 27) {
@@ -34,28 +40,62 @@ const Navbar = () => {
     }
 
     const handleLogoClick = () => {
-        window.scrollTo({
-            top: 0,
-        });
+
+        setShowBackButton(false)
+        setShowPopup(false)
+
+        if (window.location.pathname === '/') {
+            window.scrollTo({
+                top: 0,
+            });
+            return
+        }
+
+        navigate('/')
+    }
+
+    const handleBack = () => {
+        window.history.back()
+        setShowBackButton(false)
         setShowPopup(false)
     }
+
+    useEffect(() => {
+        if (window.location.pathname !== '/') {
+            setShowLogo(true)
+            setShowPopup(false)
+            return
+        }
+    }, [showBackButton])
 
     return (
         <nav
             onKeyDown={onEscapePress}
-            className={`h-12 ${showLogo && 'bg-quaternary bg-opacity-5'}
+            className={`h-16 ${showLogo && 'bg-quaternary bg-opacity-5'}
              w-screen fixed z-20 flex ${showLogo ? 'justify-between' : 'justify-end'}
               items-center px-5 py-1`}>
 
-            {showLogo && <img
-                onClick={handleLogoClick}
-                src={logo}
-                alt="logo"
-                className='h-full cursor-pointer drop-shadow-lg' />}
+            <div className='h-full flex gap-5'>
+                {showLogo && <img
+                    onClick={handleLogoClick}
+                    src={logo}
+                    alt="logo"
+                    className='h-full cursor-pointer drop-shadow-lg' />}
 
-            <button onClick={() => setShowPopup(!showPopup)} className="h-full">
-                <GiHamburgerMenu className='text-2xl text-blue-800' />
-            </button>
+                {showBackButton && <Tooltip title={navbarGoBack} placement="bottom" arrow>
+                    <button
+                        onClick={handleBack}
+                        className='h-full'>
+                        <TbArrowBack className='text-2xl text-white' />
+                    </button>
+                </Tooltip>}
+            </div>
+
+            {!showBackButton &&
+                <button onClick={() => setShowPopup(!showPopup)} className="h-full">
+                    <GiHamburgerMenu className='text-2xl text-blue-800' />
+                </button>
+            }
             {showPopup && <NavbarPopup />}
         </nav>
     )

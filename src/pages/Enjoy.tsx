@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { themeContext } from "../context/themeContext"
+import EnjoyImages from "../components/EnjoyImages"
 
 const Enjoy = () => {
 
@@ -8,8 +9,9 @@ const Enjoy = () => {
     return (
         <div
             id='enjoy'
-            className={`${backgroundP3} w-screen h-screen`}>
+            className={`${backgroundP3} w-screen h-screen relative`}>
 
+            <EnjoyImages />
         </div>
     )
 }

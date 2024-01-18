@@ -15,6 +15,10 @@ const spanishNavbarLinks = {
     'Contacto': '#contact',
 }
 
+const englishNavbarGoBack = 'Go back'
+
+const spanishNavbarGoBack = 'Volver'
+
 /* HOME PAGE */
 
 const englishHomePage = {
@@ -40,6 +44,20 @@ const spanishAboutMe = {
     title: "Desarrollador full-stack y estudiante de Ingenieria Informatica en la Univesidad de Buenos Aires",
 }
 
+/* PROJECTS */
+
+const englishTitles = {
+    web: 'Web development',
+    cli: 'Command line tools',
+    games: 'Games',
+}
+
+const spanishTitles = {
+    web: 'Desarrollo web',
+    cli: 'Herramientas de linea de comando',
+    games: 'Juegos',
+}
+
 export {
     englishNavbarLinks,
     spanishNavbarLinks,
@@ -47,4 +65,8 @@ export {
     spanishHomePage,
     englishAboutMe,
     spanishAboutMe,
+    englishTitles,
+    spanishTitles,
+    englishNavbarGoBack,
+    spanishNavbarGoBack,
 }

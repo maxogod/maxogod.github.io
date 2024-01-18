@@ -46,6 +46,14 @@
     animation: bounce 4.4s infinite;
 }
 
+.custom-animate-bounce:hover {
+    animation-play-state: paused;
+}
+
+.custom-animate-bounce:hover img {
+    transform: scale(1.1);
+}
+
 .bubble {
     width: 30px;
     height: 30px;
