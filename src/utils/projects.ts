@@ -1,8 +1,7 @@
 import gh from "../assets/gh.png";
 import fiubaton_winners from "../assets/fiubaton_winners.jpg";
 
-// TODO bilingual
-const web_projects = [
+const english_web_projects = [
     {
         name: "Truco",
         description: "",
@@ -38,10 +37,47 @@ const web_projects = [
         url: "https://github.com/maxogod",
         technologies: []
     },
-
 ]
 
-const cli_projects = [
+const spanish_web_projects = [
+    {
+        name: "Truco",
+        description: "",
+        image: fiubaton_winners,
+        url: "https://github.com/maxogod/Truco",
+        technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
+    },
+    {
+        name: "AlaCarta",
+        description: "",
+        image: fiubaton_winners,
+        url: "https://github.com/maxogod/AlaCarta",
+        technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
+    },
+    {
+        name: "GymChad",
+        description: "",
+        image: fiubaton_winners,
+        url: "https://github.com/maxogod/gymchad-app",
+        technologies: ["MongoDB", "Springboot", "Angular", "Java", "TypeScript"]
+    },
+    {
+        name: "Routine Manager",
+        description: "",
+        image: fiubaton_winners,
+        url: "https://github.com/maxogod/Routine-Manager",
+        technologies: ["MySql", "Django", "React", "Python", "JavaScript"]
+    },
+    {
+        name: "Visita mi github para mas!",
+        description: "",
+        image: gh,
+        url: "https://github.com/maxogod",
+        technologies: []
+    },
+]
+
+const english_cli_projects = [
     {
         name: "Tour package creator",
         description: "",
@@ -79,7 +115,45 @@ const cli_projects = [
     },
 ]
 
-const game_projects = [
+const spanish_cli_projects = [
+    {
+        name: "Tour package creator",
+        description: "",
+        image: fiubaton_winners,
+        url: "https://github.com/maxogod/Tour-Package-Creator",
+        technologies: ["Python", "JavaScript"]
+    },
+    {
+        name: "Hospital managment system",
+        description: "",
+        image: fiubaton_winners,
+        url: "https://github.com/maxogod/hospital-management-system-cli",
+        technologies: ["C", "PowerShell"]
+    },
+    {
+        name: "Automatized elections",
+        description: "",
+        image: fiubaton_winners,
+        url: "https://github.com/maxogod/Automatized-Elections",
+        technologies: ["Go", "Shell"]
+    },
+    {
+        name: "Wordle game",
+        description: "",
+        image: fiubaton_winners,
+        url: "https://github.com/maxogod/WordleGameInPython",
+        technologies: ["Python"]
+    },
+    {
+        name: "Visita mi github para mas!",
+        description: "",
+        image: gh,
+        url: "https://github.com/maxogod",
+        technologies: []
+    },
+]
+
+const english_game_projects = [
     {
         name: "Truco",
         description: "",
@@ -96,6 +170,30 @@ const game_projects = [
     },
     {
         name: "Check out my github for more!",
+        description: "",
+        image: gh,
+        url: "https://github.com/maxogod",
+        technologies: []
+    },
+]
+
+const spanish_game_projects = [
+    {
+        name: "Truco",
+        description: "",
+        image: fiubaton_winners,
+        url: "https://github.com/maxogod/Truco",
+        technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
+    },
+    {
+        name: "PySnake",
+        description: "",
+        image: fiubaton_winners,
+        url: "https://github.com/maxogod/Pysnake",
+        technologies: ["Pygame", "Python"]
+    },
+    {
+        name: "Visita mi github para mas!",
         description: "",
         image: gh,
         url: "https://github.com/maxogod",
@@ -125,8 +223,11 @@ const technologyColors = {
 }
 
 export {
-    web_projects,
-    cli_projects,
-    game_projects,
+    english_web_projects,
+    spanish_web_projects,
+    english_cli_projects,
+    spanish_cli_projects,
+    english_game_projects,
+    spanish_game_projects,
     technologyColors,
 };

@@ -4,13 +4,12 @@ import Bubbles from "./Bubbles"
 import { useParams } from "react-router-dom"
 import { languageContext } from "../context/languageContext"
 import ProjectListPopUp from "./ProjectListPopUp"
-import { web_projects, cli_projects, game_projects } from "../utils/projects"
 import ProjectType from "../@types/ProjectType"
 
 const ProjectsByType = () => {
 
     const { backgroundP2 } = useContext(themeContext)
-    const { projectTitles } = useContext(languageContext)
+    const { projectTitles, webProjects, cliProjects, gameProjects } = useContext(languageContext)
     const { projectType } = useParams()
 
     const [projectList, setProjectList] = useState<ProjectType[]>([])
@@ -18,18 +17,18 @@ const ProjectsByType = () => {
     useEffect(() => {
         switch (projectType) {
             case 'web':
-                setProjectList(web_projects)
+                setProjectList(webProjects)
                 break
             case 'cli':
-                setProjectList(cli_projects)
+                setProjectList(cliProjects)
                 break
             case 'games':
-                setProjectList(game_projects)
+                setProjectList(gameProjects)
                 break
             default:
                 break
         }
-    }, [])
+    }, [webProjects, cliProjects, gameProjects])
 
     return (
         <div

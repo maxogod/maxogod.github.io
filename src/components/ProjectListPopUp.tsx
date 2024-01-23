@@ -3,7 +3,7 @@ import { themeContext } from "../context/themeContext"
 import ProjectType from "../@types/ProjectType"
 import { FaLink } from "react-icons/fa"
 import { LuSwords } from 'react-icons/lu'
-import { technologyColors, project_images } from "../utils/projects"
+import { technologyColors } from "../utils/projects"
 
 const ProjectListPopUp = (
     { title, projectList }:
@@ -17,30 +17,30 @@ const ProjectListPopUp = (
     const { popUpColor } = useContext(themeContext)
 
     return (
-        <div className='w-screen h-screen fixed p-2 py-16 sm:p-16'>
-
+        <>
             {expandImage !== '' && (
-                <div className="w-full h-full bg-black bg-opacity-80 fixed top-0 left-0 flex justify-center items-center z-20">
+                <div className="z-20 w-full h-full bg-black bg-opacity-80 fixed top-0 left-0 flex justify-center items-center">
                     <div className="relative">
                         <img src={expandImage} alt={expandImage} className="w-96 sm:w-[35rem] aspect-auto object-cover rounded-xl" />
                         <LuSwords
-                            className='absolute top-0 left-0 bg-red-400 text-black hover:text-white ease-in-out duration-300 w-10 text-center rounded-tl-full rounded-r-full h-6 cursor-pointer'
+                            className=' absolute top-0 left-0 bg-red-400 text-black hover:text-white ease-in-out duration-300 w-10 text-center rounded-tl-full rounded-r-full h-6 cursor-pointer'
                             onClick={() => setExpandImage('')} />
                     </div>
                 </div>
             )}
-
-            <div className={`${popUpColor} rounded-md bg-opacity-80
+            <div className='w-screen h-screen fixed p-2 py-16 sm:p-16'>
+                <div className={`${popUpColor} rounded-md bg-opacity-80
             overflow-y-hidden px-3 py-12 sm:p-10 w-full h-full`}>
-                <h1 className="-mt-5 mb-2 text-2xl">{title}</h1>
+                    <h1 className="-mt-5 mb-2 text-2xl">{title}</h1>
 
-                <ul className="h-full w-full flex-col flex flex-wrap gap-5 overflow-x-scroll overflow-y-hidden">
-                    {projectList.map((project, index) => (
-                        <ProjectThumbnail key={index} project={project} setExpandImage={setExpandImage} />
-                    ))}
-                </ul>
+                    <ul className="h-full w-full flex-col flex flex-wrap gap-5 overflow-x-scroll overflow-y-hidden">
+                        {projectList.map((project, index) => (
+                            <ProjectThumbnail key={index} project={project} setExpandImage={setExpandImage} />
+                        ))}
+                    </ul>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 
@@ -69,7 +69,7 @@ const ProjectThumbnail = ({ project, setExpandImage }:
 
             <div className="flex flex-wrap gap-1 mt-1">
                 {project.technologies.map((technology, index) => (
-                    <span key={index} className={`text-xs text-slate-900 ${technologyColors[technology]} px-2 py-1 rounded-md`}>{technology}</span>
+                    <span key={index} className={`text-xs shadow-sm shadow-black text-slate-900 ${technologyColors[technology]} px-2 py-1 rounded-md`}>{technology}</span>
                 ))}
             </div>
 

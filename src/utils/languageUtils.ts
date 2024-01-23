@@ -37,11 +37,12 @@ const spanishHomePage = {
 
 const englishAboutMe = {
     title: "Full-stack developer & Computer Science Engineering student at Univesity of Buenos Aires",
-
+    text: 'My name is maxo and...',
 }
 
 const spanishAboutMe = {
     title: "Desarrollador full-stack y estudiante de Ingenieria Informatica en la Univesidad de Buenos Aires",
+    text: 'Mi nombre es maxo y...',
 }
 
 /* PROJECTS */
