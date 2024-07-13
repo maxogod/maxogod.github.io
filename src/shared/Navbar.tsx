@@ -20,7 +20,6 @@ import { Tooltip } from '@mui/material'
 const icons = {
     '#about': <FaQuestion />,
     '#projects': <FaLaptop />,
-    '#enjoy': <FaStar />,
     '#contact': <IoMdMail />,
 }
 

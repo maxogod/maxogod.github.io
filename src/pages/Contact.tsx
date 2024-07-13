@@ -3,13 +3,12 @@ import { themeContext } from "../context/themeContext"
 
 const Contact = () => {
 
-    const { backgroundP4 } = useContext(themeContext)
+    const { backgroundP3 } = useContext(themeContext)
 
     return (
         <div
             id='contact'
-            className={`${backgroundP4} w-screen h-screen`}>
-
+            className={`${backgroundP3} w-screen h-screen`}>
         </div>
     )
 }

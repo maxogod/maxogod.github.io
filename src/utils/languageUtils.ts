@@ -4,14 +4,12 @@
 const englishNavbarLinks = {
     'About': '#about',
     'Projects': '#projects',
-    'I enjoy': '#enjoy',
     'Contact me': '#contact',
 }
 
 const spanishNavbarLinks = {
     'Sobre mi': '#about',
     'Proyectos': '#projects',
-    'Me gusta': '#enjoy',
     'Contacto': '#contact',
 }
 

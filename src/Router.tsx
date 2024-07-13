@@ -16,7 +16,6 @@ const Router = () => {
                     <div className="flex flex-wrap bg-dark-background-p3 overflow-x-hidden">
                         <Home />
                         <Projects />
-                        <Enjoy />
                         <Contact />
                     </div>
                 } />
