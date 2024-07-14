@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { themeContext } from "../context/themeContext"
 import web from '../assets/web.png'
-import cli from '../assets/cli.png'
+import cli from '../assets/bdd.png'
 import games from '../assets/games.png'
 import { Link } from "react-router-dom"
 import Bubbles from "../components/Bubbles"
@@ -38,8 +38,8 @@ const Projects = () => {
                 </Link>
             </Tooltip>
 
-            <Tooltip title={projectTitles.cli} placement="top" arrow>
-                <Link to="/projects/cli"
+            <Tooltip title={projectTitles.datasci} placement="top" arrow>
+                <Link to="/projects/datasci"
                     className={`w-32 h-32 sm:w-56 sm:h-56 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} rounded-full custom-animate-bounce ml-20 sm:ml-0 sm:mt-60 relative`}
                     onClick={handleLinkClick}>
                     <h1 className={`absolute top-1/2 w-full text-center font-extrabold ${textColor}`}>

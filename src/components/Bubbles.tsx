@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react"
 
 const Bubbles = () => {
-
-
-
     const [bubbles, setBubbles] = useState<{ size: string, vh: string, vw: string }[]>([])
 
     useEffect(() => {
         let bubbles = []
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 25; i++) {
             const randomSize = Math.ceil(Math.random() * 4.5)
-            const randomViewportHeight = Math.ceil(Math.random() * 100)
-            const randomViewportWidth = Math.ceil(Math.random() * 100)
+            const randomViewportHeight = Math.ceil(Math.random() * 200)
+            const randomViewportWidth = Math.ceil(Math.random() * 200)
 
             bubbles.push({
                 size: `${randomSize}rem`,
@@ -24,8 +21,7 @@ const Bubbles = () => {
 
 
     return (
-        <div className="absolute w-full h-full top-0 left-0">
-
+        <div className="absolute w-full h-[200vh] top-0 left-0 z-10 overflow-hidden pointer-events-none">
             {bubbles.map((props: any, index: number) => (
                 <div
                     key={index}

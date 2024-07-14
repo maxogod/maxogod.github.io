@@ -47,13 +47,13 @@ const spanishAboutMe = {
 
 const englishTitles = {
     web: 'Web development',
-    cli: 'Command line tools',
+    datasci: 'Data science',
     games: 'Games',
 }
 
 const spanishTitles = {
     web: 'Desarrollo web',
-    cli: 'Herramientas de linea de comando',
+    datasci: 'Ciencia de datos',
     games: 'Juegos',
 }
 

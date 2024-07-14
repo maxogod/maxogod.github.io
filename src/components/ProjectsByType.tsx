@@ -19,7 +19,7 @@ const ProjectsByType = () => {
             case 'web':
                 setProjectList(webProjects)
                 break
-            case 'cli':
+            case 'datasci':
                 setProjectList(cliProjects)
                 break
             case 'games':
