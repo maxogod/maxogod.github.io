@@ -9,7 +9,7 @@ import ProjectType from "../@types/ProjectType"
 const ProjectsByType = () => {
 
     const { backgroundP2 } = useContext(themeContext)
-    const { projectTitles, webProjects, cliProjects, gameProjects } = useContext(languageContext)
+    const { projectTitles, webProjects, datasciProjects, gameProjects } = useContext(languageContext)
     const { projectType } = useParams()
 
     const [projectList, setProjectList] = useState<ProjectType[]>([])
@@ -20,7 +20,7 @@ const ProjectsByType = () => {
                 setProjectList(webProjects)
                 break
             case 'datasci':
-                setProjectList(cliProjects)
+                setProjectList(datasciProjects)
                 break
             case 'games':
                 setProjectList(gameProjects)
@@ -28,7 +28,7 @@ const ProjectsByType = () => {
             default:
                 break
         }
-    }, [webProjects, cliProjects, gameProjects])
+    }, [webProjects, datasciProjects, gameProjects])
 
     return (
         <div

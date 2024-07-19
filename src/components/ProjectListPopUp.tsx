@@ -33,7 +33,7 @@ const ProjectListPopUp = (
             overflow-y-hidden px-3 py-12 sm:p-10 w-full h-full`}>
                     <h1 className="-mt-5 mb-2 text-2xl">{title}</h1>
 
-                    <ul className="h-full w-full flex-col flex flex-wrap gap-5 overflow-x-scroll overflow-y-hidden">
+                    <ul className="h-full w-fit flex gap-5 overflow-x-scroll overflow-y-hidden">
                         {projectList.map((project, index) => (
                             <ProjectThumbnail key={index} project={project} setExpandImage={setExpandImage} />
                         ))}
