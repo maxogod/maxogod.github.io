@@ -3,6 +3,7 @@ interface ProjectType {
     description: string;
     image: string;
     url: string;
+    vid: string;
     technologies: string[];
 }
 

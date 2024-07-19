@@ -109,7 +109,7 @@ const Home = () => {
                 <img src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute -top-10 left-1/2 z-0 p-16`}></img>
                 <img src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute top-11 left-2/3 z-0 p-11`}></img>
 
-                <img src={wavesSvg} className={`${waves} ${colorTransition} overflow-hidden absolute bottom-0 left-0 h-96 w-full object-cover z-0`}></img>
+                <img src={wavesSvg} className={`${waves} ${colorTransition} overflow-visible absolute bottom-0 left-0 h-96 w-full object-cover z-0`}></img>
             </div>
         </>
     )

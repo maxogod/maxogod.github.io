@@ -40,7 +40,7 @@ const english_web_projects = [
         description: "",
         image: routine_manager,
         url: "https://github.com/maxogod/Routine-Manager",
-        vid: "",
+        vid: "https://www.youtube.com/watch?v=hAaZC-RAX24",
         technologies: ["MySql", "Django", "React", "Python", "JavaScript"]
     },
     {
@@ -103,7 +103,7 @@ const english_datasci_projects = [
         image: ai,
         url: "https://github.com/maxogod/Tour-Package-Creator",
         vid: "",
-        technologies: ["Machine Learning", "Jupiter Notebook", "Python"]
+        technologies: ["Machine Learning", "Python", "ScikitLearn", "Pandas", "GoogleColab"]
     },
     {
         name: "Natural Languaje Processing",
@@ -111,7 +111,7 @@ const english_datasci_projects = [
         image: nlp,
         url: "https://github.com/maxogod/hospital-management-system-datasci",
         vid: "",
-        technologies: ["C", "PowerShell"]
+        technologies: ["Machine Learning", "Python", "TensorFlow", "ScikitLearn", "Pandas", "GoogleColab"]
     },
     {
         name: "Extract, Transform & Load Real Estate Data",
@@ -119,7 +119,7 @@ const english_datasci_projects = [
         image: etl,
         url: "https://github.com/maxogod/hospital-management-system-datasci",
         vid: "",
-        technologies: ["C", "PowerShell"]
+        technologies: ["Python", "GoogleColab", "Pandas", "SQL"]
     },
     {
         name: "Check out my github for more!",
@@ -172,7 +172,7 @@ const english_game_projects = [
         description: "",
         image: jazz,
         url: "https://github.com/maxogod/Pysnake",
-        vid: "",
+        vid: "https://www.youtube.com/watch?v=yL4jmEFELbI",
         technologies: ["C++", "SDL2"]
     },
     {
@@ -237,25 +237,44 @@ const spanish_game_projects = [
 ]
 
 const technologyColors = {
+    // DBs
     "MongoDB": "bg-pink-400",
     "MySql": "bg-pink-400",
     "PostgreSql": "bg-pink-400",
+    "SQL": "bg-pink-400",
+
+    // Backend
     "Node": "bg-green-300",
     "Express": "bg-slate-300",
-    "React": "bg-blue-400",
     "Springboot": "bg-green-500",
-    "Angular": "bg-red-400",
     "Django": "bg-green-500",
+
+    // Frontend
+    "React": "bg-blue-400",
+    "Angular": "bg-red-400",
+
+    // Game Dev
     "Pygame": "bg-blue-200",
     "Godot": "bg-blue-300",
+    "SDL2": "bg-red-400",
+
+    // Data Sci
+    "Machine Learning": "bg-red-300",
+    "ScikitLearn": "bg-yellow-500",
+    "Pandas": "bg-slate-500",
+    "TensorFlow": "bg-orange-400",
+    "GoogleColab": "bg-green-300",
+
+    // Languages
     "Python": "bg-blue-500",
     "Java": "bg-orange-400",
     "JavaScript": "bg-yellow-200",
     "TypeScript": "bg-blue-600",
     "C": "bg-slate-500",
     "C++": "bg-pink-300",
-    "SDL2": "bg-red-400",
     "Go": "bg-blue-300",
+
+    // Scripts
     "Shell": "bg-green-500",
     "PowerShell": "bg-blue-700",
 }

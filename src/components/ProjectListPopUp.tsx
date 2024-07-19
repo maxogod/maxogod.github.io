@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { themeContext } from "../context/themeContext"
 import ProjectType from "../@types/ProjectType"
 import { FaLink } from "react-icons/fa"
+import { MdVideoLibrary } from "react-icons/md";
 import { LuSwords } from 'react-icons/lu'
 import { technologyColors } from "../utils/projects"
 
@@ -59,12 +60,24 @@ const ProjectThumbnail = ({ project, setExpandImage }:
                     onClick={() => handleExpandImage(project.image)}
                     className="rounded-2xl w-full h-36 sm:h-48 object-cover cursor-pointer hover:brightness-110 duration-200" />
 
-                <a
-                    target="_blank"
-                    href={project.url}
-                    className="absolute bottom-2 right-2 bg-black text-white p-3 rounded-2xl bg-opacity-60">
-                    <FaLink className='hover:rotate-180 duration-200' />
-                </a>
+                <div className="absolute bottom-2 right-2 flex gap-1 items-center text-white">
+                    {
+                        project.vid != '' && (
+                            <a
+                                target="_blank"
+                                href={project.vid}
+                                className="bg-black p-3 rounded-2xl bg-opacity-60">
+                                <MdVideoLibrary className='hover:rotate-[360deg] duration-300' />
+                            </a>
+                        )
+                    }
+                    <a
+                        target="_blank"
+                        href={project.url}
+                        className="bg-black  p-3 rounded-2xl bg-opacity-60">
+                        <FaLink className='hover:rotate-180 duration-200' />
+                    </a>
+                </div>
             </div>
 
             <div className="flex flex-wrap gap-1 mt-1">
