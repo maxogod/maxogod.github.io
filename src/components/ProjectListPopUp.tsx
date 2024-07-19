@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { themeContext } from "../context/themeContext"
 import ProjectType from "../@types/ProjectType"
+import Tooltip from '@mui/material/Tooltip';
 import { FaLink } from "react-icons/fa"
 import { MdVideoLibrary } from "react-icons/md";
 import { LuSwords } from 'react-icons/lu'
@@ -63,20 +64,24 @@ const ProjectThumbnail = ({ project, setExpandImage }:
                 <div className="absolute bottom-2 right-2 flex gap-1 items-center text-white">
                     {
                         project.vid != '' && (
-                            <a
-                                target="_blank"
-                                href={project.vid}
-                                className="bg-black p-3 rounded-2xl bg-opacity-60">
-                                <MdVideoLibrary className='hover:rotate-[360deg] duration-300' />
-                            </a>
+                            <Tooltip title="Video" placement="top" arrow>
+                                <a
+                                    target="_blank"
+                                    href={project.vid}
+                                    className="bg-black p-3 rounded-2xl bg-opacity-60 group">
+                                    <MdVideoLibrary className='group-hover:rotate-[360deg] duration-500' />
+                                </a>
+                            </Tooltip>
                         )
                     }
-                    <a
-                        target="_blank"
-                        href={project.url}
-                        className="bg-black  p-3 rounded-2xl bg-opacity-60">
-                        <FaLink className='hover:rotate-180 duration-200' />
-                    </a>
+                    <Tooltip title="More info" placement="top" arrow>
+                        <a
+                            target="_blank"
+                            href={project.url}
+                            className="bg-black  p-3 rounded-2xl bg-opacity-60 group">
+                            <FaLink className='group-hover:rotate-180 duration-200' />
+                        </a>
+                    </Tooltip>
                 </div>
             </div>
 

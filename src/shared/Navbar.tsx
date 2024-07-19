@@ -39,11 +39,10 @@ const Navbar = () => {
     }
 
     const handleLogoClick = () => {
-
         setShowBackButton(false)
         setShowPopup(false)
 
-        if (window.location.pathname === '/') {
+        if (!window.location.hash || window.location.hash === '#/') {
             window.scrollTo({
                 top: 0,
             });
@@ -54,18 +53,21 @@ const Navbar = () => {
     }
 
     const handleBack = () => {
-        window.history.back()
+        navigate(-1)
         setShowBackButton(false)
         setShowPopup(false)
     }
 
     useEffect(() => {
-        if (window.location.pathname !== '/') {
+        if (window.location.hash && window.location.hash !== '#/') {
             setShowLogo(true)
+            setShowBackButton(true)
             setShowPopup(false)
             return
+        } else {
+            setShowBackButton(false)
         }
-    }, [showBackButton])
+    }, [showBackButton, window.location.hash])
 
     return (
         <nav

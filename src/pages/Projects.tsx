@@ -24,13 +24,13 @@ const Projects = () => {
     return (
         <div
             id='projects'
-            className={`${backgroundP2} relative w-screen h-screen flex flex-wrap justify-center items-center`}>
+            className={`${backgroundP2} relative w-screen h-screen flex flex-col sm:flex-row sm:flex-wrap justify-center items-center`}>
 
             <Bubbles />
 
             <Tooltip title={projectTitles.web} placement="top" arrow>
                 <Link to="/projects/web"
-                    className={`w-32 h-32 sm:w-56 sm:h-56 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} rounded-full custom-animate-bounce mr-16 sm:mr-0 relative`}
+                    className={`w-32 h-32 sm:w-56 sm:h-56 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} rounded-full custom-animate-bounce mb-16 sm:mb-0 relative`}
                     onClick={handleLinkClick}>
                     <h1 className={`absolute top-1/2 w-full text-center font-extrabold ${textColor}`}>
                     </h1>
@@ -40,7 +40,7 @@ const Projects = () => {
 
             <Tooltip title={projectTitles.datasci} placement="top" arrow>
                 <Link to="/projects/datasci"
-                    className={`w-32 h-32 sm:w-56 sm:h-56 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} rounded-full custom-animate-bounce ml-20 sm:ml-0 sm:mt-60 relative`}
+                    className={`w-32 h-32 sm:w-56 sm:h-56 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} rounded-full custom-animate-bounce mb-16 sm:mb-0 sm:mt-60 relative`}
                     onClick={handleLinkClick}>
                     <h1 className={`absolute top-1/2 w-full text-center font-extrabold ${textColor}`}>
                     </h1>
@@ -50,7 +50,7 @@ const Projects = () => {
 
             <Tooltip title={projectTitles.games} placement="top" arrow>
                 <Link to="/projects/games" className
-                    ={`w-32 h-32 sm:w-56 sm:h-56 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} rounded-full custom-animate-bounce mr-20 sm:mr-0 relative`}
+                    ={`w-32 h-32 sm:w-56 sm:h-56 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} rounded-full custom-animate-bounce relative`}
                     onClick={handleLinkClick}>
                     <h1 className={`absolute top-1/2 w-full text-center font-extrabold ${textColor}`}>
                     </h1>

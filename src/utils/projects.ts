@@ -13,15 +13,15 @@ import nlp from "../assets/nlp.jpg";
 const english_web_projects = [
     {
         name: "Truco",
-        description: "",
+        description: "Online game of the popular argentinian card game Truco with 1vs1 matches, challenges, global ranking and more! Built employing Agile Methodologies.",
         image: truco,
         url: "https://github.com/maxogod/Truco",
         vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY",
-        technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
+        technologies: ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
     },
     {
         name: "AlaCarta",
-        description: "",
+        description: "Backoffice website for restaurants to manage their menu, orders, tables, see product insights, and more. Developed using TypeScript and the MERN stack.",
         image: alacarta,
         url: "https://github.com/maxogod/AlaCarta",
         vid: "",
@@ -29,15 +29,15 @@ const english_web_projects = [
     },
     {
         name: "GymChad",
-        description: "",
+        description: "Website to organize different fitness activities such as dancing/boxing and the exercises that belong to those activities, including images, descriptions, sets/reps, etc.",
         image: gymchad,
         url: "https://github.com/maxogod/gymchad-app",
         vid: "",
-        technologies: ["MongoDB", "Springboot", "Angular", "Java", "TypeScript"]
+        technologies: ["MongoDB", "Springboot", "Angular", "TypeScript", "Java"]
     },
     {
         name: "Routine Manager",
-        description: "",
+        description: "Personal organizer for daily routines, with the ability to create, edit, delete, and visualize routines. Developed using Django, React and Google APIs.",
         image: routine_manager,
         url: "https://github.com/maxogod/Routine-Manager",
         vid: "https://www.youtube.com/watch?v=hAaZC-RAX24",
@@ -171,24 +171,24 @@ const english_game_projects = [
         name: "Jazz Jackrabbit 2 Remake",
         description: "",
         image: jazz,
-        url: "https://github.com/maxogod/Pysnake",
+        url: "https://atusgames.github.io/#/jazz-jackrabbit-2-remake",
         vid: "https://www.youtube.com/watch?v=yL4jmEFELbI",
-        technologies: ["C++", "SDL2"]
+        technologies: ["Scrum", "C++", "SDL2"]
     },
     {
         name: "Truco",
         description: "",
         image: truco,
         url: "https://github.com/maxogod/Truco",
-        vid: "",
+        vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY",
         technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
     },
     {
         name: "Save The Galaxy",
         description: "",
         image: save_the_galaxy,
-        url: "https://github.com/maxogod/Pysnake",
-        vid: "",
+        url: "https://maxogod.itch.io/save-the-galaxy",
+        vid: "https://www.youtube.com/watch?v=u-lp5ocy8yI",
         technologies: ["Godot"]
     },
     {
@@ -277,6 +277,9 @@ const technologyColors = {
     // Scripts
     "Shell": "bg-green-500",
     "PowerShell": "bg-blue-700",
+
+    // Other
+    "Scrum": "bg-yellow-400",
 }
 
 export {

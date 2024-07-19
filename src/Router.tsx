@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { HashRouter, Routes, Route } from "react-router-dom"
 import Contact from "./pages/Contact"
 import Home from "./pages/Home"
 import Projects from "./pages/Projects"
@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Router = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} draggable pauseOnHover={false} theme="dark" transition={Flip} />
             <Navbar />
             <Routes>
@@ -24,7 +24,7 @@ const Router = () => {
                 <Route path="/projects/:projectType" element={<ProjectsByType />} />
                 <Route path="*" element={<div>404</div>} />
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
