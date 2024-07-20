@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import fiubaton_thanking from '../assets/fiubaton_thanking.jpg'
 import fiubaton_presenting from '../assets/fiubaton_presenting.jpg'
 import fiubaton_winners from '../assets/fiubaton_winners.jpg'
 import { IoCaretBackOutline } from 'react-icons/io5'
+import { ImSpinner9 } from "react-icons/im";
 
 const AboutImageCarrousel = () => {
+
+    const [loading, setLoading] = useState(true)
 
     const imgs = [
         fiubaton_presenting,
@@ -30,12 +33,25 @@ const AboutImageCarrousel = () => {
         setCurrentImage(currentImage - 1)
     }
 
+    useEffect(() => {
+        setLoading(true)
+        const img = new Image()
+        img.src = imgs[currentImage]
+        img.onload = () => setLoading(false)
+    }, [currentImage])
+
     return (
         <div className={`relative sm:w-80 w-60 aspect-square`}>
-            <img
+            {!loading && <img
                 src={imgs[currentImage]}
                 alt="thanking fiubaton organizers"
                 className='h-full w-full object-cover rounded-md' />
+            }
+            {
+                loading && <div className='bg-slate-400 opacity-60 custom-animate-pulse h-full w-full object-cover rounded-md flex justify-center items-center'>
+                    <ImSpinner9 className='text-white text-4xl animate-spin' />
+                </div>
+            }
             <button
                 aria-label="next image"
                 onClick={next}

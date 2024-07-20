@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import maxo from '../assets/maxo.png'
-import pfp from '../assets/pfp.jpg'
+// import pfp from '../assets/pfp.jpg'
 import { languageContext } from '../context/languageContext'
 import AboutMePopUp from '../components/AboutMePopUp'
 import { MdOutlineKeyboardDoubleArrowDown } from 'react-icons/md'
@@ -12,7 +12,7 @@ import { colorTransition } from '../utils/themeUtils'
 
 const Home = () => {
 
-    const [image, setImage] = useState(maxo)
+    // const [image, setImage] = useState(maxo)
 
     const [isPopUpOpen, setIsPopUpOpen] = useState(false)
 
@@ -59,11 +59,12 @@ const Home = () => {
     }
 
     const handleChangeImage = () => {
-        if (image === maxo) {
-            setImage(pfp)
-            return
-        }
-        setImage(maxo)
+        return
+        // if (image === maxo) {
+        //     setImage(pfp)
+        //     return
+        // }
+        // setImage(maxo)
     }
 
     const onEscapePress = (event: any) => {
@@ -71,6 +72,14 @@ const Home = () => {
             setIsPopUpOpen(false)
         }
     }
+
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const img = new Image()
+        img.src = maxo
+        img.onload = () => setLoading(false)
+    }, [])
 
     return (
         <>
@@ -80,15 +89,18 @@ const Home = () => {
                 id="about"
                 className={`${backgroundP1} ${colorTransition} w-screen h-screen relative flex sm:flex-row flex-col gap-5 px-5 py-10`}>
                 <div
+                    ref={targetRef}
                     className='relative aspect-square w-40 h-40 sm:w-52 sm:h-52 flex justify-center items-center'>
-                    <img
-                        ref={targetRef}
+                    {!loading && <img
                         onMouseEnter={handleChangeImage}
                         onMouseLeave={handleChangeImage}
                         onClick={handleChangeImage}
-                        src={image}
+                        src={maxo}
                         alt="my picture"
-                        className='object-cover w-40 h-40 sm:w-52 sm:h-52 rounded-full z-10' />
+                        className='object-cover w-40 h-40 sm:w-52 sm:h-52 rounded-full z-10' />}
+                    {
+                        loading && <div className='bg-slate-400 opacity-60 object-cover w-40 h-40 sm:w-52 sm:h-52 rounded-full z-10'></div>
+                    }
                     <div className={`${accentColor} ${colorTransition} absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full animate-ping`}></div>
                 </div>
                 <div className={`w-full sm:mt-16 sm:w-auto z-10 ${textColor} ${colorTransition}`}>

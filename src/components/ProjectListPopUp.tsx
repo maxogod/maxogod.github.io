@@ -7,6 +7,7 @@ import { MdVideoLibrary } from "react-icons/md";
 import { LuSwords } from 'react-icons/lu'
 import { technologyColors } from "../utils/projects"
 import { languageContext } from "../context/languageContext";
+import { ImSpinner9 } from "react-icons/im";
 
 type techColorsKeysType = keyof typeof technologyColors
 
@@ -72,7 +73,9 @@ const ProjectThumbnail = ({ project, setExpandImage }:
                 {!loading && <img src={project.image} alt={project.name + ' image'}
                     onClick={() => handleExpandImage(project.image)}
                     className="rounded-2xl w-full h-36 sm:h-48 object-cover cursor-pointer hover:brightness-110 duration-200" />}
-                {loading && <div className="bg-slate-600 custom-animate-pulse rounded-2xl w-full h-36 sm:h-48"></div>}
+                {loading && <div className="bg-slate-600 custom-animate-pulse rounded-2xl w-full h-36 sm:h-48 flex justify-center items-center">
+                    <ImSpinner9 className='text-white text-4xl animate-spin' />
+                </div>}
 
                 <div className="absolute bottom-2 right-2 flex gap-1 items-center text-white">
                     {
