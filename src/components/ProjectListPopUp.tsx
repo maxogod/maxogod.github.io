@@ -8,6 +8,8 @@ import { LuSwords } from 'react-icons/lu'
 import { technologyColors } from "../utils/projects"
 import { languageContext } from "../context/languageContext";
 
+type techColorsKeysType = keyof typeof technologyColors
+
 const ProjectListPopUp = (
     { title, projectList }:
         {
@@ -90,7 +92,7 @@ const ProjectThumbnail = ({ project, setExpandImage }:
 
             <div className="flex flex-wrap gap-1 mt-1">
                 {project.technologies.map((technology, index) => (
-                    <span key={index} className={`text-xs shadow-sm shadow-black text-slate-900 ${technologyColors[technology]} px-2 py-1 rounded-md`}>{technology}</span>
+                    <span key={index} className={`text-xs shadow-sm shadow-black text-slate-900 ${technologyColors[technology as techColorsKeysType]} px-2 py-1 rounded-md`}>{technology}</span>
                 ))}
             </div>
 

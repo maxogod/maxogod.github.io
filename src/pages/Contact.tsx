@@ -8,8 +8,6 @@ import { FaLinkedin } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { IoDocument } from "react-icons/io5";
 import { toast } from 'react-toastify';
-
-import Bubbles from "../components/Bubbles";
 import { languageContext } from "../context/languageContext";
 
 const Contact = () => {

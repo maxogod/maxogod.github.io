@@ -6,6 +6,8 @@ import { languageContext } from "../context/languageContext"
 import ProjectListPopUp from "./ProjectListPopUp"
 import ProjectType from "../@types/ProjectType"
 
+type projectStringType = 'web' | 'datasci' | 'games'
+
 const ProjectsByType = () => {
 
     const { backgroundP2 } = useContext(themeContext)
@@ -36,7 +38,7 @@ const ProjectsByType = () => {
 
             <Bubbles />
 
-            <ProjectListPopUp title={projectTitles[projectType]} projectList={projectList} />
+            <ProjectListPopUp title={projectTitles[projectType as projectStringType]} projectList={projectList} />
 
         </div>
     )
