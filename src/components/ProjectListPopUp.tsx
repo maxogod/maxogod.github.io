@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { themeContext } from "../context/themeContext"
 import ProjectType from "../@types/ProjectType"
 import Tooltip from '@mui/material/Tooltip';
@@ -52,19 +52,27 @@ const ProjectListPopUp = (
 const ProjectThumbnail = ({ project, setExpandImage }:
     { project: ProjectType, setExpandImage: (image: string) => void }) => {
 
+    const [loading, setLoading] = useState(true)
     const { englishMode } = useContext(languageContext)
 
     const handleExpandImage = (image: string) => {
         setExpandImage(image)
     }
 
+    useEffect(() => {
+        const img = new Image()
+        img.src = project.image
+        img.onload = () => setLoading(false)
+    }, [project.image])
+
     return (
         <div className='w-60 sm:72 md:96 h-full overflow-y-scroll rounded-2xl p-4 bg-opacity-20 bg-slate-400'>
 
             <div className="w-full relative">
-                <img src={project.image} alt={project.name + ' image'}
+                {!loading && <img src={project.image} alt={project.name + ' image'}
                     onClick={() => handleExpandImage(project.image)}
-                    className="rounded-2xl w-full h-36 sm:h-48 object-cover cursor-pointer hover:brightness-110 duration-200" />
+                    className="rounded-2xl w-full h-36 sm:h-48 object-cover cursor-pointer hover:brightness-110 duration-200" />}
+                {loading && <div className="bg-slate-600 custom-animate-pulse rounded-2xl w-full h-36 sm:h-48"></div>}
 
                 <div className="absolute bottom-2 right-2 flex gap-1 items-center text-white">
                     {

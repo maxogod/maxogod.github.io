@@ -97,3 +97,12 @@
         transform: scale(1.1);
     }
 }
+
+@keyframes custom-pulse {
+    50% {
+        opacity: 0.6;
+    }
+}
+.custom-animate-pulse {
+    animation: custom-pulse 4s cubic-bezier(0.6, 0.5, 0.7, 1) infinite;
+}

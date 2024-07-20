@@ -98,6 +98,7 @@ const Home = () => {
                         &gt; {homePageText.subTitle}
                     </h1>
                     <button
+                        aria-label="about me section"
                         onClick={handleTogglePopUp}
                         className={`${buttonColor} p-2 rounded-3xl mt-2`}>
                         {homePageText.about}
@@ -109,12 +110,12 @@ const Home = () => {
 
                 <div className={`${star} ${colorTransition} shadow-2xl w-36 h-36 rounded-bl-full absolute top-0 right-0 z-10`}></div>
 
-                <img src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute top-2 left-1/4 z-0 p-5`}></img>
-                <img src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute top-32 left-1/3 z-0 p-20`}></img>
-                <img src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute -top-10 left-1/2 z-0 p-16`}></img>
-                <img src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute top-11 left-2/3 z-0 p-11`}></img>
+                <img alt='stars' src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute top-2 left-1/4 z-0 p-5`}></img>
+                <img alt='stars' src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute top-32 left-1/3 z-0 p-20`}></img>
+                <img alt='stars' src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute -top-10 left-1/2 z-0 p-16`}></img>
+                <img alt='stars' src={starsSvg} className={`${colorTransition} overflow-hidden opacity-60 animate-pulse w-56 absolute top-11 left-2/3 z-0 p-11`}></img>
 
-                <img src={wavesSvg} className={`${waves} ${colorTransition} overflow-visible absolute bottom-0 left-0 h-96 w-full object-cover z-0`}></img>
+                <img alt='waves' src={wavesSvg} className={`${waves} ${colorTransition} overflow-visible absolute bottom-0 left-0 h-96 w-full object-cover z-0`}></img>
             </div>
         </>
     )

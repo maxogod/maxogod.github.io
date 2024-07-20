@@ -15,8 +15,16 @@ const setCurrentTheme = (darkModeOn: boolean) => {
 const isEnglishModeOn = () => {
     const englishModeOn = localStorage.getItem('englishModeOn')
     if (!englishModeOn) {
-        localStorage.setItem('englishModeOn', 'true');
-        return true;
+        let userLanguage = navigator.language || navigator.language;
+        userLanguage = userLanguage.split('-')[0]
+        if (userLanguage === 'es') {
+            localStorage.setItem('englishModeOn', 'false');
+            return false;
+        } else {
+            localStorage.setItem('englishModeOn', 'true');
+            return true;
+        }
+
     }
     return englishModeOn === 'true' ? true : false
 }

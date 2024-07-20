@@ -70,13 +70,14 @@ const Navbar = () => {
     }, [showBackButton, window.location.hash])
 
     useEffect(() => {
+        if (window.location.hash && window.location.hash !== '#/') return
         const timer = setTimeout(() => {
             setShowPopup(true)
         }, 500)
 
         const timer_out = setTimeout(() => {
             setShowPopup(false);
-        }, 4000);
+        }, 5000);
 
         return () => {
             clearTimeout(timer)
@@ -100,6 +101,7 @@ const Navbar = () => {
 
                 {showBackButton && <Tooltip title={navbarGoBack} placement="bottom" arrow>
                     <button
+                        aria-label="Go back"
                         onClick={handleBack}
                         className='h-full'>
                         <TbArrowBack className='text-2xl text-white' />
@@ -108,7 +110,9 @@ const Navbar = () => {
             </div>
 
             {!showBackButton &&
-                <button onClick={() => setShowPopup(!showPopup)} className="h-full">
+                <button
+                    aria-label="Open navigation menu"
+                    onClick={() => setShowPopup(!showPopup)} className="h-full">
                     <GiHamburgerMenu className='text-2xl text-blue-800' />
                 </button>
             }
@@ -146,11 +150,13 @@ function NavbarPopup() {
         <div className={`${navbarTrayColor} ${colorTransition} bg-opacity-70 rounded-md absolute top-10 right-10 w-36 flex gap-3 flex-wrap justify-end items-center px-5 py-2`}>
             <div className='w-full flex justify-center gap-3'>
                 <button
+                    aria-label="Change theme to light"
                     onClick={handleThemeChange}
                     disabled={!darkMode}>
                     <BsFillSunFill className={`text-2xl ${darkMode ? '' : 'text-gray-500'}`} />
                 </button>
                 <button
+                    aria-label="Change theme to dark"
                     onClick={handleThemeChange}
                     disabled={darkMode}>
                     <BsFillMoonFill className={`text-2xl ${darkMode ? 'text-gray-500' : ''}`} />
@@ -160,6 +166,7 @@ function NavbarPopup() {
             <hr className='bg-black h-[2px] opacity-20 w-full' />
 
             <button
+                aria-label="Change language"
                 onClick={handleLanguageChange}
                 className="w-full text-xs flex justify-center">
                 {englishMode ? 'Español' : 'English'} <IoLanguageSharp />

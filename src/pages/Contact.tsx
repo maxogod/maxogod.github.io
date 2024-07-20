@@ -52,10 +52,10 @@ const Contact = () => {
                 </Tooltip>
 
                 <Tooltip key={3} title={link.em.text} placement="top" arrow>
-                    <a className={`w-16 h-16 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} relative rounded-xl text-white text-3xl cursor-pointer`}
+                    <button className={`w-16 h-16 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} relative rounded-xl text-white text-3xl cursor-pointer`}
                         onClick={() => copyToClipboard(link.em.link)}>
                         {link.em.icon}
-                    </a>
+                    </button>
                 </Tooltip>
 
                 <Tooltip key={4} title={link.cv.text} placement="top" arrow>

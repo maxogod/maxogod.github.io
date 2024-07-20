@@ -37,11 +37,13 @@ const AboutImageCarrousel = () => {
                 alt="thanking fiubaton organizers"
                 className='h-full w-full object-cover rounded-md' />
             <button
+                aria-label="next image"
                 onClick={next}
                 className={`absolute text-black bg-white shadow-lg shadow-black mr-1 text-sm p-1 rounded-full top-1/2 right-0`}>
                 <IoCaretBackOutline className='rotate-180' />
             </button>
             <button
+                aria-label="previous image"
                 onClick={prev}
                 className={`absolute text-black bg-white shadow-lg shadow-black ml-1 text-sm p-1 rounded-full top-1/2 left-0`}>
                 <IoCaretBackOutline />

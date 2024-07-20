@@ -34,7 +34,7 @@ const Projects = () => {
                     onClick={handleLinkClick}>
                     <h1 className={`absolute top-1/2 w-full text-center font-extrabold ${textColor}`}>
                     </h1>
-                    <img src={web} className="w-20 sm:w-32 aspect-auto ease-in-out duration-300" />
+                    <img alt="web projects" src={web} className="w-20 sm:w-32 aspect-auto ease-in-out duration-300" />
                 </Link>
             </Tooltip>
 
@@ -44,7 +44,7 @@ const Projects = () => {
                     onClick={handleLinkClick}>
                     <h1 className={`absolute top-1/2 w-full text-center font-extrabold ${textColor}`}>
                     </h1>
-                    <img src={cli} className="w-20 sm:w-32 mr-3 aspect-auto ease-in-out duration-300 brightness-110" />
+                    <img alt="data science projects" src={cli} className="w-20 sm:w-32 mr-3 aspect-auto ease-in-out duration-300 brightness-110" />
                 </Link>
             </Tooltip>
 
@@ -54,7 +54,7 @@ const Projects = () => {
                     onClick={handleLinkClick}>
                     <h1 className={`absolute top-1/2 w-full text-center font-extrabold ${textColor}`}>
                     </h1>
-                    <img src={games} className="w-20 sm:w-32 aspect-auto ease-in-out duration-300 brightness-110" />
+                    <img alt="game projects" src={games} className="w-20 sm:w-32 aspect-auto ease-in-out duration-300 brightness-110" />
                 </Link>
             </Tooltip>
 
