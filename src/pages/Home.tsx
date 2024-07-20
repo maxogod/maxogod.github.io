@@ -50,6 +50,11 @@ const Home = () => {
     }, []);
 
     const handleTogglePopUp = () => {
+        if (isPopUpOpen) {
+            document.getElementById('body')?.classList.remove('overflow-hidden');
+        } else {
+            document.getElementById('body')?.classList.add('overflow-hidden');
+        }
         setIsPopUpOpen(!isPopUpOpen)
     }
 

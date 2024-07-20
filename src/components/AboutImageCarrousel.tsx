@@ -7,9 +7,9 @@ import { IoCaretBackOutline } from 'react-icons/io5'
 const AboutImageCarrousel = () => {
 
     const imgs = [
-        fiubaton_winners,
         fiubaton_presenting,
         fiubaton_thanking,
+        fiubaton_winners,
     ]
 
     const [currentImage, setCurrentImage] = useState(0)

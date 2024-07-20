@@ -56,15 +56,15 @@ const english_web_projects = [
 const spanish_web_projects = [
     {
         name: "Truco",
-        description: "",
+        description: "Juego en línea del popular juego de cartas argentino Truco con partidas 1vs1, desafíos, ranking global ¡y más! Desarrollado utilizando metodologías ágiles.",
         image: truco,
         url: "https://github.com/maxogod/Truco",
-        vid: "",
-        technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
+        vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY",
+        technologies: ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
     },
     {
         name: "AlaCarta",
-        description: "",
+        description: "Sitio web de backoffice para restaurantes para gestionar su menú, pedidos, mesas, ver información estadistica de productos y más. Desarrollado usando TypeScript y el stack MERN.",
         image: alacarta,
         url: "https://github.com/maxogod/AlaCarta",
         vid: "",
@@ -72,18 +72,18 @@ const spanish_web_projects = [
     },
     {
         name: "GymChad",
-        description: "",
+        description: "Sitio web para organizar diferentes actividades de fitness como baile/boxeo y los ejercicios que pertenecen a esas actividades, incluyendo imágenes, descripciones, series/repeticiones, etc.",
         image: gymchad,
         url: "https://github.com/maxogod/gymchad-app",
         vid: "",
-        technologies: ["MongoDB", "Springboot", "Angular", "Java", "TypeScript"]
+        technologies: ["MongoDB", "Springboot", "Angular", "TypeScript", "Java"]
     },
     {
         name: "Routine Manager",
-        description: "",
+        description: "Organizador personal para rutinas diarias, con la capacidad de crear, editar, eliminar y visualizar rutinas. Desarrollado usando Django, React y APIs de Google.",
         image: routine_manager,
         url: "https://github.com/maxogod/Routine-Manager",
-        vid: "",
+        vid: "https://www.youtube.com/watch?v=hAaZC-RAX24",
         technologies: ["MySql", "Django", "React", "Python", "JavaScript"]
     },
     {
@@ -98,26 +98,26 @@ const spanish_web_projects = [
 
 const english_datasci_projects = [
     {
-        name: "Property Price Classification & Prediction",
-        description: "",
+        name: "Property Price Analysis & Prediction",
+        description: "Used a dataset of real properties in Buenos Aires extracted with BigQuery. This project consisted of 4 main parts: Pre-processing, Clusterization & analysis, Classification of property prices (low/mid/high), Regression (prediction) of property price with different ML models. Some of the used models were Random Forest, XGBoost, Decision Trees, KNN.",
         image: ai,
-        url: "https://github.com/maxogod/Tour-Package-Creator",
+        url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP1/7506R_TP1_GRUPO02_REPORTE.pdf",
         vid: "",
         technologies: ["Machine Learning", "Python", "ScikitLearn", "Pandas", "GoogleColab"]
     },
     {
         name: "Natural Languaje Processing",
-        description: "",
+        description: "[Kaggle Competition] Made a sentiment analysis of a movie reviews dataset and made different ML models to determine whether a sample is positive or negative. This models included Neural Networks, Ensembles, XGBoosts, Random Forests and Naive Bayes.",
         image: nlp,
-        url: "https://github.com/maxogod/hospital-management-system-datasci",
+        url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP2/7506R_TP2_GRUPO02_REPORTE.pdf",
         vid: "",
         technologies: ["Machine Learning", "Python", "TensorFlow", "ScikitLearn", "Pandas", "GoogleColab"]
     },
     {
         name: "Extract, Transform & Load Real Estate Data",
-        description: "",
+        description: "Extracted real estate data from a kaggle competition dataset with more than a million registers, processed it by cleaning and preparing it to be stored in a relational database, and loaded it into a BCNF (Boyce-Codd) normalized database.",
         image: etl,
-        url: "https://github.com/maxogod/hospital-management-system-datasci",
+        url: "https://github.com/maxogod/ETL-Real-Estate/blob/main/informe.pdf",
         vid: "",
         technologies: ["Python", "GoogleColab", "Pandas", "SQL"]
     },
@@ -133,28 +133,28 @@ const english_datasci_projects = [
 
 const spanish_datasci_projects = [
     {
-        name: "Tour package creator",
-        description: "",
+        name: "Análisis y Predicción de Precios de Propiedades",
+        description: "Se utilizó un conjunto de datos de propiedades reales en Buenos Aires extraído con BigQuery. Este proyecto constó de 4 partes principales: preprocesamiento, clusterización y análisis, clasificación de precios de propiedades (bajo/medio/alto), y regresión (predicción) del precio de la propiedad con diferentes modelos de ML. Algunos de los modelos utilizados fueron Random Forest, XGBoost, árboles de decisión y KNN.",
         image: ai,
-        url: "https://github.com/maxogod/Tour-Package-Creator",
+        url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP1/7506R_TP1_GRUPO02_REPORTE.pdf",
         vid: "",
-        technologies: ["Python", "JavaScript"]
+        technologies: ["Machine Learning", "Python", "ScikitLearn", "Pandas", "GoogleColab"]
     },
     {
         name: "Procesamiento de Lenguaje Natural",
-        description: "",
+        description: "[Competencia de Kaggle] Se realizo un análisis de sentimientos de un conjunto de datos de reseñas de películas y se crearon diferentes modelos de ML para determinar si una muestra es positiva o negativa. Estos modelos incluyeron Redes Neuronales, Ensamblajes, XGBoost, Random Forest y Naive Bayes.",
         image: nlp,
-        url: "https://github.com/maxogod/hospital-management-system-datasci",
+        url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP2/7506R_TP2_GRUPO02_REPORTE.pdf",
         vid: "",
-        technologies: ["C", "PowerShell"]
+        technologies: ["Machine Learning", "Python", "TensorFlow", "ScikitLearn", "Pandas", "GoogleColab"]
     },
     {
-        name: "Hospital managment system",
-        description: "",
+        name: "Extracción, Transformación y Carga de Datos Inmobiliarios",
+        description: "Se extrajeron datos inmobiliarios de un conjunto de datos de una competencia de Kaggle con más de un millón de registros, fueron procesados limpiando y preparándolos para ser almacenados en una base de datos relacional, y fueron cargados en una base de datos normalizada en BCNF (Boyce-Codd).",
         image: etl,
-        url: "https://github.com/maxogod/hospital-management-system-datasci",
+        url: "https://github.com/maxogod/ETL-Real-Estate/blob/main/informe.pdf",
         vid: "",
-        technologies: ["C", "PowerShell"]
+        technologies: ["Python", "GoogleColab", "Pandas", "SQL"]
     },
     {
         name: "Visita mi github para mas!",
@@ -169,7 +169,7 @@ const spanish_datasci_projects = [
 const english_game_projects = [
     {
         name: "Jazz Jackrabbit 2 Remake",
-        description: "",
+        description: "An exciting reinvention of the classic platformer game, now with online matches of up to 8 players. Have frenetic face-offs with iconic characters like Jazz, Spaz, and Lori in various action-packed maps. Enjoy a variety of weapons, special items like invincibility carrots, and a custom map editor for a unique and immersive gaming experience. Developed from scratch (no 3rd-party game engines) using C++ and SDL2.",
         image: jazz,
         url: "https://atusgames.github.io/#/jazz-jackrabbit-2-remake",
         vid: "https://www.youtube.com/watch?v=yL4jmEFELbI",
@@ -177,15 +177,15 @@ const english_game_projects = [
     },
     {
         name: "Truco",
-        description: "",
+        description: "Online game of the popular argentinian card game Truco with 1vs1 matches, challenges, global ranking and more! Built employing Agile Methodologies.",
         image: truco,
         url: "https://github.com/maxogod/Truco",
         vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY",
-        technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
+        technologies: ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
     },
     {
         name: "Save The Galaxy",
-        description: "",
+        description: "A thrilling adventure where the player takes on the role of the savior of the galaxy, fighting against an army of alien invaders. The enemy ships grow stronger and faster as the invasion progresses. If the player fails to fend off the aliens, they will colonize the galaxy, and the same fate awaits if the player perishes in the attempt.",
         image: save_the_galaxy,
         url: "https://maxogod.itch.io/save-the-galaxy",
         vid: "https://www.youtube.com/watch?v=u-lp5ocy8yI",
@@ -204,26 +204,26 @@ const english_game_projects = [
 const spanish_game_projects = [
     {
         name: "Jazz Jackrabbit 2 Remake",
-        description: "",
+        description: "Una emocionante reinvención del clásico juego de plataformas, ahora con partidas en línea de hasta 8 jugadores. Enfréntate en frenéticas batallas con personajes icónicos como Jazz, Spaz y Lori en varios mapas llenos de acción. Disfruta de una variedad de armas, objetos especiales como zanahorias de invencibilidad y un editor de mapas personalizado para una experiencia de juego única e inmersiva. Desarrollado desde cero (sin motores de juego de terceros) usando C++ y SDL2.",
         image: jazz,
-        url: "https://github.com/maxogod/Pysnake",
-        vid: "",
-        technologies: ["C++", "SDL2"]
+        url: "https://atusgames.github.io/#/jazz-jackrabbit-2-remake",
+        vid: "https://www.youtube.com/watch?v=yL4jmEFELbI",
+        technologies: ["Scrum", "C++", "SDL2"]
     },
     {
         name: "Truco",
-        description: "",
+        description: "Juego en línea del popular juego de cartas argentino Truco con partidas 1vs1, desafíos, ranking global ¡y más! Desarrollado utilizando metodologías ágiles.",
         image: truco,
         url: "https://github.com/maxogod/Truco",
-        vid: "",
-        technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
+        vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY",
+        technologies: ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
     },
     {
         name: "Save The Galaxy",
-        description: "",
+        description: "Una emocionante aventura en la que el jugador asume el rol del salvador de la galaxia, luchando contra un ejército de invasores alienígenas. Las naves enemigas se vuelven más fuertes y rápidas a medida que avanza la invasión. Si el jugador no logra repeler a los alienígenas, colonizarán la galaxia, y el mismo destino le espera si el jugador perece en el intento.",
         image: save_the_galaxy,
-        url: "https://github.com/maxogod/Pysnake",
-        vid: "",
+        url: "https://maxogod.itch.io/save-the-galaxy",
+        vid: "https://www.youtube.com/watch?v=u-lp5ocy8yI",
         technologies: ["Godot"]
     },
     {

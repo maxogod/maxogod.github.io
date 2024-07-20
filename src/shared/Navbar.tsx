@@ -69,6 +69,21 @@ const Navbar = () => {
         }
     }, [showBackButton, window.location.hash])
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowPopup(true)
+        }, 500)
+
+        const timer_out = setTimeout(() => {
+            setShowPopup(false);
+        }, 4000);
+
+        return () => {
+            clearTimeout(timer)
+            clearTimeout(timer_out)
+        }
+    }, [])
+
     return (
         <nav
             onKeyDown={onEscapePress}

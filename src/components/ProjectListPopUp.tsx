@@ -6,6 +6,7 @@ import { FaLink } from "react-icons/fa"
 import { MdVideoLibrary } from "react-icons/md";
 import { LuSwords } from 'react-icons/lu'
 import { technologyColors } from "../utils/projects"
+import { languageContext } from "../context/languageContext";
 
 const ProjectListPopUp = (
     { title, projectList }:
@@ -49,6 +50,8 @@ const ProjectListPopUp = (
 const ProjectThumbnail = ({ project, setExpandImage }:
     { project: ProjectType, setExpandImage: (image: string) => void }) => {
 
+    const { englishMode } = useContext(languageContext)
+
     const handleExpandImage = (image: string) => {
         setExpandImage(image)
     }
@@ -74,7 +77,7 @@ const ProjectThumbnail = ({ project, setExpandImage }:
                             </Tooltip>
                         )
                     }
-                    <Tooltip title="More info" placement="top" arrow>
+                    <Tooltip title={englishMode ? "More info" : "Mas Info"} placement="top" arrow>
                         <a
                             target="_blank"
                             href={project.url}
