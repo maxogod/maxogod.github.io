@@ -1,217 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maximo Utrera</title>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/png" href="/assets/pokeball-496c5695.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://static.vecteezy.com/system/resources/previews/001/194/635/original/snowflake-png.png"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="responsive.css" />
-  </head>
-  <body>
-    <nav id="navbar" class="init">
-      <ul>
-        <li class="button nav1"><a href="#welcome-section">About</a></li>
-        <li class="button nav2"><a href="#projects">Work</a></li>
-        <li class="button nav3"><a href="#contact">Contact</a></li>
-        <li class="button">
-          <a href="https://github.com/maxogod" id="profile-link" target="_blank"
-            >Github</a
-          >
-        </li>
-      </ul>
-    </nav>
-    <main>
-      <section id="welcome-section">
-        <h1 id="greeting">Hey I am Maximo Utrera</h1>
-        <p id="about">
-          Full-Stack Web Developer & Information Engineering student at
-          University of Buenos Aires.
-        </p>
-        <a
-          href="projects-img/Maximo Utrera CV.pdf"
-          id="resume"
-          class="button"
-          target="_blank"
-          >Resume</a
-        >
-        <a
-          href="https://www.pngplay.com/wp-content/uploads/12/Togekiss-Pokemon-Download-Free-PNG.png"
-          target="_blank"
-        >
-          <img
-            src="https://www.pngplay.com/wp-content/uploads/12/Togekiss-Pokemon-Download-Free-PNG.png"
-            alt="Togekiss Greeting"
-            id="togekiss"
-          />
-        </a>
-      </section>
-      <section id="projects">
-        <h2 id="projects-title">These are some of my projects</h2>
-        <div class="projects-container">
-          <div class="project-tile star">
-            <img
-              src="projects-img/Home.png"
-              alt="Functionality-of-a-social-media-platform"
-            />
-            <p class="project-info">
-              • Social media website
-              <a
-                id="video-link"
-                href="https://www.youtube.com/watch?v=Ck2qWZ7Yrzc"
-                target="_blank"
-                >(Video)</a
-              >
-              where people can find others to talk about their interests by
-              creating/joining spaces tagged with specific topics.<br />
-              • This app admits public/private accounts and spaces, login with
-              GOOGLE Oauth, the ability to share images/videos/messages and
-              more.<br />
-              • Connected the back-end to a postgreSQL database hosted on
-              railways.<br />
-              • It has a rest api to provide data about the state of all the
-              spaces or specific ones.<br />
-              (Django + postgreSQL + GoogleOauth)
-            </p>
-            <h3 class="project-title">
-              <a
-                href="https://github.com/maxogod/MySpace-fullstack-app"
-                target="_blank"
-                >MySpace (full-stack)</a
-              >
-            </h3>
-          </div>
-          <div class="project-tile star">
-            <img
-              src="projects-img/home-routine.png"
-              alt="Product-Landing-Page"
-            />
-            <p class="project-info">
-              • Personal Organization website
-              <a
-                id="video-link"
-                href="https://www.youtube.com/watch?v=hAaZC-RAX24"
-                target="_blank"
-                >(Video)</a
-              >
-              where users can create/view routines, give each task an importance
-              value, and keep themselves accountable and consistent.<br />
-              • Created a REST api using Django rest framework that allowed to
-              create, update and delete users, routines, routine tasks, etc from
-              the database.<br />
-              • Utilized React & Redux to make the dynamic user interface and
-              created a calendar to visualize routines enhancing the user
-              experience.<br />
-              (Django + React + Redux + GoogleOauth)
-            </p>
-            <h3 class="project-title">
-              <a
-                href="https://github.com/maxogod/Routine-Manager"
-                target="_blank"
-                >Routine Manager (full-stack)</a
-              >
-            </h3>
-          </div>
-          <div class="project-tile">
-            <img
-              src="projects-img/automatazation-of-elections.png"
-              alt="Automatized-Elections"
-            />
-            <p class="project-info">
-              • This program reads from two files (or a database if needed)
-              containing the political parties that can be voted and the IDs of
-              all the people who are allowed to vote.<br />
-              • Allows users to create votes and submit them, then these votes
-              are added to the corresponding parties.<br />
-              • In case of a bad input or similar error the program will let the
-              user know the reason and retry the process. But in case of an
-              illegal voter the vote will be discarded and the person
-              blacklisted.<br />
-              (Go / Golang)
-            </p>
-            <h3 class="project-title">
-              <a
-                href="https://github.com/maxogod/Automatized-Elections"
-                target="_blank"
-                >Automatized Elections</a
-              >
-            </h3>
-          </div>
-          <div class="project-tile">
-            <img src="projects-img/tour1.png" alt="Tour-Package-Creator" />
-            <p class="project-info">
-              • This program is a piece of software that could be used by an
-              airline; It generates a tour package based on the data given by
-              the user (most importantly a kml file representing a map of the
-              city/country/state).<br />
-              • The implementation uses an undirected graph to make it more
-              efficient and easier to work with the data, as well as several
-              algorithms to generate the most optimal solution in each case.<br />
-              • The output files can be visualized in <i>Google Earth</i> or in
-              a browser (as a network visualization) using Pyvis library<br />
-              (Python)
-            </p>
-            <h3 class="project-title">
-              <a
-                href="https://github.com/maxogod/Tour-Package-Creator"
-                target="_blank"
-                >Tour Package Creator</a
-              >
-            </h3>
-          </div>
-          <div class="project-tile">
-            <img src="projects-img/pysnake.jpg" alt="Wordle-Logic-in-Python" />
-            <p class="project-info">
-              • This project is a snake game replica made using object oriented
-              programing and the pygame library.<br />
-              • It can be executable in any windows system with/without python
-              by creating a .exe file using auto-py-to-exe library.<br />
-              (Python)
-            </p>
-            <h3 class="project-title">
-              <a href="https://github.com/maxogod/Pysnake" target="_blank"
-                >Pysnake</a
-              >
-            </h3>
-          </div>
-          <div class="project-tile">
-            <img src="projects-img/more.png" alt="More-In-My-Github" />
-            <p class="project-info">
-              There is more!<br />
-              Here are some extras...<br /><br />
-              • Wordle in Python.<br />
-              • Front-end projects using libraries such as react.<br />
-              • Several Scientific Computing Projects (python).<br />
-            </p>
-            <h3 class="project-title">
-              <a href="https://github.com/maxogod" target="_blank">See More</a>
-            </h3>
-          </div>
-        </div>
-      </section>
-      <section id="contact">
-        <h1 id="contact-me">Get In Touch</h1>
-        <div class="media-container">
-          <a href="https://github.com/maxogod" class="button" target="_blank"
-            >GitHub</a
-          >
-          <a
-            href="https://www.linkedin.com/in/maximo-utrera/"
-            class="button"
-            target="_blank"
-            >LinkedIn</a
-          >
-          <small id="email" class="button">maxi18wars@gmail.com</small>
-          <small id="phone" class="button">+54 3487 322370</small>
-        </div>
-      </section>
-    </main>
-  </body>
-  <script src="index.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+            rel="stylesheet"
+        />
+
+        <title>Maximo Utrera | Portfolio</title>
+      <script type="module" crossorigin src="/assets/index-bdd9fdfe.js"></script>
+      <link rel="stylesheet" href="/assets/index-f203b854.css">
+    </head>
+    <body id="body">
+        <div id="root" class="light"></div>
+        
+    </body>
 </html>

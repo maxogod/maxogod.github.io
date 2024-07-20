@@ -1,1 +1,0 @@
-# maxogod.github.io
