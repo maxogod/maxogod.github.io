@@ -19,7 +19,7 @@ const Contact = () => {
         gh: { icon: <FaGithub />, text: 'Github', link: "https://github.com/maxogod" },
         ln: { icon: <FaLinkedin />, text: 'Linkedin', link: "https://www.linkedin.com/in/maximo-utrera/" },
         em: { icon: <IoMdMail />, text: englishMode ? 'Copy Email' : 'Copiar Email', link: "maxi18wars@gmail.com" },
-        cv: { icon: <IoDocument />, text: 'CV', link: "https://maxogod.github.io/projects-img/Maximo%20Utrera%20CV.pdf" },
+        cv: { icon: <IoDocument />, text: 'CV', link: englishMode ? "https://maxogod.github.io/projects-img/Maximo%20Utrera%20CV.pdf" : "https://maxogod.github.io/projects-img/Maximo%20Utrera%20CV%20-%20Español.pdf" },
     }
 
     const copyToClipboard = (text: string) => {
