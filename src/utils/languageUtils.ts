@@ -27,7 +27,7 @@ const englishHomePage = {
 
 const spanishHomePage = {
     title: "Hola soy Maxo",
-    subTitle: 'Bienvenidos a mi portafolios!',
+    subTitle: 'Bienvenidos a mi portafolio!',
     about: 'Sobre mi',
 }
 
