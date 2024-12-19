@@ -273,17 +273,17 @@ const technologyColors = {
     "Pygame": "bg-blue-200",
     "Godot": "bg-blue-300",
     "SDL2": "bg-red-400",
-    "Unity": "bg-zinc-600",
+    "Unity": "bg-zinc-500",
 
     // Data Sci
     "Machine Learning": "bg-red-300",
-    "Reinforcement Learning": "bg-fuchsia-500",
+    "Reinforcement Learning": "bg-fuchsia-400",
     "ScikitLearn": "bg-yellow-500",
     "Pandas": "bg-slate-500",
     "TensorFlow": "bg-orange-400",
     "GoogleColab": "bg-green-300",
-    "Pytorch": "bg-orange-600",
-    "Conda": "bg-green-600",
+    "Pytorch": "bg-orange-500",
+    "Conda": "bg-green-500",
 
     // Languages
     "Python": "bg-blue-500",
