@@ -8,7 +8,7 @@ import jazz from "../assets/jazz.jpg";
 import ai from "../assets/ai.png";
 import etl from "../assets/etl.jpg";
 import nlp from "../assets/nlp.jpg";
-
+import donkey from "../assets/donkey.jpg"
 
 const english_web_projects = [
     {
@@ -98,6 +98,14 @@ const spanish_web_projects = [
 
 const english_datasci_projects = [
     {
+        name: "Donkey Kong AI",
+        description: "Soon.",
+        image: donkey,
+        url: "https://github.com/maxogod/AI-Donkey-Kong",
+        vid: "https://www.youtube.com/watch?v=5XQuDkWKL-M",
+        technologies: ["Unity", "Pytorch", "Conda", "Cuda"]
+    },
+    {
         name: "Property Price Analysis & Prediction",
         description: "Used a dataset of real properties in Buenos Aires extracted with BigQuery. This project consisted of 4 main parts: Pre-processing, Clusterization & analysis, Classification of property prices (low/mid/high), Regression (prediction) of property price with different ML models. Some of the used models were Random Forest, XGBoost, Decision Trees, KNN.",
         image: ai,
@@ -132,6 +140,14 @@ const english_datasci_projects = [
 ]
 
 const spanish_datasci_projects = [
+    {
+        name: "Donkey Kong AI",
+        description: "Soon.",
+        image: donkey,
+        url: "https://github.com/maxogod/AI-Donkey-Kong",
+        vid: "https://www.youtube.com/watch?v=5XQuDkWKL-M",
+        technologies: ["Unity", "Pytorch", "Conda", "Cuda"]
+    },
     {
         name: "Análisis y Predicción de Precios de Propiedades",
         description: "Se utilizó un conjunto de datos de propiedades reales en Buenos Aires extraído con BigQuery. Este proyecto constó de 4 partes principales: preprocesamiento, clusterización y análisis, clasificación de precios de propiedades (bajo/medio/alto), y regresión (predicción) del precio de la propiedad con diferentes modelos de ML. Algunos de los modelos utilizados fueron Random Forest, XGBoost, árboles de decisión y KNN.",
