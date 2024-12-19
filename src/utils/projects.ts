@@ -99,11 +99,11 @@ const spanish_web_projects = [
 const english_datasci_projects = [
     {
         name: "Donkey Kong AI",
-        description: "Soon.",
+        description: "The project focuses on training an AI agent to complete the first level of Donkey Kong using reinforcement learning with the Proximal Policy Optimization (PPO) algorithm. The environment was built in Unity with ML-Agents, and the model was trained using PyTorch. The agent learns to avoid barrels, climb ladders, and rescue the princess through dynamic interaction and a well-designed reward system. Hyperparameter tuning and iterative testing ensured stable and adaptive performance, demonstrating the effectiveness of reinforcement learning in complex game environments.",
         image: donkey,
         url: "https://github.com/maxogod/AI-Donkey-Kong",
         vid: "https://www.youtube.com/watch?v=5XQuDkWKL-M",
-        technologies: ["Unity", "Pytorch", "Conda", "Cuda"]
+        technologies: ["Unity", "Pytorch", "Conda", "Reinforcement Learning"]
     },
     {
         name: "Property Price Analysis & Prediction",
@@ -142,11 +142,11 @@ const english_datasci_projects = [
 const spanish_datasci_projects = [
     {
         name: "Donkey Kong AI",
-        description: "Soon.",
+        description: "El proyecto se centra en entrenar a un agente de IA para completar el primer nivel de Donkey Kong utilizando aprendizaje por refuerzo con el algoritmo de Proximal Policy Optimization (PPO). El entorno se desarrolló en Unity con ML-Agents, y el modelo se entrenó usando PyTorch. El agente aprende a esquivar barriles, subir escaleras y rescatar a la princesa mediante interacción dinámica y un sistema de recompensas bien diseñado. La optimización de hiperparámetros y pruebas iterativas garantizaron un rendimiento estable y adaptativo, demostrando la efectividad del aprendizaje por refuerzo en entornos complejos de videojuegos.",
         image: donkey,
         url: "https://github.com/maxogod/AI-Donkey-Kong",
         vid: "https://www.youtube.com/watch?v=5XQuDkWKL-M",
-        technologies: ["Unity", "Pytorch", "Conda", "Cuda"]
+        technologies: ["Unity", "Pytorch", "Conda", "Reinforcement Learning"]
     },
     {
         name: "Análisis y Predicción de Precios de Propiedades",
@@ -273,13 +273,17 @@ const technologyColors = {
     "Pygame": "bg-blue-200",
     "Godot": "bg-blue-300",
     "SDL2": "bg-red-400",
+    "Unity": "bg-zinc-600",
 
     // Data Sci
     "Machine Learning": "bg-red-300",
+    "Reinforcement Learning": "bg-fuchsia-500",
     "ScikitLearn": "bg-yellow-500",
     "Pandas": "bg-slate-500",
     "TensorFlow": "bg-orange-400",
     "GoogleColab": "bg-green-300",
+    "Pytorch": "bg-orange-600",
+    "Conda": "bg-green-600",
 
     // Languages
     "Python": "bg-blue-500",
