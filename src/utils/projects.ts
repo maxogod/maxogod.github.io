@@ -304,6 +304,7 @@ const technologyColors = {
 
     // Languages
     "Python": "bg-blue-500",
+    "Rust": "bg-orange-700",
     "Java": "bg-orange-400",
     "JavaScript": "bg-yellow-200",
     "TypeScript": "bg-blue-600",
