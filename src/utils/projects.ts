@@ -8,7 +8,8 @@ import jazz from "../assets/jazz.jpg";
 import ai from "../assets/ai.png";
 import etl from "../assets/etl.jpg";
 import nlp from "../assets/nlp.jpg";
-import donkey from "../assets/donkey.jpg"
+import donkey from "../assets/donkey.jpg";
+import concuride from "../assets/concuride.jpg";
 
 const english_web_projects = [
     {
@@ -26,6 +27,14 @@ const english_web_projects = [
         url: "https://github.com/maxogod/AlaCarta",
         vid: "",
         technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
+    },
+    {
+        name: "ConcuRide",
+        description: "ConcuRide is a distributed system built in Rust that connects passengers and drivers efficiently using advanced concurrency and distributed techniques. It employs the actor model for message handling, the Ring algorithm for coordinator election, and ensures resilience to failures, providing robust and scalable functionality.",
+        image: concuride,
+        url: "https://github.com/maxogod/ConcuRide",
+        vid: "https://www.youtube.com/watch?v=8ktItIcETTw&ab_channel=MaxoFiuba",
+        technologies: ["Rust"]
     },
     {
         name: "GymChad",
@@ -69,6 +78,14 @@ const spanish_web_projects = [
         url: "https://github.com/maxogod/AlaCarta",
         vid: "",
         technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
+    },
+        {
+        name: "ConcuRide",
+        description: "ConcuRide es un sistema distribuido desarrollado en Rust que conecta pasajeros y conductores de manera eficiente, utilizando técnicas avanzadas de concurrencia y distribución. Emplea el modelo de actores para la gestión de mensajes, el algoritmo de anillo para la elección de coordinadores, y garantiza resiliencia ante fallos, ofreciendo funcionalidad robusta y escalable.",
+        image: concuride,
+        url: "https://github.com/maxogod/ConcuRide",
+        vid: "https://www.youtube.com/watch?v=8ktItIcETTw&ab_channel=MaxoFiuba",
+        technologies: ["Rust"]
     },
     {
         name: "GymChad",
