@@ -1,7 +1,16 @@
 import React, { ReactNode, createContext, useEffect, useState } from "react"
 import { englishAboutMe, englishHomePage, englishNavbarGoBack, englishNavbarLinks, englishTitles, spanishAboutMe, spanishHomePage, spanishNavbarGoBack, spanishNavbarLinks, spanishTitles } from "../utils/languageUtils";
 import { isEnglishModeOn } from "../utils/localStorage";
-import { english_datasci_projects, english_game_projects, english_web_projects, spanish_datasci_projects, spanish_game_projects, spanish_web_projects } from "../utils/projects";
+import {
+    english_sys_projects,
+    spanish_sys_projects,
+    english_web_projects,
+    spanish_web_projects,
+    english_datasci_projects,
+    spanish_datasci_projects,
+    english_game_projects,
+    spanish_game_projects,
+} from "../utils/projects";
 
 interface languageContextType {
     englishMode: boolean,
@@ -11,6 +20,7 @@ interface languageContextType {
     aboutMeText: typeof englishAboutMe | typeof spanishAboutMe
     projectTitles: typeof englishTitles | typeof spanishTitles,
     navbarGoBack: string,
+    sysProjects: typeof english_sys_projects | typeof spanish_sys_projects,
     webProjects: typeof english_web_projects | typeof spanish_web_projects,
     datasciProjects: typeof english_datasci_projects | typeof spanish_datasci_projects,
     gameProjects: typeof english_game_projects | typeof spanish_game_projects,
@@ -24,6 +34,7 @@ const languageContext = createContext<languageContextType>({
     aboutMeText: englishAboutMe,
     projectTitles: englishTitles,
     navbarGoBack: englishNavbarGoBack,
+    sysProjects: english_sys_projects,
     webProjects: english_web_projects,
     datasciProjects: english_datasci_projects,
     gameProjects: english_game_projects,
@@ -37,6 +48,7 @@ const LanguageContextProvider = ({ children }: { children: ReactNode }) => {
     const [aboutMeText, setAboutMeText] = useState(englishMode ? englishAboutMe : spanishAboutMe)
     const [projectTitles, setProjectTitles] = useState(englishMode ? englishTitles : spanishTitles)
     const [navbarGoBack, setNavbarGoBack] = useState(englishMode ? englishNavbarGoBack : spanishNavbarGoBack)
+    const [sysProjects, setSysProjects] = useState(englishMode ? english_sys_projects : spanish_sys_projects)
     const [webProjects, setWebProjects] = useState(englishMode ? english_web_projects : spanish_web_projects)
     const [datasciProjects, setdatasciProjects] = useState(englishMode ? english_datasci_projects : spanish_datasci_projects)
     const [gameProjects, setGameProjects] = useState(englishMode ? english_game_projects : spanish_game_projects)
@@ -47,6 +59,7 @@ const LanguageContextProvider = ({ children }: { children: ReactNode }) => {
         setAboutMeText(englishMode ? englishAboutMe : spanishAboutMe)
         setProjectTitles(englishMode ? englishTitles : spanishTitles)
         setNavbarGoBack(englishMode ? englishNavbarGoBack : spanishNavbarGoBack)
+        setSysProjects(englishMode ? english_sys_projects : spanish_sys_projects)
         setWebProjects(englishMode ? english_web_projects : spanish_web_projects)
         setdatasciProjects(englishMode ? english_datasci_projects : spanish_datasci_projects)
         setGameProjects(englishMode ? english_game_projects : spanish_game_projects)
@@ -63,6 +76,7 @@ const LanguageContextProvider = ({ children }: { children: ReactNode }) => {
                     aboutMeText,
                     projectTitles,
                     navbarGoBack,
+                    sysProjects,
                     webProjects,
                     datasciProjects,
                     gameProjects,

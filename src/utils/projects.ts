@@ -10,6 +10,79 @@ import etl from "../assets/etl.jpg";
 import nlp from "../assets/nlp.jpg";
 import donkey from "../assets/donkey.jpg";
 import concuride from "../assets/concuride.jpg";
+import udp from "../assets/udp.jpg";
+import classconnect from "../assets/cc.png";
+import firewall from "../assets/firewall.jpg";
+
+const english_sys_projects = [
+    {
+        name: "ClassConnect",
+        description: "ClassConnect is a cloud-native educational platform built on a distributed microservices architecture. It features a Kubernetes-based deployment, managed via Infrastructure as Code and automated with CI/CD pipelines. Monitoring is handled through Datadog for full observability. <br><br> The system supports both a React Native mobile app (for teachers and students) and a React web app (for administrators). It includes six microservices developed in Go (Gin Gonic) and Python (FastAPI), each with its own database using Supabase or MongoDB Atlas, all with >75% test coverage. An additional AI microservice powered by Gemini 2.0 Flash enables LLM-based assistance.",
+        image: classconnect,
+        url: "https://github.com/ClassConnect-org",
+        vid: "https://www.youtube.com/watch?v=MnToP9unGNQ",
+        technologies: ["Microservices", "Datadog", "Cloud-Computing", "LLM", "Kubernetes", "Kong-Gateway"]
+    },
+    {
+        name: "SDN Firewall",
+        description: "",
+        image: firewall,
+        url: "",
+        vid: "",
+        technologies: ["Pox", "Mininet", "Wireshark", "Python"]
+    },
+    {
+        name: "RDT protocol over UDP",
+        description: "",
+        image: udp,
+        url: "https://github.com/maxogod/RDT-over-UDP",
+        vid: "",
+        technologies: ["Mininet", "Wireshark", "Python"]
+    },
+    {
+        name: "ConcuRide",
+        description: "ConcuRide is a distributed system built in Rust that connects passengers and drivers efficiently using advanced concurrency and distributed techniques. It employs the actor model for message handling, the Ring algorithm for coordinator election, and ensures resilience to failures, providing robust and scalable functionality.",
+        image: concuride,
+        url: "https://github.com/maxogod/ConcuRide",
+        vid: "https://www.youtube.com/watch?v=8ktItIcETTw&ab_channel=MaxoFiuba",
+        technologies: ["Rust"]
+    },
+    {
+        name: "Check out my github for more!",
+        description: "",
+        image: gh,
+        url: "https://github.com/maxogod",
+        vid: "",
+        technologies: []
+    },
+]
+
+const spanish_sys_projects = [
+    {
+        name: "ClassConnect",
+        description: "ClassConnect es una plataforma educativa cloud-native construida sobre una arquitectura distribuida de microservicios. Cuenta con un despliegue en Kubernetes, gestionado mediante Infrastructure as Code y automatizado con pipelines CI/CD. El monitoreo se realiza con Datadog para lograr una observabilidad completa.<br><br>El sistema soporta una aplicación móvil en React Native (para docentes y estudiantes) y una aplicación web en React (para administradores). Incluye seis microservicios desarrollados en Go (Gin Gonic) y Python (FastAPI), cada uno con su propia base de datos utilizando Supabase o MongoDB Atlas, todos con una cobertura de tests superior al 75%. Un microservicio adicional de IA, impulsado por Gemini 2.0 Flash, permite asistencia basada en modelos LLM.",
+        image: classconnect,
+        url: "https://github.com/ClassConnect-org",
+        vid: "https://www.youtube.com/watch?v=MnToP9unGNQ",
+        technologies: ["Microservices", "Datadog", "Cloud-Computing", "LLM", "Kubernetes", "Kong-Gateway"]
+    },
+    {
+        name: "ConcuRide",
+        description: "ConcuRide es un sistema distribuido desarrollado en Rust que conecta pasajeros y conductores de manera eficiente, utilizando técnicas avanzadas de concurrencia y distribución. Emplea el modelo de actores para la gestión de mensajes, el algoritmo de anillo para la elección de coordinadores, y garantiza resiliencia ante fallos, ofreciendo funcionalidad robusta y escalable.",
+        image: concuride,
+        url: "https://github.com/maxogod/ConcuRide",
+        vid: "https://www.youtube.com/watch?v=8ktItIcETTw&ab_channel=MaxoFiuba",
+        technologies: ["Rust"]
+    },
+    {
+        name: "Visita mi github para mas!",
+        description: "",
+        image: gh,
+        url: "https://github.com/maxogod",
+        vid: "",
+        technologies: []
+    },
+]
 
 const english_web_projects = [
     {
@@ -27,14 +100,6 @@ const english_web_projects = [
         url: "https://github.com/maxogod/AlaCarta",
         vid: "",
         technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
-    },
-    {
-        name: "ConcuRide",
-        description: "ConcuRide is a distributed system built in Rust that connects passengers and drivers efficiently using advanced concurrency and distributed techniques. It employs the actor model for message handling, the Ring algorithm for coordinator election, and ensures resilience to failures, providing robust and scalable functionality.",
-        image: concuride,
-        url: "https://github.com/maxogod/ConcuRide",
-        vid: "https://www.youtube.com/watch?v=8ktItIcETTw&ab_channel=MaxoFiuba",
-        technologies: ["Rust"]
     },
     {
         name: "GymChad",
@@ -80,14 +145,6 @@ const spanish_web_projects = [
         technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
     },
     {
-        name: "ConcuRide",
-        description: "ConcuRide es un sistema distribuido desarrollado en Rust que conecta pasajeros y conductores de manera eficiente, utilizando técnicas avanzadas de concurrencia y distribución. Emplea el modelo de actores para la gestión de mensajes, el algoritmo de anillo para la elección de coordinadores, y garantiza resiliencia ante fallos, ofreciendo funcionalidad robusta y escalable.",
-        image: concuride,
-        url: "https://github.com/maxogod/ConcuRide",
-        vid: "https://www.youtube.com/watch?v=8ktItIcETTw&ab_channel=MaxoFiuba",
-        technologies: ["Rust"]
-    },
-    {
         name: "GymChad",
         description: "Sitio web para organizar diferentes actividades de fitness como baile/boxeo y los ejercicios que pertenecen a esas actividades, incluyendo imágenes, descripciones, series/repeticiones, etc.",
         image: gymchad,
@@ -116,7 +173,7 @@ const spanish_web_projects = [
 const english_datasci_projects = [
     {
         name: "Donkey Kong AI",
-        description: "The project focuses on training an AI agent to complete the first level of Donkey Kong using reinforcement learning with the Proximal Policy Optimization (PPO) algorithm. The environment was built in Unity with ML-Agents, and the model was trained using PyTorch. The agent learns to avoid barrels, climb ladders, and rescue the princess through dynamic interaction and a well-designed reward system. Hyperparameter tuning and iterative testing ensured stable and adaptive performance, demonstrating the effectiveness of reinforcement learning in complex game environments.",
+        description: "The project focuses on training an AI agent to complete the first level of Donkey Kong using reinforcement learning with the Proximal Policy Optimization (PPO) algorithm. <br><br> The environment was built in Unity with ML-Agents, and the model was trained using PyTorch. The agent learns to avoid barrels, climb ladders, and rescue the princess through dynamic interaction and a well-designed reward system. Hyperparameter tuning and iterative testing ensured stable and adaptive performance, demonstrating the effectiveness of reinforcement learning in complex game environments.",
         image: donkey,
         url: "https://github.com/maxogod/AI-Donkey-Kong",
         vid: "https://www.youtube.com/watch?v=5XQuDkWKL-M",
@@ -159,7 +216,7 @@ const english_datasci_projects = [
 const spanish_datasci_projects = [
     {
         name: "Donkey Kong AI",
-        description: "El proyecto se centra en entrenar a un agente de IA para completar el primer nivel de Donkey Kong utilizando aprendizaje por refuerzo con el algoritmo de Proximal Policy Optimization (PPO). El entorno se desarrolló en Unity con ML-Agents, y el modelo se entrenó usando PyTorch. El agente aprende a esquivar barriles, subir escaleras y rescatar a la princesa mediante interacción dinámica y un sistema de recompensas bien diseñado. La optimización de hiperparámetros y pruebas iterativas garantizaron un rendimiento estable y adaptativo, demostrando la efectividad del aprendizaje por refuerzo en entornos complejos de videojuegos.",
+        description: "El proyecto se centra en entrenar a un agente de IA para completar el primer nivel de Donkey Kong utilizando aprendizaje por refuerzo con el algoritmo de Proximal Policy Optimization (PPO). <br><br> El entorno se desarrolló en Unity con ML-Agents, y el modelo se entrenó usando PyTorch. El agente aprende a esquivar barriles, subir escaleras y rescatar a la princesa mediante interacción dinámica y un sistema de recompensas bien diseñado. La optimización de hiperparámetros y pruebas iterativas garantizaron un rendimiento estable y adaptativo, demostrando la efectividad del aprendizaje por refuerzo en entornos complejos de videojuegos.",
         image: donkey,
         url: "https://github.com/maxogod/AI-Donkey-Kong",
         vid: "https://www.youtube.com/watch?v=5XQuDkWKL-M",
@@ -318,9 +375,20 @@ const technologyColors = {
 
     // Other
     "Scrum": "bg-yellow-400",
+    "Microservices": "bg-indigo-400",
+    "Kubernetes": "bg-blue-500",
+    "Cloud-Computing": "bg-sky-300",
+    "Datadog": "bg-purple-400",
+    "LLM": "bg-rose-400",
+    "Kong-Gateway": "bg-emerald-400",
+    "Pox": "bg-cyan-400",
+    "Mininet": "bg-cyan-500",
+    "Wireshark": "bg-blue-600",
 }
 
 export {
+    english_sys_projects,
+    spanish_sys_projects,
     english_web_projects,
     spanish_web_projects,
     english_datasci_projects,

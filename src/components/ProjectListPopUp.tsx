@@ -90,14 +90,18 @@ const ProjectThumbnail = ({ project, setExpandImage }:
                             </Tooltip>
                         )
                     }
-                    <Tooltip title={englishMode ? "More info" : "Mas Info"} placement="top" arrow>
-                        <a
-                            target="_blank"
-                            href={project.url}
-                            className="bg-black  p-3 rounded-2xl bg-opacity-60 group">
-                            <FaLink className='group-hover:rotate-180 duration-200' />
-                        </a>
-                    </Tooltip>
+                    {
+                        project.url != '' && (
+                            <Tooltip title={englishMode ? "More info" : "Mas Info"} placement="top" arrow>
+                                <a
+                                    target="_blank"
+                                    href={project.url}
+                                    className="bg-black  p-3 rounded-2xl bg-opacity-60 group">
+                                    <FaLink className='group-hover:rotate-180 duration-200' />
+                                </a>
+                            </Tooltip>
+                        )
+                    }
                 </div>
             </div>
 
@@ -109,9 +113,14 @@ const ProjectThumbnail = ({ project, setExpandImage }:
 
             <h1>{project.name}</h1>
             <hr />
-            <p className="text-xs">{project.description}</p>
+            <p
+                className="text-xs"
+                dangerouslySetInnerHTML={{ __html: project.description }}
+            ></p>
+            { /* Dangerous if descrip is user input */}
 
-        </div>
+
+        </div >
     )
 }
 

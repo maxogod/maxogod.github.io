@@ -11,7 +11,7 @@ type projectStringType = 'web' | 'datasci' | 'games'
 const ProjectsByType = () => {
 
     const { backgroundP2 } = useContext(themeContext)
-    const { projectTitles, webProjects, datasciProjects, gameProjects } = useContext(languageContext)
+    const { projectTitles, sysProjects, webProjects, datasciProjects, gameProjects } = useContext(languageContext)
     const { projectType } = useParams()
 
     const [projectList, setProjectList] = useState<ProjectType[]>([])
@@ -19,7 +19,7 @@ const ProjectsByType = () => {
     useEffect(() => {
         switch (projectType) {
             case 'sys':
-                setProjectList(webProjects)
+                setProjectList(sysProjects)
                 break
             case 'web':
                 setProjectList(webProjects)
