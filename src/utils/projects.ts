@@ -79,7 +79,7 @@ const spanish_web_projects = [
         vid: "",
         technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
     },
-        {
+    {
         name: "ConcuRide",
         description: "ConcuRide es un sistema distribuido desarrollado en Rust que conecta pasajeros y conductores de manera eficiente, utilizando técnicas avanzadas de concurrencia y distribución. Emplea el modelo de actores para la gestión de mensajes, el algoritmo de anillo para la elección de coordinadores, y garantiza resiliencia ante fallos, ofreciendo funcionalidad robusta y escalable.",
         image: concuride,

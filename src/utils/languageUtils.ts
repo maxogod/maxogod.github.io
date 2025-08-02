@@ -46,15 +46,17 @@ const spanishAboutMe = {
 /* PROJECTS */
 
 const englishTitles = {
-    web: 'Web development',
-    datasci: 'Data science',
-    games: 'Games',
+    sys: 'Systems & Infrastructure',
+    web: 'Full-stack & Application Development',
+    datasci: 'Artificial Intelligence & Data Science',
+    games: 'Game Development',
 }
 
 const spanishTitles = {
-    web: 'Desarrollo web',
-    datasci: 'Ciencia de datos',
-    games: 'Juegos',
+    sys: 'Sistemas e Infraestructura',
+    web: 'Desarrollo Full-stack y de Aplicaciones',
+    datasci: 'Inteligencia Artificial y Ciencia de Datos',
+    games: 'Desarrollo de Juegos',
 }
 
 export {

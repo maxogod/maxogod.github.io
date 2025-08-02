@@ -18,6 +18,9 @@ const ProjectsByType = () => {
 
     useEffect(() => {
         switch (projectType) {
+            case 'sys':
+                setProjectList(webProjects)
+                break
             case 'web':
                 setProjectList(webProjects)
                 break
