@@ -20,7 +20,7 @@ const AboutMePopUp = ({ handleTogglePopUp }: { handleTogglePopUp: () => void }) 
 
                 <AboutImageCarrousel />
 
-                <div className='p-2 sm:w-fit'>
+                <div className='p-2 sm:ml-5 sm:w-fit'>
                     <h1 className='font-bold mb-8'>{aboutMeText.title}</h1>
                     <p className='text-md'>
                         {aboutMeText.text}

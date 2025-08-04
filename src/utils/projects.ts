@@ -6,13 +6,14 @@ import routine_manager from "../assets/routine.png";
 import save_the_galaxy from "../assets/save_the_galaxy.png";
 import jazz from "../assets/jazz.jpg";
 import ai from "../assets/ai.png";
-import etl from "../assets/etl.jpg";
-import nlp from "../assets/nlp.jpg";
+import etl from "../assets/etl.png";
+import nlp from "../assets/nlp.png";
 import donkey from "../assets/donkey.jpg";
 import concuride from "../assets/concuride.jpg";
 import udp from "../assets/udp.jpg";
 import classconnect from "../assets/cc.png";
 import firewall from "../assets/firewall.jpg";
+import dl from "../assets/dl.png"
 
 const english_sys_projects = [
     {
@@ -67,6 +68,22 @@ const spanish_sys_projects = [
         technologies: ["Microservices", "Datadog", "Cloud-Computing", "LLM", "Kubernetes", "Kong-Gateway"]
     },
     {
+        name: "Firewall SDN",
+        description: "Solución de Software-Defined Networking (SDN) que implementa un firewall dinámico utilizando POX y Mininet.<br><br>El proyecto sigue una arquitectura modular basada en Docker que separa la lógica de emulación de red del controlador, y está desarrollado en Python 3 (con parches personalizados para compatibilidad con POX).<br><br>Características principales:<br>- Configuración basada en JSON para definir reglas de filtrado por IP, puerto y protocolo.<br>- Control centralizado del tráfico mediante switches OpenFlow gestionados con POX.<br>- Validación de tráfico con Mininet y Wireshark, usando tests automatizados.<br><br>El sistema permite bloquear tráfico HTTP, descartar flujos UDP y limitar la comunicación entre hosts específicos. También aborda desafíos como la migración a Python 3 y pruebas en topologías complejas.",
+        image: firewall,
+        url: "",
+        vid: "",
+        technologies: ["Pox", "Mininet", "Wireshark", "Python"]
+    },
+    {
+        name: "Protocolo RDT sobre UDP",
+        description: "Protocolo confiable de transferencia de archivos construido sobre UDP. El proyecto implementa dos estrategias de recuperación de errores—Stop-and-Wait y Go-Back-N—diseñadas para tolerar pérdidas de paquetes y mantener la integridad de la conexión.<br><br>El servidor tiene una arquitectura asíncrona que soporta múltiples clientes simultáneos, con encabezados personalizados para seguimiento de secuencia y confirmaciones.<br><br>Características principales:<br>- Encabezado de 6 bytes a nivel de aplicación con soporte de secuencia/ACK.<br>- Multiplexado de conexiones con lógica basada en eventos.<br>- Pruebas en Mininet: Go-Back-N fue 2.8× más rápido que Stop-and-Wait bajo 20% de pérdida de paquetes.<br><br>El proyecto se enfocó en construir un protocolo liviano y robusto con buena tolerancia a fallos y análisis de rendimiento en redes emuladas.",
+        image: udp,
+        url: "https://github.com/maxogod/RDT-over-UDP",
+        vid: "",
+        technologies: ["Mininet", "Wireshark", "Python"]
+    },
+    {
         name: "ConcuRide",
         description: "ConcuRide es un sistema distribuido desarrollado en Rust que conecta pasajeros y conductores de manera eficiente, utilizando técnicas avanzadas de concurrencia y distribución. Emplea el modelo de actores para la gestión de mensajes, el algoritmo de anillo para la elección de coordinadores, y garantiza resiliencia ante fallos, ofreciendo funcionalidad robusta y escalable.",
         image: concuride,
@@ -85,6 +102,14 @@ const spanish_sys_projects = [
 ]
 
 const english_web_projects = [
+    {
+        name: "ClassConnect",
+        description: "ClassConnect is a cloud-native educational platform built on a distributed microservices architecture. It features a Kubernetes-based deployment, managed via Infrastructure as Code and automated with CI/CD pipelines. Monitoring is handled through Datadog for full observability. <br><br> The system supports both a React Native mobile app (for teachers and students) and a React web app (for administrators). It includes six microservices developed in Go (Gin Gonic) and Python (FastAPI), each with its own database using Supabase or MongoDB Atlas, all with >75% test coverage. An additional AI microservice powered by Gemini 2.0 Flash enables LLM-based assistance.",
+        image: classconnect,
+        url: "https://github.com/ClassConnect-org",
+        vid: "https://www.youtube.com/watch?v=eZ-74DTI_gA",
+        technologies: ["Microservices", "Datadog", "Cloud-Computing", "LLM", "Kubernetes", "Kong-Gateway"]
+    },
     {
         name: "Truco",
         description: "Online game of the popular argentinian card game Truco with 1vs1 matches, challenges, global ranking and more! Built employing Agile Methodologies.",
@@ -129,6 +154,14 @@ const english_web_projects = [
 
 const spanish_web_projects = [
     {
+        name: "ClassConnect",
+        description: "ClassConnect es una plataforma educativa cloud-native construida sobre una arquitectura distribuida de microservicios. Cuenta con un despliegue en Kubernetes, gestionado mediante Infrastructure as Code y automatizado con pipelines CI/CD. El monitoreo se realiza con Datadog para lograr una observabilidad completa.<br><br>El sistema soporta una aplicación móvil en React Native (para docentes y estudiantes) y una aplicación web en React (para administradores). Incluye seis microservicios desarrollados en Go (Gin Gonic) y Python (FastAPI), cada uno con su propia base de datos utilizando Supabase o MongoDB Atlas, todos con una cobertura de tests superior al 75%. Un microservicio adicional de IA, impulsado por Gemini 2.0 Flash, permite asistencia basada en modelos LLM.",
+        image: classconnect,
+        url: "https://github.com/ClassConnect-org",
+        vid: "https://www.youtube.com/watch?v=eZ-74DTI_gA",
+        technologies: ["Microservices", "Datadog", "Cloud-Computing", "LLM", "Kubernetes", "Kong-Gateway"]
+    },
+    {
         name: "Truco",
         description: "Juego en línea del popular juego de cartas argentino Truco con partidas 1vs1, desafíos, ranking global ¡y más! Desarrollado utilizando metodologías ágiles.",
         image: truco,
@@ -172,6 +205,14 @@ const spanish_web_projects = [
 
 const english_datasci_projects = [
     {
+        name: "Deep Learning - University of Buenos Aires",
+        description: "In the following three projects, different neural network architectures and applications were explored, mostly using only the NumPy library, and occasionally PyTorch.<br><br>The first focused on Hopfield networks, evaluating their memory retrieval capacity under various conditions.<br><br>The second addressed classical classification and regression problems using simple and multilayer perceptrons, Boltzmann machines, convolutional networks, and autoencoders, also including other methods such as simulated annealing and genetic algorithms.<br><br>The third concentrated on Kohonen Self-Organizing Maps (SOM), applied to the representation of geometric distributions, approximate solutions to the traveling salesman problem, and dimensionality reduction for clustering analysis, highlighting their ability to preserve topologies and uncover hidden structures in the data.",
+        image: dl,
+        url: "https://github.com/maxogod/DeepLearning",
+        vid: "",
+        technologies: ["Deep Learning", "Numpy", "Pytorch", "Python"]
+    },
+    {
         name: "Donkey Kong AI",
         description: "The project focuses on training an AI agent to complete the first level of Donkey Kong using reinforcement learning with the Proximal Policy Optimization (PPO) algorithm. <br><br> The environment was built in Unity with ML-Agents, and the model was trained using PyTorch. The agent learns to avoid barrels, climb ladders, and rescue the princess through dynamic interaction and a well-designed reward system. Hyperparameter tuning and iterative testing ensured stable and adaptive performance, demonstrating the effectiveness of reinforcement learning in complex game environments.",
         image: donkey,
@@ -214,6 +255,14 @@ const english_datasci_projects = [
 ]
 
 const spanish_datasci_projects = [
+    {
+        name: "Aprendizaje profundo - Universidad de Buenos Aires",
+        description: "En los tres siguientes proyectos se exploraron distintas arquitecturas y aplicaciones de redes neuronales mayormente utilizando solamente la libreria numpy, y ocacionalmente pytorch.<br><br>El primero se centró en redes de Hopfield, evaluando su capacidad de recuperación de memoria bajo diversas condiciones.<br><br>El segundo abordó problemas clásicos de clasificación y regresión mediante perceptrones simples y multicapa, máquinas de Boltzmann, redes convolucionales y autoencoders, incluyendo también otros métodos como simulated annealing y algoritmos genéticos.<br><br>El tercero se enfocó en redes auto-organizadas de Kohonen (SOM), aplicadas a la representación de distribuciones geométricas, la resolución aproximada del problema del viajero y la reducción de dimensionalidad para análisis de clustering, destacando su capacidad para preservar topologías y descubrir estructuras ocultas en los datos.",
+        image: dl,
+        url: "https://github.com/maxogod/DeepLearning",
+        vid: "",
+        technologies: ["Deep Learning", "Numpy", "Pytorch", "Python"]
+    },
     {
         name: "Donkey Kong AI",
         description: "El proyecto se centra en entrenar a un agente de IA para completar el primer nivel de Donkey Kong utilizando aprendizaje por refuerzo con el algoritmo de Proximal Policy Optimization (PPO). <br><br> El entorno se desarrolló en Unity con ML-Agents, y el modelo se entrenó usando PyTorch. El agente aprende a esquivar barriles, subir escaleras y rescatar a la princesa mediante interacción dinámica y un sistema de recompensas bien diseñado. La optimización de hiperparámetros y pruebas iterativas garantizaron un rendimiento estable y adaptativo, demostrando la efectividad del aprendizaje por refuerzo en entornos complejos de videojuegos.",
@@ -352,12 +401,14 @@ const technologyColors = {
     // Data Sci
     "Machine Learning": "bg-red-300",
     "Reinforcement Learning": "bg-fuchsia-400",
+    "Deep Learning": "bg-purple-500",
     "ScikitLearn": "bg-yellow-500",
     "Pandas": "bg-slate-500",
     "TensorFlow": "bg-orange-400",
     "GoogleColab": "bg-green-300",
     "Pytorch": "bg-orange-500",
     "Conda": "bg-green-500",
+    "Numpy": "bg-yellow-300",
 
     // Languages
     "Python": "bg-blue-500",
