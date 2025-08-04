@@ -25,7 +25,7 @@ const english_sys_projects = [
     },
     {
         name: "SDN Firewall",
-        description: "",
+        description: "Software-Defined Networking (SDN) solution featuring a dynamic firewall built with POX and Mininet.<br><br>The project follows a modular Docker-based architecture that separates network emulation from controller logic, and uses Python 3 (with custom patches for POX compatibility).<br><br>Key features include:<br>- JSON-based configuration for defining IP, port, and protocol filtering rules.<br>- Centralized traffic control over OpenFlow switches via the POX controller.<br>- Automated testing and traffic validation using Mininet and Wireshark.<br><br>The system supports practical scenarios such as blocking HTTP traffic, dropping UDP flows, and restricting communication between specific hosts. It also addresses challenges like Python 3 migration and testing in more complex topologies.",
         image: firewall,
         url: "",
         vid: "",
@@ -33,7 +33,7 @@ const english_sys_projects = [
     },
     {
         name: "RDT protocol over UDP",
-        description: "",
+        description: "Reliable file transfer protocol built over UDP. The project implements two recovery strategies—Stop-and-Wait and Go-Back-N—designed to handle high packet loss and maintain connection integrity.<br><br>The server uses an asynchronous architecture that supports multiple concurrent clients, with custom packet headers for tracking sequence and acknowledgment numbers.<br><br>Key features include:<br>- 6-byte application-layer header with sequence/ACK support.<br>- Connection multiplexing with event-driven server logic.<br>- Mininet-tested: Go-Back-N achieved 2.8× speedup under 20% packet loss.<br><br>The project focused on building a lightweight, robust protocol with strong fault tolerance and real-time performance analysis in emulated networks.",
         image: udp,
         url: "https://github.com/maxogod/RDT-over-UDP",
         vid: "",

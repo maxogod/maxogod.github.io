@@ -25,7 +25,7 @@ const Projects = () => {
     return (
         <div
             id='projects'
-            className={`${backgroundP2} relative w-screen h-screen flex flex-col sm:flex-row sm:flex-wrap justify-center items-center`}>
+            className={`${backgroundP2} relative w-screen h-screen flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-5`}>
 
             <Bubbles />
 
