@@ -18,7 +18,7 @@ const Contact = () => {
     const link = {
         gh: { icon: <FaGithub />, text: 'Github', link: "https://github.com/maxogod" },
         ln: { icon: <FaLinkedin />, text: 'Linkedin', link: "https://www.linkedin.com/in/maximo-utrera/" },
-        em: { icon: <IoMdMail />, text: englishMode ? 'Copy Email' : 'Copiar Email', link: "maxi18wars@gmail.com" },
+        em: { icon: <IoMdMail />, text: englishMode ? 'Copy Email' : 'Copiar Email', link: "maximo.d.utrera@gmail.com" },
         cv: { icon: <IoDocument />, text: 'CV', link: englishMode ? "https://drive.google.com/file/d/1d9GvhNieKARq8_7k2xEvYylxsTE-EVyd/view" : "https://drive.google.com/file/d/1_58iYXLdfU_IgMbOYfXcsvPTgNuFWtk3/view" },
     }
 
@@ -75,3 +75,4 @@ const Contact = () => {
 
 
 export default Contact
+
