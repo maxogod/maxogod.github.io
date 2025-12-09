@@ -1,0 +1,23 @@
+navbarLinks:
+    "Sobre mi": "#about"
+    "Proyectos": "#projects"
+    "Contacto": "#contact"
+
+navbarGoBack: "Volver"
+
+homePage:
+    title: "Hola soy Maxo"
+    subTitle: "Bienvenidos a mi portafolio!"
+    about: "Sobre mi"
+
+aboutMe:
+    title: "Estudiante de Ingenieria Informatica en la Univesidad de Buenos Aires"
+    text: "Hola, mi nombre es Máximo Utrera. Soy estudiante de Ingeniería en Informática en la Universidad de Buenos Aires, actualmente en mi cuarto año de estudios. Con una pasión por el desarrollo de software y una sólida base en varios lenguajes de programación y tecnologías, me he dedicado a perfeccionar mis habilidades a través de cursos académicos, proyectos personales y experiencias profesionales. Estoy comprometido a aplicar este conocimiento para resolver problemas del mundo real y crear soluciones innovadoras."
+
+titles:
+    sys: "Sistemas e Infraestructura"
+    web: "Desarrollo Full-stack y de Aplicaciones"
+    datasci: "Inteligencia Artificial y Ciencia de Datos"
+    games: "Desarrollo de Juegos"
+
+cvLink: "https://drive.google.com/file/d/1_58iYXLdfU_IgMbOYfXcsvPTgNuFWtk3/view"

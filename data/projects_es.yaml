@@ -1,0 +1,160 @@
+sys_projects:
+    - name: "ClassConnect"
+      description: "ClassConnect es una plataforma educativa cloud-native construida sobre una arquitectura distribuida de microservicios. Cuenta con un despliegue en Kubernetes, gestionado mediante Infrastructure as Code y automatizado con pipelines CI/CD. El monitoreo se realiza con Datadog para lograr una observabilidad completa.<br><br>El sistema soporta una aplicación móvil en React Native (para docentes y estudiantes) y una aplicación web en React (para administradores). Incluye seis microservicios desarrollados en Go (Gin Gonic) y Python (FastAPI), cada uno con su propia base de datos utilizando Supabase o MongoDB Atlas, todos con una cobertura de tests superior al 75%. Un microservicio adicional de IA, impulsado por Gemini 2.0 Flash, permite asistencia basada en modelos LLM."
+      image: "classconnect"
+      url: "https://github.com/ClassConnect-org"
+      vid: "https://www.youtube.com/watch?v=MnToP9unGNQ"
+      technologies:
+          [
+              "Microservices",
+              "Datadog",
+              "Cloud-Computing",
+              "LLM",
+              "Kubernetes",
+              "Kong-Gateway",
+          ]
+    - name: "Firewall SDN"
+      description: "Solución de Software-Defined Networking (SDN) que implementa un firewall dinámico utilizando POX y Mininet.<br><br>El proyecto sigue una arquitectura modular basada en Docker que separa la lógica de emulación de red del controlador, y está desarrollado en Python 3 (con parches personalizados para compatibilidad con POX).<br><br>Características principales:<br>- Configuración basada en JSON para definir reglas de filtrado por IP, puerto y protocolo.<br>- Control centralizado del tráfico mediante switches OpenFlow gestionados con POX.<br>- Validación de tráfico con Mininet y Wireshark, usando tests automatizados.<br><br>El sistema permite bloquear tráfico HTTP, descartar flujos UDP y limitar la comunicación entre hosts específicos. También aborda desafíos como la migración a Python 3 y pruebas en topologías complejas."
+      image: "firewall"
+      url: ""
+      vid: ""
+      technologies: ["Pox", "Mininet", "Wireshark", "Python"]
+    - name: "Protocolo RDT sobre UDP"
+      description: "Protocolo confiable de transferencia de archivos construido sobre UDP. El proyecto implementa dos estrategias de recuperación de errores—Stop-and-Wait y Go-Back-N—diseñadas para tolerar pérdidas de paquetes y mantener la integridad de la conexión.<br><br>El servidor tiene una arquitectura asíncrona que soporta múltiples clientes simultáneos, con encabezados personalizados para seguimiento de secuencia y confirmaciones.<br><br>Características principales:<br>- Encabezado de 6 bytes a nivel de aplicación con soporte de secuencia/ACK.<br>- Multiplexado de conexiones con lógica basada en eventos.<br>- Pruebas en Mininet: Go-Back-N fue 2.8× más rápido que Stop-and-Wait bajo 20% de pérdida de paquetes.<br><br>El proyecto se enfocó en construir un protocolo liviano y robusto con buena tolerancia a fallos y análisis de rendimiento en redes emuladas."
+      image: "udp"
+      url: "https://github.com/maxogod/RDT-over-UDP"
+      vid: ""
+      technologies: ["Mininet", "Wireshark", "Python"]
+    - name: "ConcuRide"
+      description: "ConcuRide es un sistema distribuido desarrollado en Rust que conecta pasajeros y conductores de manera eficiente, utilizando técnicas avanzadas de concurrencia y distribución. Emplea el modelo de actores para la gestión de mensajes, el algoritmo de anillo para la elección de coordinadores, y garantiza resiliencia ante fallos, ofreciendo funcionalidad robusta y escalable."
+      image: "concuride"
+      url: "https://github.com/maxogod/ConcuRide"
+      vid: "https://www.youtube.com/watch?v=8ktItIcETTw&ab_channel=MaxoFiuba"
+      technologies: ["Rust"]
+    - name: "Visita mi github para mas!"
+      description: ""
+      image: "gh"
+      url: "https://github.com/maxogod"
+      vid: ""
+      technologies: []
+
+web_projects:
+    - name: "ClassConnect"
+      description: "ClassConnect es una plataforma educativa cloud-native construida sobre una arquitectura distribuida de microservicios. Cuenta con un despliegue en Kubernetes, gestionado mediante Infrastructure as Code y automatizado con pipelines CI/CD. El monitoreo se realiza con Datadog para lograr una observabilidad completa.<br><br>El sistema soporta una aplicación móvil en React Native (para docentes y estudiantes) y una aplicación web en React (para administradores). Incluye seis microservicios desarrollados en Go (Gin Gonic) y Python (FastAPI), cada uno con su propia base de datos utilizando Supabase o MongoDB Atlas, todos con una cobertura de tests superior al 75%. Un microservicio adicional de IA, impulsado por Gemini 2.0 Flash, permite asistencia basada en modelos LLM."
+      image: "classconnect"
+      url: "https://github.com/ClassConnect-org"
+      vid: "https://www.youtube.com/watch?v=eZ-74DTI_gA"
+      technologies:
+          [
+              "Microservices",
+              "Datadog",
+              "Cloud-Computing",
+              "LLM",
+              "Kubernetes",
+              "Kong-Gateway",
+          ]
+    - name: "Truco"
+      description: "Juego en línea del popular juego de cartas argentino Truco con partidas 1vs1, desafíos, ranking global ¡y más! Desarrollado utilizando metodologías ágiles."
+      image: "truco"
+      url: "https://github.com/maxogod/Truco"
+      vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY"
+      technologies:
+          ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
+    - name: "AlaCarta"
+      description: "Sitio web de backoffice para restaurantes para gestionar su menú, pedidos, mesas, ver información estadistica de productos y más. Desarrollado usando TypeScript y el stack MERN."
+      image: "alacarta"
+      url: "https://github.com/maxogod/AlaCarta"
+      vid: ""
+      technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
+    - name: "GymChad"
+      description: "Sitio web para organizar diferentes actividades de fitness como baile/boxeo y los ejercicios que pertenecen a esas actividades, incluyendo imágenes, descripciones, series/repeticiones, etc."
+      image: "gymchad"
+      url: "https://github.com/maxogod/gymchad-app"
+      vid: ""
+      technologies: ["MongoDB", "Springboot", "Angular", "TypeScript", "Java"]
+    - name: "Routine Manager"
+      description: "Organizador personal para rutinas diarias, con la capacidad de crear, editar, eliminar y visualizar rutinas. Desarrollado usando Django, React y APIs de Google."
+      image: "routine_manager"
+      url: "https://github.com/maxogod/Routine-Manager"
+      vid: "https://www.youtube.com/watch?v=hAaZC-RAX24"
+      technologies: ["MySql", "Django", "React", "Python", "JavaScript"]
+    - name: "Visita mi github para mas!"
+      description: ""
+      image: "gh"
+      url: "https://github.com/maxogod"
+      vid: ""
+      technologies: []
+
+datasci_projects:
+    - name: "Aprendizaje profundo - Universidad de Buenos Aires"
+      description: "En los tres siguientes proyectos se exploraron distintas arquitecturas y aplicaciones de redes neuronales mayormente utilizando solamente la libreria numpy, y ocacionalmente pytorch.<br><br>El primero se centró en redes de Hopfield, evaluando su capacidad de recuperación de memoria bajo diversas condiciones.<br><br>El segundo abordó problemas clásicos de clasificación y regresión mediante perceptrones simples y multicapa, máquinas de Boltzmann, redes convolucionales y autoencoders, incluyendo también otros métodos como simulated annealing y algoritmos genéticos.<br><br>El tercero se enfocó en redes auto-organizadas de Kohonen (SOM), aplicadas a la representación de distribuciones geométricas, la resolución aproximada del problema del viajero y la reducción de dimensionalidad para análisis de clustering, destacando su capacidad para preservar topologías y descubrir estructuras ocultas en los datos."
+      image: "dl"
+      url: "https://github.com/maxogod/DeepLearning"
+      vid: ""
+      technologies: ["Deep Learning", "Numpy", "Pytorch", "Python"]
+    - name: "Donkey Kong AI"
+      description: "El proyecto se centra en entrenar a un agente de IA para completar el primer nivel de Donkey Kong utilizando aprendizaje por refuerzo con el algoritmo de Proximal Policy Optimization (PPO). <br><br> El entorno se desarrolló en Unity con ML-Agents, y el modelo se entrenó usando PyTorch. El agente aprende a esquivar barriles, subir escaleras y rescatar a la princesa mediante interacción dinámica y un sistema de recompensas bien diseñado. La optimización de hiperparámetros y pruebas iterativas garantizaron un rendimiento estable y adaptativo, demostrando la efectividad del aprendizaje por refuerzo en entornos complejos de videojuegos."
+      image: "donkey"
+      url: "https://github.com/maxogod/AI-Donkey-Kong"
+      vid: "https://www.youtube.com/watch?v=5XQuDkWKL-M"
+      technologies: ["Unity", "Pytorch", "Conda", "Reinforcement Learning"]
+    - name: "Análisis y Predicción de Precios de Propiedades"
+      description: "Se utilizó un conjunto de datos de propiedades reales en Buenos Aires extraído con BigQuery. Este proyecto constó de 4 partes principales: preprocesamiento, clusterización y análisis, clasificación de precios de propiedades (bajo/medio/alto), y regresión (predicción) del precio de la propiedad con diferentes modelos de ML. Algunos de los modelos utilizados fueron Random Forest, XGBoost, árboles de decisión y KNN."
+      image: "ai"
+      url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP1/7506R_TP1_GRUPO02_REPORTE.pdf"
+      vid: ""
+      technologies:
+          ["Machine Learning", "Python", "ScikitLearn", "Pandas", "GoogleColab"]
+    - name: "Procesamiento de Lenguaje Natural"
+      description: "[Competencia de Kaggle] Se realizo un análisis de sentimientos de un conjunto de datos de reseñas de películas y se crearon diferentes modelos de ML para determinar si una muestra es positiva o negativa. Estos modelos incluyeron Redes Neuronales, Ensamblajes, XGBoost, Random Forest y Naive Bayes."
+      image: "nlp"
+      url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP2/7506R_TP2_GRUPO02_REPORTE.pdf"
+      vid: ""
+      technologies:
+          [
+              "Machine Learning",
+              "Python",
+              "TensorFlow",
+              "ScikitLearn",
+              "Pandas",
+              "GoogleColab",
+          ]
+    - name: "Extracción, Transformación y Carga de Datos Inmobiliarios"
+      description: "Se extrajeron datos inmobiliarios de un conjunto de datos de una competencia de Kaggle con más de un millón de registros, fueron procesados limpiando y preparándolos para ser almacenados en una base de datos relacional, y fueron cargados en una base de datos normalizada en BCNF (Boyce-Codd)."
+      image: "etl"
+      url: "https://github.com/maxogod/ETL-Real-Estate/blob/main/informe.pdf"
+      vid: ""
+      technologies: ["Python", "GoogleColab", "Pandas", "SQL"]
+    - name: "Visita mi github para mas!"
+      description: ""
+      image: "gh"
+      url: "https://github.com/maxogod"
+      vid: ""
+      technologies: []
+
+game_projects:
+    - name: "Jazz Jackrabbit 2 Remake"
+      description: "Una emocionante reinvención del clásico juego de plataformas, ahora con partidas en línea de hasta 8 jugadores. Enfréntate en frenéticas batallas con personajes icónicos como Jazz, Spaz y Lori en varios mapas llenos de acción. Disfruta de una variedad de armas, objetos especiales como zanahorias de invencibilidad y un editor de mapas personalizado para una experiencia de juego única e inmersiva. Desarrollado desde cero (sin motores de juego de terceros) usando C++ y SDL2."
+      image: "jazz"
+      url: "https://atusgames.github.io/#/jazz-jackrabbit-2-remake"
+      vid: "https://www.youtube.com/watch?v=yL4jmEFELbI"
+      technologies: ["Scrum", "C++", "SDL2"]
+    - name: "Truco"
+      description: "Juego en línea del popular juego de cartas argentino Truco con partidas 1vs1, desafíos, ranking global ¡y más! Desarrollado utilizando metodologías ágiles."
+      image: "truco"
+      url: "https://github.com/maxogod/Truco"
+      vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY"
+      technologies:
+          ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
+    - name: "Save The Galaxy"
+      description: "Una emocionante aventura en la que el jugador asume el rol del salvador de la galaxia, luchando contra un ejército de invasores alienígenas. Las naves enemigas se vuelven más fuertes y rápidas a medida que avanza la invasión. Si el jugador no logra repeler a los alienígenas, colonizarán la galaxia, y el mismo destino le espera si el jugador perece en el intento."
+      image: "save_the_galaxy"
+      url: "https://maxogod.itch.io/save-the-galaxy"
+      vid: "https://www.youtube.com/watch?v=u-lp5ocy8yI"
+      technologies: ["Godot"]
+    - name: "Visita mi github para mas!"
+      description: ""
+      image: "gh"
+      url: "https://github.com/maxogod"
+      vid: ""
+      technologies: []

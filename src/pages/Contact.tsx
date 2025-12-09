@@ -9,6 +9,7 @@ import { IoMdMail } from "react-icons/io";
 import { IoDocument } from "react-icons/io5";
 import { toast } from 'react-toastify';
 import { languageContext } from "../context/languageContext";
+import { englishCvLink, spanishCvLink } from "../utils/languageUtils";
 
 const Contact = () => {
 
@@ -19,7 +20,7 @@ const Contact = () => {
         gh: { icon: <FaGithub />, text: 'Github', link: "https://github.com/maxogod" },
         ln: { icon: <FaLinkedin />, text: 'Linkedin', link: "https://www.linkedin.com/in/maximo-utrera/" },
         em: { icon: <IoMdMail />, text: englishMode ? 'Copy Email' : 'Copiar Email', link: "maximo.d.utrera@gmail.com" },
-        cv: { icon: <IoDocument />, text: 'CV', link: englishMode ? "https://drive.google.com/file/d/1d9GvhNieKARq8_7k2xEvYylxsTE-EVyd/view" : "https://drive.google.com/file/d/1_58iYXLdfU_IgMbOYfXcsvPTgNuFWtk3/view" },
+        cv: { icon: <IoDocument />, text: 'CV', link: englishMode ? englishCvLink : spanishCvLink },
     }
 
     const copyToClipboard = (text: string) => {
