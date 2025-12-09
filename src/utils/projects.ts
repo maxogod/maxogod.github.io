@@ -21,29 +21,9 @@ const spanishDatasciProjects = projectsEs.datasci_projects || [];
 const englishGameProjects = projectsEn.game_projects || [];
 const spanishGameProjects = projectsEs.game_projects || [];
 
-// Import images dynamically based on image names
-const imageImports: { [key: string]: string } = {
-    gh: new URL("../assets/gh.png", import.meta.url).href,
-    truco: new URL("../assets/truco.jpeg", import.meta.url).href,
-    alacarta: new URL("../assets/alacarta.png", import.meta.url).href,
-    gymchad: new URL("../assets/gymchad.png", import.meta.url).href,
-    routine_manager: new URL("../assets/routine.png", import.meta.url).href,
-    save_the_galaxy: new URL("../assets/save_the_galaxy.png", import.meta.url).href,
-    jazz: new URL("../assets/jazz.jpg", import.meta.url).href,
-    ai: new URL("../assets/ai.png", import.meta.url).href,
-    etl: new URL("../assets/etl.png", import.meta.url).href,
-    nlp: new URL("../assets/nlp.png", import.meta.url).href,
-    donkey: new URL("../assets/donkey.jpg", import.meta.url).href,
-    concuride: new URL("../assets/concuride.jpg", import.meta.url).href,
-    udp: new URL("../assets/udp.jpg", import.meta.url).href,
-    classconnect: new URL("../assets/cc.png", import.meta.url).href,
-    firewall: new URL("../assets/firewall.jpg", import.meta.url).href,
-    dl: new URL("../assets/dl.png", import.meta.url).href
-};
-
-// Function to resolve image paths
-const resolveImage = (imageName: string) => {
-    return imageImports[imageName] || imageImports.gh; // fallback to gh if not found
+// Function to resolve image paths from config
+const resolveImage = (imagePath: string) => {
+    return new URL(`../${imagePath}`, import.meta.url).href;
 };
 
 // Process projects to include resolved images

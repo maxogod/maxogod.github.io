@@ -1,7 +1,7 @@
 sys_projects:
     - name: "ClassConnect"
       description: "ClassConnect is a cloud-native educational platform built on a distributed microservices architecture. It features a Kubernetes-based deployment, managed via Infrastructure as Code and automated with CI/CD pipelines. Monitoring is handled through Datadog for full observability. <br><br> The system supports both a React Native mobile app (for teachers and students) and a React web app (for administrators). It includes six microservices developed in Go (Gin Gonic) and Python (FastAPI), each with its own database using Supabase or MongoDB Atlas, all with >75% test coverage. An additional AI microservice powered by Gemini 2.0 Flash enables LLM-based assistance."
-      image: "classconnect"
+      image: "assets/cc.png"
       url: "https://github.com/ClassConnect-org"
       vid: "https://www.youtube.com/watch?v=MnToP9unGNQ"
       technologies:
@@ -15,25 +15,25 @@ sys_projects:
           ]
     - name: "SDN Firewall"
       description: "Software-Defined Networking (SDN) solution featuring a dynamic firewall built with POX and Mininet.<br><br>The project follows a modular Docker-based architecture that separates network emulation from controller logic, and uses Python 3 (with custom patches for POX compatibility).<br><br>Key features include:<br>- JSON-based configuration for defining IP, port, and protocol filtering rules.<br>- Centralized traffic control over OpenFlow switches via the POX controller.<br>- Automated testing and traffic validation using Mininet and Wireshark.<br><br>The system supports practical scenarios such as blocking HTTP traffic, dropping UDP flows, and restricting communication between specific hosts. It also addresses challenges like Python 3 migration and testing in more complex topologies."
-      image: "firewall"
+      image: "assets/firewall.jpg"
       url: ""
       vid: ""
       technologies: ["Pox", "Mininet", "Wireshark", "Python"]
     - name: "RDT protocol over UDP"
       description: "Reliable file transfer protocol built over UDP. The project implements two recovery strategies—Stop-and-Wait and Go-Back-N—designed to handle high packet loss and maintain connection integrity.<br><br>The server uses an asynchronous architecture that supports multiple concurrent clients, with custom packet headers for tracking sequence and acknowledgment numbers.<br><br>Key features include:<br>- 6-byte application-layer header with sequence/ACK support.<br>- Connection multiplexing with event-driven server logic.<br>- Mininet-tested: Go-Back-N achieved 2.8× speedup under 20% packet loss.<br><br>The project focused on building a lightweight, robust protocol with strong fault tolerance and real-time performance analysis in emulated networks."
-      image: "udp"
+      image: "assets/udp.jpg"
       url: "https://github.com/maxogod/RDT-over-UDP"
       vid: ""
       technologies: ["Mininet", "Wireshark", "Python"]
     - name: "ConcuRide"
       description: "ConcuRide is a distributed system built in Rust that connects passengers and drivers efficiently using advanced concurrency and distributed techniques. It employs the actor model for message handling, the Ring algorithm for coordinator election, and ensures resilience to failures, providing robust and scalable functionality."
-      image: "concuride"
+      image: "assets/concuride.jpg"
       url: "https://github.com/maxogod/ConcuRide"
       vid: "https://www.youtube.com/watch?v=8ktItIcETTw&ab_channel=MaxoFiuba"
       technologies: ["Rust"]
     - name: "Check out my github for more!"
       description: ""
-      image: "gh"
+      image: "assets/gh.png"
       url: "https://github.com/maxogod"
       vid: ""
       technologies: []
@@ -41,7 +41,7 @@ sys_projects:
 web_projects:
     - name: "ClassConnect"
       description: "ClassConnect is a cloud-native educational platform built on a distributed microservices architecture. It features a Kubernetes-based deployment, managed via Infrastructure as Code and automated with CI/CD pipelines. Monitoring is handled through Datadog for full observability. <br><br> The system supports both a React Native mobile app (for teachers and students) and a React web app (for administrators). It includes six microservices developed in Go (Gin Gonic) and Python (FastAPI), each with its own database using Supabase or MongoDB Atlas, all with >75% test coverage. An additional AI microservice powered by Gemini 2.0 Flash enables LLM-based assistance."
-      image: "classconnect"
+      image: "assets/cc.png"
       url: "https://github.com/ClassConnect-org"
       vid: "https://www.youtube.com/watch?v=eZ-74DTI_gA"
       technologies:
@@ -55,32 +55,32 @@ web_projects:
           ]
     - name: "Truco"
       description: "Online game of the popular argentinian card game Truco with 1vs1 matches, challenges, global ranking and more! Built employing Agile Methodologies."
-      image: "truco"
+      image: "assets/truco.jpeg"
       url: "https://github.com/maxogod/Truco"
       vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY"
       technologies:
           ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
     - name: "AlaCarta"
       description: "Backoffice website for restaurants to manage their menu, orders, tables, see product insights, and more. Developed using TypeScript and the MERN stack."
-      image: "alacarta"
+      image: "assets/alacarta.png"
       url: "https://github.com/maxogod/AlaCarta"
       vid: ""
       technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
     - name: "GymChad"
       description: "Website to organize different fitness activities such as dancing/boxing and the exercises that belong to those activities, including images, descriptions, sets/reps, etc."
-      image: "gymchad"
+      image: "assets/gymchad.png"
       url: "https://github.com/maxogod/gymchad-app"
       vid: ""
       technologies: ["MongoDB", "Springboot", "Angular", "TypeScript", "Java"]
     - name: "Routine Manager"
       description: "Personal organizer for daily routines, with the ability to create, edit, delete, and visualize routines. Developed using Django, React and Google APIs."
-      image: "routine_manager"
+      image: "assets/routine.png"
       url: "https://github.com/maxogod/Routine-Manager"
       vid: "https://www.youtube.com/watch?v=hAaZC-RAX24"
       technologies: ["MySql", "Django", "React", "Python", "JavaScript"]
     - name: "Check out my github for more!"
       description: ""
-      image: "gh"
+      image: "assets/gh.png"
       url: "https://github.com/maxogod"
       vid: ""
       technologies: []
@@ -88,26 +88,26 @@ web_projects:
 datasci_projects:
     - name: "Deep Learning - University of Buenos Aires"
       description: "In the following three projects, different neural network architectures and applications were explored, mostly using only the NumPy library, and occasionally PyTorch.<br><br>The first focused on Hopfield networks, evaluating their memory retrieval capacity under various conditions.<br><br>The second addressed classical classification and regression problems using simple and multilayer perceptrons, Boltzmann machines, convolutional networks, and autoencoders, also including other methods such as simulated annealing and genetic algorithms.<br><br>The third concentrated on Kohonen Self-Organizing Maps (SOM), applied to the representation of geometric distributions, approximate solutions to the traveling salesman problem, and dimensionality reduction for clustering analysis, highlighting their ability to preserve topologies and uncover hidden structures in the data."
-      image: "dl"
+      image: "assets/dl.png"
       url: "https://github.com/maxogod/DeepLearning"
       vid: ""
       technologies: ["Deep Learning", "Numpy", "Pytorch", "Python"]
     - name: "Donkey Kong AI"
       description: "The project focuses on training an AI agent to complete the first level of Donkey Kong using reinforcement learning with the Proximal Policy Optimization (PPO) algorithm. <br><br> The environment was built in Unity with ML-Agents, and the model was trained using PyTorch. The agent learns to avoid barrels, climb ladders, and rescue the princess through dynamic interaction and a well-designed reward system. Hyperparameter tuning and iterative testing ensured stable and adaptive performance, demonstrating the effectiveness of reinforcement learning in complex game environments."
-      image: "donkey"
+      image: "assets/donkey.jpg"
       url: "https://github.com/maxogod/AI-Donkey-Kong"
       vid: "https://www.youtube.com/watch?v=5XQuDkWKL-M"
       technologies: ["Unity", "Pytorch", "Conda", "Reinforcement Learning"]
     - name: "Property Price Analysis & Prediction"
       description: "Used a dataset of real properties in Buenos Aires extracted with BigQuery. This project consisted of 4 main parts: Pre-processing, Clusterization & analysis, Classification of property prices (low/mid/high), Regression (prediction) of property price with different ML models. Some of the used models were Random Forest, XGBoost, Decision Trees, KNN."
-      image: "ai"
+      image: "assets/ai.png"
       url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP1/7506R_TP1_GRUPO02_REPORTE.pdf"
       vid: ""
       technologies:
           ["Machine Learning", "Python", "ScikitLearn", "Pandas", "GoogleColab"]
     - name: "Natural Languaje Processing"
       description: "[Kaggle Competition] Made a sentiment analysis of a movie reviews dataset and made different ML models to determine whether a sample is positive or negative. This models included Neural Networks, Ensembles, XGBoosts, Random Forests and Naive Bayes."
-      image: "nlp"
+      image: "assets/nlp.png"
       url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP2/7506R_TP2_GRUPO02_REPORTE.pdf"
       vid: ""
       technologies:
@@ -121,13 +121,13 @@ datasci_projects:
           ]
     - name: "Extract, Transform & Load Real Estate Data"
       description: "Extracted real estate data from a kaggle competition dataset with more than a million registers, processed it by cleaning and preparing it to be stored in a relational database, and loaded it into a BCNF (Boyce-Codd) normalized database."
-      image: "etl"
+      image: "assets/etl.png"
       url: "https://github.com/maxogod/ETL-Real-Estate/blob/main/informe.pdf"
       vid: ""
       technologies: ["Python", "GoogleColab", "Pandas", "SQL"]
     - name: "Check out my github for more!"
       description: ""
-      image: "gh"
+      image: "assets/gh.png"
       url: "https://github.com/maxogod"
       vid: ""
       technologies: []
@@ -135,26 +135,26 @@ datasci_projects:
 game_projects:
     - name: "Jazz Jackrabbit 2 Remake"
       description: "An exciting reinvention of the classic platformer game, now with online matches of up to 8 players. Have frenetic face-offs with iconic characters like Jazz, Spaz, and Lori in various action-packed maps. Enjoy a variety of weapons, special items like invincibility carrots, and a custom map editor for a unique and immersive gaming experience. Developed from scratch (no 3rd-party game engines) using C++ and SDL2."
-      image: "jazz"
+      image: "assets/jazz.jpg"
       url: "https://atusgames.github.io/#/jazz-jackrabbit-2-remake"
       vid: "https://www.youtube.com/watch?v=yL4jmEFELbI"
       technologies: ["Scrum", "C++", "SDL2"]
     - name: "Truco"
       description: "Online game of the popular argentinian card game Truco with 1vs1 matches, challenges, global ranking and more! Built employing Agile Methodologies."
-      image: "truco"
+      image: "assets/truco.jpeg"
       url: "https://github.com/maxogod/Truco"
       vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY"
       technologies:
           ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
     - name: "Save The Galaxy"
       description: "A thrilling adventure where the player takes on the role of the savior of the galaxy, fighting against an army of alien invaders. The enemy ships grow stronger and faster as the invasion progresses. If the player fails to fend off the aliens, they will colonize the galaxy, and the same fate awaits if the player perishes in the attempt."
-      image: "save_the_galaxy"
+      image: "assets/save_the_galaxy.png"
       url: "https://maxogod.itch.io/save-the-galaxy"
       vid: "https://www.youtube.com/watch?v=u-lp5ocy8yI"
       technologies: ["Godot"]
     - name: "Check out my github for more!"
       description: ""
-      image: "gh"
+      image: "assets/gh.png"
       url: "https://github.com/maxogod"
       vid: ""
       technologies: []
