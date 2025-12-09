@@ -60,6 +60,12 @@ web_projects:
       vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY"
       technologies:
           ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
+    - name: "JoinTravel"
+      description: "JoinTravel es una plataforma diseñada para agilizar el proceso de organizar y gestionar planes de viaje en grupo, incluyendo características de chat y asistente-agente. <br><br> La plataforma fue construida utilizando la metodología ágil Scrum, para garantizar iteraciones rápidas, retroalimentación continua y la participación del equipo en cada etapa del proyecto. La gestión de riesgos y otros artefactos administrativos se manejan para documentar decisiones clave y mantener informados a los interesados."
+      image: "assets/jointravel.jpeg"
+      url: "https://github.com/JoinTravel-org"
+      vid: "https://youtu.be/YyvmYDT34oE"
+      technologies: ["Scrum", "Node", "Express", "React", "MongoDB"]
     - name: "AlaCarta"
       description: "Sitio web de backoffice para restaurantes para gestionar su menú, pedidos, mesas, ver información estadistica de productos y más. Desarrollado usando TypeScript y el stack MERN."
       image: "assets/alacarta.png"
