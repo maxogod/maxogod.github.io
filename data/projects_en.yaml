@@ -13,6 +13,19 @@ sys_projects:
               "Kubernetes",
               "Kong-Gateway",
           ]
+    - name: "Distributed Sales Analysis System"
+      description: "Fault-tolerant distributed system designed to process and analyze large-scale transaction data.<br><br>The architecture is based on a message-driven pipeline using RabbitMQ, where independent worker nodes process data in stages, enabling horizontal scalability and high throughput.<br><br>Key features include:<br>- End-to-end distributed data pipelines for filtering, aggregation, ranking, and joins.<br>- Strong fault tolerance via deferred ACKs, disk persistence, idempotent messages, and duplicate handling.<br>- Automatic node recovery. <br>- Robustness, consistency, and resilience under partial and catastrophic failures."
+      image: "assets/distro.jpg"
+      url: "https://github.com/maxogod/distributed-processing-pipeline"
+      vid: "https://youtu.be/L9Zhzpqamks"
+      technologies:
+          [
+              "Distributed Systems",
+              "RabbitMQ",
+              "Docker",
+              "Go",
+              "Python",
+          ]
     - name: "SDN Firewall"
       description: "Software-Defined Networking (SDN) solution featuring a dynamic firewall built with POX and Mininet.<br><br>The project follows a modular Docker-based architecture that separates network emulation from controller logic, and uses Python 3 (with custom patches for POX compatibility).<br><br>Key features include:<br>- JSON-based configuration for defining IP, port, and protocol filtering rules.<br>- Centralized traffic control over OpenFlow switches via the POX controller.<br>- Automated testing and traffic validation using Mininet and Wireshark.<br><br>The system supports practical scenarios such as blocking HTTP traffic, dropping UDP flows, and restricting communication between specific hosts. It also addresses challenges like Python 3 migration and testing in more complex topologies."
       image: "assets/firewall.jpg"

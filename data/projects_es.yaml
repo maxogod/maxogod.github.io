@@ -13,6 +13,19 @@ sys_projects:
               "Kubernetes",
               "Kong-Gateway",
           ]
+    - name: "Sistema Distribuido de Análisis de Ventas"
+      description: "Sistema distribuido tolerante a fallos diseñado para procesar y analizar grandes volúmenes de datos transaccionales.<br><br>La arquitectura se basa en un pipeline orientado a mensajes utilizando RabbitMQ, donde nodos trabajadores independientes procesan los datos por etapas, habilitando escalabilidad horizontal y alto rendimiento.<br><br>Las principales características incluyen:<br>- Pipelines distribuidos de extremo a extremo para filtrado, agregación, ranking y joins.<br>- Alta tolerancia a fallos mediante ACKs diferidos, persistencia en disco, mensajes idempotentes y manejo de duplicados.<br>- Recuperación automática de nodos.<br>- Robustez, consistencia y resiliencia frente a fallas parciales y catastróficas."
+      image: "assets/distro.jpg"
+      url: "https://github.com/maxogod/distributed-processing-pipeline"
+      vid: "https://youtu.be/L9Zhzpqamks"
+      technologies:
+          [
+              "Distributed Systems",
+              "RabbitMQ",
+              "Docker",
+              "Go",
+              "Python",
+          ]
     - name: "Firewall SDN"
       description: "Solución de Software-Defined Networking (SDN) que implementa un firewall dinámico utilizando POX y Mininet.<br><br>El proyecto sigue una arquitectura modular basada en Docker que separa la lógica de emulación de red del controlador, y está desarrollado en Python 3 (con parches personalizados para compatibilidad con POX).<br><br>Características principales:<br>- Configuración basada en JSON para definir reglas de filtrado por IP, puerto y protocolo.<br>- Control centralizado del tráfico mediante switches OpenFlow gestionados con POX.<br>- Validación de tráfico con Mininet y Wireshark, usando tests automatizados.<br><br>El sistema permite bloquear tráfico HTTP, descartar flujos UDP y limitar la comunicación entre hosts específicos. También aborda desafíos como la migración a Python 3 y pruebas en topologías complejas."
       image: "assets/firewall.jpg"

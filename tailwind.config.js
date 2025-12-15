@@ -68,7 +68,9 @@ export default {
         'bg-emerald-400',
         'bg-cyan-400',
         'bg-cyan-500',
-        'bg-blue-600'
+        'bg-blue-600',
+        "bg-orange-300",
+        "bg-lime-400",
     ]
 }
 

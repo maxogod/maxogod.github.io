@@ -42,3 +42,6 @@
 "Pox": "bg-cyan-400"
 "Mininet": "bg-cyan-500"
 "Wireshark": "bg-blue-600"
+"Docker": "bg-blue-400"
+"RabbitMQ": "bg-orange-300"
+"Distributed Systems": "bg-lime-400"
