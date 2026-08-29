@@ -1,15 +1,15 @@
-import yaml from 'js-yaml';
-import { ProjectsData } from '../@types/ProjectType';
+import { load } from 'js-yaml';
+import ProjectType, { ProjectsData } from '../@types/ProjectType';
 import projectsEnYaml from '../../data/projects_en.yaml?raw';
 import projectsEsYaml from '../../data/projects_es.yaml?raw';
 import technologyColorsYaml from '../../data/technology_colors.yaml?raw';
 
 // Load project data
-const projectsEn: ProjectsData = yaml.load(projectsEnYaml) as ProjectsData;
-const projectsEs: ProjectsData = yaml.load(projectsEsYaml) as ProjectsData;
+const projectsEn: ProjectsData = load(projectsEnYaml) as ProjectsData;
+const projectsEs: ProjectsData = load(projectsEsYaml) as ProjectsData;
 
 // Load technology colors
-export const technologyColors: { [key: string]: string } = yaml.load(technologyColorsYaml) as { [key: string]: string };
+export const technologyColors: { [key: string]: string } = load(technologyColorsYaml) as { [key: string]: string };
 
 // Extract project arrays
 const englishSysProjects = projectsEn.sys_projects || [];
@@ -27,7 +27,7 @@ const resolveImage = (imagePath: string) => {
 };
 
 // Process projects to include resolved images
-const processProjects = (projects: any[]) => {
+const processProjects = (projects: ProjectType[]): ProjectType[] => {
     return projects.map(project => ({
         ...project,
         image: resolveImage(project.image)

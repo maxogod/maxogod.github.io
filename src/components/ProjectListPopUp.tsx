@@ -25,7 +25,7 @@ const ProjectListPopUp = (
     return (
         <>
             {expandImage !== '' && (
-                <div className="z-20 w-full h-full bg-black bg-opacity-80 fixed top-0 left-0 flex justify-center items-center">
+                <div className="z-20 w-full h-full bg-black/80 fixed top-0 left-0 flex justify-center items-center">
                     <div className="relative">
                         <img src={expandImage} alt={expandImage} className="w-96 sm:w-[35rem] aspect-auto object-cover rounded-xl" />
                         <LuSwords
@@ -35,7 +35,7 @@ const ProjectListPopUp = (
                 </div>
             )}
             <div className='w-screen h-screen fixed p-2 py-16 sm:p-16'>
-                <div className={`${popUpColor} rounded-md bg-opacity-80
+                <div className={`${popUpColor} rounded-md
             overflow-y-hidden px-3 py-12 sm:p-10 w-full h-full`}>
                     <h1 className="-mt-5 mb-2 text-2xl">{title}</h1>
 
@@ -67,7 +67,7 @@ const ProjectThumbnail = ({ project, setExpandImage }:
     }, [project.image])
 
     return (
-        <div className='w-60 sm:72 md:96 h-full overflow-y-scroll rounded-2xl p-4 bg-opacity-20 bg-slate-400'>
+        <div className='w-60 sm:72 md:96 h-full overflow-y-scroll rounded-2xl p-4 bg-slate-400/20'>
 
             <div className="w-full relative">
                 {!loading && <img src={project.image} alt={project.name + ' image'}
@@ -84,7 +84,7 @@ const ProjectThumbnail = ({ project, setExpandImage }:
                                 <a
                                     target="_blank"
                                     href={project.vid}
-                                    className="bg-black p-3 rounded-2xl bg-opacity-60 group">
+                                    className="bg-black/60 p-3 rounded-2xl group">
                                     <MdVideoLibrary className='group-hover:rotate-[360deg] duration-500' />
                                 </a>
                             </Tooltip>
@@ -96,7 +96,7 @@ const ProjectThumbnail = ({ project, setExpandImage }:
                                 <a
                                     target="_blank"
                                     href={project.url}
-                                    className="bg-black  p-3 rounded-2xl bg-opacity-60 group">
+                                    className="bg-black/60 p-3 rounded-2xl group">
                                     <FaLink className='group-hover:rotate-180 duration-200' />
                                 </a>
                             </Tooltip>

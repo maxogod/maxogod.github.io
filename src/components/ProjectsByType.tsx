@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { themeContext } from "../context/themeContext"
 import Bubbles from "./Bubbles"
 import { useParams } from "react-router-dom"
 import { languageContext } from "../context/languageContext"
 import ProjectListPopUp from "./ProjectListPopUp"
 import ProjectType from "../@types/ProjectType"
+import { ProjectTitles } from "../utils/languageUtils"
 
-type projectStringType = 'web' | 'datasci' | 'games'
+type projectStringType = keyof ProjectTitles
 
 const ProjectsByType = () => {
 
@@ -14,26 +15,26 @@ const ProjectsByType = () => {
     const { projectTitles, sysProjects, webProjects, datasciProjects, gameProjects } = useContext(languageContext)
     const { projectType } = useParams()
 
-    const [projectList, setProjectList] = useState<ProjectType[]>([])
-
-    useEffect(() => {
-        switch (projectType) {
-            case 'sys':
-                setProjectList(sysProjects)
-                break
-            case 'web':
-                setProjectList(webProjects)
-                break
-            case 'datasci':
-                setProjectList(datasciProjects)
-                break
-            case 'games':
-                setProjectList(gameProjects)
-                break
-            default:
-                break
-        }
-    }, [webProjects, datasciProjects, gameProjects])
+    // Derived straight from the route param and the language context, so there is
+    // no effect writing this into state on every render pass.
+    let projectList: ProjectType[]
+    switch (projectType) {
+        case 'sys':
+            projectList = sysProjects
+            break
+        case 'web':
+            projectList = webProjects
+            break
+        case 'datasci':
+            projectList = datasciProjects
+            break
+        case 'games':
+            projectList = gameProjects
+            break
+        default:
+            projectList = []
+            break
+    }
 
     return (
         <div

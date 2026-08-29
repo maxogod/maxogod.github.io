@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react'
+import type { KeyboardEvent as ReactKeyboardEvent } from 'react'
 import maxo from '../assets/maxo.png'
 // import pfp from '../assets/pfp.jpg'
 import { languageContext } from '../context/languageContext'
@@ -29,8 +30,8 @@ const Home = () => {
             threshold: 0.5, // 0 to 1: ratio of target element's visibility
         };
 
-        const callback = (entries: any) => {
-            entries.forEach((entry: any) => {
+        const callback = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach((entry: IntersectionObserverEntry) => {
                 // If the target element is more than 50% out of view
                 if (entry.isIntersecting) {
                     setShowLogo(false);
@@ -47,7 +48,7 @@ const Home = () => {
         }
 
         return () => observer.disconnect();
-    }, []);
+    }, [setShowLogo]);
 
     const handleTogglePopUp = () => {
         if (isPopUpOpen) {
@@ -67,8 +68,8 @@ const Home = () => {
         // setImage(maxo)
     }
 
-    const onEscapePress = (event: any) => {
-        if (event.keyCode === 27) {
+    const onEscapePress = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+        if (event.key === 'Escape') {
             setIsPopUpOpen(false)
         }
     }

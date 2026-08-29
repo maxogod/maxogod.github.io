@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
+import type { KeyboardEvent as ReactKeyboardEvent, MouseEvent as ReactMouseEvent, ReactNode } from 'react'
 
 import { setCurrentLanguage, setCurrentTheme } from '../utils/localStorage'
 
@@ -9,7 +10,7 @@ import { FaQuestion, FaLaptop } from 'react-icons/fa'
 import { IoMdMail } from 'react-icons/io'
 import { IoLanguageSharp } from 'react-icons/io5'
 import logo from '../assets/pokeball.png'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { languageContext } from '../context/languageContext'
 import { navbarContext } from '../context/navbarContext'
@@ -17,7 +18,7 @@ import { themeContext } from '../context/themeContext'
 import { colorTransition } from '../utils/themeUtils'
 import { Tooltip } from '@mui/material'
 
-const icons = {
+const icons: Record<string, ReactNode> = {
     '#about': <FaQuestion />,
     '#projects': <FaLaptop />,
     '#contact': <IoMdMail />,
@@ -28,21 +29,27 @@ const Navbar = () => {
     const [showPopup, setShowPopup] = useState(false)
 
     const navigate = useNavigate()
+    const location = useLocation()
 
-    const { showLogo, setShowLogo, showBackButton, setShowBackButton } = useContext(navbarContext)
+    const { showLogo: hasScrolledPastHero } = useContext(navbarContext)
     const { navbarGoBack } = useContext(languageContext)
 
-    const onEscapePress = (event: any) => {
-        if (event.keyCode === 27) {
+    // Derived from the router rather than read off window.location.hash in an
+    // effect, so it stays correct on navigation without any state syncing.
+    const isSubRoute = location.pathname !== '/'
+    const showBackButton = isSubRoute
+    const showLogo = isSubRoute || hasScrolledPastHero
+
+    const onEscapePress = (event: ReactKeyboardEvent<HTMLElement>) => {
+        if (event.key === 'Escape') {
             setShowPopup(false)
         }
     }
 
     const handleLogoClick = () => {
-        setShowBackButton(false)
         setShowPopup(false)
 
-        if (!window.location.hash || window.location.hash === '#/') {
+        if (!isSubRoute) {
             window.scrollTo({
                 top: 0,
             });
@@ -54,23 +61,11 @@ const Navbar = () => {
 
     const handleBack = () => {
         navigate(-1)
-        setShowBackButton(false)
         setShowPopup(false)
     }
 
     useEffect(() => {
-        if (window.location.hash && window.location.hash !== '#/') {
-            setShowLogo(true)
-            setShowBackButton(true)
-            setShowPopup(false)
-            return
-        } else {
-            setShowBackButton(false)
-        }
-    }, [showBackButton, window.location.hash])
-
-    useEffect(() => {
-        if (window.location.hash && window.location.hash !== '#/') return
+        if (isSubRoute) return
         const timer = setTimeout(() => {
             setShowPopup(true)
         }, 500)
@@ -82,13 +77,15 @@ const Navbar = () => {
         return () => {
             clearTimeout(timer)
             clearTimeout(timer_out)
+            // Leaving the home route: drop the tray so it does not reappear on return.
+            setShowPopup(false)
         }
-    }, [])
+    }, [isSubRoute])
 
     return (
         <nav
             onKeyDown={onEscapePress}
-            className={`h-16 ${showLogo && 'bg-quaternary bg-opacity-5'}
+            className={`h-16 ${showLogo && 'bg-quaternary/5'}
              w-screen fixed z-20 flex ${showLogo ? 'justify-between' : 'justify-end'}
               items-center px-5 py-1`}>
 
@@ -116,7 +113,7 @@ const Navbar = () => {
                     <GiHamburgerMenu className='text-2xl text-blue-800' />
                 </button>
             }
-            {showPopup && <NavbarPopup />}
+            {showPopup && !isSubRoute && <NavbarPopup />}
         </nav>
     )
 }
@@ -136,10 +133,11 @@ function NavbarPopup() {
         setCurrentLanguage(!englishMode)
     }
 
-    const handleOnClick = (e: any) => {
+    const handleOnClick = (e: ReactMouseEvent<HTMLAnchorElement>) => {
         e.preventDefault()
 
-        const targetId = e.currentTarget.getAttribute('href').substring(1);
+        const targetId = e.currentTarget.getAttribute('href')?.substring(1);
+        if (!targetId) return
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth' });
@@ -147,7 +145,7 @@ function NavbarPopup() {
     }
 
     return (
-        <div className={`${navbarTrayColor} ${colorTransition} bg-opacity-70 rounded-md absolute top-10 right-10 w-36 flex gap-3 flex-wrap justify-end items-center px-5 py-2`}>
+        <div className={`${navbarTrayColor} ${colorTransition} rounded-md absolute top-10 right-10 w-36 flex gap-3 flex-wrap justify-end items-center px-5 py-2`}>
             <div className='w-full flex justify-center gap-3'>
                 <button
                     aria-label="Change theme to light"
@@ -180,9 +178,9 @@ function NavbarPopup() {
                         <hr className='bg-black h-[2px] opacity-20 w-full' />
                         <a
                             onClick={handleOnClick}
-                            href={(navbarLinks as any)[key]}
+                            href={navbarLinks[key]}
                             className="w-full text-xs flex justify-center">
-                            {key} {(icons as any)[(navbarLinks as any)[key]]}
+                            {key} {icons[navbarLinks[key]]}
                         </a>
                     </div>
                 )

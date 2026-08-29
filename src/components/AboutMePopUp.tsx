@@ -11,7 +11,7 @@ const AboutMePopUp = ({ handleTogglePopUp }: { handleTogglePopUp: () => void }) 
 
     return (
         <div className='w-screen h-screen fixed p-2 sm:p-16 z-20 flex justify-center items-center'>
-            <div className={`${popUpColor} relative rounded-md bg-opacity-80
+            <div className={`${popUpColor} relative rounded-md
             flex sm:flex-nowrap flex-wrap justify-center sm:justify-between 
             overflow-y-scroll items-start px-3 py-12 sm:p-10 w-[70rem] h-full`}>
                 <LuSwords
