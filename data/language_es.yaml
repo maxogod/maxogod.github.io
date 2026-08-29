@@ -12,7 +12,7 @@ homePage:
 
 aboutMe:
     title: "Estudiante de Ingenieria Informatica en la Univesidad de Buenos Aires"
-    text: "Hola, mi nombre es Máximo Utrera. Soy estudiante de Ingeniería en Informática en la Universidad de Buenos Aires, actualmente en mi ultimo año de estudios. Con una pasión por el desarrollo de software y una sólida base en varios lenguajes de programación y tecnologías, me he dedicado a perfeccionar mis habilidades a través de cursos académicos, proyectos personales y experiencias profesionales. Estoy comprometido a aplicar este conocimiento para resolver problemas del mundo real y crear soluciones innovadoras."
+    text: "Hola, mi nombre es Máximo Utrera. Soy un Ingeniero en Informática con una pasión por el desarrollo de software y una sólida base en varios lenguajes de programación y tecnologías, me he dedicado a perfeccionar mis habilidades a través de cursos académicos, proyectos personales y experiencias profesionales. Estoy comprometido a aplicar este conocimiento para resolver problemas del mundo real y crear soluciones innovadoras."
 
 titles:
     sys: "Sistemas e Infraestructura"
@@ -20,4 +20,4 @@ titles:
     datasci: "Inteligencia Artificial y Ciencia de Datos"
     games: "Desarrollo de Juegos"
 
-cvLink: "https://drive.google.com/file/d/1_58iYXLdfU_IgMbOYfXcsvPTgNuFWtk3/view"
+cvLink: "https://github.com/maxogod/cv/releases/latest/download/maximo_utrera_cv_experience-focused.pdf"
