@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef, useState } from 'react'
-import type { KeyboardEvent as ReactKeyboardEvent } from 'react'
 import maxo from '../assets/maxo.png'
 // import pfp from '../assets/pfp.jpg'
 import { languageContext } from '../context/languageContext'
@@ -51,13 +50,24 @@ const Home = () => {
     }, [setShowLogo]);
 
     const handleTogglePopUp = () => {
-        if (isPopUpOpen) {
-            document.getElementById('body')?.classList.remove('overflow-hidden');
-        } else {
-            document.getElementById('body')?.classList.add('overflow-hidden');
-        }
         setIsPopUpOpen(!isPopUpOpen)
     }
+
+    useEffect(() => {
+        const body = document.getElementById('body')
+        if (!body) return
+        body.classList.toggle('overflow-hidden', isPopUpOpen)
+        return () => body.classList.remove('overflow-hidden')
+    }, [isPopUpOpen])
+
+    useEffect(() => {
+        if (!isPopUpOpen) return
+        const onEscapePress = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') setIsPopUpOpen(false)
+        }
+        document.addEventListener('keydown', onEscapePress)
+        return () => document.removeEventListener('keydown', onEscapePress)
+    }, [isPopUpOpen])
 
     const handleChangeImage = () => {
         return
@@ -68,11 +78,6 @@ const Home = () => {
         // setImage(maxo)
     }
 
-    const onEscapePress = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-        if (event.key === 'Escape') {
-            setIsPopUpOpen(false)
-        }
-    }
 
     const [loading, setLoading] = useState(true)
 
@@ -86,7 +91,6 @@ const Home = () => {
         <>
             {isPopUpOpen && <AboutMePopUp handleTogglePopUp={handleTogglePopUp} />}
             <div
-                onKeyDown={onEscapePress}
                 id="about"
                 className={`${backgroundP1} ${colorTransition} w-screen h-screen relative flex sm:flex-row flex-col gap-5 px-5 py-10`}>
                 <div
