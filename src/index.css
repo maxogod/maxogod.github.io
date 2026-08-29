@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@source inline("bg-blue-200 bg-blue-300 bg-blue-400 bg-blue-500 bg-blue-600 bg-blue-700 bg-cyan-400 bg-cyan-500 bg-emerald-400 bg-fuchsia-400 bg-green-300 bg-green-500 bg-indigo-400 bg-lime-400 bg-orange-300 bg-orange-400 bg-orange-500 bg-orange-700 bg-pink-300 bg-pink-400 bg-purple-400 bg-purple-500 bg-red-300 bg-red-400 bg-rose-400 bg-sky-300 bg-slate-300 bg-slate-500 bg-yellow-200 bg-yellow-300 bg-yellow-400 bg-yellow-500 bg-zinc-500");
+@source "../data/technology_colors.yaml";
 
 @theme {
     --color-primary: #388fc7;
