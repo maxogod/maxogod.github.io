@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import type { KeyboardEvent as ReactKeyboardEvent, MouseEvent as ReactMouseEvent, ReactNode } from 'react'
 
-import { setCurrentLanguage, setCurrentTheme } from '../utils/localStorage'
+import { hasSeenNavbarHint, setCurrentLanguage, setCurrentTheme, setNavbarHintSeen } from '../utils/localStorage'
 
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs'
 import { TiArrowBackOutline as TbArrowBack } from 'react-icons/ti'
@@ -64,9 +64,15 @@ const Navbar = () => {
         setShowPopup(false)
     }
 
+    // One-off hint that shows where the menu lives. It fires only on a visitor's
+    // very first page open -- not on later visits, and not when coming back from a
+    // project view. The flag is set when the tray actually opens rather than up
+    // front, so StrictMode's double-invoked effect in dev does not consume it.
     useEffect(() => {
-        if (isSubRoute) return
+        if (isSubRoute || hasSeenNavbarHint()) return
+
         const timer = setTimeout(() => {
+            setNavbarHintSeen()
             setShowPopup(true)
         }, 500)
 

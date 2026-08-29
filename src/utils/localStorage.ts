@@ -33,9 +33,21 @@ const setCurrentLanguage = (englishModeOn: boolean) => {
     localStorage.setItem('englishModeOn', englishModeOn ? 'true' : 'false')
 }
 
+// The navbar tray auto-opens once, to point out where the menu is. Persisted so
+// it does not reappear on later visits or when returning from a project view.
+const hasSeenNavbarHint = () => {
+    return localStorage.getItem('navbarHintSeen') === 'true'
+}
+
+const setNavbarHintSeen = () => {
+    localStorage.setItem('navbarHintSeen', 'true')
+}
+
 export {
     isDarkModeOn,
     setCurrentTheme,
     isEnglishModeOn,
     setCurrentLanguage,
+    hasSeenNavbarHint,
+    setNavbarHintSeen,
 }
