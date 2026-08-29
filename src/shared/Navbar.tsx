@@ -34,8 +34,6 @@ const Navbar = () => {
     const { showLogo: hasScrolledPastHero } = useContext(navbarContext)
     const { navbarGoBack } = useContext(languageContext)
 
-    // Derived from the router rather than read off window.location.hash in an
-    // effect, so it stays correct on navigation without any state syncing.
     const isSubRoute = location.pathname !== '/'
     const showBackButton = isSubRoute
     const showLogo = isSubRoute || hasScrolledPastHero
@@ -52,6 +50,7 @@ const Navbar = () => {
         if (!isSubRoute) {
             window.scrollTo({
                 top: 0,
+                behavior: 'smooth',
             });
             return
         }
@@ -64,10 +63,6 @@ const Navbar = () => {
         setShowPopup(false)
     }
 
-    // One-off hint that shows where the menu lives. It fires only on a visitor's
-    // very first page open -- not on later visits, and not when coming back from a
-    // project view. The flag is set when the tray actually opens rather than up
-    // front, so StrictMode's double-invoked effect in dev does not consume it.
     useEffect(() => {
         if (isSubRoute || hasSeenNavbarHint()) return
 
@@ -83,7 +78,6 @@ const Navbar = () => {
         return () => {
             clearTimeout(timer)
             clearTimeout(timer_out)
-            // Leaving the home route: drop the tray so it does not reappear on return.
             setShowPopup(false)
         }
     }, [isSubRoute])

@@ -1,5 +1,5 @@
 
-import { useEffect } from "react"
+import { useLayoutEffect } from "react"
 import { HashRouter, Routes, Route } from "react-router-dom"
 import Contact from "./pages/Contact"
 import Home from "./pages/Home"
@@ -9,21 +9,14 @@ import ProjectsByType from "./components/ProjectsByType"
 import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const HOME_SCROLL_KEY = 'homeScrollY'
+let homeScrollY = 0
 
-// The home route is one long scrolling page, so leaving it for a project view and
-// coming back should land exactly where the visitor was. The browser's own
-// restoration is disabled in main.tsx, and :root has `scroll-behavior: smooth`,
-// so the position is restored explicitly and instantly instead of animating.
 const HomeSections = () => {
-    useEffect(() => {
-        const saved = sessionStorage.getItem(HOME_SCROLL_KEY)
-        if (saved) {
-            window.scrollTo({ top: Number(saved), behavior: 'instant' })
-        }
-        return () => {
-            sessionStorage.setItem(HOME_SCROLL_KEY, String(window.scrollY))
-        }
+    useLayoutEffect(() => {
+        window.scrollTo(0, homeScrollY)
+        const remember = () => { homeScrollY = window.scrollY }
+        window.addEventListener('scroll', remember)
+        return () => window.removeEventListener('scroll', remember)
     }, [])
 
     return (

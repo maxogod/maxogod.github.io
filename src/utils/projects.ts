@@ -21,10 +21,6 @@ const spanishDatasciProjects = projectsEs.datasci_projects || [];
 const englishGameProjects = projectsEn.game_projects || [];
 const spanishGameProjects = projectsEs.game_projects || [];
 
-// Vite only fingerprints and emits assets it can see statically. A `new URL(...)`
-// built from a runtime string is invisible to it, so the YAML-referenced images
-// were never copied into dist. Registering the whole folder eagerly gives us a
-// path -> hashed-URL map that works in dev and in the production bundle alike.
 const assetUrls = import.meta.glob('../assets/*', {
     eager: true,
     query: '?url',

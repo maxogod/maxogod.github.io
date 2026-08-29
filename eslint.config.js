@@ -23,8 +23,6 @@ export default [
         rules: {
             ...tseslint.configs.recommended.rules,
             ...reactHooks.configs.recommended.rules,
-            // typescript-eslint v8 dropped these from `recommended`; the v6
-            // config used to enable them, so keep them on to preserve coverage.
             'prefer-const': 'error',
             'no-var': 'error',
             'prefer-rest-params': 'error',

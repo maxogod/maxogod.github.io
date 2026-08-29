@@ -63,7 +63,6 @@ const ProjectThumbnail = ({ project, setExpandImage }:
     useEffect(() => {
         const img = new Image()
         img.onload = () => setLoading(false)
-        // Without this a broken URL leaves the spinner running forever.
         img.onerror = () => setLoading(false)
         img.src = project.image
         return () => {

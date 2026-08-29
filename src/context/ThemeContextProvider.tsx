@@ -7,8 +7,6 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
 
     const [darkMode, setDarkMode] = useState(isDarkModeOn());
 
-    // Every one of these is a pure function of darkMode, so it is derived during
-    // render instead of being mirrored into state and re-synced from an effect.
     const backgroundP1 = darkMode ? darkBG1 : lightBG1
     const backgroundP2 = darkMode ? darkBG2 : lightBG2
     const backgroundP3 = darkMode ? darkBG3 : lightBG3

@@ -23,8 +23,6 @@ const createBubbles = (): Bubble[] => {
 }
 
 const Bubbles = () => {
-    // Generated once on mount via a lazy initialiser, so there is no
-    // render -> effect -> setState -> re-render cascade.
     const [bubbles] = useState<Bubble[]>(createBubbles)
 
     return (

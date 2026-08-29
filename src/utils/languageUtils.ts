@@ -3,7 +3,6 @@ import { load } from 'js-yaml';
 import languageEnYaml from '../../data/language_en.yaml?raw';
 import languageEsYaml from '../../data/language_es.yaml?raw';
 
-// Shapes of data/language_*.yaml
 export type NavbarLinks = Record<string, string>;
 
 export interface HomePageText {

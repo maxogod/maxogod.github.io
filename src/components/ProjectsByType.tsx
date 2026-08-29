@@ -15,8 +15,6 @@ const ProjectsByType = () => {
     const { projectTitles, sysProjects, webProjects, datasciProjects, gameProjects } = useContext(languageContext)
     const { projectType } = useParams()
 
-    // Derived straight from the route param and the language context, so there is
-    // no effect writing this into state on every render pass.
     let projectList: ProjectType[]
     switch (projectType) {
         case 'sys':

@@ -28,8 +28,6 @@ const LanguageContextProvider = ({ children }: { children: ReactNode }) => {
 
     const [englishMode, setEnglishMode] = useState(isEnglishModeOn())
 
-    // Every one of these is a pure function of englishMode, so it is derived during
-    // render instead of being mirrored into state and re-synced from an effect.
     const navbarLinks = englishMode ? englishNavbarLinks : spanishNavbarLinks
     const homePageText = englishMode ? englishHomePage : spanishHomePage
     const aboutMeText = englishMode ? englishAboutMe : spanishAboutMe

@@ -5,7 +5,6 @@ import fiubaton_winners from '../assets/fiubaton_winners.jpg'
 import { IoCaretBackOutline } from 'react-icons/io5'
 import { ImSpinner9 } from "react-icons/im";
 
-// Module scope: a stable reference, so it never needs to be an effect dependency.
 const imgs = [
     fiubaton_presenting,
     fiubaton_thanking,
@@ -18,7 +17,6 @@ const AboutImageCarrousel = () => {
     const [loadedImages, setLoadedImages] = useState<string[]>([])
 
     const currentSrc = imgs[currentImage]
-    // Derived rather than stored, so switching images needs no setState in an effect.
     const loading = !loadedImages.includes(currentSrc)
 
     const next = () => {
@@ -40,8 +38,6 @@ const AboutImageCarrousel = () => {
     useEffect(() => {
         if (loadedImages.includes(currentSrc)) return
 
-        // Preloading is a genuine external system, and setState happens in the
-        // onload callback rather than synchronously in the effect body.
         const img = new Image()
         img.onload = () => {
             setLoadedImages(prev => prev.includes(currentSrc) ? prev : [...prev, currentSrc])
