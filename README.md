@@ -19,7 +19,7 @@ pnpm install
 pnpm dev        # localhost:3000
 pnpm build      # tsc, then vite build into dist/
 pnpm preview    # serve the built dist/
-pnpm lint       # eslint
+pnpm lint       # oxlint
 ```
 
 ## Layout
