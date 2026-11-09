@@ -1,7 +1,6 @@
 import type { SectionId, ZoneId } from './languageUtils'
 
-// Scroll position -> depth in meters. Each home section starts at a real ocean zone boundary,
-// and the bottom of the page is the Challenger Deep.
+// Each section starts at a real ocean zone boundary; the bottom of the page is the Challenger Deep.
 export const SECTION_DEPTHS: { id: SectionId; depth: number }[] = [
     { id: 'surface', depth: 0 },
     { id: 'about', depth: 40 },
@@ -48,13 +47,13 @@ export const temperatureAt = (depth: number) =>
 export const pressureAt = (depth: number) => 1 + depth / 10.06
 
 let snapshot: DepthSnapshot = { depth: 0, zone: 'surface', section: 'surface', progress: 0, marks: [] }
-/** Viewport y of the hero waterline (raw, updated every measure; read by the canvas). */
+/** Viewport y of the hero waterline. */
 let waterlineY = 0
 let rawDepth = 0
 const listeners = new Set<() => void>()
 let frame = 0
 
-// Section positions only change when the layout does, so they're read on resize, not on every scroll.
+// Section positions only change with the layout, so they're read on resize instead of on every scroll.
 interface Layout { max: number; eye: number; anchors: { x: number; y: number }[]; tops: { id: SectionId; top: number }[]; marks: number[]; waterline: number | null }
 let layout: Layout = { max: 1, eye: 0, anchors: [], tops: [], marks: [], waterline: null }
 let layoutDirty = true

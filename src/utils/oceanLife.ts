@@ -1,6 +1,3 @@
-// Ambient sea life drawn on a fixed, full-viewport canvas. Which creatures show depends on depth:
-// reef fish near the surface, lanternfish in the twilight zone, jellyfish and marine snow deeper.
-
 type Kind = 'reef' | 'lantern'
 
 interface School { x: number; y: number; dir: 1 | -1; speed: number; drift: number; kind: Kind }
@@ -79,7 +76,7 @@ export const resizeOcean = (o: Ocean, w: number, h: number) => {
 
 const wrapY = (y: number, h: number) => (y < -120 ? y + h + 240 : y > h + 120 ? y - h - 240 : y)
 
-/** Moves everything by a scroll delta so creatures drift past as you dive (parallax). */
+/** Parallax: shifts creatures by a scroll delta. */
 export const shiftOcean = (o: Ocean, dy: number) => {
     for (const s of o.schools) s.y = wrapY(s.y - dy * 0.45, o.h)
     for (const f of o.fish) {
@@ -124,7 +121,6 @@ export const stepOcean = (o: Ocean, dt: number, pointer: Pointer, surfaceY: numb
         f.y += f.vy * dt
         const heading = f.vx + f.school.dir * f.school.speed
         if (Math.abs(heading) > 4) f.face += ((heading > 0 ? 1 : -1) - f.face) * Math.min(1, dt * 6)
-        // a school that drifted off-screen snaps its stragglers back
         if (Math.abs(f.x - f.school.x) > 400) f.x = f.school.x + f.ox
         if (f.y < surfaceY + 12) f.vy += 60 * dt
     }
@@ -204,8 +200,7 @@ const drawFish = (ctx: CanvasRenderingContext2D, f: Fish, t: number, kind: Kind)
     ctx.restore()
 }
 
-// The jellyfish glow is a radial gradient; building one per jellyfish per frame is costly, so it is
-// rendered once per color into a small offscreen canvas and stamped with drawImage.
+// Building a radial gradient per jellyfish per frame is slow, so each glow color is pre-rendered once.
 const glowSprites = new Map<string, HTMLCanvasElement>()
 const glowSprite = (rgb: string) => {
     let sprite = glowSprites.get(rgb)

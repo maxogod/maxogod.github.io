@@ -39,5 +39,5 @@ export const RUNNER_GOAL = 500
 
 export const CHEAT_CODE = ['arrowup', 'arrowdown', 'arrowleft', 'arrowright']
 
-/** Fired on window when the sonar pings; canvas layers and treasures listen to it. */
+/** Window event fired on every sonar ping. */
 export const SONAR_EVENT = 'sonar-ping'

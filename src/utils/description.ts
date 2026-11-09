@@ -1,8 +1,6 @@
-// Project descriptions in YAML use `<br>` for line breaks and `<br>- ` for bullets.
-// These helpers turn them into paragraphs and lists. Input is trusted (our own YAML).
-
 const lines = (html: string) => html.split(/<br\s*\/?>/i).map(line => line.trim())
 
+/** Turns `<br>` line breaks into paragraphs and `- ` lines into a list. */
 export const formatDescription = (html: string): string => {
     let out = ''
     let paragraph: string[] = []

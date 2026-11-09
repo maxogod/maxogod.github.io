@@ -59,7 +59,6 @@ const Abyss = () => {
         }
     }, [])
 
-    // The pointer is the submarine's headlight.
     const moveLight = (event: PointerEvent<HTMLElement>) => {
         const section = sectionRef.current
         if (!section) return
@@ -86,7 +85,7 @@ const Abyss = () => {
             <Treasure id="coins" layer="z-[5]" className="bottom-[9%] left-[22%]" />
             <Treasure id="wheel" layer="z-[5]" className="right-[34%] bottom-[16%]" />
 
-            {/* Darkness with a hole where the headlight points. */}
+            {/* darkness, except around the headlight */}
             <div
                 aria-hidden
                 className={`pointer-events-none absolute inset-0 z-[6] transition-opacity duration-700 ${sonarLit ? 'opacity-30' : 'opacity-100'}`}

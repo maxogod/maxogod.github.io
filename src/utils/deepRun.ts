@@ -1,4 +1,3 @@
-// Deep Run: a small side-scrolling dodge game. Pure state + drawing; React only drives the loop.
 // World units: the playfield is always H units tall; its width follows the canvas aspect ratio.
 
 export const H = 240
@@ -199,7 +198,6 @@ export const draw = (ctx: CanvasRenderingContext2D, w: World, scale: number, lab
         ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill()
     }
 
-    // floor
     ctx.fillStyle = '#0c2238'
     ctx.beginPath()
     ctx.moveTo(0, H)

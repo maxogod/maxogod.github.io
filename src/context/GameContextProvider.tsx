@@ -61,7 +61,6 @@ const GameContextProvider = ({ children }: { children: ReactNode }) => {
         saveJson(STORAGE_KEY, next)
     }, [])
 
-    // Saves the latest progress shortly after the last change (used for frequent, invisible updates).
     const saveTimer = useRef(0)
     const scheduleSave = useCallback(() => {
         clearTimeout(saveTimer.current)
@@ -106,8 +105,7 @@ const GameContextProvider = ({ children }: { children: ReactNode }) => {
         if (treasures.length >= TREASURES.length) unlock('treasures')
     }, [commit, unlock])
 
-    // Pops are frequent and the count is only shown in the logbook, so a pop updates the ref only:
-    // no React re-render, and the save happens shortly after. The logbook syncs it when opened.
+    // Pops are frequent and only shown in the logbook: skip re-rendering, sync when the logbook opens.
     const popBubble = useCallback(() => {
         const bubbles = progressRef.current.bubbles + 1
         progressRef.current = { ...progressRef.current, bubbles }
@@ -157,7 +155,6 @@ const GameContextProvider = ({ children }: { children: ReactNode }) => {
         unlock('ping')
     }, [unlock])
 
-    // Reaching the sea floor.
     useEffect(() => {
         const check = () => {
             if (getDepthSnapshot().depth >= BOTTOM_DEPTH - 60) unlock('bottom')
@@ -165,7 +162,6 @@ const GameContextProvider = ({ children }: { children: ReactNode }) => {
         return subscribeDepth(check)
     }, [unlock])
 
-    // Keyboard: P pings the sonar, the cheat code summons the whale.
     useEffect(() => {
         let position = 0
         const onKey = (event: KeyboardEvent) => {

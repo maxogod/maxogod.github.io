@@ -5,8 +5,6 @@ import { languageContext } from "../context/languageContext"
 import { getSeason } from "../utils/season"
 import { useReducedMotion } from "../hooks/useReducedMotion"
 
-// Seasonal decoration (see utils/season.ts). Everything renders nothing outside a season.
-
 const BATS = [
     { top: '10%', size: 'w-10', duration: '19s', delay: '0s' },
     { top: '22%', size: 'w-7', duration: '24s', delay: '-8s' },
@@ -193,7 +191,7 @@ export const SeasonSky = () => {
     return null
 }
 
-/** Something floating on the waves next to the sub. */
+/** Pumpkin or iceberg floating next to the sub. */
 export const SeasonFloat = () => {
     const season = getSeason()
     if (season !== 'halloween' && season !== 'christmas') return null
@@ -204,7 +202,7 @@ export const SeasonFloat = () => {
     )
 }
 
-/** A hat for the hero submarine; place inside the sub's positioned wrapper. */
+/** Hat for the hero submarine; render inside the sub's positioned wrapper. */
 export const SeasonHat = () => {
     const season = getSeason()
     if (!season) return null
@@ -261,7 +259,7 @@ export const SeasonGreeting = () => {
             try {
                 sessionStorage.setItem(key, '1')
             } catch {
-                // storage blocked: it just shows again next load
+                // blocked: greet again next load
             }
             toast(
                 <span className="flex items-center gap-3">

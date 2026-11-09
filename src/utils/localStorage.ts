@@ -1,4 +1,4 @@
-// Every access is wrapped: storage can be blocked (private mode, disabled site data).
+// Storage access throws when it's blocked (private mode, disabled site data).
 const read = (key: string): string | null => {
     try {
         return localStorage.getItem(key)
@@ -11,7 +11,7 @@ const write = (key: string, value: string) => {
     try {
         localStorage.setItem(key, value)
     } catch {
-        // storage unavailable: keep working in memory
+        // blocked: skip saving
     }
 }
 

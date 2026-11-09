@@ -22,7 +22,7 @@ const Row = ({ icon, label, detail, trailing }: { icon: ReactNode, label: string
     </>
 )
 
-/** A glowing jellyfish drifting next to the links. */
+/** Decorative glowing jellyfish. */
 const Jellyfish = ({ className }: { className: string }) => (
     <svg viewBox="0 0 120 200" aria-hidden className={className}>
         <defs>

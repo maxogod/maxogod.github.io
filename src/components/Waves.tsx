@@ -1,5 +1,4 @@
-// Three looping wave layers sitting on the hero waterline. Each path spans two identical
-// 1440-unit periods, so translating it by -50% loops seamlessly.
+// Each path repeats the same wave twice, so sliding it by -50% loops seamlessly.
 const crest = (amplitude: number, invert = false) => {
     const mid = 30
     const peak = invert ? mid + amplitude : mid - amplitude

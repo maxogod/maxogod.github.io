@@ -1,4 +1,4 @@
-// Tiny synthesized sound effects (no audio files). Only ever played in response to a user action.
+// Synthesized with the Web Audio API, no audio files. Browsers only allow audio after a user gesture.
 
 let ctx: AudioContext | null = null
 let enabled = true
@@ -18,13 +18,9 @@ const audio = (): AudioContext | null => {
     return ctx
 }
 
-/**
- * Creating the audio engine can stall a phone for a moment, so it's started in idle time right after
- * the visitor's first touch, click or key press (browsers only allow audio after one), instead of on
- * the first sound. Returns a cleanup function.
- */
+/** Creates the audio context in idle time after the first input, so the first sound doesn't stall. */
 export const warmUpAudioOnFirstInput = () => {
-    // requestIdleCallback is missing in some Safari versions; fall back to a short timeout.
+    // Some Safari versions lack requestIdleCallback.
     const ric = window.requestIdleCallback as typeof window.requestIdleCallback | undefined
     let idle = 0
     let timer = 0

@@ -40,13 +40,11 @@ const Hero = () => {
                 </filter>
             </svg>
 
-            {/* Sky */}
             <div aria-hidden className="night-stars absolute inset-x-0 top-0 opacity-0 transition-opacity duration-700 dark:opacity-90" style={{ height: 'var(--waterline)' }} />
             <div aria-hidden className="hero-sun absolute right-[10%] top-[12%] size-20 rounded-full bg-[var(--sun)] shadow-[0_0_60px_20px_color-mix(in_oklab,var(--sun)_45%,transparent)] transition-all duration-700 sm:size-28 dark:shadow-[0_0_40px_6px_rgb(233_239_255/0.25),inset_-14px_-6px_0_rgb(160_175_215/0.45)]" />
 
             <SeasonSky />
 
-            {/* Light rays under the surface */}
             {rays.map(ray => (
                 <div
                     key={ray}
@@ -57,7 +55,7 @@ const Hero = () => {
 
             <div id="waterline" aria-hidden className="absolute inset-x-0" style={{ top: 'var(--waterline)' }} />
 
-            {/* Name: dry half above the waterline... */}
+            {/* The name is rendered twice: dry above the waterline, refracted below it. */}
             <div className="absolute inset-x-0 -translate-y-1/2 px-5 sm:px-10 lg:px-16" style={{ top: 'var(--waterline)' }}>
                 <h1 className={`${nameClasses} text-ink transition-colors duration-700 [clip-path:inset(0_0_50%_0)] dark:text-foam`}>
                     <Name first={text.hero.firstName} last={text.hero.lastName} />
@@ -66,7 +64,6 @@ const Hero = () => {
 
             <Waves />
 
-            {/* ...and the submerged half, refracted. */}
             <div aria-hidden className="pointer-events-none absolute inset-x-0 -translate-y-1/2 px-5 sm:px-10 lg:px-16" style={{ top: 'var(--waterline)' }}>
                 <p className={`${nameClasses} translate-y-[0.04em] text-[#bfeaff]/85 [clip-path:inset(50%_0_0_0)] [filter:url(#refraction)] dark:text-[#8fc3e6]/75`}>
                     <Name first={text.hero.firstName} last={text.hero.lastName} />

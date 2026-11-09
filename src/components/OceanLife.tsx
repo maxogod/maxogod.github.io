@@ -6,10 +6,9 @@ import { bubbleAt, createOcean, drawOcean, Pointer, popBubble, resizeOcean, scat
 import { useReducedMotion } from "../hooks/useReducedMotion"
 import { getSeason, SEASON_LIFE } from "../utils/season"
 
-// Clicks on these never pop bubbles.
 const INTERACTIVE = 'a, button, input, textarea, select, label, dialog, [data-game], [role="dialog"]'
 
-/** Fixed canvas between section backgrounds and content: fish, jellyfish, bubbles, marine snow. */
+/** Fixed canvas drawn between the section backgrounds and their content. */
 const OceanLife = () => {
 
     const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -27,11 +26,9 @@ const OceanLife = () => {
         const season = getSeason()
         const ocean = createOcean(window.innerWidth, window.innerHeight, season ? SEASON_LIFE[season] : undefined)
         const pointer: Pointer = { x: -999, y: -999, active: false }
-        // Phones and small screens: draw at 1x resolution and 30 fps. The creatures are small and soft,
-        // so it looks the same, but it's ~4x fewer pixels per frame and half the frames.
+        // Phones: 1x resolution at 30 fps. The creatures are small and soft, so it looks the same.
         const lowPower = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768
         const frameInterval = lowPower ? 1000 / 30 - 2 : 0
-        // Mutable loop state lives in one object (closures share it).
         const loop = { dpr: 1, lastScroll: window.scrollY, last: performance.now(), raf: 0 }
 
         const resize = () => {

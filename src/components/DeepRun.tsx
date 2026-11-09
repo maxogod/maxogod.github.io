@@ -41,7 +41,6 @@ const DeepRun = () => {
         draw(ctx, world, canvas.height / H, { ...labelsRef.current, bestValue: bestRef.current })
     }, [])
 
-    // Keep the canvas sharp and the world as wide as the box.
     useEffect(() => {
         const wrap = wrapRef.current
         const canvas = canvasRef.current
@@ -62,10 +61,9 @@ const DeepRun = () => {
         return () => observer.disconnect()
     }, [render])
 
-    // Redraw the idle frame when the language changes (HUD labels).
+    // The HUD labels are drawn on the canvas.
     useEffect(() => { if (phaseRef.current !== 'playing') render() }, [text, render])
 
-    // Game loop.
     useEffect(() => {
         if (phase !== 'playing') return
         const loop = { raf: 0, last: performance.now() }
@@ -91,7 +89,6 @@ const DeepRun = () => {
         return () => cancelAnimationFrame(loop.raf)
     }, [phase, recordScore, render, setPhase])
 
-    // Controls while playing.
     useEffect(() => {
         if (phase !== 'playing') return
         const onDown = (event: KeyboardEvent) => {
@@ -114,7 +111,6 @@ const DeepRun = () => {
         }
     }, [phase, setPhase])
 
-    // Pause when scrolled away.
     useEffect(() => {
         const wrap = wrapRef.current
         if (!wrap) return

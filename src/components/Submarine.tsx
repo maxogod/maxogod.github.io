@@ -1,4 +1,4 @@
-/** Side view of the submarine (faces right). Shared by the hero, the depth gauge and the favicon. */
+/** Side view of the submarine, facing right. */
 const Submarine = ({ className = '', title }: { className?: string, title?: string }) => (
     <svg viewBox="0 0 124 66" className={className} role={title ? 'img' : undefined} aria-hidden={title ? undefined : true}>
         {title && <title>{title}</title>}

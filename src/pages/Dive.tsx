@@ -16,8 +16,7 @@ import Logbook from "../components/Logbook"
 import { SonarPing, Whale } from "../components/Overlays"
 import { SeasonGreeting } from "../components/SeasonScenery"
 
-// Routes: "/" and "/projects/:filter[/:slug]". The page never unmounts; the route only drives the
-// project filter and which project's modal is open.
+// Every route renders this page; "/projects/:filter[/:slug]" only picks the filter and the open project.
 const parseRoute = (pathname: string): { filter: Filter, slug?: string } | null => {
     if (pathname === '/' || pathname === '') return { filter: 'all' }
     const match = pathname.match(/^\/projects\/([^/]+)(?:\/([^/]+))?\/?$/)
@@ -36,7 +35,6 @@ const Dive = () => {
 
     useEffect(() => startDepthTracking(), [])
 
-    // Opening a /projects/... link directly lands on the projects section.
     useLayoutEffect(() => {
         if (!deepLinked.current) return
         deepLinked.current = false

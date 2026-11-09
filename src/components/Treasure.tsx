@@ -4,10 +4,7 @@ import { languageContext } from "../context/languageContext"
 import type { TreasureId } from "../utils/languageUtils"
 import { SONAR_EVENT, TREASURE_ICONS } from "../utils/game"
 
-/**
- * A collectible hidden in the page. Barely visible until a sonar ping lights it up.
- * Position it with `className`/`style` (it renders absolutely positioned).
- */
+/** Hidden collectible, revealed by the sonar. Absolutely positioned: place it with `className`/`style`. */
 const Treasure = ({ id, className = '', style, layer = 'z-20' }: { id: TreasureId, className?: string, style?: CSSProperties, layer?: string }) => {
 
     const { progress, collectTreasure } = useContext(gameContext)

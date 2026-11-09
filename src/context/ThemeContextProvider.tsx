@@ -2,8 +2,7 @@ import { ReactNode, useLayoutEffect, useState } from "react";
 import { isDarkModeOn } from "../utils/localStorage";
 import { themeContext } from "./themeContext";
 
-// Theme colors are CSS variables in src/index.css keyed off <html data-theme>;
-// Tailwind's `dark:` variant follows the same attribute.
+// Colors are CSS variables in src/index.css keyed off <html data-theme>, as is Tailwind's `dark:`.
 const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
 
     const [darkMode, setDarkMode] = useState(isDarkModeOn);

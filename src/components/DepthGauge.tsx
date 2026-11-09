@@ -7,8 +7,7 @@ import { getDepthSnapshot, pressureAt, scrollToSection, SECTION_DEPTHS, subscrib
 import { useDepthValue } from "../hooks/useDepth"
 import Submarine from "./Submarine"
 
-// Split so scrolling re-renders as little as possible: the rail only re-renders when the section
-// changes (the sub marker is moved directly, off React), and only the small readout tracks depth.
+// Split so scrolling only re-renders the small readout; the rail's sub marker is moved outside React.
 
 /** Section rail with the sub marker (md+). */
 const GaugeRail = memo(() => {
@@ -42,7 +41,7 @@ const GaugeRail = memo(() => {
                     </Tooltip>
                 )
             })}
-            {/* Positioned with a transform (compositor only) instead of animating `top`. */}
+            {/* transform instead of top: no layout while scrolling */}
             <span
                 ref={markerRef}
                 aria-hidden
@@ -53,7 +52,7 @@ const GaugeRail = memo(() => {
     )
 })
 
-/** Depth, zone, pressure and temperature; the only part that re-renders while scrolling. */
+/** Depth, zone, pressure and temperature. */
 const GaugeReadout = () => {
     const { text, englishMode } = useContext(languageContext)
     const depth = useDepthValue(s => s.depth)

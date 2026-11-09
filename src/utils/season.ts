@@ -1,15 +1,13 @@
-// Seasonal themes, picked by date and exposed as a `?theme=` query parameter:
-//   October -> halloween, December -> christmas, January 1-15 -> newyear.
-// When no parameter is present the date decides and the parameter is written into the URL, so any
-// season can be previewed by typing it: ?theme=halloween | christmas | newyear | none.
-// (Named "season" in code because "theme" already means day/night here.)
+// October: halloween, December: christmas, January 1-15: newyear.
+// `?theme=` overrides the date (`none` disables it); without it, the date's season is written to the URL.
+// Called "season" in code because "theme" already means day/night.
 
 export const SEASONS = ['halloween', 'christmas', 'newyear'] as const
 export type Season = typeof SEASONS[number]
 
 const PARAM = 'theme'
 
-/** Sea-life colors per season (fish + "r, g, b" jellyfish), read by OceanLife. */
+/** Fish colors and jellyfish "r, g, b" per season. */
 export const SEASON_LIFE: Record<Season, { reef: string[]; jelly: string }> = {
     halloween: { reef: ['#ff8a2a', '#9b5cff', '#7dff6a', '#ffb648'], jelly: '235, 240, 255' },
     christmas: { reef: ['#ff4d5a', '#3fd17a', '#ffd34d', '#ffffff'], jelly: '255, 214, 120' },
