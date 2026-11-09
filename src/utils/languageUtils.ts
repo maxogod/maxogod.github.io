@@ -7,7 +7,7 @@ import type { Season } from './season';
 type Titled = { title: string; text: string };
 
 export type AchievementId =
-    | 'dive' | 'twilight' | 'midnight' | 'bottom'
+    | 'bottom'
     | 'firstLog' | 'archivist' | 'ping' | 'bubbles'
     | 'treasures' | 'runner' | 'cheat_code' | 'signal'
     | 'night' | 'polyglot';

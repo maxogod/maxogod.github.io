@@ -130,15 +130,6 @@ logbook:
     tips: "Tips: press P for a sonar ping, click the bubbles, and try a cheat code using arrows ;)"
 
 achievements:
-    dive:
-        title: "Into the blue"
-        text: "Dive below the surface."
-    twilight:
-        title: "Where light fades"
-        text: "Reach the twilight zone."
-    midnight:
-        title: "Lights out"
-        text: "Reach the midnight zone."
     bottom:
         title: "Rock bottom"
         text: "Touch the sea floor."

@@ -6,7 +6,7 @@ import { languageContext } from "./languageContext"
 import type { AchievementId, TreasureId } from "../utils/languageUtils"
 import { fill } from "../utils/languageUtils"
 import {
-    achievementIcon, ARCHIVIST_GOAL, BUBBLES_GOAL, CHEAT_CODE, RUNNER_GOAL, SONAR_EVENT, TREASURES, treasureIcon,
+    ACHIEVEMENTS, achievementIcon, ARCHIVIST_GOAL, BUBBLES_GOAL, CHEAT_CODE, RUNNER_GOAL, SONAR_EVENT, TREASURES, treasureIcon,
 } from "../utils/game"
 import { isSoundOn, loadJson, saveJson, setSoundOn } from "../utils/localStorage"
 import { setSoundEnabled, sounds } from "../utils/sound"
@@ -17,7 +17,7 @@ const STORAGE_KEY = 'diveLog'
 const loadProgress = (): Progress => {
     const saved = loadJson<Progress>(STORAGE_KEY)
     return {
-        achievements: Array.isArray(saved.achievements) ? saved.achievements : [],
+        achievements: Array.isArray(saved.achievements) ? saved.achievements.filter(id => ACHIEVEMENTS.some(a => a.id === id)) : [],
         treasures: Array.isArray(saved.treasures) ? saved.treasures : [],
         bubbles: typeof saved.bubbles === 'number' ? saved.bubbles : 0,
         opened: Array.isArray(saved.opened) ? saved.opened : [],
@@ -125,14 +125,10 @@ const GameContextProvider = ({ children }: { children: ReactNode }) => {
         unlock('ping')
     }, [unlock])
 
-    // Depth-based achievements.
+    // Reaching the sea floor.
     useEffect(() => {
         const check = () => {
-            const { depth } = getDepthSnapshot()
-            if (depth > 20) unlock('dive')
-            if (depth >= 200) unlock('twilight')
-            if (depth >= 1000) unlock('midnight')
-            if (depth >= BOTTOM_DEPTH - 60) unlock('bottom')
+            if (getDepthSnapshot().depth >= BOTTOM_DEPTH - 60) unlock('bottom')
         }
         return subscribeDepth(check)
     }, [unlock])

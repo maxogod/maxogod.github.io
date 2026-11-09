@@ -1,15 +1,12 @@
 import type { IconType } from 'react-icons'
 import {
-    GiAnchor, GiBubbles, GiCompass, GiDoubleFish, GiJellyfish, GiOctopus, GiOpenTreasureChest,
-    GiOysterPearl, GiShipWheel, GiSpermWhale, GiSubmarine, GiTreasureMap, GiTrophyCup, GiTwoCoins,
+    GiAnchor, GiBubbles, GiCompass, GiOctopus, GiOpenTreasureChest,
+    GiOysterPearl, GiShipWheel, GiSpermWhale, GiTreasureMap, GiTrophyCup, GiTwoCoins,
 } from 'react-icons/gi'
 import { LuBookOpen, LuBookOpenCheck, LuLanguages, LuMail, LuMoon, LuRadar } from 'react-icons/lu'
 import type { AchievementId, TreasureId } from './languageUtils'
 
 export const ACHIEVEMENTS: { id: AchievementId; icon: IconType }[] = [
-    { id: 'dive', icon: GiSubmarine },
-    { id: 'twilight', icon: GiDoubleFish },
-    { id: 'midnight', icon: GiJellyfish },
     { id: 'bottom', icon: GiOctopus },
     { id: 'firstLog', icon: LuBookOpen },
     { id: 'archivist', icon: LuBookOpenCheck },

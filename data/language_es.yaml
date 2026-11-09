@@ -130,15 +130,6 @@ logbook:
     tips: "Pistas: apretá P para un ping de sonar, explotá burbujas y probá un truco usando las flechitas ;)"
 
 achievements:
-    dive:
-        title: "Al azul"
-        text: "Sumergite bajo la superficie."
-    twilight:
-        title: "Donde se apaga la luz"
-        text: "Llegá a la zona crepuscular."
-    midnight:
-        title: "Luces fuera"
-        text: "Llegá a la zona de medianoche."
     bottom:
         title: "Tocar fondo"
         text: "Llegá al lecho marino."
