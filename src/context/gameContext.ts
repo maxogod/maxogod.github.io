@@ -24,7 +24,6 @@ interface gameContextType {
     setSound: (on: boolean) => void,
     sonarPing: () => void,
     /** Increments on every sonar ping. */
-    pingCount: number,
     /** Increments every time the cheat code is entered. */
     whaleCount: number,
     logbookOpen: boolean,
@@ -44,7 +43,6 @@ const gameContext = createContext<gameContextType>({
     sound: true,
     setSound: () => { },
     sonarPing: () => { },
-    pingCount: 0,
     whaleCount: 0,
     logbookOpen: false,
     setLogbookOpen: () => { },

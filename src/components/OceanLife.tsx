@@ -52,8 +52,9 @@ const OceanLife = () => {
             const dt = Math.min(0.05, (now - loop.last) / 1000)
             loop.last = now
             const scroll = window.scrollY
+            // Phones skip scroll parallax: creatures would move in 30 fps steps against a 60 fps compositor scroll.
             if (scroll !== loop.lastScroll) {
-                shiftOcean(ocean, scroll - loop.lastScroll)
+                if (!lowPower) shiftOcean(ocean, scroll - loop.lastScroll)
                 loop.lastScroll = scroll
             }
             const surfaceY = surface()
@@ -65,6 +66,7 @@ const OceanLife = () => {
         loop.raf = requestAnimationFrame(frame)
 
         const onMove = (event: PointerEvent) => {
+            if (event.pointerType !== 'mouse') return
             pointer.x = event.clientX
             pointer.y = event.clientY
             pointer.active = true

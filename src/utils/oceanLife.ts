@@ -64,8 +64,8 @@ export const createOcean = (w: number, h: number, palette: LifePalette = default
     for (let i = 0; i < (small ? 2 : 3); i++) addSchool('reef', small ? 5 : 7)
     for (let i = 0; i < (small ? 2 : 3); i++) addSchool('lantern', small ? 6 : 9)
     for (let i = 0; i < (small ? 3 : 5); i++) o.jellies.push({ x: rand(0, w), y: rand(0, h), size: rand(12, 26), phase: rand(0, 6), drift: rand(-8, 8) })
-    for (let i = 0; i < (small ? 12 : 22); i++) o.bubbles.push(newBubble(o, true))
-    for (let i = 0; i < (small ? 40 : 80); i++) o.snow.push({ x: rand(0, w), y: rand(0, h), r: rand(0.5, 1.8), vy: rand(4, 14) })
+    for (let i = 0; i < (small ? 8 : 22); i++) o.bubbles.push(newBubble(o, true))
+    for (let i = 0; i < (small ? 24 : 80); i++) o.snow.push({ x: rand(0, w), y: rand(0, h), r: rand(0.5, 1.8), vy: rand(4, 14) })
     return o
 }
 
@@ -176,28 +176,31 @@ export const popBubble = (o: Ocean, index: number) => {
 const drawFish = (ctx: CanvasRenderingContext2D, f: Fish, t: number, kind: Kind) => {
     const len = f.size * 2.4
     const wag = Math.sin(t * 12 + f.wag) * f.size * 0.35
-    ctx.save()
-    ctx.translate(f.x, f.y)
-    ctx.scale(f.face < 0 ? -1 : 1, 1)
+    const d = f.face < 0 ? -1 : 1
+    const x = f.x
+    const y = f.y
     ctx.fillStyle = f.color
     ctx.beginPath()
-    ctx.moveTo(-len * 0.5, 0)
-    ctx.lineTo(-len * 0.95, -f.size * 0.6 + wag)
-    ctx.lineTo(-len * 0.95, f.size * 0.6 + wag)
+    ctx.moveTo(x - d * len * 0.5, y)
+    ctx.lineTo(x - d * len * 0.95, y - f.size * 0.6 + wag)
+    ctx.lineTo(x - d * len * 0.95, y + f.size * 0.6 + wag)
     ctx.closePath()
     ctx.fill()
     ctx.beginPath()
-    ctx.ellipse(0, 0, len * 0.55, f.size * 0.55, 0, 0, Math.PI * 2)
+    ctx.ellipse(x, y, len * 0.55, f.size * 0.55, 0, 0, Math.PI * 2)
     ctx.fill()
     if (kind === 'lantern') {
         ctx.fillStyle = '#6ff3e0'
+        ctx.beginPath()
         for (let i = -1; i <= 1; i++) {
-            ctx.beginPath(); ctx.arc(i * len * 0.18, f.size * 0.3, 0.9, 0, Math.PI * 2); ctx.fill()
+            const px = x + d * i * len * 0.18
+            ctx.moveTo(px + 0.9, y + f.size * 0.3)
+            ctx.arc(px, y + f.size * 0.3, 0.9, 0, Math.PI * 2)
         }
+        ctx.fill()
     }
     ctx.fillStyle = '#062544'
-    ctx.beginPath(); ctx.arc(len * 0.3, -f.size * 0.12, Math.max(0.9, f.size * 0.13), 0, Math.PI * 2); ctx.fill()
-    ctx.restore()
+    ctx.beginPath(); ctx.arc(x + d * len * 0.3, y - f.size * 0.12, Math.max(0.9, f.size * 0.13), 0, Math.PI * 2); ctx.fill()
 }
 
 // Building a radial gradient per jellyfish per frame is slow, so each glow color is pre-rendered once.
@@ -229,15 +232,15 @@ const drawJelly = (ctx: CanvasRenderingContext2D, j: Jelly, t: number, rgb: stri
 
     ctx.strokeStyle = `rgba(${rgb}, 0.35)`
     ctx.lineWidth = 1.2
+    ctx.beginPath()
     for (let i = -2; i <= 2; i++) {
-        ctx.beginPath()
         const x0 = j.x + i * w * 0.32
         ctx.moveTo(x0, j.y)
         for (let k = 1; k <= 6; k++) {
             ctx.lineTo(x0 + Math.sin(t * 2 + k * 0.8 + i) * 3, j.y + k * j.size * 0.35)
         }
-        ctx.stroke()
     }
+    ctx.stroke()
     ctx.fillStyle = `rgba(${rgb}, 0.28)`
     ctx.strokeStyle = `rgba(${rgb}, 0.8)`
     ctx.beginPath()
@@ -259,9 +262,9 @@ export const drawOcean = (ctx: CanvasRenderingContext2D, o: Ocean, depth: number
     const snowAlpha = smooth(150, 700, depth) * 0.6
     if (snowAlpha > 0.01) {
         ctx.fillStyle = `rgba(234, 247, 255, ${snowAlpha})`
-        for (const s of o.snow) {
-            ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill()
-        }
+        ctx.beginPath()
+        for (const s of o.snow) { ctx.moveTo(s.x + s.r, s.y); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2) }
+        ctx.fill()
     }
 
     const reef = 1 - smooth(120, 380, depth)
@@ -280,14 +283,17 @@ export const drawOcean = (ctx: CanvasRenderingContext2D, o: Ocean, depth: number
     }
 
     ctx.globalAlpha = 1 - smooth(1500, 6000, depth) * 0.5
-    for (const b of o.bubbles) {
-        ctx.fillStyle = 'rgba(234, 247, 255, 0.08)'
-        ctx.strokeStyle = 'rgba(234, 247, 255, 0.55)'
-        ctx.lineWidth = 1.2
-        ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2); ctx.fill(); ctx.stroke()
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)'
-        ctx.beginPath(); ctx.arc(b.x, b.y, b.r * 0.6, Math.PI * 1.1, Math.PI * 1.45); ctx.stroke()
-    }
+    ctx.fillStyle = 'rgba(234, 247, 255, 0.08)'
+    ctx.strokeStyle = 'rgba(234, 247, 255, 0.55)'
+    ctx.lineWidth = 1.2
+    ctx.beginPath()
+    for (const b of o.bubbles) { ctx.moveTo(b.x + b.r, b.y); ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2) }
+    ctx.fill()
+    ctx.stroke()
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)'
+    ctx.beginPath()
+    for (const b of o.bubbles) { const r = b.r * 0.6; ctx.moveTo(b.x + Math.cos(Math.PI * 1.1) * r, b.y + Math.sin(Math.PI * 1.1) * r); ctx.arc(b.x, b.y, r, Math.PI * 1.1, Math.PI * 1.45) }
+    ctx.stroke()
 
     ctx.globalAlpha = 1
     ctx.fillStyle = 'rgba(234, 247, 255, 0.85)'

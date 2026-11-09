@@ -1,17 +1,26 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { gameContext } from "../context/gameContext"
+import { SONAR_EVENT } from "../utils/game"
 
-/** Expanding sonar rings from the depth readout, one burst per ping. */
+/** Expanding sonar rings from the depth readout, one burst per ping. Listens to the event itself so a ping re-renders nothing else. */
 export const SonarPing = () => {
-    const { pingCount } = useContext(gameContext)
-    if (pingCount === 0) return null
+    const [burst, setBurst] = useState(0)
 
+    useEffect(() => {
+        const onPing = () => setBurst(b => b + 1)
+        window.addEventListener(SONAR_EVENT, onPing)
+        return () => window.removeEventListener(SONAR_EVENT, onPing)
+    }, [])
+
+    if (burst === 0) return null
+
+    // No box-shadow: a glow on a screen-sized scaled layer is very costly on phones. 220vmax reaches the far corner.
     return (
-        <div key={pingCount} aria-hidden className="pointer-events-none fixed inset-0 z-30 overflow-hidden">
-            {[0, 0.25, 0.5].map(delay => (
+        <div key={burst} aria-hidden className="pointer-events-none fixed inset-0 z-30 overflow-hidden">
+            {[0, 0.25].map(delay => (
                 <span
                     key={delay}
-                    className="absolute size-[260vmax] animate-sonar rounded-full border-2 border-glow/70 opacity-0 shadow-[0_0_40px_var(--color-glow),inset_0_0_40px_var(--color-glow)]"
+                    className="absolute size-[220vmax] animate-sonar rounded-full border-4 border-glow/60 opacity-0 will-change-[transform,opacity] md:shadow-[0_0_40px_var(--color-glow),inset_0_0_40px_var(--color-glow)]"
                     style={{ left: 'calc(100% - 44px)', top: 'calc(100% - 44px)', animationDelay: `${delay}s` }} />
             ))}
         </div>

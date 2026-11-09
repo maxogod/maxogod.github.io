@@ -42,7 +42,6 @@ const GameContextProvider = ({ children }: { children: ReactNode }) => {
     const { text } = useContext(languageContext)
     const [progress, setProgress] = useState<Progress>(loadProgress)
     const [sound, setSoundState] = useState(isSoundOn)
-    const [pingCount, setPingCount] = useState(0)
     const [whaleCount, setWhaleCount] = useState(0)
     const [logbookOpen, setLogbookOpen] = useState(false)
 
@@ -149,7 +148,6 @@ const GameContextProvider = ({ children }: { children: ReactNode }) => {
         const now = performance.now()
         if (now - lastPing.current < 1200) return
         lastPing.current = now
-        setPingCount(c => c + 1)
         sounds.ping()
         window.dispatchEvent(new Event(SONAR_EVENT))
         unlock('ping')
@@ -185,8 +183,8 @@ const GameContextProvider = ({ children }: { children: ReactNode }) => {
 
     const value = useMemo(() => ({
         progress, unlock, collectTreasure, popBubble, openProject, recordScore, resetProgress,
-        sound, setSound, sonarPing, pingCount, whaleCount, logbookOpen, setLogbookOpen: openLogbook,
-    }), [progress, unlock, collectTreasure, popBubble, openProject, recordScore, resetProgress, sound, setSound, sonarPing, pingCount, whaleCount, logbookOpen, openLogbook])
+        sound, setSound, sonarPing, whaleCount, logbookOpen, setLogbookOpen: openLogbook,
+    }), [progress, unlock, collectTreasure, popBubble, openProject, recordScore, resetProgress, sound, setSound, sonarPing, whaleCount, logbookOpen, openLogbook])
 
     return (
         <gameContext.Provider value={value}>

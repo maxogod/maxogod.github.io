@@ -1,4 +1,4 @@
-import { PointerEvent, useContext, useEffect, useRef, useState } from "react"
+import { PointerEvent, useContext, useEffect, useRef } from "react"
 import { LuArrowUp } from "react-icons/lu"
 import { GiLockedChest, GiOpenTreasureChest } from "react-icons/gi"
 import { languageContext } from "../context/languageContext"
@@ -43,19 +43,19 @@ const Abyss = () => {
     const { text } = useContext(languageContext)
     const { progress } = useContext(gameContext)
     const sectionRef = useRef<HTMLElement>(null)
-    const [sonarLit, setSonarLit] = useState(false)
+    const darkRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        let timer = 0
+        const timer = { id: 0 }
         const onPing = () => {
-            setSonarLit(true)
-            clearTimeout(timer)
-            timer = window.setTimeout(() => setSonarLit(false), 2600)
+            darkRef.current?.classList.replace('opacity-100', 'opacity-30')
+            clearTimeout(timer.id)
+            timer.id = window.setTimeout(() => darkRef.current?.classList.replace('opacity-30', 'opacity-100'), 2600)
         }
         window.addEventListener(SONAR_EVENT, onPing)
         return () => {
             window.removeEventListener(SONAR_EVENT, onPing)
-            clearTimeout(timer)
+            clearTimeout(timer.id)
         }
     }, [])
 
@@ -87,8 +87,9 @@ const Abyss = () => {
 
             {/* darkness, except around the headlight */}
             <div
+                ref={darkRef}
                 aria-hidden
-                className={`pointer-events-none absolute inset-0 z-[6] transition-opacity duration-700 ${sonarLit ? 'opacity-30' : 'opacity-100'}`}
+                className="pointer-events-none absolute inset-0 z-[6] opacity-100 transition-opacity duration-700"
                 style={{ background: 'radial-gradient(circle 220px at var(--lx) var(--ly), rgb(2 8 20 / 0) 0%, rgb(2 8 20 / 0.25) 45%, rgb(2 8 20 / 0.97) 100%)' }} />
 
             <div className="pointer-events-none relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col gap-14 [&_a]:pointer-events-auto [&_button]:pointer-events-auto [&_[data-game]]:pointer-events-auto">
