@@ -23,24 +23,29 @@ export const slugify = (text: string): string =>
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)/g, '');
 
-const sectionKeys: Record<CategoryId, keyof ProjectsData> = {
+const sectionKeys: Record<CategoryId, Exclude<keyof ProjectsData, 'project_order'>> = {
     sys: 'sys_projects',
     web: 'web_projects',
     datasci: 'datasci_projects',
     games: 'game_projects',
 };
 
+/** Stable comparator on `order`. */
+const byOrder = (a: Project, b: Project) => a.order === b.order ? 0 : a.order < b.order ? -1 : 1;
+
 const processProjects = (data: ProjectsData): ProjectsByCategory => {
+    const order = new Map((data.project_order ?? []).map((name, i) => [name, i]));
     const result = {} as ProjectsByCategory;
     for (const category of Object.keys(sectionKeys) as CategoryId[]) {
         const list: ProjectType[] = data[sectionKeys[category]] || [];
         result[category] = list.map(project => ({
             ...project,
+            order: order.get(project.short_name ?? '') ?? Number.MAX_SAFE_INTEGER,
             image: resolveImage(project.image),
             technologies: project.technologies || [],
             slug: slugify(project.name),
             category,
-        }));
+        })).sort(byOrder);
     }
     return result;
 };
@@ -60,7 +65,7 @@ export const listProjects = (projects: ProjectsByCategory, category: CategoryId 
             all.push(project);
         }
     }
-    return all;
+    return all.sort(byOrder);
 };
 
 /** The trailing "more on GitHub" card, if the data has one. */

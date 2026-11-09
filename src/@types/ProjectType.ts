@@ -4,6 +4,8 @@ export type CategoryId = typeof CATEGORIES[number];
 /** One entry of data/projects_{en,es}.yaml. */
 interface ProjectType {
     name: string;
+    /** Stable id used as the key in `project_order`; shared by a project repeated across sections. */
+    short_name?: string;
     description: string;
     image: string;
     url: string;
@@ -17,9 +19,13 @@ interface ProjectType {
 export interface Project extends ProjectType {
     slug: string;
     category: CategoryId;
+    /** Index in `project_order`; lower shows first. */
+    order: number;
 }
 
 export interface ProjectsData {
+    /** short_names in display order, first on top. Unlisted projects go last. */
+    project_order?: string[];
     sys_projects: ProjectType[];
     web_projects: ProjectType[];
     datasci_projects: ProjectType[];

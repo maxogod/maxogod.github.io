@@ -63,7 +63,7 @@ projects:
     intro: "Elegí una categoría y abrí un proyecto para ver la historia completa: arquitectura, infraestructura y resultados."
     all: "Todos"
     categories:
-        sys: "Sistemas e infraestructura"
+        sys: "Sistemas Distribuidos e Infraestructura Cloud"
         web: "Desarrollo full-stack y de aplicaciones"
         datasci: "Inteligencia artificial y ciencia de datos"
         games: "Desarrollo de juegos"

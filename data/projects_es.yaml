@@ -1,5 +1,28 @@
+project_order:
+    - feed-the-realm
+    - classconnect
+    - sales-analysis
+    - rag-api
+    - brain-tumor
+    - jointravel
+    - jazz-jackrabbit-2
+    - concuride
+    - deep-learning-uba
+    - sdn-firewall
+    - rdt-udp
+    - donkey-kong-ai
+    - property-prices
+    - nlp
+    - truco
+    - alacarta
+    - save-the-galaxy
+    - real-estate-etl
+    - gymchad
+    - routine-manager
+
 sys_projects:
     - name: "Feed the Realm"
+      short_name: "feed-the-realm"
       description: "Plataforma MMO RPG Maker donde los jugadores construyen mundos 3D persistentes con un World Editor sin código, los publican y los juegan en línea junto a cientos de jugadores concurrentes. Desarrollado como Trabajo Profesional de Ingeniería en Informática en la Universidad de Buenos Aires.<br><br>Cada mundo se divide en zonas, y cada una es un servidor autoritativo de Unity en modo headless que corre en su propio contenedor Docker, desplegado bajo demanda y escalado horizontalmente. Un Core Service en Go (Gin), diseñado como monolito modular detrás de un API Gateway en Nginx, gestiona autenticación, assets, pagos con Stripe y la orquestación de mundos, respaldado por PostgreSQL y una base de datos MongoDB por mundo que mantiene el estado del jugador consistente entre zonas.<br><br>Características principales:<br>- Infraestructura en AWS definida como código con Terraform: EC2, S3 + CDN CloudFront, ECR, DNS público/privado en Route 53, IAM con mínimos privilegios y secretos gestionados con SSM.<br>- Orquestación de servidores de juego bajo demanda con HashiCorp Nomad (elegido por sobre Kubernetes para no reprogramar sesiones en vivo) y descubrimiento de servicios con Consul por ID de mundo/zona.<br>- Networking con autoridad del servidor sobre KCP/UDP con Mirror y Protobuf, un game loop de tick fijo y límites de comandos por tick para absorber picos de tráfico.<br>- CI/CD con GitHub Actions y despliegues sin credenciales estáticas vía OIDC, cobertura de tests superior al 75%, tests de aceptación BDD, escaneo de secretos y vulnerabilidades, y redespliegue automático de los servidores de juego activos en cada release.<br>- Observabilidad con Datadog mediante métricas personalizadas a nivel de tick, dashboards y alertas.<br>- Pruebas de carga con bots propios: ~550 jugadores concurrentes en 7 zonas sobre dos nodos de 2 vCPU / 2 GB con duración de tick estable."
       image: "assets/ftr.jpg"
       url: "https://github.com/FeedTheRealm-org"
@@ -15,6 +38,7 @@ sys_projects:
               "Datadog",
           ]
     - name: "ClassConnect"
+      short_name: "classconnect"
       description: "ClassConnect es una plataforma educativa cloud-native construida sobre una arquitectura distribuida de microservicios. Cuenta con un despliegue en Kubernetes, gestionado mediante Infrastructure as Code y automatizado con pipelines CI/CD. El monitoreo se realiza con Datadog para lograr una observabilidad completa.<br><br>El sistema soporta una aplicación móvil en React Native (para docentes y estudiantes) y una aplicación web en React (para administradores). Incluye seis microservicios desarrollados en Go (Gin Gonic) y Python (FastAPI), cada uno con su propia base de datos utilizando Supabase o MongoDB Atlas, todos con una cobertura de tests superior al 75%. Un microservicio adicional de IA, impulsado por Gemini 2.0 Flash, permite asistencia basada en modelos LLM."
       image: "assets/cc.png"
       url: "https://github.com/ClassConnect-org"
@@ -29,6 +53,7 @@ sys_projects:
               "Kong-Gateway",
           ]
     - name: "Sistema Distribuido de Análisis de Ventas"
+      short_name: "sales-analysis"
       description: "Sistema distribuido tolerante a fallos diseñado para procesar y analizar grandes volúmenes de datos transaccionales.<br><br>La arquitectura se basa en un pipeline orientado a mensajes utilizando RabbitMQ, donde nodos trabajadores independientes procesan los datos por etapas, habilitando escalabilidad horizontal y alto rendimiento.<br><br>Las principales características incluyen:<br>- Pipelines distribuidos de extremo a extremo para filtrado, agregación, ranking y joins.<br>- Alta tolerancia a fallos mediante ACKs diferidos, persistencia en disco, mensajes idempotentes y manejo de duplicados.<br>- Recuperación automática de nodos.<br>- Robustez, consistencia y resiliencia frente a fallas parciales y catastróficas."
       image: "assets/distro.jpg"
       url: "https://github.com/maxogod/distributed-processing-pipeline"
@@ -42,18 +67,21 @@ sys_projects:
               "Python",
           ]
     - name: "Firewall SDN"
+      short_name: "sdn-firewall"
       description: "Solución de Software-Defined Networking (SDN) que implementa un firewall dinámico utilizando POX y Mininet.<br><br>El proyecto sigue una arquitectura modular basada en Docker que separa la lógica de emulación de red del controlador, y está desarrollado en Python 3 (con parches personalizados para compatibilidad con POX).<br><br>Características principales:<br>- Configuración basada en JSON para definir reglas de filtrado por IP, puerto y protocolo.<br>- Control centralizado del tráfico mediante switches OpenFlow gestionados con POX.<br>- Validación de tráfico con Mininet y Wireshark, usando tests automatizados.<br><br>El sistema permite bloquear tráfico HTTP, descartar flujos UDP y limitar la comunicación entre hosts específicos. También aborda desafíos como la migración a Python 3 y pruebas en topologías complejas."
       image: "assets/firewall.jpg"
       url: ""
       vid: ""
       technologies: ["Pox", "Mininet", "Wireshark", "Python"]
     - name: "Protocolo RDT sobre UDP"
+      short_name: "rdt-udp"
       description: "Protocolo confiable de transferencia de archivos construido sobre UDP. El proyecto implementa dos estrategias de recuperación de errores—Stop-and-Wait y Go-Back-N—diseñadas para tolerar pérdidas de paquetes y mantener la integridad de la conexión.<br><br>El servidor tiene una arquitectura asíncrona que soporta múltiples clientes simultáneos, con encabezados personalizados para seguimiento de secuencia y confirmaciones.<br><br>Características principales:<br>- Encabezado de 6 bytes a nivel de aplicación con soporte de secuencia/ACK.<br>- Multiplexado de conexiones con lógica basada en eventos.<br>- Pruebas en Mininet: Go-Back-N fue 2.8× más rápido que Stop-and-Wait bajo 20% de pérdida de paquetes.<br><br>El proyecto se enfocó en construir un protocolo liviano y robusto con buena tolerancia a fallos y análisis de rendimiento en redes emuladas."
       image: "assets/udp.jpg"
       url: "https://github.com/maxogod/RDT-over-UDP"
       vid: ""
       technologies: ["Mininet", "Wireshark", "Python"]
     - name: "ConcuRide"
+      short_name: "concuride"
       description: "Sistema distribuido tolerante a fallos para el emparejamiento de viajes, desarrollado en Rust sobre el modelo de actores (Actix), con cuatro aplicaciones independientes (pasajeros, conductores, nodos administradores y una pasarela de pagos) que se comunican por TCP.<br><br>Un clúster de nodos administradores replicados elige un coordinador mediante un algoritmo de elección en anillo y sigue asignando viajes aun cuando fallan nodos o clientes.<br><br>Características principales:<br>- Concurrencia sin locks: el estado pertenece a los actores y se protege con sus mailboxes en lugar de bloqueos.<br>- Reelección automática del coordinador y failover de los clientes cuando este cae.<br>- Flujo de viaje con autorización de pago, asignación del conductor más cercano y distribución de carga round-robin entre administradores.<br>- Recuperación ante desconexiones en cualquier punto del viaje, con prevención de doble cobro y descarte de conductores que no responden."
       image: "assets/concuride.jpg"
       url: "https://github.com/maxogod/ConcuRide"
@@ -69,6 +97,7 @@ sys_projects:
 
 web_projects:
     - name: "ClassConnect"
+      short_name: "classconnect"
       description: "ClassConnect es una plataforma educativa cloud-native construida sobre una arquitectura distribuida de microservicios. Cuenta con un despliegue en Kubernetes, gestionado mediante Infrastructure as Code y automatizado con pipelines CI/CD. El monitoreo se realiza con Datadog para lograr una observabilidad completa.<br><br>El sistema soporta una aplicación móvil en React Native (para docentes y estudiantes) y una aplicación web en React (para administradores). Incluye seis microservicios desarrollados en Go (Gin Gonic) y Python (FastAPI), cada uno con su propia base de datos utilizando Supabase o MongoDB Atlas, todos con una cobertura de tests superior al 75%. Un microservicio adicional de IA, impulsado por Gemini 2.0 Flash, permite asistencia basada en modelos LLM."
       image: "assets/cc.png"
       url: "https://github.com/ClassConnect-org"
@@ -83,6 +112,7 @@ web_projects:
               "Kong-Gateway",
           ]
     - name: "Truco"
+      short_name: "truco"
       description: "Versión multijugador en tiempo real del Truco, el juego de cartas argentino, con partidas 1vs1 en línea contra otros jugadores. Desarrollado en equipo siguiendo metodologías ágiles.<br><br>El backend en Node.js y Express usa WebSockets de Pusher para el estado de juego en vivo y MongoDB Atlas para la persistencia, con un frontend en React y Tailwind CSS, todo containerizado con Docker.<br><br>Características principales:<br>- Cuentas de jugador con un puntaje que crece con las victorias y un ranking global que se reinicia a diario.<br>- Lista de amigos y desafíos directos.<br>- Chat durante la partida y guía de reglas integrada para nuevos jugadores."
       image: "assets/truco.jpeg"
       url: "https://github.com/maxogod/Truco"
@@ -90,24 +120,28 @@ web_projects:
       technologies:
           ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
     - name: "JoinTravel"
+      short_name: "jointravel"
       description: "JoinTravel es una plataforma diseñada para agilizar el proceso de organizar y gestionar planes de viaje en grupo, incluyendo características de chat y asistente-agente. <br><br> La plataforma fue construida utilizando la metodología ágil Scrum, para garantizar iteraciones rápidas, retroalimentación continua y la participación del equipo en cada etapa del proyecto. La gestión de riesgos y otros artefactos administrativos se manejan para documentar decisiones clave y mantener informados a los interesados."
       image: "assets/jointravel.jpeg"
       url: "https://github.com/JoinTravel-org"
       vid: "https://youtu.be/YyvmYDT34oE"
       technologies: ["Scrum", "Node", "Express", "React", "MongoDB"]
     - name: "AlaCarta"
+      short_name: "alacarta"
       description: "Plataforma full-stack de backoffice para restaurantes que permite gestionar menús, pedidos y personal, con una página de pedidos para clientes. Desarrollada con el stack MERN, TypeScript, Redux y Tailwind CSS.<br><br>Características principales:<br>- Acceso basado en roles para dueños, gerentes y empleados, con incorporación mediante invitaciones por email con códigos únicos.<br>- Gestión de pedidos en tiempo real, donde los empleados aceptan o rechazan los pedidos entrantes.<br>- Analítica de ventas con ingresos en el tiempo y desglose de los productos más vendidos.<br>- Personalización visual del menú y administración por restaurante."
       image: "assets/alacarta.png"
       url: "https://github.com/maxogod/AlaCarta"
       vid: ""
       technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
     - name: "GymChad"
+      short_name: "gymchad"
       description: "Organizador fitness full-stack para planificar actividades como baile o boxeo y los ejercicios de cada una, con imágenes, notas, series/repeticiones o duración. Frontend responsive en Angular respaldado por una API REST independiente en Spring Boot.<br><br>Incluye inicio de sesión con Google, autenticación basada en sesiones y verificación de propiedad de los datos por usuario. Desplegado en Render."
       image: "assets/gymchad.png"
       url: "https://github.com/maxogod/gymchad-app"
       vid: ""
       technologies: ["MongoDB", "Springboot", "Angular", "TypeScript", "Java"]
     - name: "Routine Manager"
+      short_name: "routine-manager"
       description: "Organizador personal de rutinas diarias con vista de calendario y la capacidad de crear, editar, eliminar y visualizar rutinas. Aplicación full-stack con backend en Django, frontend en React e integración con APIs de Google."
       image: "assets/routine.png"
       url: "https://github.com/maxogod/Routine-Manager"
@@ -123,6 +157,7 @@ web_projects:
 
 datasci_projects:
     - name: "RAG API para Estudiar"
+      short_name: "rag-api"
       description: "Servicio FastAPI de Retrieval-Augmented Generation creado para estudiar para los finales haciéndole preguntas directamente a los libros fuente.<br><br>Los PDFs se dividen en chunks, se convierten en embeddings y se indexan en un vector store PostgreSQL con pgvector. Cada pregunta dispara una búsqueda semántica por similitud, y los pasajes más relevantes se envían como contexto a un LLM (Llama 4 Scout) mediante LangChain.<br><br>Características principales:<br>- Respuestas fundamentadas en la bibliografía que reducen las alucinaciones y se mantienen trazables a los libros originales.<br>- Diseño modular con modelo de embeddings, vector store y LLM intercambiables."
       image: "assets/rag.jpg"
       url: "https://github.com/maxogod/student-rag-api"
@@ -130,6 +165,7 @@ datasci_projects:
       technologies:
           ["LLM", "RAG", "LangChain", "FastAPI", "PostgreSql", "pgvector", "Docker", "Python"]
     - name: "Segmentación de Tumores Cerebrales"
+      short_name: "brain-tumor"
       description: "Pipeline de aprendizaje profundo para la segmentación 3D automática de tumores cerebrales en resonancias magnéticas multimodales, inspirado en el desafío BraTS y desarrollado como proyecto de Aprendizaje Profundo en la Universidad de Buenos Aires.<br><br>Una U-Net 3D propia (5.6M de parámetros) recibe volúmenes T1CE, T2 y FLAIR y delimita voxel a voxel las tres clases de tejido tumoral (núcleo necrótico, edema y tumor realzado), entrenada con 369 casos clínicos tras un preprocesamiento de normalización de intensidades, recorte espacial y descarte de volúmenes con poca anotación.<br><br>Características principales:<br>- Manejo del desbalance de clases con una pérdida Dice-Focal ponderada, entrenamiento con precisión mixta y cosine annealing como política de tasa de aprendizaje.<br>- Test-time augmentation y ensamble de modelos para predicciones más robustas.<br>- Dice Score medio de 0.73 e IoU de 0.61 sobre un conjunto de validación, seleccionado entre más de 20 modelos entrenados.<br>- Entrenamiento adaptado a memoria de GPU limitada (4 a 16 GB de VRAM) en entornos locales y en la nube."
       image: "assets/brain.jpg"
       url: "https://github.com/maxogod/Brain-Tumor-Segmentation"
@@ -137,18 +173,21 @@ datasci_projects:
       technologies:
           ["Deep Learning", "Computer Vision", "Pytorch", "Numpy", "Python"]
     - name: "Aprendizaje profundo - Universidad de Buenos Aires"
+      short_name: "deep-learning-uba"
       description: "En los tres siguientes proyectos se exploraron distintas arquitecturas y aplicaciones de redes neuronales mayormente utilizando solamente la libreria numpy, y ocacionalmente pytorch.<br><br>El primero se centró en redes de Hopfield, evaluando su capacidad de recuperación de memoria bajo diversas condiciones.<br><br>El segundo abordó problemas clásicos de clasificación y regresión mediante perceptrones simples y multicapa, máquinas de Boltzmann, redes convolucionales y autoencoders, incluyendo también otros métodos como simulated annealing y algoritmos genéticos.<br><br>El tercero se enfocó en redes auto-organizadas de Kohonen (SOM), aplicadas a la representación de distribuciones geométricas, la resolución aproximada del problema del viajero y la reducción de dimensionalidad para análisis de clustering, destacando su capacidad para preservar topologías y descubrir estructuras ocultas en los datos."
       image: "assets/dl.png"
       url: "https://github.com/maxogod/DeepLearning"
       vid: ""
       technologies: ["Deep Learning", "Numpy", "Pytorch", "Python"]
     - name: "Donkey Kong AI"
+      short_name: "donkey-kong-ai"
       description: "El proyecto se centra en entrenar a un agente de IA para completar el primer nivel de Donkey Kong utilizando aprendizaje por refuerzo con el algoritmo de Proximal Policy Optimization (PPO). <br><br> El entorno se desarrolló en Unity con ML-Agents, y el modelo se entrenó usando PyTorch. El agente aprende a esquivar barriles, subir escaleras y rescatar a la princesa mediante interacción dinámica y un sistema de recompensas bien diseñado. La optimización de hiperparámetros y pruebas iterativas garantizaron un rendimiento estable y adaptativo, demostrando la efectividad del aprendizaje por refuerzo en entornos complejos de videojuegos."
       image: "assets/donkey.jpg"
       url: "https://github.com/maxogod/AI-Donkey-Kong"
       vid: "https://www.youtube.com/watch?v=5XQuDkWKL-M"
       technologies: ["Unity", "Pytorch", "Conda", "Reinforcement Learning"]
     - name: "Análisis y Predicción de Precios de Propiedades"
+      short_name: "property-prices"
       description: "Estudio de machine learning de punta a punta del mercado inmobiliario de Buenos Aires, a partir de un dataset de 460 mil publicaciones extraído con BigQuery y reducido a 94 mil casas, departamentos y PH de la ciudad tras la limpieza y la imputación.<br><br>Características principales:<br>- Preprocesamiento con tratamiento de outliers, imputación de barrios faltantes e ingeniería de características.<br>- Clusterización K-Means y análisis geográfico de precios, con K elegido mediante el método del codo y el silhouette score.<br>- Clasificación de precios bajo/medio/alto con árboles de decisión, Random Forest y XGBoost, ajustados con validación cruzada de 5 folds, donde XGBoost tuvo el mejor desempeño.<br>- Regresión de precios con KNN, XGBoost y árboles de decisión evaluados con MSE, RMSE y R2."
       image: "assets/ai.png"
       url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP1/7506R_TP1_GRUPO02_REPORTE.pdf"
@@ -156,6 +195,7 @@ datasci_projects:
       technologies:
           ["Machine Learning", "Python", "ScikitLearn", "Pandas", "GoogleColab"]
     - name: "Procesamiento de Lenguaje Natural"
+      short_name: "nlp"
       description: "[Competencia de Kaggle] Clasificador de sentimiento de reseñas de películas en español, que combina ML clásico y aprendizaje profundo sobre un pipeline de NLP con tokenización, eliminación de stopwords, POS tagging y lematización (NLTK y spaCy).<br><br>Naive Bayes, Random Forest, XGBoost y una red neuronal en Keras se ajustaron con validación cruzada y se combinaron en un ensamble por votación que alcanzó 0.92 de F1 en validación."
       image: "assets/nlp.png"
       url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP2/7506R_TP2_GRUPO02_REPORTE.pdf"
@@ -170,6 +210,7 @@ datasci_projects:
               "GoogleColab",
           ]
     - name: "Extracción, Transformación y Carga de Datos Inmobiliarios"
+      short_name: "real-estate-etl"
       description: "Pipeline ETL sobre un dataset de Kaggle con más de un millón de ventas inmobiliarias (2001 a 2020), desarrollado para la materia Bases de Datos.<br><br>Características principales:<br>- Limpieza de datos: manejo de nulos, filtrado de outliers con z-score, estandarización de formatos y eliminación de duplicados.<br>- Rediseño del esquema y carga en una base SQLite normalizada a la Forma Normal de Boyce-Codd (BCNF).<br>- Validación de integridad reconstruyendo el dataset original a partir de las tablas normalizadas."
       image: "assets/etl.png"
       url: "https://github.com/maxogod/ETL-Real-Estate/blob/main/informe.pdf"
@@ -185,6 +226,7 @@ datasci_projects:
 
 game_projects:
     - name: "Feed the Realm"
+      short_name: "feed-the-realm"
       description: "Plataforma MMO RPG Maker donde los jugadores construyen mundos 3D persistentes con un World Editor sin código, los publican y los juegan en línea junto a cientos de jugadores concurrentes. Desarrollado como Trabajo Profesional de Ingeniería en Informática en la Universidad de Buenos Aires.<br><br>Cada mundo se divide en zonas, y cada una es un servidor autoritativo de Unity en modo headless que corre en su propio contenedor Docker, desplegado bajo demanda y escalado horizontalmente. Un Core Service en Go (Gin), diseñado como monolito modular detrás de un API Gateway en Nginx, gestiona autenticación, assets, pagos con Stripe y la orquestación de mundos, respaldado por PostgreSQL y una base de datos MongoDB por mundo que mantiene el estado del jugador consistente entre zonas.<br><br>Características principales:<br>- Infraestructura en AWS definida como código con Terraform: EC2, S3 + CDN CloudFront, ECR, DNS público/privado en Route 53, IAM con mínimos privilegios y secretos gestionados con SSM.<br>- Orquestación de servidores de juego bajo demanda con HashiCorp Nomad (elegido por sobre Kubernetes para no reprogramar sesiones en vivo) y descubrimiento de servicios con Consul por ID de mundo/zona.<br>- Networking con autoridad del servidor sobre KCP/UDP con Mirror y Protobuf, un game loop de tick fijo y límites de comandos por tick para absorber picos de tráfico.<br>- CI/CD con GitHub Actions y despliegues sin credenciales estáticas vía OIDC, cobertura de tests superior al 75%, tests de aceptación BDD, escaneo de secretos y vulnerabilidades, y redespliegue automático de los servidores de juego activos en cada release.<br>- Observabilidad con Datadog mediante métricas personalizadas a nivel de tick, dashboards y alertas.<br>- Pruebas de carga con bots propios: ~550 jugadores concurrentes en 7 zonas sobre dos nodos de 2 vCPU / 2 GB con duración de tick estable."
       image: "assets/ftr.jpg"
       url: "https://github.com/FeedTheRealm-org"
@@ -200,12 +242,14 @@ game_projects:
               "Datadog",
           ]
     - name: "Jazz Jackrabbit 2 Remake"
+      short_name: "jazz-jackrabbit-2"
       description: "Una emocionante reinvención del clásico juego de plataformas, ahora con partidas en línea de hasta 8 jugadores. Enfréntate en frenéticas batallas con personajes icónicos como Jazz, Spaz y Lori en varios mapas llenos de acción. Disfruta de una variedad de armas, objetos especiales como zanahorias de invencibilidad y un editor de mapas personalizado para una experiencia de juego única e inmersiva. Desarrollado desde cero (sin motores de juego de terceros) usando C++ y SDL2."
       image: "assets/jazz.jpg"
       url: "https://atusgames.github.io/#/jazz-jackrabbit-2-remake"
       vid: "https://www.youtube.com/watch?v=yL4jmEFELbI"
       technologies: ["Scrum", "C++", "SDL2"]
     - name: "Truco"
+      short_name: "truco"
       description: "Versión multijugador en tiempo real del Truco, el juego de cartas argentino, con partidas 1vs1 en línea contra otros jugadores. Desarrollado en equipo siguiendo metodologías ágiles.<br><br>El backend en Node.js y Express usa WebSockets de Pusher para el estado de juego en vivo y MongoDB Atlas para la persistencia, con un frontend en React y Tailwind CSS, todo containerizado con Docker.<br><br>Características principales:<br>- Cuentas de jugador con un puntaje que crece con las victorias y un ranking global que se reinicia a diario.<br>- Lista de amigos y desafíos directos.<br>- Chat durante la partida y guía de reglas integrada para nuevos jugadores."
       image: "assets/truco.jpeg"
       url: "https://github.com/maxogod/Truco"
@@ -213,6 +257,7 @@ game_projects:
       technologies:
           ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
     - name: "Save The Galaxy"
+      short_name: "save-the-galaxy"
       description: "Shooter espacial arcade inspirado en Galaga, desarrollado con Godot y publicado en itch.io para Windows. Defiende la galaxia de una invasión alienígena en la que las naves enemigas se vuelven más fuertes y rápidas con el tiempo; si dejas pasar a demasiadas o mueres, la galaxia es colonizada."
       image: "assets/save_the_galaxy.png"
       url: "https://maxogod.itch.io/save-the-galaxy"

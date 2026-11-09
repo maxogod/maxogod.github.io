@@ -40,17 +40,17 @@ const TopBar = () => {
     }
 
     return (
-        <header className={`topbar fixed inset-x-0 top-0 z-40 flex items-center justify-between px-3 py-3 transition-colors duration-500 sm:px-6 ${onSky ? 'text-ink' : 'text-foam'}`}>
+        <header className={`topbar pointer-events-none fixed inset-x-0 top-0 z-40 flex items-center justify-between px-3 py-3 transition-colors duration-500 sm:px-6 ${onSky ? 'text-ink' : 'text-foam'}`}>
             <button
                 type="button"
                 onClick={() => scrollToSection('surface')}
                 aria-label={text.nav.home}
-                className={`flex items-center gap-2 rounded-full py-1.5 pr-4 pl-2 text-xl font-extrabold tracking-tight transition-[background-color] duration-500 [font-stretch:90%] ${atSurface ? '' : 'glass ring-1 ring-white/10'}`}>
+                className={`pointer-events-auto flex items-center gap-2 rounded-full py-1.5 pr-4 pl-2 text-xl font-extrabold tracking-tight transition-[background-color] duration-500 [font-stretch:90%] ${atSurface ? '' : 'glass ring-1 ring-white/10'}`}>
                 <Submarine className="w-9" />
                 maxo
             </button>
 
-            <nav aria-label={text.nav.settings} className={`flex items-center gap-0.5 rounded-full p-1 transition-[background-color] duration-500 ${atSurface ? 'bg-white/20 backdrop-blur-md dark:bg-white/8' : 'glass ring-1 ring-white/10'}`}>
+            <nav aria-label={text.nav.settings} className={`pointer-events-auto flex items-center gap-0.5 rounded-full p-1 transition-[background-color] duration-500 ${atSurface ? 'bg-white/20 backdrop-blur-md dark:bg-white/8' : 'glass ring-1 ring-white/10'}`}>
                 <IconButton label={text.nav.language} onClick={toggleLanguage}>
                     <span className="font-gauge text-xs font-semibold">{text.nav.languageShort}</span>
                 </IconButton>

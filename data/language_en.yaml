@@ -63,10 +63,10 @@ projects:
     intro: "Pick a category, then open a project for the full story: architecture, infrastructure and results."
     all: "All"
     categories:
-        sys: "Systems & infrastructure"
-        web: "Full-stack web & apps"
-        datasci: "AI & data science"
-        games: "Game development"
+        sys: "Distributed Systems & Cloud Infrastructure"
+        web: "Full-Stack Web & Apps"
+        datasci: "AI & Data Science"
+        games: "Game Development"
     short:
         sys: "Systems"
         web: "Web & apps"
