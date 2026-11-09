@@ -45,3 +45,6 @@
 "Docker": "bg-blue-400"
 "RabbitMQ": "bg-orange-300"
 "Distributed Systems": "bg-lime-400"
+"AWS": "bg-amber-400"
+"Terraform": "bg-violet-400"
+"Nomad": "bg-teal-400"

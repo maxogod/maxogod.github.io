@@ -1,4 +1,19 @@
 sys_projects:
+    - name: "Feed the Realm"
+      description: "Plataforma MMO RPG Maker donde los jugadores construyen mundos 3D persistentes con un World Editor sin código, los publican y los juegan en línea junto a cientos de jugadores concurrentes. Desarrollado como Trabajo Profesional de Ingeniería en Informática en la Universidad de Buenos Aires.<br><br>Cada mundo se divide en zonas, y cada una es un servidor autoritativo de Unity en modo headless que corre en su propio contenedor Docker, desplegado bajo demanda y escalado horizontalmente. Un Core Service en Go (Gin), diseñado como monolito modular detrás de un API Gateway en Nginx, gestiona autenticación, assets, pagos con Stripe y la orquestación de mundos, respaldado por PostgreSQL y una base de datos MongoDB por mundo que mantiene el estado del jugador consistente entre zonas.<br><br>Características principales:<br>- Infraestructura en AWS definida como código con Terraform: EC2, S3 + CDN CloudFront, ECR, DNS público/privado en Route 53, IAM con mínimos privilegios y secretos gestionados con SSM.<br>- Orquestación de servidores de juego bajo demanda con HashiCorp Nomad (elegido por sobre Kubernetes para no reprogramar sesiones en vivo) y descubrimiento de servicios con Consul por ID de mundo/zona.<br>- Networking con autoridad del servidor sobre KCP/UDP con Mirror y Protobuf, un game loop de tick fijo y límites de comandos por tick para absorber picos de tráfico.<br>- CI/CD con GitHub Actions y despliegues sin credenciales estáticas vía OIDC, cobertura de tests superior al 75%, tests de aceptación BDD, escaneo de secretos y vulnerabilidades, y redespliegue automático de los servidores de juego activos en cada release.<br>- Observabilidad con Datadog mediante métricas personalizadas a nivel de tick, dashboards y alertas.<br>- Pruebas de carga con bots propios: ~550 jugadores concurrentes en 7 zonas sobre dos nodos de 2 vCPU / 2 GB con duración de tick estable."
+      image: "assets/ftr.jpg"
+      url: "https://github.com/FeedTheRealm-org"
+      vid: ""
+      technologies:
+          [
+              "Distributed Systems",
+              "AWS",
+              "Terraform",
+              "Nomad",
+              "Go",
+              "Unity",
+              "Datadog",
+          ]
     - name: "ClassConnect"
       description: "ClassConnect es una plataforma educativa cloud-native construida sobre una arquitectura distribuida de microservicios. Cuenta con un despliegue en Kubernetes, gestionado mediante Infrastructure as Code y automatizado con pipelines CI/CD. El monitoreo se realiza con Datadog para lograr una observabilidad completa.<br><br>El sistema soporta una aplicación móvil en React Native (para docentes y estudiantes) y una aplicación web en React (para administradores). Incluye seis microservicios desarrollados en Go (Gin Gonic) y Python (FastAPI), cada uno con su propia base de datos utilizando Supabase o MongoDB Atlas, todos con una cobertura de tests superior al 75%. Un microservicio adicional de IA, impulsado por Gemini 2.0 Flash, permite asistencia basada en modelos LLM."
       image: "assets/cc.png"
@@ -152,6 +167,21 @@ datasci_projects:
       technologies: []
 
 game_projects:
+    - name: "Feed the Realm"
+      description: "Plataforma MMO RPG Maker donde los jugadores construyen mundos 3D persistentes con un World Editor sin código, los publican y los juegan en línea junto a cientos de jugadores concurrentes. Desarrollado como Trabajo Profesional de Ingeniería en Informática en la Universidad de Buenos Aires.<br><br>Cada mundo se divide en zonas, y cada una es un servidor autoritativo de Unity en modo headless que corre en su propio contenedor Docker, desplegado bajo demanda y escalado horizontalmente. Un Core Service en Go (Gin), diseñado como monolito modular detrás de un API Gateway en Nginx, gestiona autenticación, assets, pagos con Stripe y la orquestación de mundos, respaldado por PostgreSQL y una base de datos MongoDB por mundo que mantiene el estado del jugador consistente entre zonas.<br><br>Características principales:<br>- Infraestructura en AWS definida como código con Terraform: EC2, S3 + CDN CloudFront, ECR, DNS público/privado en Route 53, IAM con mínimos privilegios y secretos gestionados con SSM.<br>- Orquestación de servidores de juego bajo demanda con HashiCorp Nomad (elegido por sobre Kubernetes para no reprogramar sesiones en vivo) y descubrimiento de servicios con Consul por ID de mundo/zona.<br>- Networking con autoridad del servidor sobre KCP/UDP con Mirror y Protobuf, un game loop de tick fijo y límites de comandos por tick para absorber picos de tráfico.<br>- CI/CD con GitHub Actions y despliegues sin credenciales estáticas vía OIDC, cobertura de tests superior al 75%, tests de aceptación BDD, escaneo de secretos y vulnerabilidades, y redespliegue automático de los servidores de juego activos en cada release.<br>- Observabilidad con Datadog mediante métricas personalizadas a nivel de tick, dashboards y alertas.<br>- Pruebas de carga con bots propios: ~550 jugadores concurrentes en 7 zonas sobre dos nodos de 2 vCPU / 2 GB con duración de tick estable."
+      image: "assets/ftr.jpg"
+      url: "https://github.com/FeedTheRealm-org"
+      vid: ""
+      technologies:
+          [
+              "Distributed Systems",
+              "AWS",
+              "Terraform",
+              "Nomad",
+              "Go",
+              "Unity",
+              "Datadog",
+          ]
     - name: "Jazz Jackrabbit 2 Remake"
       description: "Una emocionante reinvención del clásico juego de plataformas, ahora con partidas en línea de hasta 8 jugadores. Enfréntate en frenéticas batallas con personajes icónicos como Jazz, Spaz y Lori en varios mapas llenos de acción. Disfruta de una variedad de armas, objetos especiales como zanahorias de invencibilidad y un editor de mapas personalizado para una experiencia de juego única e inmersiva. Desarrollado desde cero (sin motores de juego de terceros) usando C++ y SDL2."
       image: "assets/jazz.jpg"

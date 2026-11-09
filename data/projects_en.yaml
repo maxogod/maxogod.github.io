@@ -1,4 +1,19 @@
 sys_projects:
+    - name: "Feed the Realm"
+      description: "MMO RPG Maker platform where players build persistent 3D worlds with a no-code World Editor, publish them, and play them online alongside hundreds of concurrent players. Built as our Software Engineering capstone at the University of Buenos Aires.<br><br>Each world is sharded into zones, each one an authoritative headless Unity server running in its own Docker container, deployed on demand and scaled horizontally. A Go (Gin) Core Service, designed as a modular monolith behind an Nginx API Gateway, handles auth, assets, Stripe payments and world orchestration, backed by PostgreSQL and a per-world MongoDB database that keeps player state consistent across zones.<br><br>Key features include:<br>- AWS infrastructure as code with Terraform: EC2, S3 + CloudFront CDN, ECR, Route 53 public/private DNS, least-privilege IAM and SSM-managed secrets.<br>- On-demand game server orchestration with HashiCorp Nomad (chosen over Kubernetes to avoid rescheduling live sessions) and Consul service discovery by world/zone ID.<br>- Server-authoritative networking over KCP/UDP with Mirror and Protobuf, a fixed-rate tick loop and per-tick command budgets to absorb traffic spikes.<br>- GitHub Actions CI/CD with keyless OIDC deploys, 75%+ test coverage, BDD acceptance tests, secret and vulnerability scanning, and automatic redeploy of live game servers on each release.<br>- Datadog observability with custom tick-level metrics, dashboards and alerting.<br>- Load tested with custom bots: ~550 concurrent players across 7 zones on two 2 vCPU / 2 GB nodes with stable tick times."
+      image: "assets/ftr.jpg"
+      url: "https://github.com/FeedTheRealm-org"
+      vid: ""
+      technologies:
+          [
+              "Distributed Systems",
+              "AWS",
+              "Terraform",
+              "Nomad",
+              "Go",
+              "Unity",
+              "Datadog",
+          ]
     - name: "ClassConnect"
       description: "ClassConnect is a cloud-native educational platform built on a distributed microservices architecture. It features a Kubernetes-based deployment, managed via Infrastructure as Code and automated with CI/CD pipelines. Monitoring is handled through Datadog for full observability. <br><br> The system supports both a React Native mobile app (for teachers and students) and a React web app (for administrators). It includes six microservices developed in Go (Gin Gonic) and Python (FastAPI), each with its own database using Supabase or MongoDB Atlas, all with >75% test coverage. An additional AI microservice powered by Gemini 2.0 Flash enables LLM-based assistance."
       image: "assets/cc.png"
@@ -152,6 +167,21 @@ datasci_projects:
       technologies: []
 
 game_projects:
+    - name: "Feed the Realm"
+      description: "MMO RPG Maker platform where players build persistent 3D worlds with a no-code World Editor, publish them, and play them online alongside hundreds of concurrent players. Built as our Software Engineering capstone at the University of Buenos Aires.<br><br>Each world is sharded into zones, each one an authoritative headless Unity server running in its own Docker container, deployed on demand and scaled horizontally. A Go (Gin) Core Service, designed as a modular monolith behind an Nginx API Gateway, handles auth, assets, Stripe payments and world orchestration, backed by PostgreSQL and a per-world MongoDB database that keeps player state consistent across zones.<br><br>Key features include:<br>- AWS infrastructure as code with Terraform: EC2, S3 + CloudFront CDN, ECR, Route 53 public/private DNS, least-privilege IAM and SSM-managed secrets.<br>- On-demand game server orchestration with HashiCorp Nomad (chosen over Kubernetes to avoid rescheduling live sessions) and Consul service discovery by world/zone ID.<br>- Server-authoritative networking over KCP/UDP with Mirror and Protobuf, a fixed-rate tick loop and per-tick command budgets to absorb traffic spikes.<br>- GitHub Actions CI/CD with keyless OIDC deploys, 75%+ test coverage, BDD acceptance tests, secret and vulnerability scanning, and automatic redeploy of live game servers on each release.<br>- Datadog observability with custom tick-level metrics, dashboards and alerting.<br>- Load tested with custom bots: ~550 concurrent players across 7 zones on two 2 vCPU / 2 GB nodes with stable tick times."
+      image: "assets/ftr.jpg"
+      url: "https://github.com/FeedTheRealm-org"
+      vid: ""
+      technologies:
+          [
+              "Distributed Systems",
+              "AWS",
+              "Terraform",
+              "Nomad",
+              "Go",
+              "Unity",
+              "Datadog",
+          ]
     - name: "Jazz Jackrabbit 2 Remake"
       description: "An exciting reinvention of the classic platformer game, now with online matches of up to 8 players. Have frenetic face-offs with iconic characters like Jazz, Spaz, and Lori in various action-packed maps. Enjoy a variety of weapons, special items like invincibility carrots, and a custom map editor for a unique and immersive gaming experience. Developed from scratch (no 3rd-party game engines) using C++ and SDL2."
       image: "assets/jazz.jpg"
