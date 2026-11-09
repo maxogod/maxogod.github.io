@@ -54,7 +54,7 @@ sys_projects:
       vid: ""
       technologies: ["Mininet", "Wireshark", "Python"]
     - name: "ConcuRide"
-      description: "ConcuRide is a distributed system built in Rust that connects passengers and drivers efficiently using advanced concurrency and distributed techniques. It employs the actor model for message handling, the Ring algorithm for coordinator election, and ensures resilience to failures, providing robust and scalable functionality."
+      description: "Fault-tolerant distributed ride-matching system in Rust, built on the actor model (Actix) with four independent applications (passengers, drivers, admin nodes and a payment gateway) communicating over TCP.<br><br>A cluster of replicated admin nodes elects a coordinator through a ring election algorithm and keeps matching trips even when nodes or clients fail.<br><br>Key features include:<br>- Lock-free concurrency: state is owned by actors and protected by message mailboxes instead of locks.<br>- Automatic coordinator re-election and client failover when the coordinator goes down.<br>- Trip flow with payment authorization, nearest-driver matching and round-robin load distribution across admins.<br>- Recovery from disconnections at any point of a trip, including double-charge prevention and unresponsive driver reaping."
       image: "assets/concuride.jpg"
       url: "https://github.com/maxogod/ConcuRide"
       vid: "https://www.youtube.com/watch?v=8ktItIcETTw&ab_channel=MaxoFiuba"
@@ -83,7 +83,7 @@ web_projects:
               "Kong-Gateway",
           ]
     - name: "Truco"
-      description: "Online game of the popular argentinian card game Truco with 1vs1 matches, challenges, global ranking and more! Built employing Agile Methodologies."
+      description: "Real-time multiplayer version of Truco, the Argentine card game, with 1v1 matches against other players online. Built by a team following Agile methodologies.<br><br>The Node.js and Express backend uses Pusher WebSockets for live game state and MongoDB Atlas for persistence, with a React and Tailwind CSS frontend, all containerized with Docker.<br><br>Key features include:<br>- Player accounts with a rating that grows with wins and a global leaderboard that resets daily.<br>- Friends list and direct challenges.<br>- In-match chat and built-in rules guide for new players."
       image: "assets/truco.jpeg"
       url: "https://github.com/maxogod/Truco"
       vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY"
@@ -96,19 +96,19 @@ web_projects:
       vid: "https://youtu.be/YyvmYDT34oE"
       technologies: ["Scrum", "Node", "Express", "React", "MongoDB"]
     - name: "AlaCarta"
-      description: "Backoffice website for restaurants to manage their menu, orders, tables, see product insights, and more. Developed using TypeScript and the MERN stack."
+      description: "Full-stack backoffice platform for restaurants to manage menus, orders and staff, with a customer-facing ordering page. Built with the MERN stack, TypeScript, Redux and Tailwind CSS.<br><br>Key features include:<br>- Role-based access for owners, managers and employees, onboarded through email invitations with unique codes.<br>- Real-time order handling where employees accept or reject incoming orders.<br>- Sales analytics with revenue over time and best-selling product breakdowns.<br>- Customizable menu branding and per-restaurant management."
       image: "assets/alacarta.png"
       url: "https://github.com/maxogod/AlaCarta"
       vid: ""
       technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
     - name: "GymChad"
-      description: "Website to organize different fitness activities such as dancing/boxing and the exercises that belong to those activities, including images, descriptions, sets/reps, etc."
+      description: "Full-stack fitness organizer to plan activities such as dancing or boxing and the exercises that belong to each one, with images, notes, sets/reps or duration. Responsive Angular frontend backed by a separate Spring Boot REST API.<br><br>Features Google sign-in with session-based authentication and per-user data ownership checks. Deployed on Render."
       image: "assets/gymchad.png"
       url: "https://github.com/maxogod/gymchad-app"
       vid: ""
       technologies: ["MongoDB", "Springboot", "Angular", "TypeScript", "Java"]
     - name: "Routine Manager"
-      description: "Personal organizer for daily routines, with the ability to create, edit, delete, and visualize routines. Developed using Django, React and Google APIs."
+      description: "Personal organizer for daily routines with a calendar view and the ability to create, edit, delete and visualize routines. Full-stack application built with a Django backend, a React frontend and Google APIs integration."
       image: "assets/routine.png"
       url: "https://github.com/maxogod/Routine-Manager"
       vid: "https://www.youtube.com/watch?v=hAaZC-RAX24"
@@ -149,14 +149,14 @@ datasci_projects:
       vid: "https://www.youtube.com/watch?v=5XQuDkWKL-M"
       technologies: ["Unity", "Pytorch", "Conda", "Reinforcement Learning"]
     - name: "Property Price Analysis & Prediction"
-      description: "Used a dataset of real properties in Buenos Aires extracted with BigQuery. This project consisted of 4 main parts: Pre-processing, Clusterization & analysis, Classification of property prices (low/mid/high), Regression (prediction) of property price with different ML models. Some of the used models were Random Forest, XGBoost, Decision Trees, KNN."
+      description: "End-to-end machine learning study of the Buenos Aires real estate market, starting from a 460k-listing dataset extracted with BigQuery and narrowed to 94k houses, apartments and PH properties in the city after cleaning and imputation.<br><br>Key features include:<br>- Data preprocessing with outlier treatment, imputation of missing neighborhoods and feature engineering.<br>- K-Means clustering and geographic price analysis, with K chosen through the elbow method and silhouette score.<br>- Low/mid/high price classification using Decision Trees, Random Forest and XGBoost, tuned with 5-fold cross-validation, where XGBoost performed best.<br>- Price regression with KNN, XGBoost and Decision Trees evaluated with MSE, RMSE and R2."
       image: "assets/ai.png"
       url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP1/7506R_TP1_GRUPO02_REPORTE.pdf"
       vid: ""
       technologies:
           ["Machine Learning", "Python", "ScikitLearn", "Pandas", "GoogleColab"]
     - name: "Natural Languaje Processing"
-      description: "[Kaggle Competition] Made a sentiment analysis of a movie reviews dataset and made different ML models to determine whether a sample is positive or negative. This models included Neural Networks, Ensembles, XGBoosts, Random Forests and Naive Bayes."
+      description: "[Kaggle Competition] Sentiment classifier for Spanish movie reviews, combining classical ML and deep learning on top of an NLP pipeline of tokenization, stopword removal, POS tagging and lemmatization (NLTK and spaCy).<br><br>Naive Bayes, Random Forest, XGBoost and a Keras neural network were tuned with cross-validation and combined into a voting ensemble that reached 0.92 F1 on validation."
       image: "assets/nlp.png"
       url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP2/7506R_TP2_GRUPO02_REPORTE.pdf"
       vid: ""
@@ -170,7 +170,7 @@ datasci_projects:
               "GoogleColab",
           ]
     - name: "Extract, Transform & Load Real Estate Data"
-      description: "Extracted real estate data from a kaggle competition dataset with more than a million registers, processed it by cleaning and preparing it to be stored in a relational database, and loaded it into a BCNF (Boyce-Codd) normalized database."
+      description: "ETL pipeline over a Kaggle dataset of more than one million real estate sales (2001 to 2020), built for a Databases course.<br><br>Key features include:<br>- Data cleaning: null handling, z-score outlier filtering, format standardization and duplicate removal.<br>- Schema redesign and loading into a SQLite database normalized to Boyce-Codd Normal Form (BCNF).<br>- Integrity validation by reconstructing the original dataset from the normalized tables."
       image: "assets/etl.png"
       url: "https://github.com/maxogod/ETL-Real-Estate/blob/main/informe.pdf"
       vid: ""
@@ -206,14 +206,14 @@ game_projects:
       vid: "https://www.youtube.com/watch?v=yL4jmEFELbI"
       technologies: ["Scrum", "C++", "SDL2"]
     - name: "Truco"
-      description: "Online game of the popular argentinian card game Truco with 1vs1 matches, challenges, global ranking and more! Built employing Agile Methodologies."
+      description: "Real-time multiplayer version of Truco, the Argentine card game, with 1v1 matches against other players online. Built by a team following Agile methodologies.<br><br>The Node.js and Express backend uses Pusher WebSockets for live game state and MongoDB Atlas for persistence, with a React and Tailwind CSS frontend, all containerized with Docker.<br><br>Key features include:<br>- Player accounts with a rating that grows with wins and a global leaderboard that resets daily.<br>- Friends list and direct challenges.<br>- In-match chat and built-in rules guide for new players."
       image: "assets/truco.jpeg"
       url: "https://github.com/maxogod/Truco"
       vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY"
       technologies:
           ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
     - name: "Save The Galaxy"
-      description: "A thrilling adventure where the player takes on the role of the savior of the galaxy, fighting against an army of alien invaders. The enemy ships grow stronger and faster as the invasion progresses. If the player fails to fend off the aliens, they will colonize the galaxy, and the same fate awaits if the player perishes in the attempt."
+      description: "Arcade space shooter inspired by Galaga, built with Godot and published on itch.io for Windows. Defend the galaxy from an alien invasion where enemy ships get stronger and faster over time, and let too many through or die and the galaxy is colonized."
       image: "assets/save_the_galaxy.png"
       url: "https://maxogod.itch.io/save-the-galaxy"
       vid: "https://www.youtube.com/watch?v=u-lp5ocy8yI"

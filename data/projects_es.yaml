@@ -54,7 +54,7 @@ sys_projects:
       vid: ""
       technologies: ["Mininet", "Wireshark", "Python"]
     - name: "ConcuRide"
-      description: "ConcuRide es un sistema distribuido desarrollado en Rust que conecta pasajeros y conductores de manera eficiente, utilizando técnicas avanzadas de concurrencia y distribución. Emplea el modelo de actores para la gestión de mensajes, el algoritmo de anillo para la elección de coordinadores, y garantiza resiliencia ante fallos, ofreciendo funcionalidad robusta y escalable."
+      description: "Sistema distribuido tolerante a fallos para el emparejamiento de viajes, desarrollado en Rust sobre el modelo de actores (Actix), con cuatro aplicaciones independientes (pasajeros, conductores, nodos administradores y una pasarela de pagos) que se comunican por TCP.<br><br>Un clúster de nodos administradores replicados elige un coordinador mediante un algoritmo de elección en anillo y sigue asignando viajes aun cuando fallan nodos o clientes.<br><br>Características principales:<br>- Concurrencia sin locks: el estado pertenece a los actores y se protege con sus mailboxes en lugar de bloqueos.<br>- Reelección automática del coordinador y failover de los clientes cuando este cae.<br>- Flujo de viaje con autorización de pago, asignación del conductor más cercano y distribución de carga round-robin entre administradores.<br>- Recuperación ante desconexiones en cualquier punto del viaje, con prevención de doble cobro y descarte de conductores que no responden."
       image: "assets/concuride.jpg"
       url: "https://github.com/maxogod/ConcuRide"
       vid: "https://www.youtube.com/watch?v=8ktItIcETTw&ab_channel=MaxoFiuba"
@@ -83,7 +83,7 @@ web_projects:
               "Kong-Gateway",
           ]
     - name: "Truco"
-      description: "Juego en línea del popular juego de cartas argentino Truco con partidas 1vs1, desafíos, ranking global ¡y más! Desarrollado utilizando metodologías ágiles."
+      description: "Versión multijugador en tiempo real del Truco, el juego de cartas argentino, con partidas 1vs1 en línea contra otros jugadores. Desarrollado en equipo siguiendo metodologías ágiles.<br><br>El backend en Node.js y Express usa WebSockets de Pusher para el estado de juego en vivo y MongoDB Atlas para la persistencia, con un frontend en React y Tailwind CSS, todo containerizado con Docker.<br><br>Características principales:<br>- Cuentas de jugador con un puntaje que crece con las victorias y un ranking global que se reinicia a diario.<br>- Lista de amigos y desafíos directos.<br>- Chat durante la partida y guía de reglas integrada para nuevos jugadores."
       image: "assets/truco.jpeg"
       url: "https://github.com/maxogod/Truco"
       vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY"
@@ -96,19 +96,19 @@ web_projects:
       vid: "https://youtu.be/YyvmYDT34oE"
       technologies: ["Scrum", "Node", "Express", "React", "MongoDB"]
     - name: "AlaCarta"
-      description: "Sitio web de backoffice para restaurantes para gestionar su menú, pedidos, mesas, ver información estadistica de productos y más. Desarrollado usando TypeScript y el stack MERN."
+      description: "Plataforma full-stack de backoffice para restaurantes que permite gestionar menús, pedidos y personal, con una página de pedidos para clientes. Desarrollada con el stack MERN, TypeScript, Redux y Tailwind CSS.<br><br>Características principales:<br>- Acceso basado en roles para dueños, gerentes y empleados, con incorporación mediante invitaciones por email con códigos únicos.<br>- Gestión de pedidos en tiempo real, donde los empleados aceptan o rechazan los pedidos entrantes.<br>- Analítica de ventas con ingresos en el tiempo y desglose de los productos más vendidos.<br>- Personalización visual del menú y administración por restaurante."
       image: "assets/alacarta.png"
       url: "https://github.com/maxogod/AlaCarta"
       vid: ""
       technologies: ["MongoDB", "Express", "React", "Node", "TypeScript"]
     - name: "GymChad"
-      description: "Sitio web para organizar diferentes actividades de fitness como baile/boxeo y los ejercicios que pertenecen a esas actividades, incluyendo imágenes, descripciones, series/repeticiones, etc."
+      description: "Organizador fitness full-stack para planificar actividades como baile o boxeo y los ejercicios de cada una, con imágenes, notas, series/repeticiones o duración. Frontend responsive en Angular respaldado por una API REST independiente en Spring Boot.<br><br>Incluye inicio de sesión con Google, autenticación basada en sesiones y verificación de propiedad de los datos por usuario. Desplegado en Render."
       image: "assets/gymchad.png"
       url: "https://github.com/maxogod/gymchad-app"
       vid: ""
       technologies: ["MongoDB", "Springboot", "Angular", "TypeScript", "Java"]
     - name: "Routine Manager"
-      description: "Organizador personal para rutinas diarias, con la capacidad de crear, editar, eliminar y visualizar rutinas. Desarrollado usando Django, React y APIs de Google."
+      description: "Organizador personal de rutinas diarias con vista de calendario y la capacidad de crear, editar, eliminar y visualizar rutinas. Aplicación full-stack con backend en Django, frontend en React e integración con APIs de Google."
       image: "assets/routine.png"
       url: "https://github.com/maxogod/Routine-Manager"
       vid: "https://www.youtube.com/watch?v=hAaZC-RAX24"
@@ -149,14 +149,14 @@ datasci_projects:
       vid: "https://www.youtube.com/watch?v=5XQuDkWKL-M"
       technologies: ["Unity", "Pytorch", "Conda", "Reinforcement Learning"]
     - name: "Análisis y Predicción de Precios de Propiedades"
-      description: "Se utilizó un conjunto de datos de propiedades reales en Buenos Aires extraído con BigQuery. Este proyecto constó de 4 partes principales: preprocesamiento, clusterización y análisis, clasificación de precios de propiedades (bajo/medio/alto), y regresión (predicción) del precio de la propiedad con diferentes modelos de ML. Algunos de los modelos utilizados fueron Random Forest, XGBoost, árboles de decisión y KNN."
+      description: "Estudio de machine learning de punta a punta del mercado inmobiliario de Buenos Aires, a partir de un dataset de 460 mil publicaciones extraído con BigQuery y reducido a 94 mil casas, departamentos y PH de la ciudad tras la limpieza y la imputación.<br><br>Características principales:<br>- Preprocesamiento con tratamiento de outliers, imputación de barrios faltantes e ingeniería de características.<br>- Clusterización K-Means y análisis geográfico de precios, con K elegido mediante el método del codo y el silhouette score.<br>- Clasificación de precios bajo/medio/alto con árboles de decisión, Random Forest y XGBoost, ajustados con validación cruzada de 5 folds, donde XGBoost tuvo el mejor desempeño.<br>- Regresión de precios con KNN, XGBoost y árboles de decisión evaluados con MSE, RMSE y R2."
       image: "assets/ai.png"
       url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP1/7506R_TP1_GRUPO02_REPORTE.pdf"
       vid: ""
       technologies:
           ["Machine Learning", "Python", "ScikitLearn", "Pandas", "GoogleColab"]
     - name: "Procesamiento de Lenguaje Natural"
-      description: "[Competencia de Kaggle] Se realizo un análisis de sentimientos de un conjunto de datos de reseñas de películas y se crearon diferentes modelos de ML para determinar si una muestra es positiva o negativa. Estos modelos incluyeron Redes Neuronales, Ensamblajes, XGBoost, Random Forest y Naive Bayes."
+      description: "[Competencia de Kaggle] Clasificador de sentimiento de reseñas de películas en español, que combina ML clásico y aprendizaje profundo sobre un pipeline de NLP con tokenización, eliminación de stopwords, POS tagging y lematización (NLTK y spaCy).<br><br>Naive Bayes, Random Forest, XGBoost y una red neuronal en Keras se ajustaron con validación cruzada y se combinaron en un ensamble por votación que alcanzó 0.92 de F1 en validación."
       image: "assets/nlp.png"
       url: "https://github.com/maxogod/DATA-SCIENCE/blob/main/TP2/7506R_TP2_GRUPO02_REPORTE.pdf"
       vid: ""
@@ -170,7 +170,7 @@ datasci_projects:
               "GoogleColab",
           ]
     - name: "Extracción, Transformación y Carga de Datos Inmobiliarios"
-      description: "Se extrajeron datos inmobiliarios de un conjunto de datos de una competencia de Kaggle con más de un millón de registros, fueron procesados limpiando y preparándolos para ser almacenados en una base de datos relacional, y fueron cargados en una base de datos normalizada en BCNF (Boyce-Codd)."
+      description: "Pipeline ETL sobre un dataset de Kaggle con más de un millón de ventas inmobiliarias (2001 a 2020), desarrollado para la materia Bases de Datos.<br><br>Características principales:<br>- Limpieza de datos: manejo de nulos, filtrado de outliers con z-score, estandarización de formatos y eliminación de duplicados.<br>- Rediseño del esquema y carga en una base SQLite normalizada a la Forma Normal de Boyce-Codd (BCNF).<br>- Validación de integridad reconstruyendo el dataset original a partir de las tablas normalizadas."
       image: "assets/etl.png"
       url: "https://github.com/maxogod/ETL-Real-Estate/blob/main/informe.pdf"
       vid: ""
@@ -206,14 +206,14 @@ game_projects:
       vid: "https://www.youtube.com/watch?v=yL4jmEFELbI"
       technologies: ["Scrum", "C++", "SDL2"]
     - name: "Truco"
-      description: "Juego en línea del popular juego de cartas argentino Truco con partidas 1vs1, desafíos, ranking global ¡y más! Desarrollado utilizando metodologías ágiles."
+      description: "Versión multijugador en tiempo real del Truco, el juego de cartas argentino, con partidas 1vs1 en línea contra otros jugadores. Desarrollado en equipo siguiendo metodologías ágiles.<br><br>El backend en Node.js y Express usa WebSockets de Pusher para el estado de juego en vivo y MongoDB Atlas para la persistencia, con un frontend en React y Tailwind CSS, todo containerizado con Docker.<br><br>Características principales:<br>- Cuentas de jugador con un puntaje que crece con las victorias y un ranking global que se reinicia a diario.<br>- Lista de amigos y desafíos directos.<br>- Chat durante la partida y guía de reglas integrada para nuevos jugadores."
       image: "assets/truco.jpeg"
       url: "https://github.com/maxogod/Truco"
       vid: "https://www.youtube.com/watch?v=Vi6hB6-XCsY"
       technologies:
           ["Scrum", "MongoDB", "Express", "React", "Node", "TypeScript"]
     - name: "Save The Galaxy"
-      description: "Una emocionante aventura en la que el jugador asume el rol del salvador de la galaxia, luchando contra un ejército de invasores alienígenas. Las naves enemigas se vuelven más fuertes y rápidas a medida que avanza la invasión. Si el jugador no logra repeler a los alienígenas, colonizarán la galaxia, y el mismo destino le espera si el jugador perece en el intento."
+      description: "Shooter espacial arcade inspirado en Galaga, desarrollado con Godot y publicado en itch.io para Windows. Defiende la galaxia de una invasión alienígena en la que las naves enemigas se vuelven más fuertes y rápidas con el tiempo; si dejas pasar a demasiadas o mueres, la galaxia es colonizada."
       image: "assets/save_the_galaxy.png"
       url: "https://maxogod.itch.io/save-the-galaxy"
       vid: "https://www.youtube.com/watch?v=u-lp5ocy8yI"
