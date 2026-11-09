@@ -60,7 +60,7 @@ const ProjectModal = ({ project, list, onClose, onNavigate }: ProjectModalProps)
                         <img src={project.image} alt={project.name} className="relative size-full object-contain p-4 lg:p-8" />
                     </div>
 
-                    <div className="flex min-h-0 flex-1 flex-col">
+                    <div className="flex min-h-0 min-w-0 flex-1 flex-col">
                         <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto px-6 pt-8 pb-6 sm:px-10 sm:pt-10">
                             <div className="flex items-center justify-between gap-4 pr-12 text-sm">
                                 <span className="text-glow">{text.projects.categories[project.category]}</span>
