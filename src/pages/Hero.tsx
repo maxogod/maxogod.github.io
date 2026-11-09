@@ -51,7 +51,7 @@ const Hero = () => {
                 <div
                     key={ray}
                     aria-hidden
-                    className={`absolute h-[60%] w-[11vw] origin-top animate-sway bg-linear-to-b from-white/25 to-transparent mix-blend-soft-light dark:from-white/10 ${ray}`}
+                    className={`absolute h-[60%] w-[11vw] origin-top animate-sway bg-linear-to-b from-white/12 to-transparent dark:from-white/5 ${ray}`}
                     style={{ top: 'var(--waterline)' }} />
             ))}
 

@@ -7,7 +7,7 @@ import { gameContext } from "../context/gameContext"
 import { setCurrentLanguage, setCurrentTheme } from "../utils/localStorage"
 import { scrollToSection } from "../utils/depth"
 import { ACHIEVEMENTS } from "../utils/game"
-import { useDepth } from "../hooks/useDepth"
+import { useDepthValue } from "../hooks/useDepth"
 import Submarine from "./Submarine"
 
 const IconButton = ({ label, onClick, children }: { label: string, onClick: () => void, children: ReactNode }) => (
@@ -24,9 +24,7 @@ const TopBar = () => {
     const { darkMode, setDarkMode } = useContext(themeContext)
     const { englishMode, setEnglishMode, text } = useContext(languageContext)
     const { sound, setSound, progress, setLogbookOpen, unlock } = useContext(gameContext)
-    const { depth } = useDepth()
-
-    const atSurface = depth < 8
+    const atSurface = useDepthValue(s => s.depth < 8)
     const onSky = atSurface && !darkMode
 
     const toggleTheme = () => {

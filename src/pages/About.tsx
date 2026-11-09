@@ -24,7 +24,7 @@ const Porthole = ({ src, alt }: { src: string, alt: string }) => (
                 }} />
         ))}
         <div className="relative size-full overflow-hidden rounded-full ring-4 ring-[#2a465c]">
-            <img src={src} alt={alt} loading="lazy" className="size-full object-cover object-[50%_30%]" />
+            <img src={src} alt={alt} loading="lazy" decoding="async" className="size-full object-cover object-[50%_30%]" />
             <span aria-hidden className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_25%,rgb(255_255_255/0.35),transparent_45%)]" />
             <span aria-hidden className="absolute inset-0 rounded-full shadow-[inset_0_0_40px_rgb(6_37_68/0.55)]" />
         </div>
@@ -76,7 +76,7 @@ const About = () => {
                                 key={src}
                                 src={src}
                                 alt={text.about.photos[i] ?? ''}
-                                loading="lazy"
+                                loading="lazy" decoding="async"
                                 className={`h-44 w-full rounded-2xl object-cover ring-1 ring-white/10 sm:h-64 ${i === 0 ? 'col-span-6 sm:col-span-3' : i === 1 ? 'col-span-3 sm:col-span-2' : 'col-span-3 sm:col-span-1'}`} />
                         ))}
                     </div>

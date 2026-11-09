@@ -18,6 +18,35 @@ const audio = (): AudioContext | null => {
     return ctx
 }
 
+/**
+ * Creating the audio engine can stall a phone for a moment, so it's started in idle time right after
+ * the visitor's first touch, click or key press (browsers only allow audio after one), instead of on
+ * the first sound. Returns a cleanup function.
+ */
+export const warmUpAudioOnFirstInput = () => {
+    // requestIdleCallback is missing in some Safari versions; fall back to a short timeout.
+    const ric = window.requestIdleCallback as typeof window.requestIdleCallback | undefined
+    let idle = 0
+    let timer = 0
+    const warm = () => {
+        remove()
+        const run = () => { audio() }
+        if (ric) idle = ric(run, { timeout: 1000 })
+        else timer = window.setTimeout(run, 200)
+    }
+    const remove = () => {
+        window.removeEventListener('pointerdown', warm)
+        window.removeEventListener('keydown', warm)
+    }
+    window.addEventListener('pointerdown', warm, { passive: true })
+    window.addEventListener('keydown', warm)
+    return () => {
+        remove()
+        if (ric && idle) window.cancelIdleCallback(idle)
+        clearTimeout(timer)
+    }
+}
+
 interface Tone {
     freq: number
     to?: number

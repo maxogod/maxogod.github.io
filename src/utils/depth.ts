@@ -54,31 +54,51 @@ let rawDepth = 0
 const listeners = new Set<() => void>()
 let frame = 0
 
-const sameMarks = (a: number[], b: number[]) => a.length === b.length && a.every((v, i) => Math.abs(v - b[i]) < 0.001)
+// Section positions only change when the layout does, so they're read on resize, not on every scroll.
+interface Layout { max: number; eye: number; anchors: { x: number; y: number }[]; tops: { id: SectionId; top: number }[]; marks: number[]; waterline: number | null }
+let layout: Layout = { max: 1, eye: 0, anchors: [], tops: [], marks: [], waterline: null }
+let layoutDirty = true
 
-const measure = () => {
-    frame = 0
+const readLayout = () => {
+    layoutDirty = false
     const vh = window.innerHeight
     const y = window.scrollY
     const max = Math.max(1, document.documentElement.scrollHeight - vh)
     const eye = vh * 0.35
-
     const anchors: { x: number; y: number }[] = []
+    const tops: { id: SectionId; top: number }[] = []
     const marks: number[] = []
-    let section: SectionId = 'surface'
     for (const s of SECTION_DEPTHS) {
         const el = document.getElementById(s.id)
         if (!el) continue
         const top = el.getBoundingClientRect().top + y
         anchors.push({ x: s.id === 'surface' ? eye : top, y: s.depth })
+        tops.push({ id: s.id, top })
         marks.push(Math.min(1, top / max))
-        if (y + eye >= top) section = s.id
     }
     anchors.push({ x: max + eye, y: BOTTOM_DEPTH })
+    const wl = document.getElementById('waterline')
+    layout = { max, eye, anchors, tops, marks, waterline: wl ? wl.getBoundingClientRect().top + y : null }
+}
+
+const relayout = () => {
+    layoutDirty = true
+    requestMeasure()
+}
+
+const sameMarks = (a: number[], b: number[]) => a.length === b.length && a.every((v, i) => Math.abs(v - b[i]) < 0.001)
+
+const measure = () => {
+    frame = 0
+    if (layoutDirty) readLayout()
+    const y = window.scrollY
+    const { max, eye, anchors, tops, marks } = layout
+
+    let section: SectionId = 'surface'
+    tops.forEach(({ id, top }) => { if (y + eye >= top) section = id })
 
     rawDepth = anchors.length > 1 ? interpolate(y + eye, anchors) : 0
-    const wl = document.getElementById('waterline')
-    waterlineY = wl ? wl.getBoundingClientRect().top : -1
+    waterlineY = layout.waterline === null ? -1 : layout.waterline - y
 
     const depth = Math.round(rawDepth)
     const progress = Math.min(1, y / max)
@@ -105,13 +125,14 @@ export const requestMeasure = () => {
 /** Starts listening to scroll/resize. Returns a cleanup function. */
 export const startDepthTracking = () => {
     window.addEventListener('scroll', requestMeasure, { passive: true })
-    window.addEventListener('resize', requestMeasure)
-    const observer = new ResizeObserver(requestMeasure)
+    window.addEventListener('resize', relayout)
+    const observer = new ResizeObserver(relayout)
     observer.observe(document.body)
+    layoutDirty = true
     measure()
     return () => {
         window.removeEventListener('scroll', requestMeasure)
-        window.removeEventListener('resize', requestMeasure)
+        window.removeEventListener('resize', relayout)
         observer.disconnect()
         cancelAnimationFrame(frame)
         frame = 0

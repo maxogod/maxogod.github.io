@@ -204,15 +204,33 @@ const drawFish = (ctx: CanvasRenderingContext2D, f: Fish, t: number, kind: Kind)
     ctx.restore()
 }
 
+// The jellyfish glow is a radial gradient; building one per jellyfish per frame is costly, so it is
+// rendered once per color into a small offscreen canvas and stamped with drawImage.
+const glowSprites = new Map<string, HTMLCanvasElement>()
+const glowSprite = (rgb: string) => {
+    let sprite = glowSprites.get(rgb)
+    if (!sprite) {
+        sprite = document.createElement('canvas')
+        sprite.width = sprite.height = 64
+        const g = sprite.getContext('2d')
+        if (g) {
+            const gradient = g.createRadialGradient(32, 32, 0, 32, 32, 32)
+            gradient.addColorStop(0, `rgba(${rgb}, 0.22)`)
+            gradient.addColorStop(1, `rgba(${rgb}, 0)`)
+            g.fillStyle = gradient
+            g.fillRect(0, 0, 64, 64)
+        }
+        glowSprites.set(rgb, sprite)
+    }
+    return sprite
+}
+
 const drawJelly = (ctx: CanvasRenderingContext2D, j: Jelly, t: number, rgb: string) => {
     const pulse = Math.sin(t * 1.6 + j.phase)
     const w = j.size * (1 + pulse * 0.08)
     const h = j.size * (0.75 - pulse * 0.08)
-    const glow = ctx.createRadialGradient(j.x, j.y, 0, j.x, j.y, j.size * 2.4)
-    glow.addColorStop(0, `rgba(${rgb}, 0.22)`)
-    glow.addColorStop(1, `rgba(${rgb}, 0)`)
-    ctx.fillStyle = glow
-    ctx.beginPath(); ctx.arc(j.x, j.y, j.size * 2.4, 0, Math.PI * 2); ctx.fill()
+    const r = j.size * 2.4
+    ctx.drawImage(glowSprite(rgb), j.x - r, j.y - r, r * 2, r * 2)
 
     ctx.strokeStyle = `rgba(${rgb}, 0.35)`
     ctx.lineWidth = 1.2

@@ -9,7 +9,7 @@ import {
     ACHIEVEMENTS, achievementIcon, ARCHIVIST_GOAL, BUBBLES_GOAL, CHEAT_CODE, RUNNER_GOAL, SONAR_EVENT, TREASURES, treasureIcon,
 } from "../utils/game"
 import { isSoundOn, loadJson, saveJson, setSoundOn } from "../utils/localStorage"
-import { setSoundEnabled, sounds } from "../utils/sound"
+import { setSoundEnabled, sounds, warmUpAudioOnFirstInput } from "../utils/sound"
 import { BOTTOM_DEPTH, getDepthSnapshot, subscribeDepth } from "../utils/depth"
 
 const STORAGE_KEY = 'diveLog'
@@ -53,11 +53,36 @@ const GameContextProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => { textRef.current = text }, [text])
     useEffect(() => { setSoundEnabled(sound) }, [sound])
+    useEffect(() => warmUpAudioOnFirstInput(), [])
 
     const commit = useCallback((next: Progress) => {
         progressRef.current = next
         setProgress(next)
         saveJson(STORAGE_KEY, next)
+    }, [])
+
+    // Saves the latest progress shortly after the last change (used for frequent, invisible updates).
+    const saveTimer = useRef(0)
+    const scheduleSave = useCallback(() => {
+        clearTimeout(saveTimer.current)
+        saveTimer.current = window.setTimeout(() => saveJson(STORAGE_KEY, progressRef.current), 800)
+    }, [])
+
+    useEffect(() => {
+        const flush = () => {
+            if (!saveTimer.current) return
+            clearTimeout(saveTimer.current)
+            saveTimer.current = 0
+            saveJson(STORAGE_KEY, progressRef.current)
+        }
+        const onHide = () => { if (document.visibilityState === 'hidden') flush() }
+        window.addEventListener('pagehide', flush)
+        document.addEventListener('visibilitychange', onHide)
+        return () => {
+            window.removeEventListener('pagehide', flush)
+            document.removeEventListener('visibilitychange', onHide)
+            flush()
+        }
     }, [])
 
     const unlock = useCallback((id: AchievementId) => {
@@ -81,13 +106,20 @@ const GameContextProvider = ({ children }: { children: ReactNode }) => {
         if (treasures.length >= TREASURES.length) unlock('treasures')
     }, [commit, unlock])
 
+    // Pops are frequent and the count is only shown in the logbook, so a pop updates the ref only:
+    // no React re-render, and the save happens shortly after. The logbook syncs it when opened.
     const popBubble = useCallback(() => {
-        const current = progressRef.current
-        const bubbles = current.bubbles + 1
-        commit({ ...current, bubbles })
+        const bubbles = progressRef.current.bubbles + 1
+        progressRef.current = { ...progressRef.current, bubbles }
+        scheduleSave()
         sounds.pop()
         if (bubbles >= BUBBLES_GOAL) unlock('bubbles')
-    }, [commit, unlock])
+    }, [scheduleSave, unlock])
+
+    const openLogbook = useCallback((open: boolean) => {
+        if (open) setProgress(progressRef.current)
+        setLogbookOpen(open)
+    }, [])
 
     const openProject = useCallback((slug: string) => {
         const current = progressRef.current
@@ -157,8 +189,8 @@ const GameContextProvider = ({ children }: { children: ReactNode }) => {
 
     const value = useMemo(() => ({
         progress, unlock, collectTreasure, popBubble, openProject, recordScore, resetProgress,
-        sound, setSound, sonarPing, pingCount, whaleCount, logbookOpen, setLogbookOpen,
-    }), [progress, unlock, collectTreasure, popBubble, openProject, recordScore, resetProgress, sound, setSound, sonarPing, pingCount, whaleCount, logbookOpen])
+        sound, setSound, sonarPing, pingCount, whaleCount, logbookOpen, setLogbookOpen: openLogbook,
+    }), [progress, unlock, collectTreasure, popBubble, openProject, recordScore, resetProgress, sound, setSound, sonarPing, pingCount, whaleCount, logbookOpen, openLogbook])
 
     return (
         <gameContext.Provider value={value}>

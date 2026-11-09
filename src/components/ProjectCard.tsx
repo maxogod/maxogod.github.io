@@ -28,7 +28,7 @@ const ProjectCard = ({ project, featured = false, showCategory = false, onOpen }
                     <img
                         src={project.image}
                         alt=""
-                        loading="lazy"
+                        loading="lazy" decoding="async"
                         className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" />
                     <span aria-hidden className="absolute inset-0 bg-linear-to-t from-midnight via-midnight/10 to-transparent" />
                     {featured && (

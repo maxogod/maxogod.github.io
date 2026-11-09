@@ -27,11 +27,15 @@ const OceanLife = () => {
         const season = getSeason()
         const ocean = createOcean(window.innerWidth, window.innerHeight, season ? SEASON_LIFE[season] : undefined)
         const pointer: Pointer = { x: -999, y: -999, active: false }
+        // Phones and small screens: draw at 1x resolution and 30 fps. The creatures are small and soft,
+        // so it looks the same, but it's ~4x fewer pixels per frame and half the frames.
+        const lowPower = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768
+        const frameInterval = lowPower ? 1000 / 30 - 2 : 0
         // Mutable loop state lives in one object (closures share it).
         const loop = { dpr: 1, lastScroll: window.scrollY, last: performance.now(), raf: 0 }
 
         const resize = () => {
-            loop.dpr = Math.min(window.devicePixelRatio || 1, 2)
+            loop.dpr = lowPower ? 1 : Math.min(window.devicePixelRatio || 1, 2)
             canvas.width = Math.round(window.innerWidth * loop.dpr)
             canvas.height = Math.round(window.innerHeight * loop.dpr)
             resizeOcean(ocean, window.innerWidth, window.innerHeight)
@@ -44,6 +48,10 @@ const OceanLife = () => {
         }
 
         const frame = (now: number) => {
+            if (now - loop.last < frameInterval) {
+                loop.raf = requestAnimationFrame(frame)
+                return
+            }
             const dt = Math.min(0.05, (now - loop.last) / 1000)
             loop.last = now
             const scroll = window.scrollY
