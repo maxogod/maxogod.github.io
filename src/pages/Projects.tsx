@@ -1,9 +1,10 @@
-import { useContext, useMemo, useRef } from "react"
+import { useContext, useMemo, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { CATEGORIES, Project } from "../@types/ProjectType"
 import { languageContext } from "../context/languageContext"
 import { gameContext } from "../context/gameContext"
-import { Filter, findMoreCard, listProjects, projectPath } from "../utils/projects"
+import { Filter, findMoreCard, listProjects, PROJECTS_PER_PAGE, projectPath } from "../utils/projects"
+import { useIsMobile } from "../hooks/useIsMobile"
 import SectionHeading from "../components/SectionHeading"
 import ProjectCard, { MoreCard } from "../components/ProjectCard"
 import ProjectModal from "../components/ProjectModal"
@@ -22,6 +23,16 @@ const Projects = ({ filter, slug }: { filter: Filter, slug?: string }) => {
         all: listProjects(projects, 'all').length,
         ...Object.fromEntries(CATEGORIES.map(c => [c, listProjects(projects, c).length])),
     }) as Record<Filter, number>, [projects])
+
+    const isMobile = useIsMobile()
+    const pageSize = isMobile ? PROJECTS_PER_PAGE.mobile : PROJECTS_PER_PAGE.desktop
+    const [paging, setPaging] = useState({ filter, pages: 1 })
+    const pages = paging.filter === filter ? paging.pages : 1
+    // A deep-linked project beyond the first page must still be rendered.
+    const linkedIndex = slug ? list.findIndex(p => p.slug === slug) : -1
+    const visibleCount = Math.max(pages * pageSize, linkedIndex + 1)
+    const visible = list.slice(0, visibleCount)
+    const remaining = list.length - visible.length
 
     const selected = slug ? list.find(p => p.slug === slug) ?? null : null
 
@@ -80,7 +91,7 @@ const Projects = ({ filter, slug }: { filter: Filter, slug?: string }) => {
                 )}
 
                 <ul className="mt-8 grid auto-rows-auto gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                    {list.map((project, i) => (
+                    {visible.map((project, i) => (
                         <ProjectCard
                             key={`${project.category}-${project.slug}`}
                             project={project}
@@ -88,8 +99,20 @@ const Projects = ({ filter, slug }: { filter: Filter, slug?: string }) => {
                             showCategory={filter === 'all'}
                             onOpen={open} />
                     ))}
-                    {moreCard && <MoreCard project={moreCard} />}
+                    {moreCard && remaining === 0 && <MoreCard project={moreCard} />}
                 </ul>
+
+                {remaining > 0 && (
+                    <div className="mt-10 flex justify-center">
+                        <button
+                            type="button"
+                            onClick={() => setPaging({ filter, pages: Math.ceil(visibleCount / pageSize) + 1 })}
+                            className="inline-flex items-center gap-2 rounded-full bg-white/6 px-6 py-3 text-sm font-medium text-foam/90 ring-1 ring-white/12 transition-colors duration-200 hover:bg-white/12 hover:text-foam">
+                            {text.projects.loadMore}
+                            <span className="font-gauge text-[0.7rem] text-foam/45">{remaining}</span>
+                        </button>
+                    </div>
+                )}
             </div>
 
             <Treasure id="pearl" className="right-[4%] bottom-12 sm:right-[8%]" />

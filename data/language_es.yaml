@@ -73,6 +73,7 @@ projects:
         datasci: "IA y datos"
         games: "Juegos"
     open: "Abrir"
+    loadMore: "Cargar más"
     more: "Más en GitHub"
     moreText: "Trabajos de la facultad, experimentos y proyectos personales"
     code: "Código fuente"

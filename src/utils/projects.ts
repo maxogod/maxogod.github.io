@@ -67,6 +67,9 @@ export const listProjects = (projects: ProjectsByCategory, category: CategoryId 
 export const findMoreCard = (projects: ProjectsByCategory): Project | undefined =>
     Object.values(projects).flat().find(p => p.more);
 
+/** Projects shown per page; "Load more" adds this many. Desktop is a multiple of 3 so the 3-column grid stays full. */
+export const PROJECTS_PER_PAGE = { desktop: 9, mobile: 4 };
+
 export type Filter = CategoryId | 'all';
 
 /** Hash route for a project filter, optionally with an open project. */

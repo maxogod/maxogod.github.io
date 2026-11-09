@@ -35,7 +35,7 @@ export interface Copy {
     projects: {
         title: string; intro: string; all: string;
         categories: Record<CategoryId, string>; short: Record<CategoryId, string>;
-        open: string; more: string; moreText: string; code: string; video: string;
+        open: string; loadMore: string; more: string; moreText: string; code: string; video: string;
         close: string; previous: string; next: string; builtWith: string; position: string;
     };
     contact: {
