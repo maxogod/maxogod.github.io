@@ -10,7 +10,16 @@ interface Bubble { x: number; y: number; r: number; vy: number; phase: number }
 interface Snow { x: number; y: number; r: number; vy: number }
 interface Spark { x: number; y: number; vx: number; vy: number; life: number }
 
+/** Fish colors and jellyfish color ("r, g, b"); seasons override the defaults. */
+export interface LifePalette { reef: string[]; jelly: string }
+
+export const defaultPalette: LifePalette = {
+    reef: ['#ffb648', '#ff7a90', '#6ff3e0', '#ffe27a', '#8fd3ff'],
+    jelly: '111, 243, 224',
+}
+
 export interface Ocean {
+    jelly: string
     w: number
     h: number
     schools: School[]
@@ -29,8 +38,6 @@ const smooth = (edge0: number, edge1: number, x: number) => {
     return t * t * (3 - 2 * t)
 }
 
-const REEF_COLORS = ['#ffb648', '#ff7a90', '#6ff3e0', '#ffe27a', '#8fd3ff']
-
 const newBubble = (o: Ocean, anywhere = false): Bubble => ({
     x: rand(0, o.w),
     y: anywhere ? rand(0, o.h) : o.h + rand(10, 260),
@@ -39,20 +46,20 @@ const newBubble = (o: Ocean, anywhere = false): Bubble => ({
     phase: rand(0, Math.PI * 2),
 })
 
-export const createOcean = (w: number, h: number): Ocean => {
+export const createOcean = (w: number, h: number, palette: LifePalette = defaultPalette): Ocean => {
     const small = w < 700
-    const o: Ocean = { w, h, schools: [], fish: [], jellies: [], bubbles: [], snow: [], sparks: [], t: 0 }
+    const o: Ocean = { jelly: palette.jelly, w, h, schools: [], fish: [], jellies: [], bubbles: [], snow: [], sparks: [], t: 0 }
     const addSchool = (kind: Kind, count: number) => {
         const school: School = { x: rand(0, w), y: rand(h * 0.2, h * 0.85), dir: Math.random() < 0.5 ? 1 : -1, speed: rand(22, 46), drift: rand(0, 10), kind }
         o.schools.push(school)
-        const color = pick(REEF_COLORS)
+        const color = pick(palette.reef)
         for (let i = 0; i < count; i++) {
             const ox = rand(-70, 70)
             const oy = rand(-34, 34)
             o.fish.push({
                 x: school.x + ox, y: school.y + oy, vx: 0, vy: 0, ox, oy,
                 size: kind === 'reef' ? rand(5, 8) : rand(3.5, 5.5),
-                color: kind === 'reef' ? (Math.random() < 0.8 ? color : pick(REEF_COLORS)) : '#9fb8d6',
+                color: kind === 'reef' ? (Math.random() < 0.8 ? color : pick(palette.reef)) : '#9fb8d6',
                 school, wag: rand(0, 6), face: school.dir,
             })
         }
@@ -197,17 +204,17 @@ const drawFish = (ctx: CanvasRenderingContext2D, f: Fish, t: number, kind: Kind)
     ctx.restore()
 }
 
-const drawJelly = (ctx: CanvasRenderingContext2D, j: Jelly, t: number) => {
+const drawJelly = (ctx: CanvasRenderingContext2D, j: Jelly, t: number, rgb: string) => {
     const pulse = Math.sin(t * 1.6 + j.phase)
     const w = j.size * (1 + pulse * 0.08)
     const h = j.size * (0.75 - pulse * 0.08)
     const glow = ctx.createRadialGradient(j.x, j.y, 0, j.x, j.y, j.size * 2.4)
-    glow.addColorStop(0, 'rgba(111, 243, 224, 0.22)')
-    glow.addColorStop(1, 'rgba(111, 243, 224, 0)')
+    glow.addColorStop(0, `rgba(${rgb}, 0.22)`)
+    glow.addColorStop(1, `rgba(${rgb}, 0)`)
     ctx.fillStyle = glow
     ctx.beginPath(); ctx.arc(j.x, j.y, j.size * 2.4, 0, Math.PI * 2); ctx.fill()
 
-    ctx.strokeStyle = 'rgba(111, 243, 224, 0.35)'
+    ctx.strokeStyle = `rgba(${rgb}, 0.35)`
     ctx.lineWidth = 1.2
     for (let i = -2; i <= 2; i++) {
         ctx.beginPath()
@@ -218,8 +225,8 @@ const drawJelly = (ctx: CanvasRenderingContext2D, j: Jelly, t: number) => {
         }
         ctx.stroke()
     }
-    ctx.fillStyle = 'rgba(160, 255, 240, 0.28)'
-    ctx.strokeStyle = 'rgba(160, 255, 240, 0.75)'
+    ctx.fillStyle = `rgba(${rgb}, 0.28)`
+    ctx.strokeStyle = `rgba(${rgb}, 0.8)`
     ctx.beginPath()
     ctx.ellipse(j.x, j.y, w, h, 0, Math.PI, 0)
     ctx.closePath()
@@ -256,7 +263,7 @@ export const drawOcean = (ctx: CanvasRenderingContext2D, o: Ocean, depth: number
     const jelly = smooth(700, 1200, depth)
     if (jelly > 0.02) {
         ctx.globalAlpha = jelly
-        for (const j of o.jellies) drawJelly(ctx, j, o.t)
+        for (const j of o.jellies) drawJelly(ctx, j, o.t, o.jelly)
     }
 
     ctx.globalAlpha = 1 - smooth(1500, 6000, depth) * 0.5

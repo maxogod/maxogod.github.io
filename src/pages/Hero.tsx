@@ -6,6 +6,7 @@ import Submarine from '../components/Submarine'
 import Treasure from '../components/Treasure'
 import { scrollToSection } from '../utils/depth'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import { SeasonFloat, SeasonHat, SeasonSky } from '../components/SeasonScenery'
 
 const rays = ['left-[6%] delay-0', 'left-[27%] [animation-delay:-3s]', 'left-[49%] [animation-delay:-6s]', 'left-[71%] [animation-delay:-1.5s]']
 
@@ -41,7 +42,9 @@ const Hero = () => {
 
             {/* Sky */}
             <div aria-hidden className="night-stars absolute inset-x-0 top-0 opacity-0 transition-opacity duration-700 dark:opacity-90" style={{ height: 'var(--waterline)' }} />
-            <div aria-hidden className="absolute right-[10%] top-[12%] size-20 rounded-full bg-[var(--sun)] shadow-[0_0_60px_20px_color-mix(in_oklab,var(--sun)_45%,transparent)] transition-all duration-700 sm:size-28 dark:shadow-[0_0_40px_6px_rgb(233_239_255/0.25),inset_-14px_-6px_0_rgb(160_175_215/0.45)]" />
+            <div aria-hidden className="hero-sun absolute right-[10%] top-[12%] size-20 rounded-full bg-[var(--sun)] shadow-[0_0_60px_20px_color-mix(in_oklab,var(--sun)_45%,transparent)] transition-all duration-700 sm:size-28 dark:shadow-[0_0_40px_6px_rgb(233_239_255/0.25),inset_-14px_-6px_0_rgb(160_175_215/0.45)]" />
+
+            <SeasonSky />
 
             {/* Light rays under the surface */}
             {rays.map(ray => (
@@ -77,8 +80,13 @@ const Hero = () => {
                 title={text.hero.sub}
                 className="absolute right-[3%] w-20 -translate-y-[78%] sm:right-[9%] sm:w-44"
                 style={{ top: 'var(--waterline)' }}>
-                <Submarine className="w-full animate-bob drop-shadow-[0_10px_14px_rgb(6_37_68/0.35)]" />
+                <span className="relative block animate-bob">
+                    <Submarine className="w-full drop-shadow-[0_10px_14px_rgb(6_37_68/0.35)]" />
+                    <SeasonHat />
+                </span>
             </button>
+
+            <SeasonFloat />
 
             <Treasure id="map" className="left-[58%] -translate-y-[70%] animate-bob [animation-delay:-2s] sm:left-[64%]" style={{ top: 'var(--waterline)' }} />
 

@@ -237,3 +237,106 @@ body {
         scroll-behavior: auto !important;
     }
 }
+
+/* ============================================================================
+   Seasonal themes: <html data-season>, set from ?theme= or the date (src/utils/season.ts).
+   They only touch the surface: sky colors, the sun/moon and decorations in SeasonScenery.tsx.
+   ========================================================================== */
+
+/* Halloween: purple-orange dusk (day) or a dark night, with a harvest moon. */
+:root[data-season="halloween"] {
+    --sky-top: #2b0f45;
+    --sky-bottom: #ff8c3a;
+    --sun: #ff9a3c;
+}
+:root[data-season="halloween"][data-theme="dark"] {
+    --sky-top: #06020d;
+    --sky-bottom: #33104c;
+    --sun: #ff8a2a;
+}
+[data-season="halloween"] .topbar { color: var(--color-foam); }
+[data-season="halloween"] .night-stars { opacity: 0.5; }
+[data-season="halloween"] .hero-sun {
+    width: 7rem;
+    height: 7rem;
+    top: 9%;
+    box-shadow: 0 0 90px 26px rgb(255 138 42 / 0.45), inset -16px -10px 0 rgb(200 90 20 / 0.35);
+}
+
+/* Christmas: crisp winter sky, snow and string lights. */
+:root[data-season="christmas"] {
+    --sky-top: #9cc9e8;
+    --sky-bottom: #f2f9ff;
+    --sun: #fff4d6;
+}
+:root[data-season="christmas"][data-theme="dark"] {
+    --sky-top: #040a22;
+    --sky-bottom: #1c3163;
+    --sun: #eef3ff;
+}
+
+/* New Year: dusk (day) or deep night, with fireworks. */
+:root[data-season="newyear"] {
+    --sky-top: #161b4e;
+    --sky-bottom: #f2a66a;
+    --sun: #ffd9a0;
+}
+:root[data-season="newyear"][data-theme="dark"] {
+    --sky-top: #02030d;
+    --sky-bottom: #121a48;
+    --sun: #eef3ff;
+}
+[data-season="newyear"] .topbar { color: var(--color-foam); }
+[data-season="newyear"] .night-stars { opacity: 0.6; }
+:root[data-season="newyear"]:not([data-theme="dark"]) .hero-sun { top: 30%; right: 34%; opacity: 0.8; }
+
+.season-bat {
+    animation-name: season-bat;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.season-flap {
+    transform-origin: 50% 40%;
+    animation: season-flap 0.28s ease-in-out infinite alternate;
+}
+.season-twinkle { animation: season-twinkle 1.6s ease-in-out infinite alternate; }
+.season-flicker { animation: season-flicker 2.2s steps(1) infinite; }
+.season-snow {
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, #fff 50%, transparent 51%),
+        radial-gradient(3px 3px at 80px 120px, #fff 50%, transparent 51%),
+        radial-gradient(2px 2px at 150px 70px, #fff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 190px 180px, #fff 50%, transparent 51%),
+        radial-gradient(2.5px 2.5px at 40px 200px, #fff 50%, transparent 51%),
+        radial-gradient(3px 3px at 250px 40px, #fff 50%, transparent 51%),
+        radial-gradient(2px 2px at 300px 160px, #fff 50%, transparent 51%);
+    background-size: 320px 240px;
+    opacity: 0.85;
+    animation: season-snow 9s linear infinite;
+    mask-image: linear-gradient(to bottom, black 85%, transparent);
+}
+
+@keyframes season-bat {
+    from { transform: translate(-12vw, 0); }
+    25% { transform: translate(22vw, 4vh); }
+    50% { transform: translate(52vw, -2vh); }
+    75% { transform: translate(82vw, 5vh); }
+    to { transform: translate(112vw, 0); }
+}
+@keyframes season-flap {
+    from { transform: scaleY(1); }
+    to { transform: scaleY(0.35); }
+}
+@keyframes season-twinkle {
+    from { opacity: 1; }
+    to { opacity: 0.35; }
+}
+@keyframes season-flicker {
+    0%, 40%, 44%, 100% { opacity: 1; }
+    42% { opacity: 0.55; }
+    70% { opacity: 0.85; }
+}
+@keyframes season-snow {
+    from { background-position: 0 0; }
+    to { background-position: 40px 240px; }
+}

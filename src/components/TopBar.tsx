@@ -42,7 +42,7 @@ const TopBar = () => {
     }
 
     return (
-        <header className={`fixed inset-x-0 top-0 z-40 flex items-center justify-between px-3 py-3 transition-colors duration-500 sm:px-6 ${onSky ? 'text-ink' : 'text-foam'}`}>
+        <header className={`topbar fixed inset-x-0 top-0 z-40 flex items-center justify-between px-3 py-3 transition-colors duration-500 sm:px-6 ${onSky ? 'text-ink' : 'text-foam'}`}>
             <button
                 type="button"
                 onClick={() => scrollToSection('surface')}

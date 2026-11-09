@@ -2,6 +2,7 @@ import { load } from 'js-yaml';
 import languageEnYaml from '../../data/language_en.yaml?raw';
 import languageEsYaml from '../../data/language_es.yaml?raw';
 import { CategoryId } from '../@types/ProjectType';
+import type { Season } from './season';
 
 type Titled = { title: string; text: string };
 
@@ -56,6 +57,8 @@ export interface Copy {
     };
     achievements: Record<AchievementId, Titled>;
     treasures: Record<TreasureId, string>;
+    /** Greeting toast for each seasonal theme. */
+    seasons: Record<Season, string>;
     cvLink: string;
 }
 

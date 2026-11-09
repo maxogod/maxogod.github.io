@@ -115,6 +115,20 @@ src/@types/ProjectType.ts    ProjectType, Project (+slug, category), CATEGORIES
   animations are neutralized in index.css.
 - Styling is Tailwind utility classes inline; no CSS modules. MUI is only for `Tooltip`; don't expand it.
 
+## Seasonal themes
+
+- `src/utils/season.ts` picks a season by date: October `halloween`, December `christmas`,
+  January 1-15 `newyear`. It runs in `main.tsx` before React, sets `<html data-season>` and writes
+  `?theme=<season>` into the URL (before the hash). Typing `?theme=halloween|christmas|newyear|none`
+  overrides the date, which is how to preview them. In code it is called "season" because "theme"
+  already means day/night.
+- Seasons only restyle the surface: sky/sun variables and `.topbar`/`.hero-sun` tweaks in the
+  "Seasonal themes" block of `src/index.css`, decorations in `src/components/SeasonScenery.tsx`
+  (`SeasonSky`, `SeasonFloat`, `SeasonHat`, `SeasonGreeting`), fish colors in `SEASON_LIFE`.
+  Greeting copy is `seasons.<id>` in both language files; it shows once per browser session.
+- To add a season: extend `SEASONS` + `seasonForDate`, add a `SEASON_LIFE` entry, CSS vars for
+  light and `[data-theme="dark"]`, scenery cases, and a greeting in both language files.
+
 ## Conventions
 
 - Function components + hooks; contexts split into `xContext.ts` (context/type) and

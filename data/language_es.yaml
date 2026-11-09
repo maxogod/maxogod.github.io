@@ -99,7 +99,7 @@ abyss:
     treasuresDone: "Encontraste todos los tesoros. El cofre es tuyo."
     treasuresHint: "Algunos están a la vista. Un ping de sonar los ilumina."
     ascend: "Volver a la superficie"
-    footer: "Diseñado y desarrollado por Máximo Utrera"
+    footer: "Máximo Utrera - Portfolio"
 
 game:
     title: "Deep Run"
@@ -182,3 +182,8 @@ treasures:
     wheel: "Timón de barco"
 
 cvLink: "https://drive.google.com/file/d/1Ss6nMl0H5AExOmoq3SIRiKBlZ5bOURV2/view"
+
+seasons:
+    halloween: "¡Feliz Halloween! Cuidado con los murciélagos al bajar."
+    christmas: "¡Feliz Navidad! El submarino se puso el gorro para la ocasión."
+    newyear: "¡Feliz Año Nuevo! Mirá los fuegos artificiales antes de sumergirte."
