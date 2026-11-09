@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { languageContext } from '../context/languageContext'
 import SectionHeading from '../components/SectionHeading'
 import Treasure from '../components/Treasure'
+import { CityScenery } from '../components/SkinScenery'
 import portrait from '../assets/pfp.jpg'
 import presenting from '../assets/fiubaton_presenting.jpg'
 import thanking from '../assets/fiubaton_thanking.jpg'
@@ -12,18 +13,18 @@ const rivets = Array.from({ length: 10 }, (_, i) => i * 36)
 
 /** Round porthole window around the portrait. */
 const Porthole = ({ src, alt }: { src: string, alt: string }) => (
-    <div className="relative aspect-square w-full max-w-[22rem] rounded-full bg-[conic-gradient(from_210deg,#9db6c8,#3d5d76,#c9dbe6,#45657e,#9db6c8)] p-4 shadow-[0_30px_60px_-20px_rgb(0_0_0/0.6)] sm:p-5">
+    <div className="porthole-ring relative aspect-square w-full max-w-[22rem] rounded-full bg-[conic-gradient(from_210deg,#9db6c8,#3d5d76,#c9dbe6,#45657e,#9db6c8)] p-4 shadow-[0_30px_60px_-20px_rgb(0_0_0/0.6)] sm:p-5">
         {rivets.map(angle => (
             <span
                 key={angle}
                 aria-hidden
-                className="absolute size-2.5 -translate-1/2 rounded-full bg-[#dbe7ef] shadow-[inset_-1px_-1px_2px_rgb(0_0_0/0.5)]"
+                className="porthole-rivet absolute size-2.5 -translate-1/2 rounded-full bg-[#dbe7ef] shadow-[inset_-1px_-1px_2px_rgb(0_0_0/0.5)]"
                 style={{
                     left: `${50 + 47.2 * Math.cos(angle * Math.PI / 180)}%`,
                     top: `${50 + 47.2 * Math.sin(angle * Math.PI / 180)}%`,
                 }} />
         ))}
-        <div className="relative size-full overflow-hidden rounded-full ring-4 ring-[#2a465c]">
+        <div className="porthole-inner relative size-full overflow-hidden rounded-full ring-4 ring-[#2a465c]">
             <img src={src} alt={alt} loading="lazy" className="size-full object-cover object-[50%_30%]" />
             <span aria-hidden className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_25%,rgb(255_255_255/0.35),transparent_45%)]" />
             <span aria-hidden className="absolute inset-0 rounded-full shadow-[inset_0_0_40px_rgb(6_37_68/0.55)]" />
@@ -37,6 +38,7 @@ const About = () => {
 
     return (
         <section id="about" aria-labelledby="about-title" className="water-about relative overflow-hidden px-5 pt-28 pb-12 sm:px-10 sm:pt-36 sm:pb-16 lg:px-16">
+            <CityScenery />
             <div className="relative z-10 mx-auto max-w-6xl">
                 <SectionHeading id="about-title" depth={40} zone="sunlight" title={text.about.title} />
 
@@ -59,7 +61,7 @@ const About = () => {
                                         <dt className="pt-1 text-sm text-foam/60">{group.label}</dt>
                                         <dd className="flex flex-wrap gap-1.5">
                                             {group.items.map(item => (
-                                                <span key={item} className="rounded-full bg-white/7 px-3 py-1 text-sm ring-1 ring-white/12">{item}</span>
+                                                <span key={item} className="skin-chip rounded-full bg-white/7 px-3 py-1 text-sm ring-1 ring-white/12">{item}</span>
                                             ))}
                                         </dd>
                                     </div>

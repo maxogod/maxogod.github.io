@@ -23,7 +23,7 @@ const ProjectCard = ({ project, featured = false, showCategory = false, onOpen }
                 type="button"
                 onClick={() => onOpen(project)}
                 aria-label={`${text.projects.open}: ${project.name}`}
-                className="group relative flex size-full flex-col overflow-hidden rounded-[22px] bg-midnight/55 text-left ring-1 ring-white/10 transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_var(--color-glow),0_20px_50px_-18px_color-mix(in_oklab,var(--color-glow)_55%,transparent)] focus-visible:shadow-[0_0_0_1px_var(--color-glow)]">
+                className="skin-card group relative flex size-full flex-col overflow-hidden rounded-[22px] bg-midnight/55 text-left ring-1 ring-white/10 transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_var(--color-glow),0_20px_50px_-18px_color-mix(in_oklab,var(--color-glow)_55%,transparent)] focus-visible:shadow-[0_0_0_1px_var(--color-glow)]">
                 <div className={`relative overflow-hidden bg-abyss ${featured ? 'aspect-[16/10] lg:aspect-auto lg:flex-1' : 'aspect-[16/10]'}`}>
                     <img
                         src={project.image}
@@ -64,7 +64,7 @@ export const MoreCard = ({ project }: { project: Project }) => {
                 href={project.url}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex size-full min-h-56 flex-col justify-between gap-6 rounded-[22px] border border-dashed border-glow/35 p-6 transition-colors duration-300 hover:border-glow hover:bg-glow/5">
+                className="skin-card skin-card-more group flex size-full min-h-56 flex-col justify-between gap-6 rounded-[22px] border border-dashed border-glow/35 p-6 transition-colors duration-300 hover:border-glow hover:bg-glow/5">
                 <FaGithub aria-hidden className="text-4xl text-glow" />
                 <span className="flex flex-col gap-1">
                     <span className="flex items-center gap-2 text-xl font-semibold">

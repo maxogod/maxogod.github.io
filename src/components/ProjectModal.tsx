@@ -52,7 +52,7 @@ const ProjectModal = ({ project, list, onClose, onNavigate }: ProjectModalProps)
             onCancel={event => { event.preventDefault(); onClose() }}
             onKeyDown={onKeyDown}
             onClick={event => { if (event.target === dialogRef.current) onClose() }}
-            className="project-dialog m-0 h-dvh max-h-none w-screen max-w-none overflow-hidden bg-midnight p-0 text-foam sm:m-auto sm:h-[min(48rem,calc(100dvh-3rem))] sm:w-[min(74rem,calc(100vw-3rem))] sm:rounded-[28px] sm:ring-1 sm:ring-glow/20">
+            className="project-dialog skin-dialog m-0 h-dvh max-h-none w-screen max-w-none overflow-hidden bg-midnight p-0 text-foam sm:m-auto sm:h-[min(48rem,calc(100dvh-3rem))] sm:w-[min(74rem,calc(100vw-3rem))] sm:rounded-[28px] sm:ring-1 sm:ring-glow/20">
             {project && (
                 <div className="flex h-full flex-col lg:flex-row">
                     <div className="relative h-60 shrink-0 overflow-hidden bg-abyss sm:h-72 lg:h-full lg:w-[52%]">
@@ -72,7 +72,7 @@ const ProjectModal = ({ project, list, onClose, onNavigate }: ProjectModalProps)
                                 <div className="mt-6 flex flex-wrap gap-3">
                                     {project.url && (
                                         <a href={project.url} target="_blank" rel="noreferrer"
-                                            className="inline-flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 font-semibold text-ink transition-transform hover:-translate-y-0.5">
+                                            className="skin-cta inline-flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 font-semibold text-ink transition-transform hover:-translate-y-0.5">
                                             {isGithub ? <FaGithub aria-hidden /> : <LuLink aria-hidden />} {text.projects.code}
                                         </a>
                                     )}

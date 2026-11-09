@@ -10,7 +10,19 @@ interface Bubble { x: number; y: number; r: number; vy: number; phase: number }
 interface Snow { x: number; y: number; r: number; vy: number }
 interface Spark { x: number; y: number; vx: number; vy: number; life: number }
 
+/** Colors used by the canvas; `jelly` and `bubble` are "r, g, b" triplets. */
+export interface LifePalette { reef: string[]; lantern: string; spots: string; jelly: string; bubble: string }
+
+export const defaultPalette: LifePalette = {
+    reef: ['#ffb648', '#ff7a90', '#6ff3e0', '#ffe27a', '#8fd3ff'],
+    lantern: '#9fb8d6',
+    spots: '#6ff3e0',
+    jelly: '111, 243, 224',
+    bubble: '234, 247, 255',
+}
+
 export interface Ocean {
+    palette: LifePalette
     w: number
     h: number
     schools: School[]
@@ -29,8 +41,6 @@ const smooth = (edge0: number, edge1: number, x: number) => {
     return t * t * (3 - 2 * t)
 }
 
-const REEF_COLORS = ['#ffb648', '#ff7a90', '#6ff3e0', '#ffe27a', '#8fd3ff']
-
 const newBubble = (o: Ocean, anywhere = false): Bubble => ({
     x: rand(0, o.w),
     y: anywhere ? rand(0, o.h) : o.h + rand(10, 260),
@@ -39,20 +49,20 @@ const newBubble = (o: Ocean, anywhere = false): Bubble => ({
     phase: rand(0, Math.PI * 2),
 })
 
-export const createOcean = (w: number, h: number): Ocean => {
+export const createOcean = (w: number, h: number, palette: LifePalette = defaultPalette): Ocean => {
     const small = w < 700
-    const o: Ocean = { w, h, schools: [], fish: [], jellies: [], bubbles: [], snow: [], sparks: [], t: 0 }
+    const o: Ocean = { palette, w, h, schools: [], fish: [], jellies: [], bubbles: [], snow: [], sparks: [], t: 0 }
     const addSchool = (kind: Kind, count: number) => {
         const school: School = { x: rand(0, w), y: rand(h * 0.2, h * 0.85), dir: Math.random() < 0.5 ? 1 : -1, speed: rand(22, 46), drift: rand(0, 10), kind }
         o.schools.push(school)
-        const color = pick(REEF_COLORS)
+        const color = pick(palette.reef)
         for (let i = 0; i < count; i++) {
             const ox = rand(-70, 70)
             const oy = rand(-34, 34)
             o.fish.push({
                 x: school.x + ox, y: school.y + oy, vx: 0, vy: 0, ox, oy,
                 size: kind === 'reef' ? rand(5, 8) : rand(3.5, 5.5),
-                color: kind === 'reef' ? (Math.random() < 0.8 ? color : pick(REEF_COLORS)) : '#9fb8d6',
+                color: kind === 'reef' ? (Math.random() < 0.8 ? color : pick(palette.reef)) : palette.lantern,
                 school, wag: rand(0, 6), face: school.dir,
             })
         }
@@ -170,7 +180,7 @@ export const popBubble = (o: Ocean, index: number) => {
     o.bubbles[index] = newBubble(o)
 }
 
-const drawFish = (ctx: CanvasRenderingContext2D, f: Fish, t: number, kind: Kind) => {
+const drawFish = (ctx: CanvasRenderingContext2D, f: Fish, t: number, kind: Kind, spots: string) => {
     const len = f.size * 2.4
     const wag = Math.sin(t * 12 + f.wag) * f.size * 0.35
     ctx.save()
@@ -187,7 +197,7 @@ const drawFish = (ctx: CanvasRenderingContext2D, f: Fish, t: number, kind: Kind)
     ctx.ellipse(0, 0, len * 0.55, f.size * 0.55, 0, 0, Math.PI * 2)
     ctx.fill()
     if (kind === 'lantern') {
-        ctx.fillStyle = '#6ff3e0'
+        ctx.fillStyle = spots
         for (let i = -1; i <= 1; i++) {
             ctx.beginPath(); ctx.arc(i * len * 0.18, f.size * 0.3, 0.9, 0, Math.PI * 2); ctx.fill()
         }
@@ -197,17 +207,17 @@ const drawFish = (ctx: CanvasRenderingContext2D, f: Fish, t: number, kind: Kind)
     ctx.restore()
 }
 
-const drawJelly = (ctx: CanvasRenderingContext2D, j: Jelly, t: number) => {
+const drawJelly = (ctx: CanvasRenderingContext2D, j: Jelly, t: number, rgb: string) => {
     const pulse = Math.sin(t * 1.6 + j.phase)
     const w = j.size * (1 + pulse * 0.08)
     const h = j.size * (0.75 - pulse * 0.08)
     const glow = ctx.createRadialGradient(j.x, j.y, 0, j.x, j.y, j.size * 2.4)
-    glow.addColorStop(0, 'rgba(111, 243, 224, 0.22)')
-    glow.addColorStop(1, 'rgba(111, 243, 224, 0)')
+    glow.addColorStop(0, `rgba(${rgb}, 0.22)`)
+    glow.addColorStop(1, `rgba(${rgb}, 0)`)
     ctx.fillStyle = glow
     ctx.beginPath(); ctx.arc(j.x, j.y, j.size * 2.4, 0, Math.PI * 2); ctx.fill()
 
-    ctx.strokeStyle = 'rgba(111, 243, 224, 0.35)'
+    ctx.strokeStyle = `rgba(${rgb}, 0.35)`
     ctx.lineWidth = 1.2
     for (let i = -2; i <= 2; i++) {
         ctx.beginPath()
@@ -218,8 +228,8 @@ const drawJelly = (ctx: CanvasRenderingContext2D, j: Jelly, t: number) => {
         }
         ctx.stroke()
     }
-    ctx.fillStyle = 'rgba(160, 255, 240, 0.28)'
-    ctx.strokeStyle = 'rgba(160, 255, 240, 0.75)'
+    ctx.fillStyle = `rgba(${rgb}, 0.28)`
+    ctx.strokeStyle = `rgba(${rgb}, 0.8)`
     ctx.beginPath()
     ctx.ellipse(j.x, j.y, w, h, 0, Math.PI, 0)
     ctx.closePath()
@@ -238,7 +248,7 @@ export const drawOcean = (ctx: CanvasRenderingContext2D, o: Ocean, depth: number
 
     const snowAlpha = smooth(150, 700, depth) * 0.6
     if (snowAlpha > 0.01) {
-        ctx.fillStyle = `rgba(234, 247, 255, ${snowAlpha})`
+        ctx.fillStyle = `rgba(${o.palette.bubble}, ${snowAlpha})`
         for (const s of o.snow) {
             ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill()
         }
@@ -250,19 +260,19 @@ export const drawOcean = (ctx: CanvasRenderingContext2D, o: Ocean, depth: number
         const alpha = f.school.kind === 'reef' ? reef : lantern
         if (alpha < 0.02) continue
         ctx.globalAlpha = alpha * (f.school.kind === 'reef' ? 0.9 : 0.75)
-        drawFish(ctx, f, o.t, f.school.kind)
+        drawFish(ctx, f, o.t, f.school.kind, o.palette.spots)
     }
 
     const jelly = smooth(700, 1200, depth)
     if (jelly > 0.02) {
         ctx.globalAlpha = jelly
-        for (const j of o.jellies) drawJelly(ctx, j, o.t)
+        for (const j of o.jellies) drawJelly(ctx, j, o.t, o.palette.jelly)
     }
 
     ctx.globalAlpha = 1 - smooth(1500, 6000, depth) * 0.5
     for (const b of o.bubbles) {
-        ctx.fillStyle = 'rgba(234, 247, 255, 0.08)'
-        ctx.strokeStyle = 'rgba(234, 247, 255, 0.55)'
+        ctx.fillStyle = `rgba(${o.palette.bubble}, 0.08)`
+        ctx.strokeStyle = `rgba(${o.palette.bubble}, 0.55)`
         ctx.lineWidth = 1.2
         ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2); ctx.fill(); ctx.stroke()
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)'
@@ -270,7 +280,7 @@ export const drawOcean = (ctx: CanvasRenderingContext2D, o: Ocean, depth: number
     }
 
     ctx.globalAlpha = 1
-    ctx.fillStyle = 'rgba(234, 247, 255, 0.85)'
+    ctx.fillStyle = `rgba(${o.palette.bubble}, 0.85)`
     for (const p of o.sparks) {
         ctx.globalAlpha = p.life
         ctx.beginPath(); ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2); ctx.fill()

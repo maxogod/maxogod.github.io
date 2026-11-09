@@ -31,6 +31,14 @@ export interface World {
     flash: number
 }
 
+/** Colors for the game canvas (the sub reuses the --sub-* variables). */
+export interface RunPalette { edge: string; top: string; bottom: string; floor: string; rock: string; rockEdge: string; hull: string; fin: string; tower: string; frame: string; glass: string; beam: string; text: string }
+
+export const defaultRunPalette: RunPalette = {
+    edge: 'none', top: '#08294c', bottom: '#020814', floor: '#0c2238', rock: '#0f2a45', rockEdge: '#1f4a70',
+    hull: '#ffb648', fin: '#e8952a', tower: '#f4a43a', frame: '#0a3a63', glass: '#6ff3e0', beam: '255, 240, 190', text: '#ffb648',
+}
+
 const rand = (a: number, b: number) => a + Math.random() * (b - a)
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v))
 
@@ -143,14 +151,14 @@ export const step = (w: World, dt: number, up: boolean) => {
     return events
 }
 
-const drawSub = (ctx: CanvasRenderingContext2D, w: World) => {
+const drawSub = (ctx: CanvasRenderingContext2D, w: World, p: RunPalette) => {
     ctx.save()
     ctx.translate(SUB_X, w.y)
     ctx.rotate(clamp(w.vy / 700, -0.22, 0.22))
 
     const beam = ctx.createLinearGradient(28, 0, 190, 0)
-    beam.addColorStop(0, 'rgba(255, 240, 190, 0.32)')
-    beam.addColorStop(1, 'rgba(255, 240, 190, 0)')
+    beam.addColorStop(0, `rgba(${p.beam}, 0.32)`)
+    beam.addColorStop(1, `rgba(${p.beam}, 0)`)
     ctx.fillStyle = beam
     ctx.beginPath()
     ctx.moveTo(28, -3)
@@ -159,38 +167,46 @@ const drawSub = (ctx: CanvasRenderingContext2D, w: World) => {
     ctx.lineTo(28, 3)
     ctx.fill()
 
-    ctx.fillStyle = '#e8952a'
+    ctx.fillStyle = p.fin
     ctx.beginPath()
     ctx.moveTo(-22, -5); ctx.lineTo(-33, -14); ctx.lineTo(-30, 0); ctx.lineTo(-33, 14); ctx.lineTo(-22, 5)
     ctx.fill()
-    ctx.strokeStyle = '#d98a2b'
+    ctx.strokeStyle = p.fin
     ctx.lineWidth = 2
     ctx.beginPath()
     ctx.moveTo(6, -18); ctx.lineTo(6, -24); ctx.lineTo(12, -24)
     ctx.stroke()
-    ctx.fillStyle = '#f4a43a'
+    ctx.fillStyle = p.tower
     ctx.beginPath()
     ctx.roundRect(-4, -19, 16, 10, 4)
     ctx.fill()
-    ctx.fillStyle = '#ffb648'
+    ctx.fillStyle = p.hull
     ctx.beginPath()
     ctx.roundRect(-28, -11, 58, 22, 11)
     ctx.fill()
+    if (p.edge !== 'none') {
+        ctx.strokeStyle = p.edge
+        ctx.lineWidth = 1.5
+        ctx.shadowColor = p.edge
+        ctx.shadowBlur = 8
+        ctx.stroke()
+        ctx.shadowBlur = 0
+    }
     for (const x of [-12, 1, 14]) {
-        ctx.fillStyle = '#0a3a63'
+        ctx.fillStyle = p.frame
         ctx.beginPath(); ctx.arc(x, 0, 3.6, 0, Math.PI * 2); ctx.fill()
-        ctx.fillStyle = '#6ff3e0'
+        ctx.fillStyle = p.glass
         ctx.beginPath(); ctx.arc(x, 0, 2, 0, Math.PI * 2); ctx.fill()
     }
     ctx.restore()
 }
 
-export const draw = (ctx: CanvasRenderingContext2D, w: World, scale: number, labels: { score: string, best: string, bestValue: number }) => {
+export const draw = (ctx: CanvasRenderingContext2D, w: World, scale: number, labels: { score: string, best: string, bestValue: number }, p: RunPalette = defaultRunPalette) => {
     ctx.setTransform(scale, 0, 0, scale, 0, 0)
 
     const bg = ctx.createLinearGradient(0, 0, 0, H)
-    bg.addColorStop(0, '#08294c')
-    bg.addColorStop(1, '#020814')
+    bg.addColorStop(0, p.top)
+    bg.addColorStop(1, p.bottom)
     ctx.fillStyle = bg
     ctx.fillRect(0, 0, w.width, H)
 
@@ -200,7 +216,7 @@ export const draw = (ctx: CanvasRenderingContext2D, w: World, scale: number, lab
     }
 
     // floor
-    ctx.fillStyle = '#0c2238'
+    ctx.fillStyle = p.floor
     ctx.beginPath()
     ctx.moveTo(0, H)
     for (let x = 0; x <= w.width + 10; x += 10) ctx.lineTo(x, FLOOR + Math.sin((x + w.dist) * 0.03) * 3)
@@ -209,8 +225,8 @@ export const draw = (ctx: CanvasRenderingContext2D, w: World, scale: number, lab
 
     for (const o of w.obstacles) {
         if (o.kind === 'rock') {
-            ctx.fillStyle = '#0f2a45'
-            ctx.strokeStyle = '#1f4a70'
+            ctx.fillStyle = p.rock
+            ctx.strokeStyle = p.rockEdge
             ctx.lineWidth = 1.5
             ctx.beginPath()
             if (o.fromTop) {
@@ -258,16 +274,16 @@ export const draw = (ctx: CanvasRenderingContext2D, w: World, scale: number, lab
     }
     ctx.globalAlpha = 1
 
-    drawSub(ctx, w)
+    drawSub(ctx, w, p)
 
     if (w.flash > 0) {
         ctx.fillStyle = `rgba(255, 122, 144, ${w.flash * 0.35})`
         ctx.fillRect(0, 0, w.width, H)
     }
 
-    ctx.font = '600 11px "Martian Mono", ui-monospace, monospace'
+    ctx.font = `600 11px ${getComputedStyle(document.documentElement).getPropertyValue('--font-gauge') || 'monospace'}`
     ctx.textBaseline = 'top'
-    ctx.fillStyle = '#ffb648'
+    ctx.fillStyle = p.text
     ctx.textAlign = 'left'
     ctx.fillText(`${labels.score} ${score(w)}`, 14, 12)
     ctx.fillStyle = 'rgba(234, 247, 255, 0.6)'

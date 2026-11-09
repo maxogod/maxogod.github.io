@@ -2,7 +2,8 @@ import { useContext, useEffect, useRef } from "react"
 import { gameContext } from "../context/gameContext"
 import { getRawDepth, getWaterlineY } from "../utils/depth"
 import { SONAR_EVENT } from "../utils/game"
-import { bubbleAt, createOcean, drawOcean, Pointer, popBubble, resizeOcean, scatter, shiftOcean, stepOcean } from "../utils/oceanLife"
+import { cssVar } from "../utils/skin"
+import { bubbleAt, createOcean, defaultPalette, drawOcean, Pointer, popBubble, resizeOcean, scatter, shiftOcean, stepOcean } from "../utils/oceanLife"
 import { useReducedMotion } from "../hooks/useReducedMotion"
 
 // Clicks on these never pop bubbles.
@@ -23,7 +24,13 @@ const OceanLife = () => {
         const ctx = canvas?.getContext('2d')
         if (!canvas || !ctx || reduceMotion) return
 
-        const ocean = createOcean(window.innerWidth, window.innerHeight)
+        const ocean = createOcean(window.innerWidth, window.innerHeight, {
+            reef: cssVar('--life-reef', defaultPalette.reef.join(',')).split(',').map(c => c.trim()),
+            lantern: cssVar('--life-lantern', defaultPalette.lantern),
+            spots: cssVar('--life-spots', defaultPalette.spots),
+            jelly: cssVar('--life-jelly', defaultPalette.jelly),
+            bubble: cssVar('--life-bubble', defaultPalette.bubble),
+        })
         const pointer: Pointer = { x: -999, y: -999, active: false }
         // Mutable loop state lives in one object (closures share it).
         const loop = { dpr: 1, lastScroll: window.scrollY, last: performance.now(), raf: 0 }

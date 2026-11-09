@@ -45,7 +45,7 @@ const Logbook = () => {
             aria-labelledby="logbook-title"
             onCancel={event => { event.preventDefault(); close() }}
             onClick={event => { if (event.target === dialogRef.current) close() }}
-            className="project-dialog logbook-dialog m-0 ml-auto h-dvh max-h-none w-full max-w-md overflow-y-auto bg-midnight p-0 text-foam ring-1 ring-glow/15">
+            className="project-dialog logbook-dialog skin-dialog m-0 ml-auto h-dvh max-h-none w-full max-w-md overflow-y-auto bg-midnight p-0 text-foam ring-1 ring-glow/15">
             <div className="flex flex-col gap-8 p-6 sm:p-8">
                 <div className="flex items-start justify-between gap-4">
                     <div className="flex flex-col gap-2">

@@ -42,7 +42,7 @@ const TopBar = () => {
     }
 
     return (
-        <header className={`fixed inset-x-0 top-0 z-40 flex items-center justify-between px-3 py-3 transition-colors duration-500 sm:px-6 ${onSky ? 'text-ink' : 'text-foam'}`}>
+        <header className={`topbar fixed inset-x-0 top-0 z-40 flex items-center justify-between px-3 py-3 transition-colors duration-500 sm:px-6 ${onSky ? 'text-ink' : 'text-foam'}`}>
             <button
                 type="button"
                 onClick={() => scrollToSection('surface')}
@@ -64,7 +64,7 @@ const TopBar = () => {
                 </IconButton>
                 <Tooltip title={text.nav.logbook} placement="bottom" arrow>
                     <button type="button" aria-label={text.nav.logbook} onClick={() => setLogbookOpen(true)}
-                        className="ml-0.5 flex h-10 items-center gap-2 rounded-full bg-signal px-3.5 text-ink transition-transform hover:-translate-y-px">
+                        className="skin-cta ml-0.5 flex h-10 items-center gap-2 rounded-full bg-signal px-3.5 text-ink transition-transform hover:-translate-y-px">
                         <LuTrophy aria-hidden />
                         <span className="font-gauge text-xs font-semibold">{progress.achievements.length}/{ACHIEVEMENTS.length}</span>
                     </button>

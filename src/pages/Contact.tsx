@@ -9,7 +9,7 @@ import Treasure from "../components/Treasure"
 
 const EMAIL = "maximo.d.utrera@gmail.com"
 
-const rowClasses = 'group flex w-full items-center gap-4 rounded-[20px] bg-white/[0.04] p-4 text-left ring-1 ring-white/10 transition-[background-color,box-shadow] duration-300 hover:bg-glow/[0.07] hover:shadow-[0_0_0_1px_color-mix(in_oklab,var(--color-glow)_60%,transparent),0_0_40px_-12px_var(--color-glow)] sm:p-5'
+const rowClasses = 'skin-card group flex w-full items-center gap-4 rounded-[20px] bg-white/[0.04] p-4 text-left ring-1 ring-white/10 transition-[background-color,box-shadow] duration-300 hover:bg-glow/[0.07] hover:shadow-[0_0_0_1px_color-mix(in_oklab,var(--color-glow)_60%,transparent),0_0_40px_-12px_var(--color-glow)] sm:p-5'
 
 const Row = ({ icon, label, detail, trailing }: { icon: ReactNode, label: string, detail: string, trailing: ReactNode }) => (
     <>
@@ -24,7 +24,7 @@ const Row = ({ icon, label, detail, trailing }: { icon: ReactNode, label: string
 
 /** A glowing jellyfish drifting next to the links. */
 const Jellyfish = ({ className }: { className: string }) => (
-    <svg viewBox="0 0 120 200" aria-hidden className={className}>
+    <svg viewBox="0 0 120 200" aria-hidden className={`skin-tint ${className}`}>
         <defs>
             <radialGradient id="jelly-bell" cx="50%" cy="35%" r="60%">
                 <stop offset="0%" stopColor="#c9fff6" stopOpacity="0.55" />

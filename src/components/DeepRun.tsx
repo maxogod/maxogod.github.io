@@ -2,7 +2,19 @@ import { useCallback, useContext, useEffect, useRef, useState } from "react"
 import { LuPlay, LuRotateCcw } from "react-icons/lu"
 import { languageContext } from "../context/languageContext"
 import { gameContext } from "../context/gameContext"
-import { createWorld, draw, H, score, step, World } from "../utils/deepRun"
+import { createWorld, defaultRunPalette, draw, H, RunPalette, score, step, World } from "../utils/deepRun"
+import { cssVar } from "../utils/skin"
+
+const readPalette = (): RunPalette => {
+    const d = defaultRunPalette
+    return {
+        edge: cssVar('--sub-edge', d.edge), top: cssVar('--run-top', d.top), bottom: cssVar('--run-bottom', d.bottom), floor: cssVar('--run-floor', d.floor),
+        rock: cssVar('--run-rock', d.rock), rockEdge: cssVar('--run-rock-edge', d.rockEdge),
+        hull: cssVar('--sub-hull', d.hull), fin: cssVar('--sub-fin', d.fin), tower: cssVar('--sub-tower', d.tower),
+        frame: cssVar('--sub-frame', d.frame), glass: cssVar('--sub-glass', d.glass),
+        beam: cssVar('--run-beam', d.beam), text: cssVar('--color-signal', d.text),
+    }
+}
 import { sounds } from "../utils/sound"
 
 type Phase = 'idle' | 'playing' | 'paused' | 'over'
@@ -17,6 +29,7 @@ const DeepRun = () => {
     const wrapRef = useRef<HTMLDivElement>(null)
     const canvasRef = useRef<HTMLCanvasElement>(null)
     const worldRef = useRef<World | null>(null)
+    const paletteRef = useRef<RunPalette | null>(null)
     const upRef = useRef(false)
     const phaseRef = useRef<Phase>('idle')
     const bestRef = useRef(progress.best)
@@ -38,7 +51,8 @@ const DeepRun = () => {
         const world = worldRef.current
         const ctx = canvas?.getContext('2d')
         if (!canvas || !world || !ctx) return
-        draw(ctx, world, canvas.height / H, { ...labelsRef.current, bestValue: bestRef.current })
+        paletteRef.current ??= readPalette()
+        draw(ctx, world, canvas.height / H, { ...labelsRef.current, bestValue: bestRef.current }, paletteRef.current)
     }, [])
 
     // Keep the canvas sharp and the world as wide as the box.
@@ -158,7 +172,7 @@ const DeepRun = () => {
             }}
             onPointerUp={() => press(false)}
             onPointerCancel={() => press(false)}
-            className="relative aspect-[4/3] w-full overflow-hidden rounded-[26px] bg-abyss ring-1 ring-glow/25 shadow-[0_0_60px_-20px_var(--color-glow)] outline-none select-none sm:aspect-[21/9]"
+            className="skin-screen relative aspect-[4/3] w-full overflow-hidden rounded-[26px] bg-abyss ring-1 ring-glow/25 shadow-[0_0_60px_-20px_var(--color-glow)] outline-none select-none sm:aspect-[21/9]"
             style={{ touchAction: phase === 'playing' ? 'none' : 'auto' }}>
             <canvas ref={canvasRef} aria-hidden className="absolute inset-0 size-full" />
 
@@ -177,7 +191,7 @@ const DeepRun = () => {
                     <button
                         type="button"
                         onClick={phase === 'paused' ? resume : start}
-                        className="mt-1 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 font-semibold text-ink shadow-[0_8px_30px_-6px_rgb(255_182_72/0.7)] transition-transform hover:-translate-y-0.5">
+                        className="skin-cta mt-1 inline-flex items-center gap-2 rounded-full bg-signal px-6 py-3 font-semibold text-ink shadow-[0_8px_30px_-6px_rgb(255_182_72/0.7)] transition-transform hover:-translate-y-0.5">
                         {phase === 'over' ? <LuRotateCcw aria-hidden /> : <LuPlay aria-hidden />}
                         {phase === 'over' ? text.game.again : phase === 'paused' ? text.game.resume : text.game.start}
                     </button>

@@ -31,7 +31,7 @@ export const Whale = () => {
                 key={whaleCount}
                 viewBox="0 0 420 170"
                 onAnimationEnd={() => setFinished(whaleCount)}
-                className="absolute top-[58%] left-0 w-[min(70vw,680px)] animate-whale opacity-90 drop-shadow-[0_0_30px_rgb(111_243_224/0.35)]">
+                className="skin-tint absolute top-[58%] left-0 w-[min(70vw,680px)] animate-whale opacity-90 drop-shadow-[0_0_30px_rgb(111_243_224/0.35)]">
                 <path d="M34 92 C 70 40 210 26 310 50 C 356 62 392 78 404 96 C 384 120 320 132 236 130 C 160 128 86 120 44 104Z" fill="#0d2c4c" stroke="#6ff3e0" strokeOpacity="0.5" strokeWidth="2" />
                 <path d="M44 100 L4 62 Q20 86 12 92 Q22 96 6 132Z" fill="#0d2c4c" stroke="#6ff3e0" strokeOpacity="0.5" strokeWidth="2" />
                 <path d="M226 126 Q206 156 178 164 Q206 136 210 124Z" fill="#0d2c4c" stroke="#6ff3e0" strokeOpacity="0.5" strokeWidth="2" />

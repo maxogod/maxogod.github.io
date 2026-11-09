@@ -9,12 +9,13 @@ import { SONAR_EVENT, TREASURES } from "../utils/game"
 import SectionHeading from "../components/SectionHeading"
 import Treasure from "../components/Treasure"
 import DeepRun from "../components/DeepRun"
+import { AbyssScenery } from "../components/SkinScenery"
 
 const YEAR = new Date().getFullYear()
 
 /** Sea floor, rocks and an anglerfish; only visible under the headlight. */
 const Seabed = () => (
-    <svg viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice" aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] w-full">
+    <svg viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice" aria-hidden className="seabed skin-tint pointer-events-none absolute inset-x-0 bottom-0 h-[42%] w-full">
         <path d="M0 210 C 180 160 300 230 480 200 S 760 140 940 190 S 1240 240 1440 170 V360 H0Z" fill="#0b2036" />
         <path d="M0 270 C 220 230 380 290 620 260 S 1000 220 1180 262 S 1380 290 1440 270 V360 H0Z" fill="#102b47" />
         <path d="M180 214 l30 -70 l22 40 l18 -26 l26 70Z M1040 196 l40 -96 l28 54 l20 -30 l30 80Z" fill="#081a2d" />
@@ -83,6 +84,7 @@ const Abyss = () => {
             className="relative flex min-h-[135svh] flex-col overflow-hidden bg-abyss px-5 pt-28 pb-28 sm:px-10 sm:pt-36 lg:px-16 [--lx:70%] [--ly:75%]">
 
             <Seabed />
+            <AbyssScenery />
             <Treasure id="coins" layer="z-[5]" className="bottom-[9%] left-[22%]" />
             <Treasure id="wheel" layer="z-[5]" className="right-[34%] bottom-[16%]" />
 
@@ -99,7 +101,7 @@ const Abyss = () => {
                         <p className="max-w-[52ch] text-lg leading-relaxed text-foam/75">{text.abyss.text}</p>
                     </div>
 
-                    <div className="flex items-center gap-4 rounded-[20px] bg-white/[0.04] p-4 ring-1 ring-white/10">
+                    <div className="skin-card flex items-center gap-4 rounded-[20px] bg-white/[0.04] p-4 ring-1 ring-white/10">
                         <Chest aria-hidden className={`text-5xl ${allFound ? 'text-signal drop-shadow-[0_0_14px_var(--color-signal)]' : 'text-foam/40'}`} />
                         <div className="flex flex-col gap-1">
                             <p className="font-semibold">{allFound ? text.abyss.treasuresDone : fill(text.abyss.treasures, { found, total })}</p>

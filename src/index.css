@@ -66,6 +66,16 @@
     --water-surface: #1f8fbf;
     --water-sunlit: #0b5c86;
     --sun: #ffd27a;
+    /* submarine + canvas colors (overridden per skin) */
+    --sub-hull: #ffb648;
+    --sub-fin: #e8952a;
+    --sub-tower: #f4a43a;
+    --sub-dark: #d98a2b;
+    --sub-shine: #ffd38c;
+    --sub-frame: #0a3a63;
+    --sub-glass: #6ff3e0;
+    --sub-lamp: #fff3c4;
+    --sub-edge: none;
     color-scheme: dark;
     background: var(--color-abyss);
     font-family: var(--font-display);
@@ -236,4 +246,274 @@ body {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+}
+
+
+/* ============================================================================
+   Skins (drafts). Preview with ?skin=neon or ?skin=brass. See src/utils/skin.ts.
+   Unlayered rules here intentionally win over Tailwind utilities.
+   ========================================================================== */
+
+/* ---------- NEON: a flooded megacity at night ---------- */
+:root[data-skin="neon"],
+:root[data-skin="neon"][data-theme="dark"] {
+    --font-display: "Chakra Petch", ui-sans-serif, system-ui, sans-serif;
+    --font-gauge: "Share Tech Mono", ui-monospace, monospace;
+    --color-foam: #eef0ff;
+    --color-ink: #0d0221;
+    --color-glow: #00f0ff;
+    --color-signal: #fcee0a;
+    --color-coral: #ff2bd6;
+    --color-twilight: #140a33;
+    --color-midnight: #0b0624;
+    --color-abyss: #05020f;
+    --sky-top: #05010f;
+    --sky-bottom: #4a0d63;
+    --water-surface: #22093f;
+    --water-sunlit: #170733;
+    --sun: #ff2bd6;
+    --sub-hull: #1e0f3d;
+    --sub-fin: #2b1555;
+    --sub-tower: #2b1555;
+    --sub-dark: #ff2bd6;
+    --sub-shine: #00f0ff;
+    --sub-frame: #0d0221;
+    --sub-glass: #fcee0a;
+    --sub-lamp: #00f0ff;
+    --sub-edge: #00f0ff;
+    --life-reef: #ff2bd6, #00f0ff, #fcee0a, #b56cff;
+    --life-lantern: #7a5cff;
+    --life-spots: #fcee0a;
+    --life-jelly: 255, 43, 214;
+    --life-bubble: 0, 240, 255;
+    --run-top: #1a0838;
+    --run-bottom: #05020f;
+    --run-floor: #12062a;
+    --run-rock: #1e0b40;
+    --run-rock-edge: #ff2bd6;
+    --run-beam: 0, 240, 255;
+}
+[data-skin="neon"] .topbar { color: var(--color-foam); }
+[data-skin="neon"] .hero-name {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    font-stretch: normal;
+    font-size: clamp(3rem, 14vw, 6rem);
+    padding-bottom: 0.2em;
+}
+@media (min-width: 640px) {
+    [data-skin="neon"] .hero-name { font-size: clamp(3.5rem, 8.6vw, 9rem); }
+}
+[data-skin="neon"] .hero-name-top {
+    color: #f6f0ff;
+    text-shadow: -3px 0 0 #00f0ff, 3px 0 0 #ff2bd6, 0 0 34px rgb(255 43 214 / 0.6);
+    animation: neon-glitch 5s steps(1) infinite;
+}
+[data-skin="neon"] .hero-name-bottom { color: rgb(255 43 214 / 0.55); }
+[data-skin="neon"] .hero-sun {
+    background: transparent;
+    border: 3px solid #ff2bd6;
+    box-shadow: 0 0 30px 4px rgb(255 43 214 / 0.6), inset 0 0 30px 4px rgb(255 43 214 / 0.45);
+    top: 9%;
+}
+[data-skin="neon"] .hero-ray { display: none; }
+[data-skin="neon"] .night-stars { opacity: 0.5; }
+[data-skin="neon"] .skin-heading {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    font-stretch: normal;
+    text-shadow: 0 0 28px rgb(0 240 255 / 0.35);
+}
+[data-skin="neon"] .skin-depth { color: var(--color-coral); }
+[data-skin="neon"] .skin-card {
+    position: relative;
+    border-radius: 3px;
+    background-color: rgb(14 5 38 / 0.8);
+    box-shadow: inset 0 0 0 1px rgb(0 240 255 / 0.22);
+}
+[data-skin="neon"] .skin-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background:
+        linear-gradient(#00f0ff, #00f0ff) top left / 16px 2px no-repeat,
+        linear-gradient(#00f0ff, #00f0ff) top left / 2px 16px no-repeat,
+        linear-gradient(#ff2bd6, #ff2bd6) bottom right / 16px 2px no-repeat,
+        linear-gradient(#ff2bd6, #ff2bd6) bottom right / 2px 16px no-repeat;
+}
+[data-skin="neon"] .skin-card:hover {
+    box-shadow: inset 0 0 0 1px #ff2bd6, 0 0 36px -8px #ff2bd6;
+}
+[data-skin="neon"] .skin-card-more { border-style: solid; border-color: rgb(0 240 255 / 0.35); }
+[data-skin="neon"] .skin-chip { border-radius: 2px; }
+[data-skin="neon"] .skin-cta {
+    border-radius: 0;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+}
+[data-skin="neon"] .glass {
+    background: rgb(12 4 32 / 0.7);
+    border-radius: 4px;
+}
+[data-skin="neon"] .skin-dialog { border-radius: 4px; box-shadow: 0 0 0 1px #00f0ff, 0 0 60px -10px #ff2bd6; }
+[data-skin="neon"] .skin-screen { border-radius: 4px; box-shadow: 0 0 0 1px #ff2bd6, 0 0 60px -14px #ff2bd6; }
+[data-skin="neon"] .porthole-ring {
+    background: conic-gradient(from 200deg, #00f0ff, #7a2cff, #ff2bd6, #7a2cff, #00f0ff);
+    box-shadow: 0 0 50px -6px rgb(255 43 214 / 0.7);
+}
+[data-skin="neon"] .porthole-rivet { background: #0d0221; }
+[data-skin="neon"] .porthole-inner { --tw-ring-color: #0d0221; }
+[data-skin="neon"] .skin-tint { filter: hue-rotate(115deg) saturate(1.8); }
+[data-skin="neon"] .seabed { display: none; }
+.neon-rain {
+    background-image: repeating-linear-gradient(104deg, transparent 0 22px, rgb(160 200 255 / 0.13) 22px 23px, transparent 23px 47px);
+    background-size: 100% 220px;
+    animation: neon-rain 0.55s linear infinite;
+    mask-image: linear-gradient(to bottom, black, black var(--waterline), transparent calc(var(--waterline) + 4%));
+}
+.neon-reflection { mask-image: linear-gradient(to top, black, transparent); }
+.neon-grid {
+    background-image:
+        linear-gradient(rgb(255 43 214 / 0.7) 2px, transparent 2px),
+        linear-gradient(90deg, rgb(0 240 255 / 0.55) 2px, transparent 2px);
+    background-size: 60px 60px;
+    mask-image: linear-gradient(to top, black 30%, transparent 85%);
+    animation: neon-grid 2.4s linear infinite;
+}
+.neon-scanlines {
+    background: repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.22) 0 1px, transparent 1px 3px);
+    opacity: 0.45;
+    mix-blend-mode: multiply;
+}
+@keyframes neon-rain { to { background-position: -50px 220px; } }
+@keyframes neon-grid { to { background-position: 0 60px; } }
+@keyframes neon-glitch {
+    0%, 90%, 100% { transform: none; }
+    91% { transform: translateX(-5px) skewX(10deg); }
+    93% { transform: translateX(4px); }
+    95% { transform: translateX(-2px) skewX(-6deg); }
+}
+
+/* ---------- BRASS: a drowned art-deco city, lit by brass lamps ---------- */
+:root[data-skin="brass"],
+:root[data-skin="brass"][data-theme="dark"] {
+    --font-display: "Spectral", Georgia, serif;
+    --font-deco: "Limelight", Georgia, serif;
+    --font-gauge: "Special Elite", ui-monospace, monospace;
+    --color-foam: #f1e3c6;
+    --color-ink: #24180b;
+    --color-glow: #8fd6bf;
+    --color-signal: #d9a84e;
+    --color-coral: #c9603f;
+    --color-twilight: #0f2b2a;
+    --color-midnight: #0a1d1e;
+    --color-abyss: #050c0c;
+    --sky-top: #141317;
+    --sky-bottom: #86613a;
+    --water-surface: #24504a;
+    --water-sunlit: #173a37;
+    --sun: #f0c27a;
+    --sub-hull: #c0913f;
+    --sub-fin: #8a6428;
+    --sub-tower: #a57a35;
+    --sub-dark: #4e3618;
+    --sub-shine: #f0d08a;
+    --sub-frame: #3a2a15;
+    --sub-glass: #ffcf7a;
+    --sub-lamp: #fff1c4;
+    --sub-edge: #4e3618;
+    --life-reef: #d9a84e, #c9603f, #8fd6bf, #e8d3a6;
+    --life-lantern: #a89878;
+    --life-spots: #ffcf7a;
+    --life-jelly: 255, 207, 122;
+    --life-bubble: 241, 227, 198;
+    --run-top: #173a37;
+    --run-bottom: #050c0c;
+    --run-floor: #1c2a24;
+    --run-rock: #22302a;
+    --run-rock-edge: #8a6428;
+    --run-beam: 255, 214, 140;
+}
+[data-skin="brass"] .topbar { color: var(--color-foam); }
+[data-skin="brass"] .hero-name,
+[data-skin="brass"] .skin-heading {
+    font-family: var(--font-deco);
+    font-weight: 400;
+    font-synthesis: none;
+    letter-spacing: 0.01em;
+    font-stretch: normal;
+}
+[data-skin="brass"] .hero-name { font-size: clamp(3rem, 14vw, 6rem); line-height: 0.9; padding-bottom: 0.16em; }
+@media (min-width: 640px) {
+    [data-skin="brass"] .hero-name { font-size: clamp(3.5rem, 8.4vw, 8.6rem); }
+}
+[data-skin="brass"] .hero-name-top {
+    color: #e6c27a;
+    text-shadow: 0 2px 0 #4e3618, 0 0 40px rgb(240 194 122 / 0.4);
+}
+[data-skin="brass"] .hero-name-bottom { color: rgb(143 214 191 / 0.5); }
+[data-skin="brass"] .hero-sun { filter: blur(14px); opacity: 0.55; top: 30%; right: 34%; }
+[data-skin="brass"] .night-stars { opacity: 0; }
+[data-skin="brass"] .hero-ray { opacity: 0.5; }
+[data-skin="brass"] .skin-depth { color: var(--color-signal); }
+[data-skin="brass"] .skin-card {
+    position: relative;
+    border-radius: 4px;
+    background-color: rgb(9 27 27 / 0.85);
+    box-shadow: 0 18px 40px -20px rgb(0 0 0 / 0.8);
+}
+[data-skin="brass"] .skin-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    border: 1px solid #b8893e;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 4px rgb(9 27 27 / 0.9), inset 0 0 0 5px rgb(217 168 78 / 0.55);
+    background:
+        linear-gradient(45deg, transparent 40%, #d9a84e 40% 60%, transparent 60%) top left / 12px 12px no-repeat,
+        linear-gradient(45deg, transparent 40%, #d9a84e 40% 60%, transparent 60%) bottom right / 12px 12px no-repeat;
+}
+[data-skin="brass"] .skin-card:hover { box-shadow: 0 0 40px -10px rgb(217 168 78 / 0.7); }
+[data-skin="brass"] .skin-card-more { border-color: transparent; }
+[data-skin="brass"] .skin-chip { border-radius: 3px; box-shadow: inset 0 0 0 1px rgb(217 168 78 / 0.35); }
+[data-skin="brass"] .skin-cta {
+    border-radius: 4px;
+    background: linear-gradient(to bottom, #f0d08a, #b8893e);
+    color: var(--color-ink);
+    box-shadow: inset 0 0 0 1px #4e3618, inset 0 2px 0 rgb(255 255 255 / 0.35), 0 8px 24px -10px #d9a84e;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.85rem;
+}
+[data-skin="brass"] .glass {
+    background: rgb(9 27 27 / 0.78);
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 1px rgb(217 168 78 / 0.45);
+}
+[data-skin="brass"] .skin-dialog { border-radius: 6px; box-shadow: 0 0 0 1px #b8893e, 0 0 0 6px #0a1d1e, 0 0 0 7px rgb(217 168 78 / 0.5); }
+[data-skin="brass"] .skin-screen { border-radius: 6px; box-shadow: 0 0 0 1px #b8893e, 0 0 0 6px #0a1d1e, 0 0 0 7px rgb(217 168 78 / 0.5), 0 0 60px -20px #d9a84e; }
+[data-skin="brass"] .porthole-ring { background: conic-gradient(from 210deg, #f0d08a, #8a6428, #f7e2a8, #6e4d1c, #f0d08a); }
+[data-skin="brass"] .porthole-rivet { background: #f7e2a8; }
+[data-skin="brass"] .porthole-inner { --tw-ring-color: #3a2a15; }
+[data-skin="brass"] .skin-tint { filter: sepia(0.9) saturate(1.5) hue-rotate(-12deg); }
+.brass-beam {
+    background: linear-gradient(to left, rgb(255 214 140 / 0.45), rgb(255 214 140 / 0.12) 40%, transparent 85%);
+    clip-path: polygon(100% 45%, 0 0, 0 100%, 100% 55%);
+    animation: brass-sweep 9s ease-in-out infinite;
+    mix-blend-mode: screen;
+}
+.brass-vignette {
+    background: radial-gradient(ellipse at center, transparent 55%, rgb(5 12 12 / 0.7) 100%);
+}
+@keyframes brass-sweep {
+    0%, 100% { transform: rotate(-4deg); opacity: 0.9; }
+    50% { transform: rotate(9deg); opacity: 0.55; }
 }

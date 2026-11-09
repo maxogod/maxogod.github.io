@@ -14,6 +14,7 @@ import TopBar from "../components/TopBar"
 import DepthGauge from "../components/DepthGauge"
 import Logbook from "../components/Logbook"
 import { SonarPing, Whale } from "../components/Overlays"
+import { SkinOverlay } from "../components/SkinScenery"
 
 // Routes: "/" and "/projects/:filter[/:slug]". The page never unmounts; the route only drives the
 // project filter and which project's modal is open.
@@ -65,6 +66,7 @@ const Dive = () => {
             <SonarPing />
             <Whale />
             <Logbook />
+            <SkinOverlay />
         </>
     )
 }
