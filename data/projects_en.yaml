@@ -122,6 +122,20 @@ web_projects:
       technologies: []
 
 datasci_projects:
+    - name: "RAG API for Studying"
+      description: "FastAPI Retrieval-Augmented Generation service built to study for final exams by asking questions directly to the source books.<br><br>PDFs are chunked, embedded and indexed in a pgvector-backed PostgreSQL vector store. Each question triggers a semantic similarity search, and the most relevant passages are fed as context to an LLM (Llama 4 Scout) through LangChain.<br><br>Key features include:<br>- Bibliography-grounded answers that reduce hallucinations and stay traceable to the original books.<br>- Modular design with swappable embedding model, vector store and LLM."
+      image: "assets/rag.jpg"
+      url: "https://github.com/maxogod/student-rag-api"
+      vid: ""
+      technologies:
+          ["LLM", "RAG", "LangChain", "FastAPI", "PostgreSql", "pgvector", "Docker", "Python"]
+    - name: "Brain Tumor Segmentation"
+      description: "Deep learning pipeline for automatic 3D segmentation of brain tumors in multimodal MRI scans, inspired by the BraTS challenge and built as a University of Buenos Aires Deep Learning project.<br><br>A custom 3D U-Net (5.6M parameters) takes T1CE, T2 and FLAIR volumes and delineates the three tumor tissue classes (necrotic core, edema and enhancing tumor) voxel by voxel, trained on 369 clinical cases after a preprocessing pipeline of intensity normalization, spatial cropping and filtering of poorly annotated volumes.<br><br>Key features include:<br>- Class-imbalance handling with a weighted Dice-Focal loss, mixed-precision training and cosine annealing learning rate scheduling.<br>- Test-time augmentation and a model ensemble for more robust predictions.<br>- 0.73 mean Dice Score and 0.61 IoU on a held-out validation set, selected from over 20 trained models.<br>- Training adapted to constrained GPU memory (4 to 16 GB VRAM) across local and cloud environments."
+      image: "assets/brain.jpg"
+      url: "https://github.com/maxogod/Brain-Tumor-Segmentation"
+      vid: ""
+      technologies:
+          ["Deep Learning", "Computer Vision", "Pytorch", "Numpy", "Python"]
     - name: "Deep Learning - University of Buenos Aires"
       description: "In the following three projects, different neural network architectures and applications were explored, mostly using only the NumPy library, and occasionally PyTorch.<br><br>The first focused on Hopfield networks, evaluating their memory retrieval capacity under various conditions.<br><br>The second addressed classical classification and regression problems using simple and multilayer perceptrons, Boltzmann machines, convolutional networks, and autoencoders, also including other methods such as simulated annealing and genetic algorithms.<br><br>The third concentrated on Kohonen Self-Organizing Maps (SOM), applied to the representation of geometric distributions, approximate solutions to the traveling salesman problem, and dimensionality reduction for clustering analysis, highlighting their ability to preserve topologies and uncover hidden structures in the data."
       image: "assets/dl.png"

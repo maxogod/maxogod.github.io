@@ -122,6 +122,20 @@ web_projects:
       technologies: []
 
 datasci_projects:
+    - name: "RAG API para Estudiar"
+      description: "Servicio FastAPI de Retrieval-Augmented Generation creado para estudiar para los finales haciéndole preguntas directamente a los libros fuente.<br><br>Los PDFs se dividen en chunks, se convierten en embeddings y se indexan en un vector store PostgreSQL con pgvector. Cada pregunta dispara una búsqueda semántica por similitud, y los pasajes más relevantes se envían como contexto a un LLM (Llama 4 Scout) mediante LangChain.<br><br>Características principales:<br>- Respuestas fundamentadas en la bibliografía que reducen las alucinaciones y se mantienen trazables a los libros originales.<br>- Diseño modular con modelo de embeddings, vector store y LLM intercambiables."
+      image: "assets/rag.jpg"
+      url: "https://github.com/maxogod/student-rag-api"
+      vid: ""
+      technologies:
+          ["LLM", "RAG", "LangChain", "FastAPI", "PostgreSql", "pgvector", "Docker", "Python"]
+    - name: "Segmentación de Tumores Cerebrales"
+      description: "Pipeline de aprendizaje profundo para la segmentación 3D automática de tumores cerebrales en resonancias magnéticas multimodales, inspirado en el desafío BraTS y desarrollado como proyecto de Aprendizaje Profundo en la Universidad de Buenos Aires.<br><br>Una U-Net 3D propia (5.6M de parámetros) recibe volúmenes T1CE, T2 y FLAIR y delimita voxel a voxel las tres clases de tejido tumoral (núcleo necrótico, edema y tumor realzado), entrenada con 369 casos clínicos tras un preprocesamiento de normalización de intensidades, recorte espacial y descarte de volúmenes con poca anotación.<br><br>Características principales:<br>- Manejo del desbalance de clases con una pérdida Dice-Focal ponderada, entrenamiento con precisión mixta y cosine annealing como política de tasa de aprendizaje.<br>- Test-time augmentation y ensamble de modelos para predicciones más robustas.<br>- Dice Score medio de 0.73 e IoU de 0.61 sobre un conjunto de validación, seleccionado entre más de 20 modelos entrenados.<br>- Entrenamiento adaptado a memoria de GPU limitada (4 a 16 GB de VRAM) en entornos locales y en la nube."
+      image: "assets/brain.jpg"
+      url: "https://github.com/maxogod/Brain-Tumor-Segmentation"
+      vid: ""
+      technologies:
+          ["Deep Learning", "Computer Vision", "Pytorch", "Numpy", "Python"]
     - name: "Aprendizaje profundo - Universidad de Buenos Aires"
       description: "En los tres siguientes proyectos se exploraron distintas arquitecturas y aplicaciones de redes neuronales mayormente utilizando solamente la libreria numpy, y ocacionalmente pytorch.<br><br>El primero se centró en redes de Hopfield, evaluando su capacidad de recuperación de memoria bajo diversas condiciones.<br><br>El segundo abordó problemas clásicos de clasificación y regresión mediante perceptrones simples y multicapa, máquinas de Boltzmann, redes convolucionales y autoencoders, incluyendo también otros métodos como simulated annealing y algoritmos genéticos.<br><br>El tercero se enfocó en redes auto-organizadas de Kohonen (SOM), aplicadas a la representación de distribuciones geométricas, la resolución aproximada del problema del viajero y la reducción de dimensionalidad para análisis de clustering, destacando su capacidad para preservar topologías y descubrir estructuras ocultas en los datos."
       image: "assets/dl.png"
