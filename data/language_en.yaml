@@ -1,23 +1,184 @@
-navbarLinks:
-    "About me": "#about"
-    "Projects": "#projects"
-    "Contact": "#contact"
+nav:
+    skip: "Skip to projects"
+    settings: "Settings"
+    home: "Back to the surface"
+    logbook: "Logbook"
+    toDay: "Switch to day"
+    toNight: "Switch to night"
+    language: "Leer en español"
+    languageShort: "ES"
+    mute: "Mute sounds"
+    unmute: "Turn sounds on"
 
-navbarGoBack: "Go back"
+sections:
+    surface: "Surface"
+    about: "About"
+    projects: "Projects"
+    contact: "Contact"
+    abyss: "Bottom"
 
-homePage:
-    title: "Hi I'm Maxo"
-    subTitle: "Welcome to my portfolio!"
-    about: "About me"
+zones:
+    surface: "Surface"
+    sunlight: "Sunlight zone"
+    twilight: "Twilight zone"
+    midnight: "Midnight zone"
+    abyss: "Abyssal zone"
 
-aboutMe:
-    title: "Computer Science Engineering student at Univesity of Buenos Aires"
-    text: "Hello, my name is Maximo Utrera. I am a Computer Engineer with a passion for software development and a strong foundation in various programming languages and technologies, I have dedicated myself to honing my skills through academic courses, personal projects, and professional experiences. I am committed to applying this knowledge to solve real-world problems and create innovative solutions."
+hud:
+    pressure: "atm"
+    sonar: "Sonar ping"
+    sonarKey: "P"
+    gauge: "Depth gauge"
 
-titles:
-    sys: "Systems & Infrastructure"
-    web: "Full-stack Web & App Development"
-    datasci: "AI & Data Science"
-    games: "Game Development"
+hero:
+    firstName: "Máximo"
+    lastName: "Utrera"
+    tagline: "Computer engineer. I build distributed systems, cloud infrastructure and the occasional video game."
+    dive: "Dive in"
+    sub: "Take the submarine down"
+
+about:
+    title: "About me"
+    subtitle: "Computer engineering, University of Buenos Aires"
+    text: "Hello, my name is Máximo Utrera. I am a Computer Engineer with a passion for software development and a strong foundation in various programming languages and technologies. I have dedicated myself to honing my skills through academic courses, personal projects, and professional experiences, and I am committed to applying this knowledge to solve real-world problems and create innovative solutions."
+    portrait: "Máximo smiling on a boat over a lake"
+    toolboxTitle: "What I work with"
+    toolbox:
+        - label: "Languages"
+          items: ["Go", "Python", "TypeScript", "Rust", "C++", "Java"]
+        - label: "Infrastructure"
+          items: ["AWS", "Terraform", "Kubernetes", "Nomad", "Docker", "Datadog"]
+        - label: "Systems"
+          items: ["Distributed systems", "Microservices", "RabbitMQ", "PostgreSQL", "MongoDB"]
+        - label: "Games and AI"
+          items: ["Unity", "Godot", "PyTorch", "TensorFlow"]
+    photosCaption: "Fiubaton 2023, winners of the AI challenge"
+    photos:
+        - "Presenting our project on stage at Fiubaton"
+        - "Thanking the Fiubaton organizers"
+        - "The winning team holding their certificates"
+
+projects:
+    title: "Projects"
+    intro: "Pick a category, then open a project for the full story: architecture, infrastructure and results."
+    all: "All"
+    categories:
+        sys: "Systems & infrastructure"
+        web: "Full-stack web & apps"
+        datasci: "AI & data science"
+        games: "Game development"
+    short:
+        sys: "Systems"
+        web: "Web & apps"
+        datasci: "AI & data"
+        games: "Games"
+    open: "Open"
+    more: "More on GitHub"
+    moreText: "Coursework, experiments and side projects"
+    code: "Source code"
+    video: "Watch demo"
+    close: "Close"
+    previous: "Previous project"
+    next: "Next project"
+    builtWith: "Built with"
+    position: "{n} of {total}"
+
+contact:
+    title: "Get in touch"
+    text: "Want to talk about a role, a project, or something you spotted down here? Reach out on any of these channels."
+    github: "GitHub"
+    linkedin: "LinkedIn"
+    copyEmail: "Copy email"
+    emailCopied: "Email copied to the clipboard"
+    cv: "Résumé"
+
+abyss:
+    title: "You hit the bottom"
+    text: "Nothing else to read down here, so take the sub for a spin. Your score and finds are kept in the logbook."
+    treasures: "{found} of {total} treasures found"
+    treasuresDone: "Every treasure found. The chest is yours."
+    treasuresHint: "Some are hidden in plain sight. A sonar ping lights them up."
+    ascend: "Back to the surface"
+    footer: "Máximo Utrera - Portfolio"
+
+game:
+    title: "Deep Run"
+    howTo: "Hold Space, ↑ or tap to rise. Dodge mines and rocks, and grab pearls for bonus points."
+    start: "Start dive"
+    again: "Dive again"
+    resume: "Resume"
+    score: "Score"
+    best: "Best"
+    over: "Hull breach"
+    newBest: "New record"
+    paused: "Paused"
+    label: "Deep Run mini game"
+
+logbook:
+    title: "Logbook"
+    intro: "Achievements and treasures from your dive. Progress is saved in this browser."
+    achievements: "Achievements"
+    treasures: "Treasures"
+    bubbles: "Bubbles popped"
+    projects: "Projects opened"
+    best: "Deep Run best"
+    reset: "Reset progress"
+    resetConfirm: "Click again to erase everything"
+    close: "Close logbook"
+    unlocked: "Achievement unlocked"
+    treasureFound: "Treasure found"
+    tips: "Tips: press P for a sonar ping, click the bubbles, and try a cheat code using arrows ;)"
+
+achievements:
+    dive:
+        title: "Into the blue"
+        text: "Dive below the surface."
+    twilight:
+        title: "Where light fades"
+        text: "Reach the twilight zone."
+    midnight:
+        title: "Lights out"
+        text: "Reach the midnight zone."
+    bottom:
+        title: "Rock bottom"
+        text: "Touch the sea floor."
+    firstLog:
+        title: "Field notes"
+        text: "Open your first project."
+    archivist:
+        title: "Archivist"
+        text: "Open 8 different projects."
+    ping:
+        title: "Ping"
+        text: "Use the sonar."
+    bubbles:
+        title: "Bubble wrap"
+        text: "Pop 25 bubbles."
+    treasures:
+        title: "Treasure hunter"
+        text: "Find every hidden treasure."
+    runner:
+        title: "Deep runner"
+        text: "Score 500 points in Deep Run."
+    cheat_code:
+        title: "Hackerman"
+        text: "Figure out the cheat code."
+    signal:
+        title: "Signal sent"
+        text: "Copy the email or open a contact link."
+    night:
+        title: "Night diver"
+        text: "Switch to night mode."
+    polyglot:
+        title: "Polyglot"
+        text: "Read the site in another language."
+
+treasures:
+    map: "Soggy treasure map"
+    compass: "Brass compass"
+    pearl: "Black pearl"
+    anchor: "Old anchor"
+    coins: "Pirate coins"
+    wheel: "Ship's wheel"
 
 cvLink: "https://drive.google.com/file/d/1Ss6nMl0H5AExOmoq3SIRiKBlZ5bOURV2/view"

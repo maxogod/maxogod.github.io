@@ -1,23 +1,184 @@
-navbarLinks:
-    "Sobre mi": "#about"
-    "Proyectos": "#projects"
-    "Contacto": "#contact"
+nav:
+    skip: "Ir a los proyectos"
+    settings: "Ajustes"
+    home: "Volver a la superficie"
+    logbook: "Bitácora"
+    toDay: "Cambiar a modo día"
+    toNight: "Cambiar a modo noche"
+    language: "Read in English"
+    languageShort: "EN"
+    mute: "Silenciar sonidos"
+    unmute: "Activar sonidos"
 
-navbarGoBack: "Volver"
+sections:
+    surface: "Superficie"
+    about: "Sobre mí"
+    projects: "Proyectos"
+    contact: "Contacto"
+    abyss: "Fondo"
 
-homePage:
-    title: "Hola soy Maxo"
-    subTitle: "Bienvenidos a mi portafolio!"
-    about: "Sobre mi"
+zones:
+    surface: "Superficie"
+    sunlight: "Zona fótica"
+    twilight: "Zona crepuscular"
+    midnight: "Zona de medianoche"
+    abyss: "Zona abisal"
 
-aboutMe:
-    title: "Estudiante de Ingenieria Informatica en la Univesidad de Buenos Aires"
-    text: "Hola, mi nombre es Máximo Utrera. Soy un Ingeniero en Informática con una pasión por el desarrollo de software y una sólida base en varios lenguajes de programación y tecnologías, me he dedicado a perfeccionar mis habilidades a través de cursos académicos, proyectos personales y experiencias profesionales. Estoy comprometido a aplicar este conocimiento para resolver problemas del mundo real y crear soluciones innovadoras."
+hud:
+    pressure: "atm"
+    sonar: "Ping de sonar"
+    sonarKey: "P"
+    gauge: "Profundímetro"
 
-titles:
-    sys: "Sistemas e Infraestructura"
-    web: "Desarrollo Full-stack y de Aplicaciones"
-    datasci: "Inteligencia Artificial y Ciencia de Datos"
-    games: "Desarrollo de Juegos"
+hero:
+    firstName: "Máximo"
+    lastName: "Utrera"
+    tagline: "Ingeniero en informática. Construyo sistemas distribuidos, infraestructura cloud y, de vez en cuando, videojuegos."
+    dive: "Sumergirse"
+    sub: "Bajar con el submarino"
+
+about:
+    title: "Sobre mí"
+    subtitle: "Ingeniería en informática, Universidad de Buenos Aires"
+    text: "Hola, mi nombre es Máximo Utrera. Soy Ingeniero en Informática, con pasión por el desarrollo de software y una sólida base en varios lenguajes de programación y tecnologías. Me he dedicado a perfeccionar mis habilidades a través de cursos académicos, proyectos personales y experiencias profesionales, y estoy comprometido a aplicar este conocimiento para resolver problemas del mundo real y crear soluciones innovadoras."
+    portrait: "Máximo sonriendo en un bote sobre un lago"
+    toolboxTitle: "Con qué trabajo"
+    toolbox:
+        - label: "Lenguajes"
+          items: ["Go", "Python", "TypeScript", "Rust", "C++", "Java"]
+        - label: "Infraestructura"
+          items: ["AWS", "Terraform", "Kubernetes", "Nomad", "Docker", "Datadog"]
+        - label: "Sistemas"
+          items: ["Sistemas distribuidos", "Microservicios", "RabbitMQ", "PostgreSQL", "MongoDB"]
+        - label: "Juegos e IA"
+          items: ["Unity", "Godot", "PyTorch", "TensorFlow"]
+    photosCaption: "Fiubaton 2023, ganadores del desafío de inteligencia artificial"
+    photos:
+        - "Presentando nuestro proyecto en el escenario de la Fiubaton"
+        - "Agradeciendo a los organizadores de la Fiubaton"
+        - "El equipo ganador con sus certificados"
+
+projects:
+    title: "Proyectos"
+    intro: "Elegí una categoría y abrí un proyecto para ver la historia completa: arquitectura, infraestructura y resultados."
+    all: "Todos"
+    categories:
+        sys: "Sistemas e infraestructura"
+        web: "Desarrollo full-stack y de aplicaciones"
+        datasci: "Inteligencia artificial y ciencia de datos"
+        games: "Desarrollo de juegos"
+    short:
+        sys: "Sistemas"
+        web: "Web y apps"
+        datasci: "IA y datos"
+        games: "Juegos"
+    open: "Abrir"
+    more: "Más en GitHub"
+    moreText: "Trabajos de la facultad, experimentos y proyectos personales"
+    code: "Código fuente"
+    video: "Ver demo"
+    close: "Cerrar"
+    previous: "Proyecto anterior"
+    next: "Proyecto siguiente"
+    builtWith: "Construido con"
+    position: "{n} de {total}"
+
+contact:
+    title: "Contacto"
+    text: "¿Querés hablar de un puesto, un proyecto o algo que viste acá abajo? Escribime por cualquiera de estos canales."
+    github: "GitHub"
+    linkedin: "LinkedIn"
+    copyEmail: "Copiar email"
+    emailCopied: "Email copiado al portapapeles"
+    cv: "Currículum"
+
+abyss:
+    title: "Llegaste al fondo"
+    text: "Ya no queda nada por leer acá abajo, así que date una vuelta con el submarino. Tu puntaje y tus hallazgos quedan en la bitácora."
+    treasures: "{found} de {total} tesoros encontrados"
+    treasuresDone: "Encontraste todos los tesoros. El cofre es tuyo."
+    treasuresHint: "Algunos están a la vista. Un ping de sonar los ilumina."
+    ascend: "Volver a la superficie"
+    footer: "Diseñado y desarrollado por Máximo Utrera"
+
+game:
+    title: "Deep Run"
+    howTo: "Mantené Espacio, ↑ o tocá la pantalla para subir. Esquivá minas y rocas, y juntá perlas para sumar puntos."
+    start: "Empezar inmersión"
+    again: "Otra vez"
+    resume: "Continuar"
+    score: "Puntaje"
+    best: "Récord"
+    over: "Casco perforado"
+    newBest: "Nuevo récord"
+    paused: "En pausa"
+    label: "Minijuego Deep Run"
+
+logbook:
+    title: "Bitácora"
+    intro: "Logros y tesoros de tu inmersión. El progreso se guarda en este navegador."
+    achievements: "Logros"
+    treasures: "Tesoros"
+    bubbles: "Burbujas reventadas"
+    projects: "Proyectos abiertos"
+    best: "Récord en Deep Run"
+    reset: "Borrar progreso"
+    resetConfirm: "Hacé clic otra vez para borrar todo"
+    close: "Cerrar bitácora"
+    unlocked: "Logro desbloqueado"
+    treasureFound: "Tesoro encontrado"
+    tips: "Pistas: apretá P para un ping de sonar, explotá burbujas y probá un truco usando las flechitas ;)"
+
+achievements:
+    dive:
+        title: "Al azul"
+        text: "Sumergite bajo la superficie."
+    twilight:
+        title: "Donde se apaga la luz"
+        text: "Llegá a la zona crepuscular."
+    midnight:
+        title: "Luces fuera"
+        text: "Llegá a la zona de medianoche."
+    bottom:
+        title: "Tocar fondo"
+        text: "Llegá al lecho marino."
+    firstLog:
+        title: "Notas de campo"
+        text: "Abrí tu primer proyecto."
+    archivist:
+        title: "Archivista"
+        text: "Abrí 8 proyectos distintos."
+    ping:
+        title: "Ping"
+        text: "Usá el sonar."
+    bubbles:
+        title: "Plástico de burbujas"
+        text: "Reventá 25 burbujas."
+    treasures:
+        title: "Cazatesoros"
+        text: "Encontrá todos los tesoros escondidos."
+    runner:
+        title: "Corredor de fondo"
+        text: "Hacé 500 puntos en Deep Run."
+    cheat_code:
+        title: "Hackerman"
+        text: "Adiviná el cheat code."
+    signal:
+        title: "Señal enviada"
+        text: "Copiá el email o abrí un link de contacto."
+    night:
+        title: "Buceo nocturno"
+        text: "Cambiá al modo noche."
+    polyglot:
+        title: "Políglota"
+        text: "Leé el sitio en otro idioma."
+
+treasures:
+    map: "Mapa del tesoro empapado"
+    compass: "Brújula de bronce"
+    pearl: "Perla negra"
+    anchor: "Ancla vieja"
+    coins: "Monedas piratas"
+    wheel: "Timón de barco"
 
 cvLink: "https://drive.google.com/file/d/1Ss6nMl0H5AExOmoq3SIRiKBlZ5bOURV2/view"

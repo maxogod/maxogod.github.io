@@ -1,42 +1,24 @@
-
-import { useLayoutEffect } from "react"
 import { HashRouter, Routes, Route } from "react-router-dom"
-import Contact from "./pages/Contact"
-import Home from "./pages/Home"
-import Projects from "./pages/Projects"
-import Navbar from "./shared/Navbar"
-import ProjectsByType from "./components/ProjectsByType"
-import { Flip, ToastContainer } from 'react-toastify';
+import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-let homeScrollY = 0
-
-const HomeSections = () => {
-    useLayoutEffect(() => {
-        window.scrollTo(0, homeScrollY)
-        const remember = () => { homeScrollY = window.scrollY }
-        window.addEventListener('scroll', remember)
-        return () => window.removeEventListener('scroll', remember)
-    }, [])
-
-    return (
-        <div className="flex flex-wrap bg-dark-background-p3 overflow-x-hidden">
-            <Home />
-            <Projects />
-            <Contact />
-        </div>
-    )
-}
+import Dive from "./pages/Dive"
 
 const Router = () => {
     return (
         <HashRouter>
-            <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} draggable pauseOnHover={false} theme="dark" transition={Flip} />
-            <Navbar />
+            <ToastContainer
+                position="top-right"
+                autoClose={3200}
+                hideProgressBar
+                newestOnTop
+                closeOnClick
+                pauseOnHover
+                draggable
+                theme="dark"
+                transition={Slide}
+                style={{ top: '4.75rem' }} />
             <Routes>
-                <Route path="/" element={<HomeSections />} />
-                <Route path="/projects/:projectType" element={<ProjectsByType />} />
-                <Route path="*" element={<div>404</div>} />
+                <Route path="*" element={<Dive />} />
             </Routes>
         </HashRouter>
     )

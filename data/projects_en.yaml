@@ -60,6 +60,7 @@ sys_projects:
       vid: "https://www.youtube.com/watch?v=8ktItIcETTw&ab_channel=MaxoFiuba"
       technologies: ["Rust"]
     - name: "Check out my github for more!"
+      more: true
       description: ""
       image: "assets/gh.png"
       url: "https://github.com/maxogod"
@@ -113,6 +114,7 @@ web_projects:
       vid: "https://www.youtube.com/watch?v=hAaZC-RAX24"
       technologies: ["MySql", "Django", "React", "Python", "JavaScript"]
     - name: "Check out my github for more!"
+      more: true
       description: ""
       image: "assets/gh.png"
       url: "https://github.com/maxogod"
@@ -160,6 +162,7 @@ datasci_projects:
       vid: ""
       technologies: ["Python", "GoogleColab", "Pandas", "SQL"]
     - name: "Check out my github for more!"
+      more: true
       description: ""
       image: "assets/gh.png"
       url: "https://github.com/maxogod"
@@ -202,6 +205,7 @@ game_projects:
       vid: "https://www.youtube.com/watch?v=u-lp5ocy8yI"
       technologies: ["Godot"]
     - name: "Check out my github for more!"
+      more: true
       description: ""
       image: "assets/gh.png"
       url: "https://github.com/maxogod"

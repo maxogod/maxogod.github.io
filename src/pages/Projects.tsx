@@ -1,65 +1,101 @@
-import { useContext } from "react"
-import { themeContext } from "../context/themeContext"
-import infra from '../assets/infra.png'
-import web from '../assets/web.png'
-import cli from '../assets/bdd.png'
-import games from '../assets/games.png'
-import { Link } from "react-router-dom"
-import Bubbles from "../components/Bubbles"
-import { colorTransition } from "../utils/themeUtils"
-import Tooltip from '@mui/material/Tooltip';
+import { useContext, useMemo, useRef } from "react"
+import { useNavigate } from "react-router-dom"
+import { CATEGORIES, Project } from "../@types/ProjectType"
 import { languageContext } from "../context/languageContext"
+import { gameContext } from "../context/gameContext"
+import { Filter, findMoreCard, listProjects, projectPath } from "../utils/projects"
+import SectionHeading from "../components/SectionHeading"
+import ProjectCard, { MoreCard } from "../components/ProjectCard"
+import ProjectModal from "../components/ProjectModal"
+import Treasure from "../components/Treasure"
 
-const Projects = () => {
+const Projects = ({ filter, slug }: { filter: Filter, slug?: string }) => {
 
-    const { projectTitles } = useContext(languageContext)
-    const { backgroundP2, textColor, bubbleColor } = useContext(themeContext)
+    const { text, projects } = useContext(languageContext)
+    const { openProject } = useContext(gameContext)
+    const navigate = useNavigate()
+    const openedFromPage = useRef(false)
+
+    const list = useMemo(() => listProjects(projects, filter), [projects, filter])
+    const moreCard = useMemo(() => findMoreCard(projects), [projects])
+    const counts = useMemo(() => ({
+        all: listProjects(projects, 'all').length,
+        ...Object.fromEntries(CATEGORIES.map(c => [c, listProjects(projects, c).length])),
+    }) as Record<Filter, number>, [projects])
+
+    const selected = slug ? list.find(p => p.slug === slug) ?? null : null
+
+    const open = (project: Project) => {
+        openedFromPage.current = true
+        openProject(project.slug)
+        navigate(projectPath(filter, project.slug))
+    }
+
+    const navigateTo = (project: Project) => {
+        openProject(project.slug)
+        navigate(projectPath(filter, project.slug), { replace: true })
+    }
+
+    const close = () => {
+        // Pop the history entry we pushed when opening, so Back doesn't reopen the modal.
+        if (openedFromPage.current) {
+            openedFromPage.current = false
+            navigate(-1)
+        } else {
+            navigate(projectPath(filter), { replace: true })
+        }
+    }
+
+    const filters: Filter[] = ['all', ...CATEGORIES]
 
     return (
-        <div
-            id='projects'
-            className={`${backgroundP2} relative w-screen h-screen flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-5`}>
+        <section id="projects" aria-labelledby="projects-title" className="water-projects relative px-5 pt-24 pb-28 sm:px-10 sm:pt-32 sm:pb-36 lg:px-16">
+            <div className="relative z-10 mx-auto max-w-6xl">
+                <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                    <SectionHeading id="projects-title" depth={200} zone="twilight" title={text.projects.title} />
+                    <p className="max-w-[46ch] text-lg text-foam/80">{text.projects.intro}</p>
+                </div>
 
-            <Bubbles />
+                <div role="group" aria-label={text.projects.title} className="mt-12 -mx-5 flex gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:flex-wrap sm:px-0">
+                    {filters.map(f => {
+                        const active = f === filter
+                        return (
+                            <button
+                                key={f}
+                                type="button"
+                                aria-pressed={active}
+                                onClick={() => navigate(projectPath(f), { replace: true })}
+                                className={`inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${active
+                                    ? 'bg-foam text-ink'
+                                    : 'bg-white/6 text-foam/80 ring-1 ring-white/12 hover:bg-white/12 hover:text-foam'}`}>
+                                {f === 'all' ? text.projects.all : text.projects.short[f]}
+                                <span className={`font-gauge text-[0.7rem] ${active ? 'text-ink/60' : 'text-foam/45'}`}>{counts[f]}</span>
+                            </button>
+                        )
+                    })}
+                </div>
 
-            <Tooltip title={projectTitles.sys} placement="top" arrow>
-                <Link to="/projects/sys"
-                    className={`w-32 h-32 sm:w-56 sm:h-56 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} rounded-full custom-animate-bounce mb-16 sm:mb-0 relative`}>
-                    <h1 className={`absolute top-1/2 w-full text-center font-extrabold ${textColor}`}>
-                    </h1>
-                    <img alt={projectTitles.sys} src={infra} className="w-20 sm:w-32 aspect-auto ease-in-out duration-300" />
-                </Link>
-            </Tooltip>
+                {filter !== 'all' && (
+                    <p className="mt-6 text-sm text-foam/60">{text.projects.categories[filter]}</p>
+                )}
 
-            <Tooltip title={projectTitles.web} placement="top" arrow>
-                <Link to="/projects/web"
-                    className={`w-32 h-32 sm:w-56 sm:h-56 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} rounded-full custom-animate-bounce mb-16 sm:mb-0 sm:mt-36 relative`}>
-                    <h1 className={`absolute top-1/2 w-full text-center font-extrabold ${textColor}`}>
-                    </h1>
-                    <img alt={projectTitles.web} src={web} className="w-20 sm:w-32 aspect-auto ease-in-out duration-300" />
-                </Link>
-            </Tooltip>
+                <ul className="mt-8 grid auto-rows-auto gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    {list.map((project, i) => (
+                        <ProjectCard
+                            key={`${project.category}-${project.slug}`}
+                            project={project}
+                            featured={i === 0}
+                            showCategory={filter === 'all'}
+                            onOpen={open} />
+                    ))}
+                    {moreCard && <MoreCard project={moreCard} />}
+                </ul>
+            </div>
 
+            <Treasure id="pearl" className="right-[4%] bottom-12 sm:right-[8%]" />
 
-            <Tooltip title={projectTitles.datasci} placement="top" arrow>
-                <Link to="/projects/datasci"
-                    className={`w-32 h-32 sm:w-56 sm:h-56 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} rounded-full custom-animate-bounce mb-16 sm:mb-0 sm:mt-36 relative`}>
-                    <h1 className={`absolute top-1/2 w-full text-center font-extrabold ${textColor}`}>
-                    </h1>
-                    <img alt={projectTitles.datasci} src={cli} className="w-20 sm:w-32 mr-3 aspect-auto ease-in-out duration-300 brightness-110" />
-                </Link>
-            </Tooltip>
-
-            <Tooltip title={projectTitles.games} placement="top" arrow>
-                <Link to="/projects/games"
-                    className={`w-32 h-32 sm:w-56 sm:h-56 flex items-center hover:brightness-110 justify-center opacity-80 brightness-75 ${bubbleColor} ${colorTransition} rounded-full custom-animate-bounce relative`}>
-                    <h1 className={`absolute top-1/2 w-full text-center font-extrabold ${textColor}`}>
-                    </h1>
-                    <img alt={projectTitles.games} src={games} className="w-20 sm:w-32 aspect-auto ease-in-out duration-300 brightness-110" />
-                </Link>
-            </Tooltip>
-
-        </div>
+            <ProjectModal project={selected} list={list} onClose={close} onNavigate={navigateTo} />
+        </section>
     )
 }
 

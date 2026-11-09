@@ -1,49 +1,21 @@
 import React, { createContext } from "react"
-import {
-    AboutMeText,
-    HomePageText,
-    NavbarLinks,
-    ProjectTitles,
-    englishAboutMe,
-    englishHomePage,
-    englishNavbarGoBack,
-    englishNavbarLinks,
-    englishTitles,
-} from "../utils/languageUtils";
-import ProjectType from "../@types/ProjectType";
-import {
-    english_sys_projects,
-    english_web_projects,
-    english_datasci_projects,
-    english_game_projects,
-} from "../utils/projects";
+import { Copy, englishCopy } from "../utils/languageUtils";
+import { ProjectsByCategory } from "../@types/ProjectType";
+import { englishProjects } from "../utils/projects";
 
 interface languageContextType {
     englishMode: boolean,
     setEnglishMode: React.Dispatch<React.SetStateAction<boolean>>,
-    navbarLinks: NavbarLinks,
-    homePageText: HomePageText,
-    aboutMeText: AboutMeText,
-    projectTitles: ProjectTitles,
-    navbarGoBack: string,
-    sysProjects: ProjectType[],
-    webProjects: ProjectType[],
-    datasciProjects: ProjectType[],
-    gameProjects: ProjectType[],
+    /** All UI copy for the current language (data/language_{en,es}.yaml). */
+    text: Copy,
+    projects: ProjectsByCategory,
 }
 
 const languageContext = createContext<languageContextType>({
     englishMode: true,
     setEnglishMode: () => { },
-    navbarLinks: englishNavbarLinks,
-    homePageText: englishHomePage,
-    aboutMeText: englishAboutMe,
-    projectTitles: englishTitles,
-    navbarGoBack: englishNavbarGoBack,
-    sysProjects: english_sys_projects,
-    webProjects: english_web_projects,
-    datasciProjects: english_datasci_projects,
-    gameProjects: english_game_projects,
+    text: englishCopy,
+    projects: englishProjects,
 })
 
 export type { languageContextType }

@@ -28,12 +28,12 @@ pnpm lint       # oxlint
 src/
   main.tsx       entry
   App.tsx        nests the theme, language and navbar providers
-  Router.tsx     HashRouter, route table, home scroll restoration
-  pages/         Home, Projects, Contact, the three home sections
-  components/    popups, per-category project list, background bubbles
-  shared/        Navbar and its dropdown tray
-  context/       xContext.ts holds the context, XContextProvider.tsx the provider
-  utils/         YAML loading, theme class strings, localStorage
+  Router.tsx     HashRouter, toasts; every path renders pages/Dive.tsx
+  pages/         Dive (the page) and its sections: Hero, About, Projects, Contact, Abyss
+  components/    HUD (TopBar, DepthGauge, Logbook), project grid + modal, canvas layers, game
+  context/       xContext.ts holds the context, XContextProvider.tsx the provider (theme, language, game)
+  hooks/         useDepth, useReducedMotion
+  utils/         YAML loading, scroll depth, game state, canvas engines, sounds, localStorage
   assets/        images
 data/            project and copy files, English and Spanish
 ```

@@ -2,140 +2,238 @@
 
 @source "../data/technology_colors.yaml";
 
+/* `dark:` follows <html data-theme="dark">, set by ThemeContextProvider. */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+    --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+    --font-gauge: "Martian Mono", ui-monospace, monospace;
+
+    /* Palette: water gets darker with depth; glow = bioluminescence, signal = instrument amber. */
+    --color-foam: #eaf7ff;
+    --color-ink: #062544;
+    --color-glow: #6ff3e0;
+    --color-signal: #ffb648;
+    --color-coral: #ff7a90;
+    --color-twilight: #0a3a63;
+    --color-midnight: #061a33;
+    --color-abyss: #020814;
+
+    --animate-wave: wave 16s linear infinite;
+    --animate-wave-slow: wave 26s linear infinite;
+    --animate-wave-fast: wave 11s linear infinite;
+    --animate-bob: bob 4.5s ease-in-out infinite;
+    --animate-sway: sway 9s ease-in-out infinite;
+    --animate-shimmer: shimmer 3.2s ease-in-out infinite;
+    --animate-sonar: sonar 1.6s cubic-bezier(0.2, 0.6, 0.3, 1) forwards;
+    --animate-whale: whale 14s linear forwards;
+    --animate-glint: glint 2.4s ease-in-out infinite;
+
+    @keyframes wave {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+    @keyframes bob {
+        0%, 100% { transform: translateY(0) rotate(-2deg); }
+        50% { transform: translateY(-8px) rotate(2deg); }
+    }
+    @keyframes sway {
+        0%, 100% { transform: skewX(-14deg) translateX(0); opacity: 0.55; }
+        50% { transform: skewX(-8deg) translateX(3vw); opacity: 1; }
+    }
+    @keyframes shimmer {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 0.38; }
+    }
+    @keyframes sonar {
+        from { transform: translate(-50%, -50%) scale(0); opacity: 0.9; }
+        to { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+    }
+    @keyframes whale {
+        from { transform: translateX(-40vw) translateY(0); }
+        50% { transform: translateX(50vw) translateY(-4vh); }
+        to { transform: translateX(140vw) translateY(2vh); }
+    }
+    @keyframes glint {
+        0%, 100% { opacity: 0.6; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.15); }
+    }
+}
+
+:root {
+    --sky-top: #7cc6ec;
+    --sky-bottom: #d6f0fb;
+    --water-surface: #1f8fbf;
+    --water-sunlit: #0b5c86;
+    --sun: #ffd27a;
+    color-scheme: dark;
+    background: var(--color-abyss);
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+:root[data-theme="dark"] {
+    --sky-top: #030722;
+    --sky-bottom: #17245a;
+    --water-surface: #0f4467;
+    --water-sunlit: #082f4d;
+    --sun: #e9efff;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    background: var(--color-abyss);
+    color: var(--color-foam);
+    overflow-x: hidden;
+}
+
 @layer base {
     button:not(:disabled),
     [role="button"]:not(:disabled) {
         cursor: pointer;
     }
+
+    :focus-visible {
+        outline: 2px solid var(--color-signal);
+        outline-offset: 3px;
+        border-radius: 6px;
+    }
+
+    ::selection {
+        background: var(--color-glow);
+        color: var(--color-abyss);
+    }
 }
 
-@theme {
-    --color-primary: #388fc7;
-    --color-secondary: #125199;
-    --color-tertiary: #073d7a;
-    --color-quaternary: #012042;
+@layer components {
+    /* One continuous dive: each section ends on the color the next one starts with. */
+    .water-hero {
+        background: linear-gradient(to bottom,
+                var(--sky-top) 0%,
+                var(--sky-bottom) var(--waterline),
+                var(--water-surface) var(--waterline),
+                var(--water-sunlit) 100%);
+        transition: background 0.6s ease;
+    }
+    .water-about {
+        background: linear-gradient(to bottom, var(--water-sunlit), var(--color-twilight));
+    }
+    .water-projects {
+        background: linear-gradient(to bottom, var(--color-twilight), var(--color-midnight));
+    }
+    .water-contact {
+        background: linear-gradient(to bottom, var(--color-midnight), var(--color-abyss));
+    }
 
-    --color-light-background-p1: #388fc7;
-    --color-light-background-p2: #125199;
-    --color-light-background-p3: #073d7a;
-    --color-light-background-p4: #012042;
+    .glass {
+        background: color-mix(in oklab, var(--color-midnight) 55%, transparent);
+        backdrop-filter: blur(14px) saturate(140%);
+        -webkit-backdrop-filter: blur(14px) saturate(140%);
+    }
 
-    --color-dark-background-p1: #1a425c;
-    --color-dark-background-p2: #0f2d40;
-    --color-dark-background-p3: #0b2333;
-    --color-dark-background-p4: #051621;
+    .night-stars {
+        background-image:
+            radial-gradient(1px 1px at 12% 22%, #fff 50%, transparent 51%),
+            radial-gradient(1px 1px at 28% 60%, #fff 50%, transparent 51%),
+            radial-gradient(1.5px 1.5px at 41% 14%, #fff 50%, transparent 51%),
+            radial-gradient(1px 1px at 55% 42%, #fff 50%, transparent 51%),
+            radial-gradient(1px 1px at 63% 18%, #fff 50%, transparent 51%),
+            radial-gradient(1.5px 1.5px at 74% 66%, #fff 50%, transparent 51%),
+            radial-gradient(1px 1px at 86% 30%, #fff 50%, transparent 51%),
+            radial-gradient(1px 1px at 93% 74%, #fff 50%, transparent 51%),
+            radial-gradient(1px 1px at 6% 80%, #fff 50%, transparent 51%),
+            radial-gradient(1px 1px at 35% 85%, #fff 50%, transparent 51%);
+    }
 
-    --color-light-primary: #f8f8f8;
-    --color-light-secondary: #f8f8f8;
-    --color-dark-primary: #f8f8f8;
-    --color-dark-secondary: #f8f8f8;
-    --color-light-text: #f8f8f8;
-    --color-dark-text: #f8f8f8;
+    /* Project description: rendered from YAML (<br> and "- " bullets). */
+    .project-log p + p,
+    .project-log p + ul,
+    .project-log ul + p {
+        margin-top: 0.9em;
+    }
+    .project-log ul {
+        display: grid;
+        gap: 0.45em;
+        margin-top: 0.5em;
+    }
+    .project-log li {
+        position: relative;
+        padding-left: 1.25em;
+    }
+    .project-log li::before {
+        content: "";
+        position: absolute;
+        left: 0.15em;
+        top: 0.62em;
+        width: 0.42em;
+        height: 0.42em;
+        border-radius: 999px;
+        background: var(--color-glow);
+        box-shadow: 0 0 8px var(--color-glow);
+    }
+
+    dialog.project-dialog::backdrop {
+        background: rgb(2 8 20 / 0.72);
+        backdrop-filter: blur(6px);
+    }
+    dialog.project-dialog[open] {
+        animation: dialog-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    dialog.logbook-dialog[open] {
+        animation: drawer-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
 }
 
-:root {
-    font-family: "Roboto Mono", monospace;
-    background: #7a9abe;
+@keyframes dialog-in {
+    from { opacity: 0; transform: translateY(18px) scale(0.98); }
+}
+@keyframes drawer-in {
+    from { transform: translateX(100%); }
 }
 
-/* Vertical Scrollbar */
+/* Toasts (achievements, treasures, copy confirmations). */
+.Toastify__toast {
+    --toastify-color-progress-light: var(--color-signal);
+    background: color-mix(in oklab, var(--color-midnight) 82%, transparent);
+    backdrop-filter: blur(12px);
+    color: var(--color-foam);
+    border: 1px solid color-mix(in oklab, var(--color-glow) 28%, transparent);
+    border-radius: 18px;
+    box-shadow: 0 12px 40px -12px rgb(0 0 0 / 0.6), 0 0 24px -8px color-mix(in oklab, var(--color-glow) 40%, transparent);
+    font-family: var(--font-display);
+    min-height: 0;
+    padding: 12px 14px;
+}
+.Toastify__progress-bar {
+    background: var(--color-signal);
+}
+.Toastify__close-button {
+    color: var(--color-foam);
+}
+
 ::-webkit-scrollbar {
     width: 10px;
-    border-radius: 5px;
-    /* background: #88a4c0; */
+    background: var(--color-abyss);
 }
-
 ::-webkit-scrollbar-thumb {
-    background: #4a78a5;
+    background: #1b4a73;
     border-radius: 5px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-    background: #5e98ce;
+    background: #2a6aa0;
 }
 
-@keyframes bounce {
-    0%,
-    100% {
-        transform: translateY(-25%);
-        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
-    50% {
-        transform: none;
-        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    }
-}
-
-.custom-animate-bounce:nth-of-type(1) {
-    animation: bounce 4s infinite;
-}
-.custom-animate-bounce:nth-of-type(2) {
-    animation: bounce 4.2s infinite;
-}
-.custom-animate-bounce:nth-of-type(3) {
-    animation: bounce 4.4s infinite;
-}
-.custom-animate-bounce:nth-of-type(4) {
-    animation: bounce 4.1s infinite;
-}
-
-.custom-animate-bounce:hover {
-    animation-play-state: paused;
-}
-
-.custom-animate-bounce:hover img {
-    transform: scale(1.1);
-}
-
-.bubble {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    position: absolute;
-    background-color: white;
-    bottom: -30px; /* Initial position below the screen */
-    opacity: 0.2;
-    animation: bubble 10s ease-in-out infinite,
-        sideWays 10s ease-in-out infinite alternate,
-        wateryEffect 3s ease-in-out infinite alternate;
-}
-
-@keyframes bubble {
-    0%,
-    100% {
-        transform: translateY(
-            60vh
-        ); /* Start and end position below the screen */
-        opacity: 0.06;
-    }
-    50% {
-        transform: translateY(0%); /* Midway position, bubbles rise */
-    }
-}
-
-@keyframes sideWays {
-    0% {
-        margin-left: 0px;
-    }
-    100% {
-        margin-left: 5rem;
-    }
-}
-
-@keyframes wateryEffect {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.1);
-    }
-}
-
-@keyframes custom-pulse {
-    50% {
-        opacity: 0.6;
-    }
-}
-.custom-animate-pulse {
-    animation: custom-pulse 4s cubic-bezier(0.6, 0.5, 0.7, 1) infinite;
 }
