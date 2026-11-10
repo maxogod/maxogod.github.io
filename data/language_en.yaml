@@ -44,14 +44,14 @@ about:
     portrait: "Máximo smiling on a boat over a lake"
     toolboxTitle: "What I work with"
     toolbox:
-        - label: "Languages"
-          items: ["Go", "Python", "TypeScript", "Rust", "C++", "Java"]
-        - label: "Infrastructure"
-          items: ["AWS", "Terraform", "Kubernetes", "Nomad", "Docker", "Datadog"]
-        - label: "Systems"
-          items: ["Distributed systems", "Microservices", "RabbitMQ", "PostgreSQL", "MongoDB"]
-        - label: "Games and AI"
-          items: ["Unity", "Godot", "PyTorch", "TensorFlow"]
+        - label: "AI & Data"
+          items: ["Agentic AI", "LangGraph", "LangChain", "FastMCP", "Pandas", "NumPy", "Scikit-learn", "PyTorch", "TensorFlow"]
+        - label: "Cloud & Infrastructure"
+          items: ["AWS", "Docker", "Kubernetes", "Nomad", "Terraform", "CI/CD", "Jenkins", "Datadog", "Microservices", "RabbitMQ"]
+        - label: "Technologies"
+          items: ["Node", "Express", "FastAPI", "Spring Boot", "Gin Gonic"]
+        - label: "Databases"
+          items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "AWS RDS", "DynamoDB"]
     photosCaption: "Fiubaton 2023, winners of the AI challenge"
     photos:
         - "Presenting our project on stage at Fiubaton"

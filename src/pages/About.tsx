@@ -12,7 +12,7 @@ const rivets = Array.from({ length: 10 }, (_, i) => i * 36)
 
 /** Round porthole window around the portrait. */
 const Porthole = ({ src, alt }: { src: string, alt: string }) => (
-    <div className="relative aspect-square w-full max-w-[22rem] rounded-full bg-[conic-gradient(from_210deg,#9db6c8,#3d5d76,#c9dbe6,#45657e,#9db6c8)] p-4 shadow-[0_30px_60px_-20px_rgb(0_0_0/0.6)] sm:p-5">
+    <div className="relative aspect-square w-full max-w-[16rem] sm:max-w-[22rem] rounded-full bg-[conic-gradient(from_210deg,#9db6c8,#3d5d76,#c9dbe6,#45657e,#9db6c8)] p-4 shadow-[0_30px_60px_-20px_rgb(0_0_0/0.6)] sm:p-5">
         {rivets.map(angle => (
             <span
                 key={angle}

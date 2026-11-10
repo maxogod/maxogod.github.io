@@ -44,14 +44,14 @@ about:
     portrait: "Máximo sonriendo en un bote sobre un lago"
     toolboxTitle: "Con qué trabajo"
     toolbox:
-        - label: "Lenguajes"
-          items: ["Go", "Python", "TypeScript", "Rust", "C++", "Java"]
-        - label: "Infraestructura"
-          items: ["AWS", "Terraform", "Kubernetes", "Nomad", "Docker", "Datadog"]
-        - label: "Sistemas"
-          items: ["Sistemas distribuidos", "Microservicios", "RabbitMQ", "PostgreSQL", "MongoDB"]
-        - label: "Juegos e IA"
-          items: ["Unity", "Godot", "PyTorch", "TensorFlow"]
+        - label: "IA y datos"
+          items: ["Agentic AI", "LangGraph", "LangChain", "FastMCP", "Pandas", "NumPy", "Scikit-learn", "PyTorch", "TensorFlow"]
+        - label: "Cloud e infraestructura"
+          items: ["AWS", "Docker", "Kubernetes", "Nomad", "Terraform", "CI/CD", "Jenkins", "Datadog", "Microservicios", "RabbitMQ"]
+        - label: "Tecnologías"
+          items: ["Node", "Express (TypeScript)", "FastAPI (Python)", "Spring Boot (Java)", "Gin Gonic (Go)"]
+        - label: "Bases de datos"
+          items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "AWS RDS", "DynamoDB"]
     photosCaption: "Fiubaton 2023, ganadores del desafío de inteligencia artificial"
     photos:
         - "Presentando nuestro proyecto en el escenario de la Fiubaton"
@@ -120,7 +120,7 @@ logbook:
     intro: "Logros y tesoros de tu inmersión. El progreso se guarda en este navegador."
     achievements: "Logros"
     treasures: "Tesoros"
-    bubbles: "Burbujas reventadas"
+    bubbles: "Burbujas explotadas"
     projects: "Proyectos abiertos"
     best: "Récord en Deep Run"
     reset: "Borrar progreso"
@@ -145,7 +145,7 @@ achievements:
         text: "Usá el sonar."
     bubbles:
         title: "Plástico de burbujas"
-        text: "Reventá 25 burbujas."
+        text: "Explotá 25 burbujas."
     treasures:
         title: "Cazatesoros"
         text: "Encontrá todos los tesoros escondidos."
