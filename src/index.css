@@ -27,6 +27,7 @@
     --animate-shimmer: shimmer 3.2s ease-in-out infinite;
     --animate-sonar: sonar 1.6s cubic-bezier(0.2, 0.6, 0.3, 1) forwards;
     --animate-whale: whale 14s linear forwards;
+    --animate-bubble: bubble 1.2s ease-out forwards;
     --animate-glint: glint 2.4s ease-in-out infinite;
 
     @keyframes wave {
@@ -48,6 +49,10 @@
     @keyframes sonar {
         from { transform: translate(-50%, -50%) scale(0); opacity: 0.9; }
         to { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+    }
+    @keyframes bubble {
+        from { transform: translate(0, 0) scale(0.4); opacity: 0.9; }
+        to { transform: translate(var(--drift), -2.6rem) scale(1); opacity: 0; }
     }
     @keyframes whale {
         from { transform: translateX(-40vw) translateY(0); }

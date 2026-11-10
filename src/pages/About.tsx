@@ -78,6 +78,39 @@ const Carousel = ({ captions }: { captions: string[] }) => {
 const chipClass = 'rounded-full bg-white/7 px-3 py-1 text-sm ring-1 ring-white/12'
 const CHIP_GAP = 6
 
+/** Toolbox chip: lifts and glows on hover, and releases a few bubbles when pressed. */
+const Chip = ({ children }: { children: string }) => {
+    const [bubbles, setBubbles] = useState<{ id: number, left: number, drift: number, size: number }[]>([])
+    const nextId = useRef(0)
+
+    const burst = () => {
+        const fresh = Array.from({ length: 4 }, () => ({
+            id: nextId.current++,
+            left: 15 + Math.random() * 70,
+            drift: Math.round(Math.random() * 24 - 12),
+            size: 5 + Math.round(Math.random() * 5),
+        }))
+        setBubbles(b => [...b, ...fresh])
+    }
+
+    return (
+        <button
+            type="button"
+            onClick={burst}
+            className={`${chipClass} relative cursor-pointer transition-[translate,background-color,box-shadow] hover:-translate-y-0.5 hover:bg-glow/15 hover:ring-glow/40 active:translate-y-0 focus-visible:ring-glow/60`}>
+            {children}
+            {bubbles.map(b => (
+                <span
+                    key={b.id}
+                    aria-hidden
+                    onAnimationEnd={() => setBubbles(list => list.filter(x => x.id !== b.id))}
+                    className="pointer-events-none absolute top-0 animate-bubble rounded-full bg-glow/30 ring-1 ring-glow/70"
+                    style={{ left: `${b.left}%`, width: b.size, height: b.size, '--drift': `${b.drift}px` } as React.CSSProperties} />
+            ))}
+        </button>
+    )
+}
+
 /** Toolbox row: collapses to a single line of chips ending in "…", expanded by default from the sm breakpoint up. */
 const ToolboxGroup = ({ label, items }: { label: string, items: string[] }) => {
     const [open, setOpen] = useState(() => window.matchMedia('(min-width: 40rem)').matches)
@@ -128,7 +161,7 @@ const ToolboxGroup = ({ label, items }: { label: string, items: string[] }) => {
                 </button>
             </dt>
             <dd id={id} ref={rowRef} className="relative flex flex-wrap gap-1.5">
-                {shown.map(item => <span key={item} className={chipClass}>{item}</span>)}
+                {shown.map(item => <Chip key={item}>{item}</Chip>)}
                 {!open && collapsible && (
                     <button type="button" aria-label={label} onClick={() => setOpen(true)} className={`${chipClass} transition-colors hover:bg-white/15`}>…</button>
                 )}
