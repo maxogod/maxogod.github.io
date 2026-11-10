@@ -30,7 +30,7 @@ export interface Copy {
     about: {
         title: string; subtitle: string; text: string; portrait: string;
         toolboxTitle: string; toolbox: { label: string; items: string[] }[];
-        photosCaption: string; photos: string[];
+        photos: string[];
     };
     projects: {
         title: string; intro: string; all: string;

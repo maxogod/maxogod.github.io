@@ -1,14 +1,62 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { languageContext } from '../context/languageContext'
 import SectionHeading from '../components/SectionHeading'
 import Treasure from '../components/Treasure'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import portrait from '../assets/pfp.jpg'
 import presenting from '../assets/fiubaton_presenting.jpg'
 import thanking from '../assets/fiubaton_thanking.jpg'
-import winners from '../assets/fiubaton_winners.jpg'
+import team from '../assets/tpf.jpg'
 
-const photos = [presenting, thanking, winners]
+const photos = [presenting, thanking, team]
+const SLIDE_MS = 4500
 const rivets = Array.from({ length: 10 }, (_, i) => i * 36)
+
+/** Auto-advancing photo carousel; hovering or focusing it pauses and reveals the caption. */
+const Carousel = ({ captions }: { captions: string[] }) => {
+    const reduced = useReducedMotion()
+    const [index, setIndex] = useState(0)
+    const [paused, setPaused] = useState(false)
+
+    useEffect(() => {
+        if (paused || reduced) return
+        const id = window.setInterval(() => setIndex(i => (i + 1) % photos.length), SLIDE_MS)
+        return () => window.clearInterval(id)
+    }, [paused, reduced, index])
+
+    return (
+        <div
+            className="group relative h-72 overflow-hidden rounded-2xl ring-1 ring-white/10 sm:h-[28rem]"
+            onPointerEnter={() => setPaused(true)}
+            onPointerLeave={() => setPaused(false)}
+            onFocus={() => setPaused(true)}
+            onBlur={() => setPaused(false)}>
+            {photos.map((src, i) => (
+                <img
+                    key={src}
+                    src={src}
+                    alt={captions[i] ?? ''}
+                    loading={i === 0 ? 'eager' : 'lazy'} decoding="async"
+                    aria-hidden={i !== index}
+                    className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${i === index ? 'opacity-100' : 'opacity-0'}`} />
+            ))}
+            <p className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-5 pt-12 pb-10 text-sm text-foam opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 sm:text-base">
+                {captions[index]}
+            </p>
+            <div className="absolute inset-x-0 bottom-3 flex justify-center gap-2">
+                {photos.map((src, i) => (
+                    <button
+                        key={src}
+                        type="button"
+                        aria-label={captions[i]}
+                        aria-current={i === index}
+                        onClick={() => setIndex(i)}
+                        className={`h-2 rounded-full transition-all ${i === index ? 'w-6 bg-foam' : 'w-2 bg-foam/50 hover:bg-foam/80'}`} />
+                ))}
+            </div>
+        </div>
+    )
+}
 
 /** Round porthole window around the portrait. */
 const Porthole = ({ src, alt }: { src: string, alt: string }) => (
@@ -69,19 +117,9 @@ const About = () => {
                     </div>
                 </div>
 
-                <figure className="mt-24">
-                    <div className="grid grid-cols-6 gap-3 sm:gap-4">
-                        {photos.map((src, i) => (
-                            <img
-                                key={src}
-                                src={src}
-                                alt={text.about.photos[i] ?? ''}
-                                loading="lazy" decoding="async"
-                                className={`h-44 w-full rounded-2xl object-cover ring-1 ring-white/10 sm:h-64 ${i === 0 ? 'col-span-6 sm:col-span-3' : i === 1 ? 'col-span-3 sm:col-span-2' : 'col-span-3 sm:col-span-1'}`} />
-                        ))}
-                    </div>
-                    <figcaption className="mt-3 text-sm text-foam/65">{text.about.photosCaption}</figcaption>
-                </figure>
+                <div className="mt-24">
+                    <Carousel captions={text.about.photos} />
+                </div>
             </div>
 
             <Treasure id="compass" className="bottom-[34%] left-[3%] sm:left-[45%]" />

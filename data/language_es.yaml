@@ -52,11 +52,10 @@ about:
           items: ["Node", "Express (TypeScript)", "FastAPI (Python)", "Spring Boot (Java)", "Gin Gonic (Go)"]
         - label: "Bases de datos"
           items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "AWS RDS", "DynamoDB"]
-    photosCaption: "Fiubaton 2023, ganadores del desafío de inteligencia artificial"
     photos:
-        - "Presentando nuestro proyecto en el escenario de la Fiubaton"
-        - "Agradeciendo a los organizadores de la Fiubaton"
-        - "El equipo ganador con sus certificados"
+        - "Fiubaton 2023, presentando nuestro proyecto en el escenario"
+        - "Fiubaton 2023, ganadores del desafío de inteligencia artificial"
+        - "Después de presentar nuestra tesis universitaria"
 
 projects:
     title: "Proyectos"

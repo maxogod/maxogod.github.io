@@ -52,11 +52,10 @@ about:
           items: ["Node", "Express", "FastAPI", "Spring Boot", "Gin Gonic"]
         - label: "Databases"
           items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "AWS RDS", "DynamoDB"]
-    photosCaption: "Fiubaton 2023, winners of the AI challenge"
     photos:
-        - "Presenting our project on stage at Fiubaton"
-        - "Thanking the Fiubaton organizers"
-        - "The winning team holding their certificates"
+        - "Fiubaton 2023, presenting our project on stage"
+        - "Fiubaton 2023, winners of the AI challenge"
+        - "After presenting our university thesis"
 
 projects:
     title: "Projects"
